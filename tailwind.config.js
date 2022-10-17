@@ -12,8 +12,8 @@ module.exports = {
       white: '#FFFFFF',
       yellow: { DEFAULT: '#FDED5A', 900: '#FFD84F' },
       gray: {
-        500: '#6B7280'
-      }
+        500: '#6B7280',
+      },
     },
     extend: {
       fontFamily: {
@@ -23,6 +23,22 @@ module.exports = {
         titillium: 'TitilliumWeb-Regular',
       },
     },
+    fontSize: {
+      small: [
+        '1rem',
+        {
+          lineheight: '1.75rem',
+          fontWeight: '400',
+        },
+      ],
+      big: [
+        '2.5rem',
+        {
+          lineheight: '3.8125rem',
+          fontWeight: '700',
+        },
+      ],
+    },
   },
   plugins: [],
-}
+};
