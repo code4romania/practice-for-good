@@ -2,6 +2,26 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: 'Roboto';
+  src: url('./assets/fonts/Roboto-Regular.ttf');
+}
+
+@font-face {
+  font-family: 'TitilliumWeb-Bold';
+  src: url('./assets/fonts/TitilliumWeb-Bold.ttf');
+}
+
+@font-face {
+  font-family: 'TitilliumWeb-SemiBold';
+  src: url('./assets/fonts/TitilliumWeb-SemiBold.ttf');
+}
+
+@font-face {
+  font-family: 'TitilliumWeb-Regular';
+  src: url('./assets/fonts/TitilliumWeb-Regular.ttf');
+}
+
 
 .content {
   /* Give the content enought white space so the footer is at the bottom */

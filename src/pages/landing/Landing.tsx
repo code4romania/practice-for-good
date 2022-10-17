@@ -1,11 +1,11 @@
 import React from 'react'
-import InputField from '../../common/components/input-field/InputField';
+import PracticeProgramsSearch from '../../common/components/practice-programs-search/PracticeProgramsSearch';
 
 const Landing = () => {
-  return (<p>
-
-    <InputField config={{}} />
-  </p>)
+  return (
+    <div className='bg-yellow w-full'>
+      <PracticeProgramsSearch />
+    </div>)
 }
 
 export default Landing;

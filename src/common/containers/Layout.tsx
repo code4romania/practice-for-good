@@ -12,10 +12,8 @@ const Layout = () => {
     <div className="w-screen h-screen max-w-full">
       <Header openSlidingMenu={setSlidingMenuOpen} />
       <SlidingMenu isOpen={isSlidingMenuOpen} setSlidingMenuOpen={setSlidingMenuOpen} />
-      <div className="flex sm:p-6 p-4">
-        <div className="content overflow-scroll w-full sm:pl-6">
-          <Outlet />
-        </div>
+      <div className="content flex overflow-scroll w-full">
+        <Outlet />
       </div>
       <Footer />
     </div>

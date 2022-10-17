@@ -10,8 +10,19 @@ module.exports = {
       transparent: 'transparent',
       black: '#000000',
       white: '#FFFFFF',
+      yellow: { DEFAULT: '#FDED5A', 900: '#FFD84F' },
+      gray: {
+        500: '#6B7280'
+      }
     },
-    extend: {},
+    extend: {
+      fontFamily: {
+        roboto: 'Roboto',
+        titilliumBold: 'TitilliumWeb-Bold',
+        titilliumSemiBold: 'TitilliumWeb-SemiBold',
+        titillium: 'TitilliumWeb-Regular',
+      },
+    },
   },
   plugins: [],
 }
