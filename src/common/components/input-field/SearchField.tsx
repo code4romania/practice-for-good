@@ -2,7 +2,7 @@ import { ExclamationCircleIcon } from '@heroicons/react/solid';
 import React from 'react';
 import { classNames } from '../../helpers/Tailwind.helper';
 
-const InputField = (props: {
+const SearchField = (props: {
   config: Partial<any>;
   readonly?: boolean;
   disabled?: boolean;
@@ -22,7 +22,7 @@ const InputField = (props: {
               props.config.error
                 ? 'border-red-300 text-red-900 placeholder-red-300 focus:ring-red-500 focus:border-red-500' : '',
               props.config.addOn ? 'pl-14' : 'pl-4',
-              'block w-full border border-gray-500 shadow-md sm:text-xl text-gray-500 text-sm disabled:bg-gray-100 p-4 font-titillium',
+              'block h-14 w-full border border-gray-500 shadow-md sm:text-xl text-gray-500 text-sm disabled:bg-gray-100 p-4 font-titillium',
             )}
             placeholder={props.config.placeholder}
             defaultValue={props.config.defaultValue}
@@ -51,4 +51,4 @@ const InputField = (props: {
   );
 };
 
-export default InputField;
+export default SearchField;

@@ -13,6 +13,9 @@ module.exports = {
       yellow: { DEFAULT: '#FDED5A', 900: '#FFD84F' },
       gray: {
         500: '#6B7280'
+      },
+      purple: {
+        DEFAULT: '#6543C8',
       }
     },
     extend: {

@@ -33,5 +33,25 @@ export const PracticeProgramsSearchConfig: Record<string, any> = {
       helperText: '',
       placeholder: 'Ana Maria Stoian',
     },
-  }
+  },
+  yearCreated: {
+    key: 'yearCreated',
+    rules: {
+      required: {
+        value: true,
+        message: 'yearCreated',
+      },
+    },
+    config: {
+      type: 'text',
+      label: 'yearCreated',
+      collection: [
+        { id: 1, year: 2019 },
+        { id: 2, year: 2020 },
+        { id: 3, year: 2022 },
+      ],
+      displayedAttribute: 'year',
+      isMulti: true,
+    },
+  },
 }
