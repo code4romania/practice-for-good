@@ -2,19 +2,19 @@
 /* eslint-disable @typescript-eslint/no-empty-function */
 import React from 'react';
 import Select from 'react-select';
-import './MultiSelect.css';
+import './Select.css';
 
 export interface MultiSelectConfig {
-  label: string;
+  label?: string;
   helperText?: string;
   error?: string;
   placeholder?: string;
   isClearable?: boolean;
   value: any[];
-  readonly: boolean;
   onChange: any;
   options: any[];
   id?: string;
+  isMulti: boolean;
 }
 
 const MultiSelect = ({
@@ -25,28 +25,18 @@ const MultiSelect = ({
   label,
   helperText,
   error,
-  readonly,
   options,
   id,
+  isMulti
 }: MultiSelectConfig) => {
   return (
-    <div>
-      {label && (
-        <label htmlFor="email" className="block text-base font-medium text-gray-700">
-          {label}
-        </label>
-      )}
-      <div className="py-2 flex gap-x-2 gap-y-2 flex-wrap">
-        {value?.map((item, index) => (
-          <span key={index}>{item.label}</span>
-        ))}
-      </div>
+    <div className='w-full'>
       <Select
         placeholder={placeholder}
         classNamePrefix="reactselect"
         onChange={onChange}
         isClearable={isClearable}
-        isMulti={true}
+        isMulti={isMulti}
         defaultValue={value}
         options={options}
         id={id}

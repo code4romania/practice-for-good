@@ -6,10 +6,11 @@ import 'react-datepicker/dist/react-datepicker.css';
 
 interface DateRangePickerProps {
   defaultValue?: Date;
+  placeholder?: string;
   onChange?: (range: any) => void;
 }
 
-const DatePicker = ({ defaultValue, onChange }: DateRangePickerProps) => {
+const DatePicker = ({ defaultValue, onChange, placeholder }: DateRangePickerProps) => {
   const [date, setDate] = useState<Date>();
 
   useEffect(() => {
@@ -26,7 +27,7 @@ const DatePicker = ({ defaultValue, onChange }: DateRangePickerProps) => {
 
   return (
     <div className="relative w-full">
-      <div className="mt-1 relative rounded-md">
+      <div className="relative rounded-md">
         <div className="absolute inset-y-0 right-0 pl-3 flex items-center pointer-events-none z-10">
           <CalendarIcon className="-ml-1 mr-2 h-5 w-5 text-gray-400" aria-hidden="true" />
         </div>
@@ -38,7 +39,7 @@ const DatePicker = ({ defaultValue, onChange }: DateRangePickerProps) => {
           }}
           selected={date}
           isClearable={false}
-          placeholderText="Selecteaza data inceput"
+          placeholderText={placeholder}
           dateFormat='dd.MM.yyyy'
         />
       </div>

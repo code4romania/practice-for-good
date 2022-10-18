@@ -6,5 +6,29 @@
     "practice-programs": "Stagii practica",
     "ongs": "ONG-uri",
     "contact": "Contact"
+  },
+  "search": {
+    "config": {
+      "search": {
+        "max": "Cautarea nu poate avea mai mult de 50 de caractere",
+        "min": "Cautarea nu poate avea mai putin de 3 caractere",
+        "placeholder": "Cauta ong sau program..."
+      },
+      "location": {
+        "placeholder": "Toata Romania"
+      },
+      "faculties": {
+        "placeholder": "Facultate"
+      },
+      "start": {
+        "placeholder": "Data Inceput"
+      },
+      "end": {
+        "placeholder": "Data Sfarsit"
+      },
+      "workingHours": {
+        "placeholder": "Numar ore"
+      }
+    }
   }
 }

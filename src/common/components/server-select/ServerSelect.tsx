@@ -1,12 +1,13 @@
 /* eslint-disable @typescript-eslint/no-empty-function */
 import React, { useEffect, useState } from 'react';
-import Select from 'react-select';
+import Select, { components } from 'react-select';
 import AsyncSelect from 'react-select/async';
 import debounce from 'debounce-promise'
 import './ServerSelect.css';
+import { LocationMarkerIcon } from '@heroicons/react/solid';
 
 export interface ServerSelectConfig {
-  label: string;
+  label?: string;
   isMulti: boolean;
   helperText?: string;
   error?: string;
@@ -16,7 +17,15 @@ export interface ServerSelectConfig {
   onChange: any;
   loadOptions: any;
   id?: string;
+  addOn?: any;
 }
+
+const Control = ({ addOn, children, ...props }: any) => (
+  <components.Control {...props}>
+    {children}
+  </components.Control>
+);
+
 
 const ServerSelect = ({
   placeholder,
@@ -24,23 +33,16 @@ const ServerSelect = ({
   isMulti,
   onChange,
   value,
-  label,
   loadOptions,
-  helperText,
-  error,
   id,
+  addOn,
 }: ServerSelectConfig) => {
   const debouncedLoadOptions = debounce(loadOptions, 500, {
     leading: false,
   });
 
   return (
-    <div>
-      {label && (
-        <label htmlFor="search" className="block text-base font-medium text-gray-700">
-          {label}
-        </label>
-      )}
+    <div className='w-full'>
       <AsyncSelect
         id={`${id}__input`}
         cacheOptions
@@ -51,17 +53,8 @@ const ServerSelect = ({
         isClearable={isClearable}
         isMulti={isMulti}
         defaultValue={value}
+        components={{ DropdownIndicator: null, CrossIcon: LocationMarkerIcon }}
       />
-      {!error && helperText && (
-        <p className="mt-1 text-sm text-gray-500 font-normal" id="search-helper">
-          {helperText}
-        </p>
-      )}
-      {error && (
-        <p className="mt-1 text-sm text-red-600" id={`${id}__input-error`}>
-          {error}
-        </p>
-      )}
     </div>
   );
 };
