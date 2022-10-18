@@ -10,8 +10,9 @@ module.exports = {
       transparent: 'transparent',
       black: '#000000',
       white: '#FFFFFF',
-      yellow: { DEFAULT: '#FDED5A', 900: '#FFD84F' },
+      yellow: { DEFAULT: '#FDED5A', 500: '#FFE870', 900: '#FFD84F' },
       gray: {
+        400: '#828282',
         500: '#6B7280',
       },
     },
@@ -29,6 +30,13 @@ module.exports = {
         {
           lineheight: '1.75rem',
           fontWeight: '400',
+        },
+      ],
+      medium: [
+        '1.25rem',
+        {
+          lineheight: '1.5rem',
+          fontWeight: '600',
         },
       ],
       big: [
