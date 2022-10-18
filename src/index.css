@@ -24,7 +24,7 @@
 
 @layer components {
   .yellow-button {
-    @apply w-full px-5 py-4 px-[45px] bg-yellow-500 text-medium sm:w-auto;
+    @apply w-full px-5 py-4 px-[45px] shadow-sm bg-yellow-500 text-medium sm:w-auto;
   }
 }
 
