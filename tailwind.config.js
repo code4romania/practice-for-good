@@ -10,10 +10,11 @@ module.exports = {
       transparent: 'transparent',
       black: '#000000',
       white: '#FFFFFF',
-      yellow: { DEFAULT: '#FDED5A', 900: '#FFD84F' },
+      yellow: { DEFAULT: '#FDED5A', 500: '#FFE870', 900: '#FFD84F' },
       gray: {
-        500: '#6B7280'
-      }
+        400: '#828282',
+        500: '#6B7280',
+      },
     },
     extend: {
       fontFamily: {
@@ -23,6 +24,29 @@ module.exports = {
         titillium: 'TitilliumWeb-Regular',
       },
     },
+    fontSize: {
+      small: [
+        '1rem',
+        {
+          lineheight: '1.75rem',
+          fontWeight: '400',
+        },
+      ],
+      medium: [
+        '1.25rem',
+        {
+          lineheight: '1.5rem',
+          fontWeight: '600',
+        },
+      ],
+      big: [
+        '2.5rem',
+        {
+          lineheight: '3.8125rem',
+          fontWeight: '700',
+        },
+      ],
+    },
   },
   plugins: [],
-}
+};

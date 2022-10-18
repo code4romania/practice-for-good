@@ -1,10 +1,34 @@
 {
-  "common": {"greeting": "buna"},
+  "common": { "greeting": "buna" },
   "menu": {
     "home": "Acasa",
     "about": "Despre Practice for Good",
     "practice-programs": "Stagii practica",
     "ongs": "ONG-uri",
     "contact": "Contact"
+  },
+  "contact": {
+    "config": {
+      "name": {
+        "required": "Numele este obligatoriu",
+        "max": "Numele poate sa abia maxim 100 de caractere",
+        "min": "Numele poate sa aiba minim 3 caractere",
+        "invalid": "Numele are un format invalid",
+        "label": "Nume si prenume"
+      },
+      "email": {
+        "required": "Email-ul este obligatoriu",
+        "max": "Email-ul poate sa aiba maxim 100 de caractere",
+        "min": "Email-ul poate sa aiba minim 3 caractere",
+        "invalid": "Email-ul are un format invalid",
+        "label": "E-mail"
+      },
+      "message": {
+        "required": "Mesajul tau este obligatoriu",
+        "max": "Mesajul tau poate sa aiba maxim 250 de caractere",
+        "min": "Mesajul tau poate sa aiba minim 50 de caractere",
+        "label": "Mesajul tau"
+      }
+    }
   }
 }
