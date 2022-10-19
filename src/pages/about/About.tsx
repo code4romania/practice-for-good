@@ -16,19 +16,19 @@ const About = () => {
             className="mx-auto xl:order-2 xl:col-span-2"
           />
           <div className="my-5 text-left text-center xl:text-left xl:order-1 xl:col-span-2">
-            <p className="text-big mb-10 text-center xl:text-left">{t('practice-for-good')}</p>
+            <p className="text-big mb-10 text-center xl:text-left">{t('practice_for_good')}</p>
             <p className="text-small mx-auto text-left lg:w-10/12 xl:mx-0 xl:w-10/12">
-              {t('description-p4g-1')}
+              {t('description_p4g_1')}
             </p>
           </div>
           <div className="my-5 xl:order-3 xl:col-span-2">
             <p className="text-small mx-auto text-left lg:w-10/12 xl:mx-0 xl:w-10/12">
-              {t('description-p4g-2')}
+              {t('description_p4g_2')}
             </p>
           </div>
           <div className="my-5 xl:order-4 xl:col-span-2">
             <p className="text-small mx-auto text-left lg:w-10/12 xl:mx-0 xl:w-10/12">
-              {t('description-p4g-3')}
+              {t('description_p4g_3')}
             </p>
           </div>
         </div>
@@ -41,7 +41,7 @@ const About = () => {
         <div className="font-titillium mt-10 text-center xl:text-left xl:order-1">
           <p className="text-big my-5 text-center xl:text-left">{t('onghub')}</p>
           <p className="text-small mx-auto text-left lg:w-10/12 xl:mx-0 xl:w-10/12">
-            {t('description-onghub')}
+            {t('description_onghub')}
           </p>
           <button
             onClick={() => {
@@ -49,7 +49,7 @@ const About = () => {
             }}
             className="yellow-button mt-10"
           >
-            {t('create-account')}
+            {t('create_account')}
           </button>
         </div>
       </section>

@@ -28,21 +28,21 @@ module.exports = {
       small: [
         '1rem',
         {
-          lineheight: '1.75rem',
+          lineHeight: '1.75rem',
           fontWeight: '400',
         },
       ],
       medium: [
         '1.25rem',
         {
-          lineheight: '1.5rem',
+          lineHeight: '1.5rem',
           fontWeight: '600',
         },
       ],
       big: [
         '2.5rem',
         {
-          lineheight: '3.8125rem',
+          lineHeight: '3.8125rem',
           fontWeight: '700',
         },
       ],
