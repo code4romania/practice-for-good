@@ -2,7 +2,8 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { ContactConfig } from './configs/Contact.config';
 import { Controller, useForm } from 'react-hook-form';
-import InputField from '../../common/components/input-field/InputField';
+import ContactInputField from '../../common/components/contact-input-field/ContactInputField';
+import Textarea from '../../common/components/textarea/Textarea';
 
 const Contact = () => {
   const { t } = useTranslation('contact');
@@ -17,95 +18,96 @@ const Contact = () => {
   });
 
   return (
-    <div className="mx-10 max-w-screen-xl grid lg:mx-10 xl:mx-auto xl:grid-cols-2">
-      <div className="font-titillium order-1 xl:col-span-2">
-        <p className="text-big">Contactează-ne</p>
-        <p className="text-small">
-          Centru Civic este primul centralizator al serviciilor pe care societatea civilă le pune la
-          dispoziția cetățenilor români. Soluția a pornit ca un agregator al tuturor aplicațiilor
-          civice dezvoltate de ONG-uri, instituții sau cetăţeni din România. În noua versiune,
-          Centru Civic va deveni locul unde, printr-o căutare simplă, fiecare cetățean va avea la
-          dispoziție informațiile necesare despre toate serviciile oferite de sectorul ONG care
-          vizează o anumită problemă, scoțând în evidență importanța și amploarea sectorului
-          non-profit în societatea românească.
-        </p>
-        <p></p>
-      </div>
-      <div className="order-2 xl:col-span-2">
-        <form className="flex flex-col">
-          <div className="flex gap-x-6">
-            <div className="flex-1">
-              <Controller
-                key={ContactConfig.name.key}
-                name={ContactConfig.name.name}
-                rules={ContactConfig.name.rules}
-                control={control}
-                render={({ field: { onChange, value } }) => {
-                  return (
-                    <InputField
-                      config={{
-                        ...ContactConfig.name.config,
-                        name: ContactConfig.name.key,
-                        error: errors[ContactConfig.name?.key]?.message,
-                        defaultValue: value,
-                        onChange: onChange,
-                      }}
-                    />
-                  );
-                }}
-              />
+    <div className="mx-10 max-w-screen-xl lg:mx-10 xl:mx-auto">
+      <div className="grid lg:grid-cols-2">
+        <div className="font-titillium">
+          <p className="text-big my-5 text-left">{t('contact-us')}</p>
+          <p className="text-small leading-7 text-left my-10 md:w-11/12 lg:w-10/12 xl:mx-0 xl:w-10/12">
+            {t('description-1')}
+          </p>
+          <p className="text-small leading-7 text-left mt-10 md:w-11/12 lg:w-10/12 xl:mx-0 xl:w-10/12">
+            {t('description-2')}
+          </p>
+        </div>
+        <div className="mt-5 lg:mt-12">
+          <form className="flex flex-col mt-5 lg:mt-12">
+            <div className="flex gap-x-6 mb-8">
+              <div className="flex-1">
+                <Controller
+                  key={ContactConfig.name.key}
+                  name={ContactConfig.name.key}
+                  rules={ContactConfig.name.rules}
+                  control={control}
+                  render={({ field: { onChange, value } }) => {
+                    return (
+                      <ContactInputField
+                        config={{
+                          ...ContactConfig.name.config,
+                          name: ContactConfig.name.key,
+                          error: errors[ContactConfig.name?.key]?.message,
+                          defaultValue: value,
+                          onChange: onChange,
+                        }}
+                      />
+                    );
+                  }}
+                />
+              </div>
             </div>
-            <div className="flex-1"></div>
-          </div>
-          <div className="flex gap-x-6">
-            <div className="flex-1">
-              <Controller
-                key={ContactConfig.email.key}
-                name={ContactConfig.email.name}
-                rules={ContactConfig.email.rules}
-                control={control}
-                render={({ field: { onChange, value } }) => {
-                  return (
-                    <InputField
-                      config={{
-                        ...ContactConfig.email.config,
-                        name: ContactConfig.email.key,
-                        error: errors[ContactConfig.email?.key]?.message,
-                        defaultValue: value,
-                        onChange: onChange,
-                      }}
-                    />
-                  );
-                }}
-              />
+            <div className="flex gap-x-6 mb-8">
+              <div className="flex-1">
+                <Controller
+                  key={ContactConfig.email.key}
+                  name={ContactConfig.email.key}
+                  rules={ContactConfig.email.rules}
+                  control={control}
+                  render={({ field: { onChange, value } }) => {
+                    return (
+                      <ContactInputField
+                        config={{
+                          ...ContactConfig.email.config,
+                          name: ContactConfig.email.key,
+                          error: errors[ContactConfig.email?.key]?.message,
+                          defaultValue: value,
+                          onChange: onChange,
+                        }}
+                      />
+                    );
+                  }}
+                />
+              </div>
             </div>
-            <div className="flex-1"></div>
-          </div>
-          <div className="flex gap-x-6">
-            <div className="flex-1">
-              <Controller
-                key={ContactConfig.message.key}
-                name={ContactConfig.message.name}
-                rules={ContactConfig.message.rules}
-                control={control}
-                render={({ field: { onChange, value } }) => {
-                  return (
-                    <InputField
-                      config={{
-                        ...ContactConfig.message.config,
-                        name: ContactConfig.message.key,
-                        error: errors[ContactConfig.message?.key]?.message,
-                        defaultValue: value,
-                        onChange: onChange,
-                      }}
-                    />
-                  );
-                }}
-              />
+            <div className="flex gap-x-6 mb-8">
+              <div className="flex-1">
+                <Controller
+                  key={ContactConfig.message.key}
+                  name={ContactConfig.message.key}
+                  rules={ContactConfig.message.rules}
+                  control={control}
+                  render={({ field: { onChange, value } }) => {
+                    return (
+                      <Textarea
+                        config={{
+                          ...ContactConfig.message.config,
+                          name: ContactConfig.message.key,
+                          error: errors[ContactConfig.message?.key]?.message,
+                          defaultValue: value,
+                          onChange: onChange,
+                        }}
+                      />
+                    );
+                  }}
+                />
+              </div>
             </div>
-            <div className="flex-1"></div>
-          </div>
-        </form>
+            <button
+              className="w-3/5 md:w-2/5 yellow-button text-center mb-10"
+              onClick={() => console.log('Not yet implemented')}
+            >
+              {t('send')}
+            </button>
+          </form>
+        </div>
       </div>
     </div>
   );

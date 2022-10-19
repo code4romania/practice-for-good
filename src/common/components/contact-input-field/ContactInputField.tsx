@@ -2,10 +2,19 @@ import { ExclamationCircleIcon } from '@heroicons/react/solid';
 import React from 'react';
 import { classNames } from '../../helpers/Tailwind.helper';
 
-const InputField = (props: { config: Partial<any>; readonly?: boolean; disabled?: boolean }) => {
+const ContactInputField = (props: {
+  config: Partial<any>;
+  readonly?: boolean;
+  disabled?: boolean;
+}) => {
   return (
     <div className="relative w-full">
-      <div className="mt-1 relative rounded-md">
+      {props.config.label && (
+        <label htmlFor="email" className="font-titillium text-gray-700">
+          {props.config.label}
+        </label>
+      )}
+      <div className="mt-1 relative rounded-md w-10/12">
         {!props.readonly && props.config.addOn && props.config.addOn()}
         {props.readonly && <span>{props.config.defaultValue || '-'}</span>}
         {!props.readonly && (
@@ -19,7 +28,7 @@ const InputField = (props: { config: Partial<any>; readonly?: boolean; disabled?
                 ? 'border-red-300 text-red-900 placeholder-red-300 focus:ring-red-500 focus:border-red-500'
                 : '',
               props.config.addOn ? 'pl-14' : 'pl-4',
-              'block w-full border border-gray-500 shadow-md sm:text-xl text-gray-500 text-sm disabled:bg-gray-100 p-4 font-titillium',
+              'block rounded-md w-full border border-gray-300 shadow-sm sm:text-xl text-small disabled:bg-gray-100 py-9px px-13px font-titillium md:w-11/12',
             )}
             placeholder={props.config.placeholder}
             defaultValue={props.config.defaultValue}
@@ -35,12 +44,12 @@ const InputField = (props: { config: Partial<any>; readonly?: boolean; disabled?
         )}
       </div>
       {!props.config.error && (
-        <p className="mt-1 text-sm text-gray-500 font-titillium" id="email-description">
+        <p className="mt-1 text-small text-gray-500 font-titillium" id="email-description">
           {props.config.helperText}
         </p>
       )}
       {props.config.error && (
-        <p className="mt-1 text-sm text-red-600" id={`${props.config.id}__input-error`}>
+        <p className="mt-1 text-small text-red-600" id={`${props.config.id}__input-error`}>
           {props.config.error}
         </p>
       )}
@@ -48,4 +57,4 @@ const InputField = (props: { config: Partial<any>; readonly?: boolean; disabled?
   );
 };
 
-export default InputField;
+export default ContactInputField;

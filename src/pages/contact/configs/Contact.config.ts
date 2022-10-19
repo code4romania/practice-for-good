@@ -17,7 +17,7 @@ const translations = {
   },
   message: {
     required: i18n.t('contact:config.message.required'),
-    max: i18n.t('contact:config.message.required'),
+    max: i18n.t('contact:config.message.max'),
     min: i18n.t('contact:config.message.min'),
     label: i18n.t('contact:config.message.label'),
   },
@@ -48,6 +48,7 @@ export const ContactConfig: Record<string, any> = {
       type: 'text',
       label: translations.name.label,
       helperText: '',
+      placeholder: '',
     },
   },
   email: {
@@ -74,6 +75,7 @@ export const ContactConfig: Record<string, any> = {
       type: 'text',
       label: translations.email.label,
       helperText: '',
+      placeholder: '',
     },
   },
   message: {
@@ -96,6 +98,7 @@ export const ContactConfig: Record<string, any> = {
       type: 'text',
       label: translations.message.label,
       helperText: '',
+      placeholder: '',
     },
   },
 };
