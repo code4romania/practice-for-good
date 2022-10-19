@@ -47,21 +47,21 @@ module.exports = {
       small: [
         '1rem',
         {
-          lineheight: '1.75rem',
+          lineLeight: '1.75rem',
           fontWeight: '400',
         },
       ],
       medium: [
         '1.25rem',
         {
-          lineheight: '1.5rem',
+          lineLeight: '1.5rem',
           fontWeight: '600',
         },
       ],
       big: [
         '2.5rem',
         {
-          lineheight: '3.8125rem',
+          lineLeight: '3.8125rem',
           fontWeight: '700',
         },
       ],
