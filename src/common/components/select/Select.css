@@ -4,8 +4,28 @@
   border-radius: 0!important;
 }
 
-.reactselect__value-container {
+.reactselect__single-value {
+  font-size: 0.8rem!important;
 }
+
+.reactselect__placeholder {
+  font-size: 0.8rem!important;
+}
+
+
+@media only screen and (min-width: 768px) {
+  
+  .reactselect__single-value {
+    font-size: 1rem!important;
+  }
+
+  .reactselect__placeholder {
+    font-size: 1rem!important;
+    line-height: 1rem!important;
+  }
+}
+
+
 
 .reactselect__multi-value {
   background-color: #eff0f3 !important;

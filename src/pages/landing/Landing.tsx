@@ -4,7 +4,7 @@ import PracticeProgramsSearch from '../../common/components/practice-programs-se
 const Landing = () => {
   return (
     <div className='bg-yellow w-full'>
-      <PracticeProgramsSearch />
+      <PracticeProgramsSearch showFilters={true} />
     </div>)
 }
 

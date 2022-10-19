@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { SearchIcon } from '@heroicons/react/solid';
 import { Controller, useForm } from 'react-hook-form';
 import { getCities } from '../../../services/nomenclature/nomenclature.service';
 import { mapCitiesToSelect } from '../../helpers/Nomenclature.helper';
@@ -7,8 +8,12 @@ import SearchField from '../search-field/SearchField';
 import MultiSelect from '../select/Select';
 import ServerSelect from '../server-select/ServerSelect';
 import { PracticeProgramsSearchConfig } from './configs/PracticeProgramsSearch.config';
+import { AdjustmentsIcon } from '@heroicons/react/outline';
+import FilterModal from '../filter-modal/FilterModal';
+import { t } from 'i18next';
 
-const PracticeProgramsSearch = () => {
+const PracticeProgramsSearch = (props: { showFilters: boolean }) => {
+  const [isFilterModalOpen, setFilterModalOpen] = useState(false);
 
   const {
     handleSubmit,
@@ -24,10 +29,9 @@ const PracticeProgramsSearch = () => {
     return getCities(searchWord).then((res: any[]) => res.map(mapCitiesToSelect));
   };
 
-
   return (
-    <div className='bg-yellow w-full flex flex-col items-center py-10 gap-8'>
-      <p className='font-titilliumBold text-4xl text-black'>Programe de practică la ONG-uri din România</p>
+    <div className='bg-yellow w-full flex flex-col items-center px-2 sm:px-4 py-10 gap-8'>
+      <p className='font-titilliumBold sm:text-4xl text-xl  text-black'>Programe de practică la ONG-uri din România</p>
       <div className='flex flex-col gap-4 max-w-5xl w-full justify-items-center'>
         <div className='flex w-full items-center h-14'>
           <Controller
@@ -50,7 +54,18 @@ const PracticeProgramsSearch = () => {
               );
             }}
           />
-          <div className='w-1/3 h-14'>
+          {props.showFilters && (
+            <button
+              id="create-organization-activity__button-back"
+              type="button"
+              className="text-sm sm:text-base sm:hidden text-yellow bg-black  px-4 flex items-center justify-center h-full"
+              onClick={() => alert('Not now')}
+            >
+              <SearchIcon className='w-5 h-5' />
+            </button>
+          )}
+
+          <div className='w-1/3 h-14 hidden sm:flex'>
             <Controller
               key={PracticeProgramsSearchConfig.locationId.key}
               name={PracticeProgramsSearchConfig.locationId.key}
@@ -73,7 +88,26 @@ const PracticeProgramsSearch = () => {
             />
           </div>
         </div>
-        <div className='flex w-full h-14 items-center h-14'>
+        {props.showFilters && (
+          <div className='sm:hidden flex justify-flex-start h-14 items-center bg-white px-4 gap-2 rounded-md shadow w-fit cursor-pointer'
+            onClick={() => setFilterModalOpen(true)}>
+            <p
+              id="create-organization-activity__button-back"
+              className="text-sm sm:text-base  h-full flex items-center"
+            >
+              Filtre
+            </p>
+            <AdjustmentsIcon className='w-5 h-5' />
+            <p
+              id="create-organization-activity__button-back"
+              className="text-base rounded-full bg-yellow p-2 flex items-center w-10 items-center justify-center"
+            >
+              5
+            </p>
+          </div>
+        )}
+
+        <div className='hidden sm:flex w-full h-14 items-center h-14'>
           <Controller
             key={PracticeProgramsSearchConfig.faculties.key}
             name={PracticeProgramsSearchConfig.faculties.key}
@@ -168,6 +202,16 @@ const PracticeProgramsSearch = () => {
           </button>
         </div>
       </div>
+      {isFilterModalOpen && (
+        <FilterModal
+          title={t('reject_request_modal.title')}
+          description={t('reject_request_modal.description')}
+          closeBtnLabel={t('common:back')}
+          confirmBtnLabel={t('common:delete')}
+          onClose={() => { setFilterModalOpen(false) }}
+          onConfirm={() => { setFilterModalOpen(false) }}
+        />
+      )}
     </div>)
 }
 
