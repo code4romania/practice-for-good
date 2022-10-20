@@ -101,7 +101,7 @@ const Contact = () => {
               </div>
             </div>
             <button
-              className="w-3/5 md:w-2/5 yellow-button text-center mb-10"
+              className="w-3/5 md:w-2/5 yellow-long-button text-center mb-10"
               onClick={() => console.log('Not yet implemented')}
             >
               {t('send')}

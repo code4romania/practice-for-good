@@ -23,7 +23,7 @@
 }
 
 @layer components {
-  .yellow-button {
+  .yellow-long-button {
     @apply rounded py-[13px] px-[25px] shadow-sm bg-yellow-500 text-small sm:w-auto font-roboto;
   }
 }
