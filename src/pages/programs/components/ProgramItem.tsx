@@ -13,7 +13,10 @@ const ProgramItem = ({ program }: { program: IProgram }) => {
           {program.image && <img className="w-full h-full bg-cover" src={program.image}></img>}
         </div>
         <div className="flex flex-col sm:h-full gap-y-4 flex-wrap">
-          <a className="sm:mb-auto max-w-fit" href={`/organization/${program.organization.id}`}>
+          <a
+            className="sm:mb-auto max-w-fit sm:text-sm lg:text-base text-xs"
+            href={`/organization/${program.organization.id}`}
+          >
             {program.organization.name}
           </a>
           <p className="font-titilliumBold sm:text-xl lg:text-3xl text-lg">{program.title}</p>
@@ -34,7 +37,7 @@ const ProgramItem = ({ program }: { program: IProgram }) => {
             </div>
           </div>
         </div>
-        <div className="ml-auto flex flex-col justify-center sm:h-full h-fit items-end">
+        <div className="ml-auto flex flex-col justify-center sm:h-full h-fit items-end gap-y-4">
           <button
             type="button"
             className="font-titilliumSemiBold yellow-long-button text-center h-fit lg:w-48 w-32 lg:text-base text-xs"
