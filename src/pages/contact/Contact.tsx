@@ -4,6 +4,7 @@ import { ContactConfig } from './configs/Contact.config';
 import { Controller, useForm } from 'react-hook-form';
 import ContactInputField from '../../common/components/contact-input-field/ContactInputField';
 import Textarea from '../../common/components/textarea/Textarea';
+import confirmLogo from '../../assets/images/confirm-icon.svg';
 
 const Contact = () => {
   const [showForm, setShowForm] = useState(true);
@@ -21,8 +22,8 @@ const Contact = () => {
 
   const onSendMail = () => {
     console.log('Not yet implemented');
-    setShowForm(false);
     reset();
+    setShowForm(false);
   };
 
   return (
@@ -119,7 +120,13 @@ const Contact = () => {
             </button>
           </div>
         )}
-        {!showForm && <div className="mt-5 bg-red-400 lg:mt-12">Hey</div>}
+        {!showForm && (
+          <div className="mt-5 h-72 lg:mt-12">
+            <img src={confirmLogo} alt="Green Checkmark" className="mx-auto pt-5 my-10 w-1/12" />
+            <p className="text-center text-medium mb-5">{t('contact_message_1')}</p>
+            <p className="text-center text-medium mb-10">{t('contact_message_2')}</p>
+          </div>
+        )}
       </div>
     </div>
   );
