@@ -1,10 +1,17 @@
 {
-  "common": {"greeting": "buna"},
+  "common": { "greeting": "buna" },
   "menu": {
     "home": "Acasa",
     "about": "Despre Practice for Good",
     "practice-programs": "Stagii practica",
     "ongs": "ONG-uri",
     "contact": "Contact"
+  },
+  "practice-programs": {
+    "one-program-title": "program de practică",
+    "many-programs-title": "de programe de practică",
+    "no-programs": "Nu au fost găsite programe de practică",
+    "cta-label": "Detalii",
+    "deadline": "Aplică până la"
   }
 }
