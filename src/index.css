@@ -22,8 +22,13 @@
   src: url('./assets/fonts/TitilliumWeb-Regular.ttf');
 }
 
+@layer components {
+  .yellow-long-button {
+    @apply rounded py-[13px] px-[25px] bg-yellow-400 text-base sm:w-auto font-roboto;
+  }
+}
 
 .content {
   /* Give the content enought white space so the footer is at the bottom */
-  min-height: calc(100vh - 6rem - 18rem); 
+  min-height: calc(100vh - 6rem - 18rem);
 }
