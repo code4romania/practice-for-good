@@ -8,6 +8,7 @@
     "contact": "Contact"
   },
   "search": {
+    "selected": "selectate",
     "config": {
       "search": {
         "max": "Cautarea nu poate avea mai mult de 50 de caractere",
@@ -28,6 +29,9 @@
       },
       "workingHours": {
         "placeholder": "Numar ore"
+      },
+      "domains": {
+        "placeholder": "Orice domeniu"
       }
     }
   }

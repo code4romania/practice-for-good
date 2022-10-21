@@ -10,6 +10,8 @@ interface DateRangePickerProps {
   onChange?: (range: any) => void;
 }
 
+
+
 const DatePicker = ({ defaultValue, onChange, placeholder }: DateRangePickerProps) => {
   const [date, setDate] = useState<Date>();
 
@@ -32,7 +34,7 @@ const DatePicker = ({ defaultValue, onChange, placeholder }: DateRangePickerProp
           <CalendarIcon className="-ml-1 mr-2 h-5 w-5 text-gray-400" aria-hidden="true" />
         </div>
         <ReactDatePicker
-          className="block h-14 w-full p-4 shadow-sm text-xs sm:text-sm md:text-base border border-gray-500"
+          className="block h-14 w-full p-4 shadow-sm text-base border border-gray-500 placeholder:text-gray-500"
           selectsRange={false}
           onChange={(update: Date) => {
             setDate(update);

@@ -1,8 +1,6 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { SearchIcon } from '@heroicons/react/solid';
 import { Controller, useForm } from 'react-hook-form';
-import { getCities } from '../../../services/nomenclature/nomenclature.service';
-import { mapCitiesToSelect } from '../../helpers/Nomenclature.helper';
 import DatePicker from '../date-picker/DatePicker';
 import SearchField from '../search-field/SearchField';
 import MultiSelect from '../select/Select';
@@ -10,10 +8,41 @@ import ServerSelect from '../server-select/ServerSelect';
 import { PracticeProgramsSearchConfig } from './configs/PracticeProgramsSearch.config';
 import { AdjustmentsIcon } from '@heroicons/react/outline';
 import FilterModal from '../filter-modal/FilterModal';
-import { t } from 'i18next';
+import { usePracticeProgramsQuery } from '../../../services/practice-programs/PracticePrograms.queries';
+import { usePracticePrograms } from '../../../store/Selectors';
+import { useCitiesQuery, useDomainsQuery, useFacultiesQuery } from '../../../services/nomenclature/Nomeclature.queries';
+import { useNomenclature } from '../../../store/nomenclatures/Nomenclatures.selectors';
+import { mapItemToSelect, mapSelectToValue } from '../../helpers/Nomenclature.helper';
 
 const PracticeProgramsSearch = (props: { showFilters: boolean }) => {
   const [isFilterModalOpen, setFilterModalOpen] = useState(false);
+  const [searchTerm, setSearchTerm] = useState();
+  const [searchLocationTerm, seSearchtLocationTerm] = useState('');
+  const [locationId, setLocationId] = useState();
+  const [selectedFaculties, setSelectedFaculties] = useState();
+  const [start, setStart] = useState();
+  const [end, setEnd] = useState();
+  const [workingHours, setWorkingHours] = useState();
+  const [selectedDomains, setSelectedDomains] = useState();
+
+  // Search Params
+  const [page, setPage] = useState<number>();
+  const [rowsPerPage, setRowsPerPage] = useState<number>();
+
+  const { practicePrograms } = usePracticePrograms();
+  const { cities, domains, faculties } = useNomenclature();
+
+  const { refetch } = usePracticeProgramsQuery(
+    rowsPerPage as number,
+    page as number,
+    searchTerm,
+    locationId,
+    selectedFaculties,
+    workingHours,
+    selectedDomains,
+    start,
+    end,
+  );
 
   const {
     handleSubmit,
@@ -25,9 +54,39 @@ const PracticeProgramsSearch = (props: { showFilters: boolean }) => {
     reValidateMode: 'onChange',
   })
 
+  // Queries
+  useCitiesQuery(searchLocationTerm)
+  useDomainsQuery();
+  useFacultiesQuery();
+
+
+  useEffect(() => {
+    if (practicePrograms?.meta) {
+      setPage(practicePrograms.meta.currentPage);
+      setRowsPerPage(practicePrograms.meta.itemsPerPage);
+    }
+  }, []);
+
+  const search = (data: any) => {
+    setSearchTerm(data.search);
+    setLocationId(data.locationId?.value);
+    setSelectedFaculties(data.faculties?.map(mapSelectToValue));
+    setSelectedDomains(data.domains?.map(mapSelectToValue));
+    setWorkingHours(data.workingHours);
+    setStart(data.start);
+    setEnd(data.end);
+    refetch();
+  }
+
   const loadOptionsLocationSearch = async (searchWord: string) => {
-    return getCities(searchWord).then((res: any[]) => res.map(mapCitiesToSelect));
+    seSearchtLocationTerm(searchWord);
+    return cities.map(mapItemToSelect)
   };
+
+  const receiveFiltersFromModal = (e: any) => {
+    reset(e);
+    handleSubmit(search)();
+  }
 
   return (
     <div className='bg-yellow w-full flex flex-col items-center px-2 sm:px-4 py-10 gap-8'>
@@ -89,7 +148,7 @@ const PracticeProgramsSearch = (props: { showFilters: boolean }) => {
           </div>
         </div>
         {props.showFilters && (
-          <div className='sm:hidden flex justify-flex-start h-14 items-center bg-white px-4 gap-2 rounded-md shadow w-fit cursor-pointer'
+          <div className='sm:hidden flex justify-flex-start h-14 items-center bg-white px-4 gap-2 rounded-md shadow w-fit cursor-pointer active:bg-gray-200'
             onClick={() => setFilterModalOpen(true)}>
             <p
               id="create-organization-activity__button-back"
@@ -115,14 +174,14 @@ const PracticeProgramsSearch = (props: { showFilters: boolean }) => {
             control={control}
             render={({ field: { onChange, value } }) => {
               return (
-                <ServerSelect
+                <MultiSelect
                   id="programs-search-faculties"
                   value={value}
                   isMulti={true}
                   isClearable={false}
                   placeholder={PracticeProgramsSearchConfig.faculties.placeholder}
                   onChange={onChange}
-                  loadOptions={loadOptionsLocationSearch}
+                  options={faculties.map(mapItemToSelect)}
                 />
               );
             }}
@@ -174,20 +233,20 @@ const PracticeProgramsSearch = (props: { showFilters: boolean }) => {
             }}
           />
           <Controller
-            key={PracticeProgramsSearchConfig.workingHours.key}
-            name={PracticeProgramsSearchConfig.workingHours.key}
-            rules={PracticeProgramsSearchConfig.workingHours.rules}
+            key={PracticeProgramsSearchConfig.domains.key}
+            name={PracticeProgramsSearchConfig.domains.key}
+            rules={PracticeProgramsSearchConfig.domains.rules}
             control={control}
             render={({ field: { onChange, value } }) => {
               return (
                 <MultiSelect
-                  id="create-organization-workingHours"
+                  id="create-organization-domains"
                   value={value}
                   isClearable={false}
-                  isMulti={false}
+                  isMulti={true}
                   onChange={onChange}
-                  placeholder={PracticeProgramsSearchConfig.workingHours.config.placeholder}
-                  options={PracticeProgramsSearchConfig.workingHours.config.collection}
+                  placeholder={PracticeProgramsSearchConfig.domains.config.placeholder}
+                  options={domains.map(mapItemToSelect)}
                 />
               );
             }}
@@ -196,7 +255,7 @@ const PracticeProgramsSearch = (props: { showFilters: boolean }) => {
             id="create-organization-activity__button-back"
             type="button"
             className="text-sm sm:text-base text-yellow bg-black w-full h-full"
-            onClick={() => alert('Not now')}
+            onClick={handleSubmit(search)}
           >
             Cauta
           </button>
@@ -204,12 +263,8 @@ const PracticeProgramsSearch = (props: { showFilters: boolean }) => {
       </div>
       {isFilterModalOpen && (
         <FilterModal
-          title={t('reject_request_modal.title')}
-          description={t('reject_request_modal.description')}
-          closeBtnLabel={t('common:back')}
-          confirmBtnLabel={t('common:delete')}
           onClose={() => { setFilterModalOpen(false) }}
-          onConfirm={() => { setFilterModalOpen(false) }}
+          onConfirm={(e: any) => { receiveFiltersFromModal(e) }}
         />
       )}
     </div>)

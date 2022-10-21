@@ -47,9 +47,10 @@ const ServerSelect = ({
         id={`${id}__input`}
         cacheOptions
         placeholder={placeholder}
-        classNamePrefix="reactselect"
+        classNamePrefix="reactserverselect"
         loadOptions={debouncedLoadOptions}
         onChange={onChange}
+        hideSelectedOptions={false}
         isClearable={isClearable}
         isMulti={isMulti}
         defaultValue={value}

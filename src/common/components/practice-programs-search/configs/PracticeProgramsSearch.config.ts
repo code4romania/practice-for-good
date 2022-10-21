@@ -51,4 +51,12 @@ export const PracticeProgramsSearchConfig: Record<string, any> = {
       placeholder: i18n.t('search:config.workingHours.placeholder')
     },
   },
+  domains: {
+    key: 'domains',
+    rules: {
+    },
+    config: {
+      placeholder: i18n.t('search:config.domains.placeholder')
+    },
+  },
 }

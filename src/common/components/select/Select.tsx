@@ -1,8 +1,10 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-empty-function */
 import React from 'react';
+import { t } from 'i18next';
 import Select from 'react-select';
 import './Select.css';
+
 
 export interface MultiSelectConfig {
   label?: string;
@@ -17,18 +19,19 @@ export interface MultiSelectConfig {
   isMulti: boolean;
 }
 
+const MultiValue = ({ getValue, index }: any) =>
+  !index ? <p>{getValue().length} {t('search:selected')}</p> : <p></p>;
+
 const MultiSelect = ({
   placeholder,
   isClearable,
   onChange,
   value,
-  label,
-  helperText,
-  error,
   options,
   id,
   isMulti
 }: MultiSelectConfig) => {
+  const components = { MultiValue };
   return (
     <div className='w-full'>
       <Select
@@ -38,19 +41,11 @@ const MultiSelect = ({
         isClearable={isClearable}
         isMulti={isMulti}
         defaultValue={value}
+        hideSelectedOptions={false}
         options={options}
         id={id}
+        components={components}
       />
-      {!error && helperText && (
-        <p className="mt-1 text-sm text-gray-500 font-normal" id="email-description">
-          {helperText}
-        </p>
-      )}
-      {error && (
-        <p className="mt-1 text-sm text-red-600" id={`${id}__input-error`}>
-          {error}
-        </p>
-      )}
     </div>
   );
 };
