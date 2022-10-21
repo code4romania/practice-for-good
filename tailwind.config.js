@@ -12,8 +12,9 @@ module.exports = {
       white: '#FFFFFF',
       yellow: { DEFAULT: '#FDED5A', 900: '#FFD84F' },
       gray: {
-        500: '#6B7280'
-      }
+        100: '#F7F7F7',
+        500: '#6B7280',
+      },
     },
     extend: {
       fontFamily: {
@@ -22,7 +23,10 @@ module.exports = {
         titilliumSemiBold: 'TitilliumWeb-SemiBold',
         titillium: 'TitilliumWeb-Regular',
       },
+      backgroundImage: {
+        shape: 'url(./assets/images/shape-background.svg)',
+      },
     },
   },
   plugins: [],
-}
+};
