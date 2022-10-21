@@ -9,10 +9,11 @@ const Router = () => {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Layout />}>
+          {/* Landing page */}
           <Route index element={<Landing />}></Route>
-        </Route>
-        <Route path="/about" element={<Layout />}>
-          <Route index element={<About />}></Route>
+
+          {/* About page */}
+          <Route path="about" element={<About />}></Route>
         </Route>
 
         {/* Wild Card */}
