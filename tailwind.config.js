@@ -1,10 +1,15 @@
 // /** @type {import('tailwindcss').Config} */
 
+const defaultTheme = require('tailwindcss/defaultTheme');
 const colors = require('tailwindcss/colors');
 
 module.exports = {
   content: ['./src/**/*.{js,jsx,ts,tsx}'],
   theme: {
+    screens: {
+      xs: '300px',
+      ...defaultTheme.screens,
+    },
     colors: {
       current: 'currentColor',
       transparent: 'transparent',
@@ -12,8 +17,9 @@ module.exports = {
       white: '#FFFFFF',
       yellow: { DEFAULT: '#FDED5A', 900: '#FFD84F' },
       gray: {
-        500: '#6B7280'
-      }
+        100: '#F7F7F7',
+        500: '#6B7280',
+      },
     },
     extend: {
       fontFamily: {
@@ -22,7 +28,10 @@ module.exports = {
         titilliumSemiBold: 'TitilliumWeb-SemiBold',
         titillium: 'TitilliumWeb-Regular',
       },
+      backgroundImage: {
+        shape: 'url(./assets/images/shape-background.svg)',
+      },
     },
   },
   plugins: [],
-}
+};
