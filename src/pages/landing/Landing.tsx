@@ -1,7 +1,9 @@
 import React from 'react';
 import PracticeProgramsSearch from '../../common/components/practice-programs-search/PracticeProgramsSearch';
 import ShapeWrapper from '../../common/components/shape-wrapper/ShapeWrapper';
-import Domains, { IconTypes } from './components/domains/Domains';
+import i18n from '../../common/configs/i18n';
+import { LANDING_DOMAINS } from '../../common/constants/nomenclature.constants';
+import Domains from './components/domains/Domains';
 
 const Landing = () => {
   return (
@@ -11,17 +13,7 @@ const Landing = () => {
       </div>
       <ShapeWrapper>
         {' '}
-        <Domains
-          title="Domenii"
-          domains={[
-            { name: 'Medical', icon: IconTypes.USERS },
-            { name: 'Jurnalism', icon: IconTypes.USERS },
-            { name: 'Educatie', icon: IconTypes.USERS },
-            { name: 'Inginerie', icon: IconTypes.USERS },
-            { name: 'Tech', icon: IconTypes.USERS },
-            { name: 'Advocacy', icon: IconTypes.USERS },
-          ]}
-        ></Domains>
+        <Domains domains={LANDING_DOMAINS}></Domains>
       </ShapeWrapper>
     </section>
   );

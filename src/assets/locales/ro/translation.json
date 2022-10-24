@@ -1,10 +1,15 @@
 {
-  "common": {"greeting": "buna"},
+  "common": { "greeting": "buna" },
   "menu": {
     "home": "Acasa",
     "about": "Despre Practice for Good",
     "practice-programs": "Stagii practica",
     "ongs": "ONG-uri",
     "contact": "Contact"
+  },
+  "landing": {
+    "domains": {
+      "title": "Domenii"
+    }
   }
 }
