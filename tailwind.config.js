@@ -23,29 +23,33 @@ module.exports = {
         titilliumSemiBold: 'TitilliumWeb-SemiBold',
         titillium: 'TitilliumWeb-Regular',
       },
-    },
-    fontSize: {
-      small: [
-        '1rem',
-        {
-          lineHeight: '1.75rem',
-          fontWeight: '400',
-        },
-      ],
-      medium: [
-        '1.25rem',
-        {
-          lineHeight: '1.5rem',
-          fontWeight: '600',
-        },
-      ],
-      big: [
-        '2.5rem',
-        {
-          lineHeight: '3.8125rem',
-          fontWeight: '700',
-        },
-      ],
+      fontSize: {
+        xs: [
+          '0.75rem',
+          {
+            lineHeight: '1.4rem',
+          },
+        ],
+        sm: [
+          '0.8rem',
+          {
+            lineHeight: '1.5rem',
+          },
+        ],
+        base: [
+          '1rem',
+          {
+            lineHeight: '1.75rem',
+          },
+        ],
+        medium: [
+          '1.25rem',
+          {
+            lineHeight: '1.5rem',
+            fontWeight: '600',
+          },
+        ],
+      },
     },
   },
   plugins: [],
