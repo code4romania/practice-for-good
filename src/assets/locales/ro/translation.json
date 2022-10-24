@@ -7,6 +7,15 @@
     "ongs": "ONG-uri",
     "contact": "Contact"
   },
+  "landing": {
+    "counter": {
+      "programs": "Programe și activități adăugate pe platformă",
+      "ngos": "ONG-uri din România active pe platformă"
+    },
+    "domains": {
+      "title": "Domenii"
+    }
+  },
   "about": {
     "p4g": {
       "title": "Despre Practice for Good",
