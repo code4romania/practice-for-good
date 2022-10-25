@@ -1,44 +1,16 @@
 import React from 'react';
+import ShapeWrapper from '../../common/components/shape-wrapper/ShapeWrapper';
+import { PRACTICE_PROGRAMS } from '../../common/constants/nomenclature.constants';
 import ProgramsList from './components/ProgramsList';
 
 const Programs = () => {
   return (
-    <ProgramsList
-      programs={[
-        {
-          id: 1,
-          image: '',
-          organization: { name: 'Organizatia ONG', id: 1 },
-          title: 'Ttilu scurt de program de practica',
-          location: 'Bucuresti',
-          startDate: 'Fri, 14 Oct 2022 07:53:32 GMT',
-          endDate: 'Fri, 21 Oct 2022 07:53:32 GMT',
-          duration: 'min 30 ore',
-        },
-        {
-          id: 2,
-          image: '',
-          organization: { name: 'Organizatia ONG', id: 1 },
-          title: 'Ttilu scurt de program de practica',
-          location: 'Bucuresti',
-          startDate: 'Fri, 14 Oct 2022 07:53:32 GMT',
-          endDate: 'Fri, 21 Oct 2022 07:53:32 GMT',
-          duration: 'min 30 ore',
-        },
-        {
-          id: 3,
-          image: '',
-          organization: { name: 'Organizatia ONG', id: 1 },
-          title: 'Ttilu scurt de program de practica',
-          location: 'Bucuresti',
-          startDate: 'Fri, 14 Oct 2022 07:53:32 GMT',
-          endDate: 'Fri, 21 Oct 2022 07:53:32 GMT',
-          duration: 'min 30 ore',
-          deadline: 'Fri, 21 Oct 2022 07:53:32 GMT',
-        },
-      ]}
-      total={1220}
-    ></ProgramsList>
+    <ShapeWrapper>
+      <ProgramsList
+        programs={PRACTICE_PROGRAMS.items}
+        total={PRACTICE_PROGRAMS.total}
+      ></ProgramsList>
+    </ShapeWrapper>
   );
 };
 

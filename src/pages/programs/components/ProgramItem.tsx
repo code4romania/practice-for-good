@@ -1,11 +1,12 @@
-import { CalendarIcon, ClockIcon, LocationMarkerIcon } from '@heroicons/react/solid';
 import React from 'react';
+import { CalendarIcon, ClockIcon, LocationMarkerIcon } from '@heroicons/react/solid';
+import { useTranslation } from 'react-i18next';
 import Card from '../../../common/components/card/Card';
-import i18n from '../../../common/configs/i18n';
 import { formatDate, formatDateYear } from '../../../common/helpers/Format.helper';
 import { IProgram } from './ProgramsList';
 
 const ProgramItem = ({ program }: { program: IProgram }) => {
+  const { t } = useTranslation('practice-programs');
   return (
     <Card>
       <div className="flex sm:flex-row flex-col w-full lg:min-h-32 min-h-[6rem] items-center gap-x-8 gap-y-5 h-full">
@@ -43,11 +44,11 @@ const ProgramItem = ({ program }: { program: IProgram }) => {
             className="font-titilliumSemiBold yellow-button text-center h-fit lg:w-48 w-32 lg:text-base text-xs"
             onClick={() => console.log('Not yet implemented')}
           >
-            {`${i18n.t('practice-programs:cta-label')}`}
+            {`${t('action')}`}
           </button>
           {program.deadline && (
             <p className="mt-auto text-right sm:text-sm lg:text-base text-xs">
-              {`${i18n.t('practice-programs:deadline')} ${formatDateYear(program.deadline)}`}
+              {`${t('deadline')} ${formatDateYear(program.deadline)}`}
             </p>
           )}
         </div>

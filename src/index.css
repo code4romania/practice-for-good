@@ -32,7 +32,7 @@
   }
 
   .title {
-    @apply font-titilliumSemiBold sm:text-3xl lg:text-4xl text-2xl;
+    @apply font-titilliumBold sm:text-3xl lg:text-4xl text-2xl;
   }
 
   .body {

@@ -1,6 +1,5 @@
 import React from 'react';
-import Card from '../../../common/components/card/Card';
-import i18n from '../../../common/configs/i18n';
+import { useTranslation } from 'react-i18next';
 import ProgramItem from './ProgramItem';
 
 interface ProgramsListProps {
@@ -24,12 +23,11 @@ export interface IProgram {
 }
 
 const ProgramsList = ({ programs, total }: ProgramsListProps) => {
+  const { t } = useTranslation('practice-programs');
   return (
     <div className="flex flex-col w-full lg:px-60 px-10 lg:py-20 py-10">
-      <p className="font-titilliumBold sm:text-3xl lg:text-4xl text-2xl pb-8 text-center">{`${total} ${
-        total > 1
-          ? i18n.t('practice-programs:many-programs-title')
-          : i18n.t('practice-programs:one-program-title')
+      <p className="title pb-8 text-center">{`${total} ${
+        total > 1 ? t('many-programs-title') : t('one-program-title')
       }`}</p>
       <div className="flex flex-col w-full gap-y-10">
         {programs.map((program: IProgram, index) => (
