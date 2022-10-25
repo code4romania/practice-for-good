@@ -37,9 +37,16 @@ const ServerSelect = ({
   id,
   addOn,
 }: ServerSelectConfig) => {
+
+  const [defaultValue, setDefaultValue] = useState<any>();
+
   const debouncedLoadOptions = debounce(loadOptions, 500, {
     leading: false,
   });
+
+  useEffect(() => {
+    setDefaultValue(value);
+  }, [value])
 
   return (
     <div className='w-full'>
@@ -53,7 +60,7 @@ const ServerSelect = ({
         hideSelectedOptions={false}
         isClearable={isClearable}
         isMulti={isMulti}
-        defaultValue={value}
+        value={defaultValue}
         components={{ DropdownIndicator: null, CrossIcon: LocationMarkerIcon }}
       />
     </div>

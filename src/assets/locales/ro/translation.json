@@ -8,7 +8,10 @@
     "contact": "Contact"
   },
   "search": {
+    "title": "Programe de practica la ONG-uri din România",
+    "filters": "Filtre",
     "selected": "selectate",
+    "searchWord": "Cauta",
     "config": {
       "search": {
         "max": "Cautarea nu poate avea mai mult de 50 de caractere",
@@ -34,5 +37,8 @@
         "placeholder": "Orice domeniu"
       }
     }
+  },
+  "filterModal": {
+    "apply": "Aplica filtre"
   }
 }

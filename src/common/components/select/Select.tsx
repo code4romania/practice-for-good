@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-empty-function */
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { t } from 'i18next';
 import Select from 'react-select';
 import './Select.css';
@@ -31,6 +31,10 @@ const MultiSelect = ({
   id,
   isMulti
 }: MultiSelectConfig) => {
+  const [defaultValue, setDefaultValue] = useState<any[]>([]);
+
+  useEffect(() => { setDefaultValue(value) }, [value])
+
   const components = { MultiValue };
   return (
     <div className='w-full'>
@@ -40,7 +44,7 @@ const MultiSelect = ({
         onChange={onChange}
         isClearable={isClearable}
         isMulti={isMulti}
-        defaultValue={value}
+        value={defaultValue}
         hideSelectedOptions={false}
         options={options}
         id={id}

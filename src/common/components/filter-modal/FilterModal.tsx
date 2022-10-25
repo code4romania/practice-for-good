@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from 'react';
+import React, { Fragment, useEffect, useState } from 'react';
 import { Dialog, Transition } from '@headlessui/react';
 import logo from './../../../assets/images/logo.svg';
 import { XIcon } from '@heroicons/react/solid';
@@ -10,17 +10,20 @@ import { useNomenclature } from '../../../store/nomenclatures/Nomenclatures.sele
 import { useCitiesQuery } from '../../../services/nomenclature/Nomeclature.queries';
 import DatePicker from '../date-picker/DatePicker';
 import MultiSelect from '../select/Select';
+import { useTranslation } from 'react-i18next';
 
 interface FilterModalProps {
+  filters: any,
   onClose: () => void;
   onConfirm: (e: any) => void;
 }
 
 const FilterModal = ({
+  filters,
   onClose,
   onConfirm,
 }: FilterModalProps) => {
-
+  const { t } = useTranslation();
   const [searchLocationTerm, seSearchtLocationTerm] = useState('');
   const { cities, domains, faculties } = useNomenclature();
 
@@ -35,6 +38,10 @@ const FilterModal = ({
     mode: 'onChange',
     reValidateMode: 'onChange',
   })
+
+  useEffect(() => {
+    reset({ ...filters });
+  }, [filters])
 
   const loadOptionsLocationSearch = async (searchWord: string) => {
     seSearchtLocationTerm(searchWord);
@@ -126,7 +133,7 @@ const FilterModal = ({
                         control={control}
                         render={({ field: { onChange, value } }) => {
                           return (<DatePicker
-                            defaultValue={value ? value : undefined}
+                            defaultValue={value}
                             onChange={onChange}
                             placeholder={PracticeProgramsSearchConfig.start.placeholder}
                           />
@@ -139,7 +146,7 @@ const FilterModal = ({
                         control={control}
                         render={({ field: { onChange, value } }) => {
                           return (<DatePicker
-                            defaultValue={value ? value : undefined}
+                            defaultValue={value}
                             onChange={onChange}
                             placeholder={PracticeProgramsSearchConfig.end.placeholder}
                           />
@@ -191,7 +198,7 @@ const FilterModal = ({
                         className='flex bg-yellow w-full rounded font-titilliumSemiBold text-xl items-center justify-center p-3'
                         onClick={handleSubmit(onApply)}
                       >
-                        Aplica filtre
+                        {t('filterModal:apply')}
                       </button>
                     </div>
                   </div>

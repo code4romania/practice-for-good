@@ -5,7 +5,7 @@ import { default as ReactDatePicker } from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 
 interface DateRangePickerProps {
-  defaultValue?: Date;
+  defaultValue?: any;
   placeholder?: string;
   onChange?: (range: any) => void;
 }
@@ -19,7 +19,7 @@ const DatePicker = ({ defaultValue, onChange, placeholder }: DateRangePickerProp
     if (defaultValue) {
       setDate(defaultValue);
     }
-  }, []);
+  }, [defaultValue]);
 
   useEffect(() => {
     if (date) {

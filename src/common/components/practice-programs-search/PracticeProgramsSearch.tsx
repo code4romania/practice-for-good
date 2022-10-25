@@ -13,8 +13,10 @@ import { usePracticePrograms } from '../../../store/Selectors';
 import { useCitiesQuery, useDomainsQuery, useFacultiesQuery } from '../../../services/nomenclature/Nomeclature.queries';
 import { useNomenclature } from '../../../store/nomenclatures/Nomenclatures.selectors';
 import { mapItemToSelect, mapSelectToValue } from '../../helpers/Nomenclature.helper';
+import { useTranslation } from 'react-i18next';
 
 const PracticeProgramsSearch = (props: { showFilters: boolean }) => {
+  const { t } = useTranslation();
   const [isFilterModalOpen, setFilterModalOpen] = useState(false);
   const [searchTerm, setSearchTerm] = useState();
   const [searchLocationTerm, seSearchtLocationTerm] = useState('');
@@ -24,6 +26,8 @@ const PracticeProgramsSearch = (props: { showFilters: boolean }) => {
   const [end, setEnd] = useState();
   const [workingHours, setWorkingHours] = useState();
   const [selectedDomains, setSelectedDomains] = useState();
+  const [filtersCount, setFiltersCount] = useState(0);
+  const [filters, setFilters] = useState<any>();
 
   // Search Params
   const [page, setPage] = useState<number>();
@@ -68,6 +72,7 @@ const PracticeProgramsSearch = (props: { showFilters: boolean }) => {
   }, []);
 
   const search = (data: any) => {
+    setFilters(data);
     setSearchTerm(data.search);
     setLocationId(data.locationId?.value);
     setSelectedFaculties(data.faculties?.map(mapSelectToValue));
@@ -84,13 +89,23 @@ const PracticeProgramsSearch = (props: { showFilters: boolean }) => {
   };
 
   const receiveFiltersFromModal = (e: any) => {
+    setFilterModalOpen(false);
+    setFilters(e);
     reset(e);
     handleSubmit(search)();
   }
 
+  useEffect(() => {
+    setFiltersCount([locationId, selectedFaculties, workingHours, selectedDomains, start, end].filter(Boolean).length)
+  }, [locationId, selectedFaculties,
+    workingHours,
+    selectedDomains,
+    start,
+    end])
+
   return (
     <div className='bg-yellow w-full flex flex-col items-center px-2 sm:px-4 py-10 gap-8'>
-      <p className='font-titilliumBold sm:text-4xl text-xl  text-black'>Programe de practică la ONG-uri din România</p>
+      <p className='font-titilliumBold sm:text-4xl text-xl  text-black'>{t('search:title')}</p>
       <div className='flex flex-col gap-4 max-w-5xl w-full justify-items-center'>
         <div className='flex w-full items-center h-14'>
           <Controller
@@ -154,15 +169,15 @@ const PracticeProgramsSearch = (props: { showFilters: boolean }) => {
               id="create-organization-activity__button-back"
               className="text-sm sm:text-base  h-full flex items-center"
             >
-              Filtre
+              {t('search:filters')}
             </p>
             <AdjustmentsIcon className='w-5 h-5' />
-            <p
+            {filtersCount > 0 && <p
               id="create-organization-activity__button-back"
               className="text-base rounded-full bg-yellow p-2 flex items-center w-10 items-center justify-center"
             >
-              5
-            </p>
+              {filtersCount}
+            </p>}
           </div>
         )}
 
@@ -257,12 +272,13 @@ const PracticeProgramsSearch = (props: { showFilters: boolean }) => {
             className="text-sm sm:text-base text-yellow bg-black w-full h-full"
             onClick={handleSubmit(search)}
           >
-            Cauta
+            {t('search:searchWord')}
           </button>
         </div>
       </div>
       {isFilterModalOpen && (
         <FilterModal
+          filters={filters}
           onClose={() => { setFilterModalOpen(false) }}
           onConfirm={(e: any) => { receiveFiltersFromModal(e) }}
         />
