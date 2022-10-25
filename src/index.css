@@ -35,7 +35,7 @@
     @apply font-titilliumBold sm:text-3xl lg:text-4xl text-2xl;
   }
 
-  .body {
+  .body-text {
     @apply sm:text-xl text-sm sm:!leading-9 !leading-6;
   }
 }
