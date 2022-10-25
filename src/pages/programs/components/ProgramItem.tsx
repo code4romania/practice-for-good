@@ -2,7 +2,7 @@ import { CalendarIcon, ClockIcon, LocationMarkerIcon } from '@heroicons/react/so
 import React from 'react';
 import Card from '../../../common/components/card/Card';
 import i18n from '../../../common/configs/i18n';
-import { formatDate, formatDateYear } from '../../../common/helpers/format.helper';
+import { formatDate, formatDateYear } from '../../../common/helpers/Format.helper';
 import { IProgram } from './ProgramsList';
 
 const ProgramItem = ({ program }: { program: IProgram }) => {
@@ -40,7 +40,7 @@ const ProgramItem = ({ program }: { program: IProgram }) => {
         <div className="ml-auto flex flex-col justify-center sm:h-full h-fit items-end gap-y-4">
           <button
             type="button"
-            className="font-titilliumSemiBold yellow-long-button text-center h-fit lg:w-48 w-32 lg:text-base text-xs"
+            className="font-titilliumSemiBold yellow-button text-center h-fit lg:w-48 w-32 lg:text-base text-xs"
             onClick={() => console.log('Not yet implemented')}
           >
             {`${i18n.t('practice-programs:cta-label')}`}
