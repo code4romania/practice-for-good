@@ -5,14 +5,12 @@ import SearchField from '../search-field/SearchField';
 import MultiSelect from '../select/Select';
 import ServerSelect from '../server-select/ServerSelect';
 import { AdjustmentsIcon } from '@heroicons/react/outline';
-import { usePracticeProgramsQuery } from '../../../services/practice-programs/PracticePrograms.queries';
 import { usePracticePrograms } from '../../../store/Selectors';
 import { useNomenclature } from '../../../store/nomenclatures/Nomenclatures.selectors';
 import { mapItemToSelect, mapSelectToValue } from '../../helpers/Nomenclature.helper';
 import { useTranslation } from 'react-i18next';
 import { useCitiesQuery, useDomainsQuery, useFacultiesQuery } from '../../../services/nomenclature/Nomeclature.queries';
 import { NGOSearchConfig } from './configs/NGOSearch.config';
-import PracticeProgramFilterModal from '../practice-program-filter-modal/PracticeProgramFilterModal';
 import NGOFilterModal from '../ngo-filter-modal/NGOFilterModal';
 import { useOrganizationQuery } from '../../../services/organization/Organization.queries';
 
@@ -31,7 +29,7 @@ const NGOSearch = (props: { showFilters: boolean }) => {
   const [rowsPerPage, setRowsPerPage] = useState<number>();
 
   const { practicePrograms } = usePracticePrograms();
-  const { cities, domains, faculties } = useNomenclature();
+  const { cities, domains } = useNomenclature();
 
   const { refetch } = useOrganizationQuery(
     rowsPerPage as number,

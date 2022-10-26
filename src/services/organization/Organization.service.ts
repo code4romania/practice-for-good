@@ -8,7 +8,7 @@ export const searchOrganizations = async (
   locationId?: number,
   domains?: number[],
 ): Promise<PaginatedEntity<any>> => {
-  let requestUrl = `organization/practice-program/search?limit=${limit}&page=${page}`;
+  let requestUrl = `organization/practice-program?limit=${limit}&page=${page}`;
 
   if (search) requestUrl = `${requestUrl}&search=${search}`;
 
