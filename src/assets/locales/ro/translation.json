@@ -16,6 +16,12 @@
       "title": "Domenii"
     }
   },
+  "organizations": {
+    "one-organization-title": "ONG",
+    "many-organizations-title": "ONG-uri",
+    "no-organizations": "Nu au fost găsite ONG-uri",
+    "action": "Vezi mai mult"
+  },
   "about": {
     "p4g": {
       "title": "Despre Practice for Good",

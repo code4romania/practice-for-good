@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import Landing from '../../pages/landing/Landing';
-import Ongs from '../../pages/ong-list/Ongs';
+import Organizations from '../../pages/organizations/Organizations';
 import Layout from '../containers/Layout';
 import About from '../../pages/about/About';
 
@@ -14,7 +14,7 @@ const Router = () => {
           <Route index element={<Landing />}></Route>
 
           {/* NGO list page */}
-          <Route path="organizations" element={<Ongs />}></Route>
+          <Route path="organizations" element={<Organizations />}></Route>
 
           {/* About page */}
           <Route path="about" element={<About />}></Route>
