@@ -3,28 +3,35 @@ import { CalendarIcon, ClockIcon, LocationMarkerIcon } from '@heroicons/react/so
 import { useTranslation } from 'react-i18next';
 import Card from '../../../common/components/card/Card';
 import { formatDate, formatDateYear } from '../../../common/helpers/Format.helper';
-import { IProgram } from './ProgramsList';
+import { PracticeProgram } from '../../../common/interfaces/PracticeProgram.interface';
+import p4g_logo from '../../../assets/images/logo.svg';
 
-const ProgramItem = ({ program }: { program: IProgram }) => {
+const ProgramItem = ({ program }: { program: PracticeProgram }) => {
   const { t } = useTranslation('practice-programs');
   return (
     <Card>
       <div className="flex sm:flex-row flex-col w-full lg:min-h-32 min-h-[6rem] items-center gap-x-8 gap-y-5 h-full">
         <div className="aspect-square lg:w-32 sm:w-24 w-full lg:min-w-[8rem] sm:min-w-[6rem] bg-gray-100 sm:max-h-full max-h-[8rem]">
-          {program.image && <img className="w-full h-full bg-cover" src={program.image}></img>}
+          {p4g_logo && (
+            <img
+              alt="practice program image"
+              className="w-full h-full bg-cover"
+              src={p4g_logo}
+            ></img>
+          )}
         </div>
         <div className="flex flex-col sm:h-full gap-y-4 flex-wrap">
           <a
             className="sm:mb-auto max-w-fit sm:text-sm lg:text-base text-xs"
-            href={`/organization/${program.organization.id}`}
+            href={`/organization/${program.organization?.id}`}
           >
-            {program.organization.name}
+            {program.organization?.organizationGeneral?.name}
           </a>
           <p className="font-titilliumBold sm:text-xl lg:text-3xl text-lg">{program.title}</p>
           <div className="flex sm:flex-row flex-wrap gap-x-8 gap-y-2 sm:mt-auto">
             <div className="flex flex-row items-center gap-x-1">
               <LocationMarkerIcon className="w-4"></LocationMarkerIcon>
-              <p className="sm:text-sm lg:text-base text-xs">{program.location}</p>
+              <p className="sm:text-sm lg:text-base text-xs">{program.location.name}</p>
             </div>
             <div className="flex flex-row items-center gap-x-1">
               <CalendarIcon className="w-4"></CalendarIcon>
@@ -34,7 +41,7 @@ const ProgramItem = ({ program }: { program: IProgram }) => {
             </div>
             <div className="flex flex-row items-center gap-x-1">
               <ClockIcon className="w-4"></ClockIcon>
-              <p className="sm:text-sm lg:text-base text-xs">{program.duration}</p>
+              <p className="sm:text-sm lg:text-base text-xs">{`min. ${program.minWorkingHours}`}</p>
             </div>
           </div>
         </div>

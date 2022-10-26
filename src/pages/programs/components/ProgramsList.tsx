@@ -1,25 +1,11 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
+import { PracticeProgram } from '../../../common/interfaces/PracticeProgram.interface';
 import ProgramItem from './ProgramItem';
 
 interface ProgramsListProps {
-  programs: IProgram[];
+  programs: PracticeProgram[];
   total: number;
-}
-
-export interface IProgram {
-  id: number;
-  image: string;
-  organization: {
-    name: string;
-    id: number;
-  };
-  title: string;
-  location: string;
-  startDate: string;
-  endDate: string;
-  duration: string;
-  deadline?: string;
 }
 
 const ProgramsList = ({ programs, total }: ProgramsListProps) => {
@@ -30,7 +16,7 @@ const ProgramsList = ({ programs, total }: ProgramsListProps) => {
         total > 1 ? t('many-programs-title') : t('one-program-title')
       }`}</p>
       <div className="flex flex-col w-full gap-y-10">
-        {programs.map((program: IProgram, index) => (
+        {programs.map((program: PracticeProgram, index) => (
           <ProgramItem key={index} program={program}></ProgramItem>
         ))}
       </div>

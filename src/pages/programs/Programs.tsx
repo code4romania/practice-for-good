@@ -8,7 +8,7 @@ const Programs = () => {
     <ShapeWrapper>
       <ProgramsList
         programs={PRACTICE_PROGRAMS.items}
-        total={PRACTICE_PROGRAMS.total}
+        total={PRACTICE_PROGRAMS.meta.itemCount}
       ></ProgramsList>
     </ShapeWrapper>
   );
