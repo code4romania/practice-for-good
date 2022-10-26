@@ -13,7 +13,7 @@ const Ong = ({ ong }: { ong: IOng }) => {
           <p className="w-8/12">{ong.shortDescription}</p>
         </div>
         <div>
-          <button className="yellow-long-button" onClick={() => console.log('Not yet implemented')}>
+          <button className="yellow-button" onClick={() => console.log('Not yet implemented')}>
             Vezi mai mult
           </button>
         </div>
