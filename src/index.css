@@ -36,11 +36,26 @@
   }
 
   .title {
-    @apply font-titilliumBold sm:text-3xl lg:text-4xl text-2xl;
+    @apply font-titilliumBold sm:text-3xl lg:text-4xl text-2xl pb-10;
+  }
+
+  .subtitle {
+    @apply font-titilliumBold sm:text-xl lg:text-2xl text-lg;
   }
 
   .body-text {
     @apply sm:text-xl text-sm sm:!leading-9 !leading-6;
+  }
+
+  .article {
+    @apply sm:text-base text-sm text-gray-500;
+  }
+
+  .card-text-overflow {
+    @apply text-ellipsis overflow-hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 5;
+    -webkit-box-orient: vertical;
   }
 }
 

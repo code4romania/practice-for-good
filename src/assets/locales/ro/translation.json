@@ -4,7 +4,7 @@
     "home": "Acasa",
     "about": "Despre Practice for Good",
     "practice_programs": "Stagii practica",
-    "ongs": "ONG-uri",
+    "organizations": "ONG-uri",
     "contact": "Contact"
   },
   "search": {
@@ -54,6 +54,12 @@
     "domains": {
       "title": "Domenii"
     }
+  },
+  "organizations": {
+    "one_organization_title": "ONG",
+    "many_organizations_title": "ONG-uri",
+    "no_organizations": "Nu au fost găsite ONG-uri",
+    "action": "Vezi mai mult"
   },
   "practice_programs": {
     "one_program_title": "program de practică",

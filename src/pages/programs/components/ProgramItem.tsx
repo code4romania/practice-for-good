@@ -20,14 +20,14 @@ const ProgramItem = ({ program }: { program: IPracticeProgram }) => {
             ></img>
           )}
         </div>
-        <div className="flex flex-col sm:h-full gap-y-4 flex-wrap">
+        <div className="flex flex-col sm:h-full gap-y-3 flex-wrap">
           <a
             className="sm:mb-auto max-w-fit sm:text-sm lg:text-base text-xs"
             href={`/organization/${program.organization?.id}`}
           >
             {program.organization?.organizationGeneral?.name}
           </a>
-          <p className="font-titilliumBold sm:text-xl lg:text-3xl text-lg">{program.title}</p>
+          <p className="subtitle">{program.title}</p>
           <div className="flex sm:flex-row flex-wrap gap-x-8 gap-y-2 sm:mt-auto">
             <div className="flex flex-row items-center gap-x-1">
               <LocationMarkerIcon className="w-4"></LocationMarkerIcon>

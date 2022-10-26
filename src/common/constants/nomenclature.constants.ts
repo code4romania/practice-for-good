@@ -121,3 +121,57 @@ export const PRACTICE_PROGRAMS = {
     },
   ],
 };
+
+export const ORGANIZATIONS = {
+  meta: {
+    itemCount: 6,
+    totalItems: 6,
+    itemsPerPage: 6,
+    totalPages: 1,
+    currentPage: 1,
+  },
+  items: [
+    {
+      id: 1,
+      logo: '',
+      name: 'Denumire Scurta ONG',
+      shortDescription:
+        'Short Description Short Description Short Description Short Description Short Description',
+    },
+    {
+      id: 2,
+      logo: '',
+      name: 'Denumire Scurta ONG',
+      shortDescription:
+        'Short Description Short Description Short Description Short Description Short Description',
+    },
+    {
+      id: 3,
+      logo: '',
+      name: 'Denumire Scurta ONG',
+      shortDescription:
+        'Short Description Short Description Short Description Short Description Short Description Short Description Short Description Short Description Short Description Short Description Short Description Short Description Short Description Short Description Short Description Short Description Short Description Short Description Short Description',
+    },
+    {
+      id: 4,
+      logo: '',
+      name: 'Denumire Scurta ONG',
+      shortDescription:
+        'Short Description Short Description Short Description Short Description Short Description Short Description Short Description Short Description Short Description Short Description Short Description Short Description Short Description Short Description',
+    },
+    {
+      id: 5,
+      logo: '',
+      name: 'Denumire Scurta ONG',
+      shortDescription:
+        'Short Description Short Description Short Description Short Description Short Description',
+    },
+    {
+      id: 6,
+      logo: '',
+      name: 'Denumire Scurta ONG',
+      shortDescription:
+        'Short Description Short Description Short Description Short Description Short Description',
+    },
+  ],
+};
