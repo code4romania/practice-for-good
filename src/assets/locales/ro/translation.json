@@ -7,6 +7,40 @@
     "ongs": "ONG-uri",
     "contact": "Contact"
   },
+  "search": {
+    "title": "Programe de practica la ONG-uri din România",
+    "filters": "Filtre",
+    "selected": "selectate",
+    "searchWord": "Cauta",
+    "config": {
+      "search": {
+        "max": "Cautarea nu poate avea mai mult de 50 de caractere",
+        "min": "Cautarea nu poate avea mai putin de 3 caractere",
+        "placeholder": "Cauta ong sau program..."
+      },
+      "location": {
+        "placeholder": "Toata Romania"
+      },
+      "faculties": {
+        "placeholder": "Facultate"
+      },
+      "start": {
+        "placeholder": "Data Inceput"
+      },
+      "end": {
+        "placeholder": "Data Sfarsit"
+      },
+      "workingHours": {
+        "placeholder": "Numar ore"
+      },
+      "domains": {
+        "placeholder": "Orice domeniu"
+      }
+    }
+  },
+  "filterModal": {
+    "apply": "Aplica filtre"
+  },
   "landing": {
     "about": {
       "title": "Despre Practice4Good",
@@ -20,6 +54,13 @@
     "domains": {
       "title": "Domenii"
     }
+  },
+  "practice_programs": {
+    "one_program_title": "program de practică",
+    "many_programs_title": "programe de practică",
+    "no_programs": "Nu au fost găsite programe de practică",
+    "action": "Detalii",
+    "deadline": "Aplică până la"
   },
   "about": {
     "p4g": {

@@ -23,6 +23,10 @@
 }
 
 @layer components {
+  .gray-button {
+    @apply w-full py-4 px-[45px] shadow-sm bg-gray-100 text-medium sm:w-auto;
+  }
+
   body {
     @apply font-titillium;
   }
@@ -43,4 +47,8 @@
 .content {
   /* Give the content enought white space so the footer is at the bottom */
   min-height: calc(100vh - 6rem - 18rem);
+}
+
+a {
+  @apply text-purple;
 }

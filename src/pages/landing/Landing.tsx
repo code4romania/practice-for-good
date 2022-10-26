@@ -15,7 +15,7 @@ const Landing = () => {
   return (
     <section className="w-full">
       <div className="bg-yellow w-full">
-        <PracticeProgramsSearch />
+        <PracticeProgramsSearch showFilters={true} />
       </div>
       <div className="max-w-screen-xl mx-auto px-10">
         <Description
