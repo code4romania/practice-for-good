@@ -133,57 +133,45 @@ export const ORGANIZATIONS = {
   items: [
     {
       id: 1,
-      organizationGeneral: {
-        logo: '',
-        name: 'Denumire Scurta ONG',
-        shortDescription:
-          'Short Description Short Description Short Description Short Description Short Description',
-      },
+      logo: '',
+      name: 'Denumire Scurta ONG',
+      shortDescription:
+        'Short Description Short Description Short Description Short Description Short Description',
     },
     {
       id: 2,
-      organizationGeneral: {
-        logo: '',
-        name: 'Denumire Scurta ONG',
-        shortDescription:
-          'Short Description Short Description Short Description Short Description Short Description',
-      },
+      logo: '',
+      name: 'Denumire Scurta ONG',
+      shortDescription:
+        'Short Description Short Description Short Description Short Description Short Description',
     },
     {
       id: 3,
-      organizationGeneral: {
-        logo: '',
-        name: 'Denumire Scurta ONG',
-        shortDescription:
-          'Short Description Short Description Short Description Short Description Short Description Short Description Short Description Short Description Short Description Short Description Short Description Short Description Short Description Short Description Short Description Short Description Short Description Short Description Short Description',
-      },
+      logo: '',
+      name: 'Denumire Scurta ONG',
+      shortDescription:
+        'Short Description Short Description Short Description Short Description Short Description Short Description Short Description Short Description Short Description Short Description Short Description Short Description Short Description Short Description Short Description Short Description Short Description Short Description Short Description',
     },
     {
       id: 4,
-      organizationGeneral: {
-        logo: '',
-        name: 'Denumire Scurta ONG',
-        shortDescription:
-          'Short Description Short Description Short Description Short Description Short Description Short Description Short Description Short Description Short Description Short Description Short Description Short Description Short Description Short Description',
-      },
+      logo: '',
+      name: 'Denumire Scurta ONG',
+      shortDescription:
+        'Short Description Short Description Short Description Short Description Short Description Short Description Short Description Short Description Short Description Short Description Short Description Short Description Short Description Short Description',
     },
     {
       id: 5,
-      organizationGeneral: {
-        logo: '',
-        name: 'Denumire Scurta ONG',
-        shortDescription:
-          'Short Description Short Description Short Description Short Description Short Description',
-      },
+      logo: '',
+      name: 'Denumire Scurta ONG',
+      shortDescription:
+        'Short Description Short Description Short Description Short Description Short Description',
     },
     {
       id: 6,
-      organizationGeneral: {
-        logo: '',
-        name: 'Denumire Scurta ONG',
-        shortDescription:
-          'Short Description Short Description Short Description Short Description Short Description',
-      },
+      logo: '',
+      name: 'Denumire Scurta ONG',
+      shortDescription:
+        'Short Description Short Description Short Description Short Description Short Description',
     },
   ],
 };
