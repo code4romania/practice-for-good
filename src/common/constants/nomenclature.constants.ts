@@ -155,7 +155,7 @@ export const ORGANIZATIONS = {
         logo: '',
         name: 'Denumire Scurta ONG',
         shortDescription:
-          'Short Description Short Description Short Description Short Description Short Description',
+          'Short Description Short Description Short Description Short Description Short Description Short Description Short Description Short Description Short Description Short Description Short Description Short Description Short Description Short Description Short Description Short Description Short Description Short Description Short Description',
       },
     },
     {
@@ -164,7 +164,7 @@ export const ORGANIZATIONS = {
         logo: '',
         name: 'Denumire Scurta ONG',
         shortDescription:
-          'Short Description Short Description Short Description Short Description Short Description',
+          'Short Description Short Description Short Description Short Description Short Description Short Description Short Description Short Description Short Description Short Description Short Description Short Description Short Description Short Description',
       },
     },
     {

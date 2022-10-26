@@ -12,7 +12,7 @@ const ProgramsList = ({ programs, total }: ProgramsListProps) => {
   const { t } = useTranslation('practice_programs');
   return (
     <div className="flex flex-col w-full lg:px-60 px-10 lg:py-20 py-10">
-      <p className="title pb-8 text-center">{`${total} ${
+      <p className="title text-center">{`${total} ${
         total > 1 ? t('many_programs_title') : t('one_program_title')
       }`}</p>
       <div className="flex flex-col w-full gap-y-10">

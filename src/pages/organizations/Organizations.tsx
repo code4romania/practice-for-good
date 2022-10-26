@@ -1,9 +1,17 @@
 import React from 'react';
+import ShapeWrapper from '../../common/components/shape-wrapper/ShapeWrapper';
 import { ORGANIZATIONS } from '../../common/constants/nomenclature.constants';
-import OngList from './components/OngList';
+import OrganizationsList from './components/OrganizationsList';
 
 const Organizations = () => {
-  return <OngList ongs={ORGANIZATIONS.items} total={ORGANIZATIONS.meta.itemCount}></OngList>;
+  return (
+    <ShapeWrapper>
+      <OrganizationsList
+        organizations={ORGANIZATIONS.items}
+        total={ORGANIZATIONS.meta.itemCount}
+      ></OrganizationsList>
+    </ShapeWrapper>
+  );
 };
 
 export default Organizations;
