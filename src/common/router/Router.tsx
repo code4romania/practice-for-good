@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import Landing from '../../pages/landing/Landing';
 import Layout from '../containers/Layout';
 import About from '../../pages/about/About';
+import NGOList from '../../pages/ngo-list/NGOList';
 
 const Router = () => {
   return (
@@ -14,6 +15,7 @@ const Router = () => {
 
           {/* About page */}
           <Route path="about" element={<About />}></Route>
+          <Route path="ongs" element={<NGOList />}></Route>
         </Route>
 
         {/* Wild Card */}

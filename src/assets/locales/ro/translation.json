@@ -7,7 +7,7 @@
     "ongs": "ONG-uri",
     "contact": "Contact"
   },
-  "search": {
+  "practice-programs-search": {
     "title": "Programe de practica la ONG-uri din România",
     "filters": "Filtre",
     "selected": "selectate",
@@ -32,6 +32,25 @@
       },
       "workingHours": {
         "placeholder": "Numar ore"
+      },
+      "domains": {
+        "placeholder": "Orice domeniu"
+      }
+    }
+  },
+  "ngo-search": {
+    "title": "Caută organizații",
+    "filters": "Filtre",
+    "selected": "selectate",
+    "searchWord": "Cauta",
+    "config": {
+      "search": {
+        "max": "Cautarea nu poate avea mai mult de 50 de caractere",
+        "min": "Cautarea nu poate avea mai putin de 3 caractere",
+        "placeholder": "Cauta ong sau program..."
+      },
+      "location": {
+        "placeholder": "Toata Romania"
       },
       "domains": {
         "placeholder": "Orice domeniu"

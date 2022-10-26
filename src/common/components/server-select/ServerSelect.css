@@ -4,7 +4,7 @@
   border-radius: 0!important;
   padding: 8px;
   height: 56px;
-  /* max-width: 16rem; */
+  font-family: 'TitilliumWeb-Regular'!important;
 }
 
 .reactserverselect__option--is-selected {
@@ -25,8 +25,12 @@
   align-items: center;
 }
 
+.reactserverselect__single-value {
+  font-family: 'TitilliumWeb-Regular';
+}
+
 .reactserverselect__multi-value__label {
-  font-size: 0.875rem !important;
+  font-family: 'TitilliumWeb-Regular';
   padding: 0 !important;
   color: white!important;
   font-weight: bold !important;
@@ -48,6 +52,12 @@
   background-color: white !important;
 }
 
+.reactserverselect__input-container {
+  margin: 0!important;
+  padding: 0!important;
+}
+
+
 .reactserverselect__multi-value__remove > svg {
   color: #6543C8;
   font-size: 1rem;
@@ -63,4 +73,26 @@
 .reactserverselect__option:hover {
   background-color: #6543C8;
   color: white;
+}
+
+@media only screen and (min-width: 675px) {
+  .reactselect__control { 
+    font-size: 1.25rem!important;
+  }
+
+  .reactserverselect__single-value {
+    font-size: 1.25rem!important;
+  }
+
+  .reactserverselect__multi-value__label {
+    font-size: 1.25rem!important;
+  }
+
+  .reactserverselect__placeholder {
+    font-size: 1.25rem!important;
+  }
+
+  .reactserverselect__input-container {
+    font-size: 1.25rem!important;
+  }
 }

@@ -1,11 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { SearchIcon } from '@heroicons/react/solid';
 import { Controller, useForm } from 'react-hook-form';
-import DatePicker from '../date-picker/DatePicker';
 import SearchField from '../search-field/SearchField';
 import MultiSelect from '../select/Select';
 import ServerSelect from '../server-select/ServerSelect';
-import { PracticeProgramsSearchConfig } from './configs/PracticeProgramsSearch.config';
 import { AdjustmentsIcon } from '@heroicons/react/outline';
 import { usePracticeProgramsQuery } from '../../../services/practice-programs/PracticePrograms.queries';
 import { usePracticePrograms } from '../../../store/Selectors';
@@ -13,18 +11,17 @@ import { useNomenclature } from '../../../store/nomenclatures/Nomenclatures.sele
 import { mapItemToSelect, mapSelectToValue } from '../../helpers/Nomenclature.helper';
 import { useTranslation } from 'react-i18next';
 import { useCitiesQuery, useDomainsQuery, useFacultiesQuery } from '../../../services/nomenclature/Nomeclature.queries';
+import { NGOSearchConfig } from './configs/NGOSearch.config';
 import PracticeProgramFilterModal from '../practice-program-filter-modal/PracticeProgramFilterModal';
+import NGOFilterModal from '../ngo-filter-modal/NGOFilterModal';
+import { useOrganizationQuery } from '../../../services/organization/Organization.queries';
 
-const PracticeProgramsSearch = (props: { showFilters: boolean }) => {
+const NGOSearch = (props: { showFilters: boolean }) => {
   const { t } = useTranslation();
   const [isFilterModalOpen, setFilterModalOpen] = useState(false);
   const [searchTerm, setSearchTerm] = useState();
   const [searchLocationTerm, seSearchtLocationTerm] = useState('');
   const [locationId, setLocationId] = useState();
-  const [selectedFaculties, setSelectedFaculties] = useState();
-  const [start, setStart] = useState();
-  const [end, setEnd] = useState();
-  const [workingHours, setWorkingHours] = useState();
   const [selectedDomains, setSelectedDomains] = useState();
   const [filtersCount, setFiltersCount] = useState(0);
   const [filters, setFilters] = useState<any>();
@@ -36,16 +33,12 @@ const PracticeProgramsSearch = (props: { showFilters: boolean }) => {
   const { practicePrograms } = usePracticePrograms();
   const { cities, domains, faculties } = useNomenclature();
 
-  const { refetch } = usePracticeProgramsQuery(
+  const { refetch } = useOrganizationQuery(
     rowsPerPage as number,
     page as number,
     searchTerm,
     locationId,
-    selectedFaculties,
-    workingHours,
     selectedDomains,
-    start,
-    end,
   );
 
   const {
@@ -75,11 +68,7 @@ const PracticeProgramsSearch = (props: { showFilters: boolean }) => {
     setFilters(data);
     setSearchTerm(data.search);
     setLocationId(data.locationId?.value);
-    setSelectedFaculties(data.faculties?.map(mapSelectToValue));
     setSelectedDomains(data.domains?.map(mapSelectToValue));
-    setWorkingHours(data.workingHours);
-    setStart(data.start);
-    setEnd(data.end);
     refetch();
   }
 
@@ -96,12 +85,9 @@ const PracticeProgramsSearch = (props: { showFilters: boolean }) => {
   }
 
   useEffect(() => {
-    setFiltersCount([locationId, selectedFaculties, workingHours, selectedDomains, start, end].filter(Boolean).length)
-  }, [locationId, selectedFaculties,
-    workingHours,
-    selectedDomains,
-    start,
-    end])
+    setFiltersCount([locationId,
+      selectedDomains].filter(Boolean).length)
+  }, [locationId, selectedDomains])
 
   return (
     <div className='bg-yellow w-full flex flex-col items-center px-2 sm:px-4 py-10 gap-8'>
@@ -109,17 +95,17 @@ const PracticeProgramsSearch = (props: { showFilters: boolean }) => {
       <div className='flex flex-col gap-4 max-w-5xl w-full justify-items-center'>
         <div className='flex w-full items-center h-14'>
           <Controller
-            key={PracticeProgramsSearchConfig.search.key}
-            name={PracticeProgramsSearchConfig.search.key}
-            rules={PracticeProgramsSearchConfig.search.rules}
+            key={NGOSearchConfig.search.key}
+            name={NGOSearchConfig.search.key}
+            rules={NGOSearchConfig.search.rules}
             control={control}
             render={({ field: { onChange, value } }) => {
               return (
                 <SearchField
                   config={{
-                    ...PracticeProgramsSearchConfig.search.config,
-                    name: PracticeProgramsSearchConfig.search.key,
-                    error: errors[PracticeProgramsSearchConfig.search.key]?.message,
+                    ...NGOSearchConfig.search.config,
+                    name: NGOSearchConfig.search.key,
+                    error: errors[NGOSearchConfig.search.key]?.message,
                     defaultValue: value,
                     onChange: onChange,
                     id: 'programs-search-search__term',
@@ -132,7 +118,7 @@ const PracticeProgramsSearch = (props: { showFilters: boolean }) => {
             <button
               type="button"
               className="text-sm sm:text-base sm:hidden text-yellow bg-black  px-4 flex items-center justify-center h-full"
-              onClick={() => refetch()}
+              onClick={() => alert('Not now')}
             >
               <SearchIcon className='w-5 h-5' />
             </button>
@@ -140,9 +126,9 @@ const PracticeProgramsSearch = (props: { showFilters: boolean }) => {
 
           <div className='w-1/3 h-14 hidden sm:flex'>
             <Controller
-              key={PracticeProgramsSearchConfig.locationId.key}
-              name={PracticeProgramsSearchConfig.locationId.key}
-              rules={PracticeProgramsSearchConfig.locationId.rules}
+              key={NGOSearchConfig.locationId.key}
+              name={NGOSearchConfig.locationId.key}
+              rules={NGOSearchConfig.locationId.rules}
               control={control}
               render={({ field: { onChange, value } }) => {
                 return (
@@ -151,10 +137,10 @@ const PracticeProgramsSearch = (props: { showFilters: boolean }) => {
                     value={value}
                     isMulti={false}
                     isClearable={false}
-                    placeholder={PracticeProgramsSearchConfig.locationId.placeholder}
+                    placeholder={NGOSearchConfig.locationId.placeholder}
                     onChange={onChange}
                     loadOptions={loadOptionsLocationSearch}
-                    addOn={PracticeProgramsSearchConfig.locationId.addOn}
+                    addOn={NGOSearchConfig.locationId.addOn}
                   />
                 );
               }}
@@ -182,74 +168,9 @@ const PracticeProgramsSearch = (props: { showFilters: boolean }) => {
 
         <div className='hidden sm:flex w-full h-14 items-center h-14'>
           <Controller
-            key={PracticeProgramsSearchConfig.faculties.key}
-            name={PracticeProgramsSearchConfig.faculties.key}
-            rules={PracticeProgramsSearchConfig.faculties.rules}
-            control={control}
-            render={({ field: { onChange, value } }) => {
-              return (
-                <MultiSelect
-                  id="programs-search-faculties"
-                  value={value}
-                  isMulti={true}
-                  isClearable={false}
-                  placeholder={PracticeProgramsSearchConfig.faculties.placeholder}
-                  onChange={onChange}
-                  options={faculties.map(mapItemToSelect)}
-                />
-              );
-            }}
-          />
-          <Controller
-            key={PracticeProgramsSearchConfig.start.key}
-            name={PracticeProgramsSearchConfig.start.key}
-            rules={PracticeProgramsSearchConfig.start.rules}
-            control={control}
-            render={({ field: { onChange, value } }) => {
-              return (<DatePicker
-                defaultValue={value ? value : undefined}
-                onChange={onChange}
-                placeholder={PracticeProgramsSearchConfig.start.placeholder}
-              />
-              )
-            }} />
-          <Controller
-            key={PracticeProgramsSearchConfig.end.key}
-            name={PracticeProgramsSearchConfig.end.key}
-            rules={PracticeProgramsSearchConfig.end.rules}
-            control={control}
-            render={({ field: { onChange, value } }) => {
-              return (<DatePicker
-                defaultValue={value ? value : undefined}
-                onChange={onChange}
-                placeholder={PracticeProgramsSearchConfig.end.placeholder}
-              />
-              )
-            }}
-          />
-          <Controller
-            key={PracticeProgramsSearchConfig.workingHours.key}
-            name={PracticeProgramsSearchConfig.workingHours.key}
-            rules={PracticeProgramsSearchConfig.workingHours.rules}
-            control={control}
-            render={({ field: { onChange, value } }) => {
-              return (
-                <MultiSelect
-                  id="create-organization-workingHours"
-                  value={value}
-                  isClearable={false}
-                  isMulti={false}
-                  onChange={onChange}
-                  placeholder={PracticeProgramsSearchConfig.workingHours.config.placeholder}
-                  options={PracticeProgramsSearchConfig.workingHours.config.collection}
-                />
-              );
-            }}
-          />
-          <Controller
-            key={PracticeProgramsSearchConfig.domains.key}
-            name={PracticeProgramsSearchConfig.domains.key}
-            rules={PracticeProgramsSearchConfig.domains.rules}
+            key={NGOSearchConfig.domains.key}
+            name={NGOSearchConfig.domains.key}
+            rules={NGOSearchConfig.domains.rules}
             control={control}
             render={({ field: { onChange, value } }) => {
               return (
@@ -259,7 +180,7 @@ const PracticeProgramsSearch = (props: { showFilters: boolean }) => {
                   isClearable={false}
                   isMulti={true}
                   onChange={onChange}
-                  placeholder={PracticeProgramsSearchConfig.domains.config.placeholder}
+                  placeholder={NGOSearchConfig.domains.config.placeholder}
                   options={domains.map(mapItemToSelect)}
                 />
               );
@@ -268,7 +189,7 @@ const PracticeProgramsSearch = (props: { showFilters: boolean }) => {
           <button
             id="create-organization-activity__button-back"
             type="button"
-            className="text-sm sm:text-base text-yellow bg-black w-full h-full"
+            className="text-sm sm:text-xl text-yellow bg-black px-6 h-full sm:w-56 w-24"
             onClick={handleSubmit(search)}
           >
             {t('practice-programs-search:searchWord')}
@@ -276,7 +197,7 @@ const PracticeProgramsSearch = (props: { showFilters: boolean }) => {
         </div>
       </div>
       {isFilterModalOpen && (
-        <PracticeProgramFilterModal
+        <NGOFilterModal
           filters={filters}
           onClose={() => { setFilterModalOpen(false) }}
           onConfirm={(e: any) => { receiveFiltersFromModal(e) }}
@@ -285,4 +206,4 @@ const PracticeProgramsSearch = (props: { showFilters: boolean }) => {
     </div>)
 }
 
-export default PracticeProgramsSearch;
+export default NGOSearch;
