@@ -10,10 +10,10 @@ import { AdjustmentsIcon } from '@heroicons/react/outline';
 import FilterModal from '../filter-modal/FilterModal';
 import { usePracticeProgramsQuery } from '../../../services/practice-programs/PracticePrograms.queries';
 import { usePracticePrograms } from '../../../store/Selectors';
-import { useCitiesQuery, useDomainsQuery, useFacultiesQuery } from '../../../services/nomenclature/Nomeclature.queries';
 import { useNomenclature } from '../../../store/nomenclatures/Nomenclatures.selectors';
 import { mapItemToSelect, mapSelectToValue } from '../../helpers/Nomenclature.helper';
 import { useTranslation } from 'react-i18next';
+import { useCitiesQuery, useDomainsQuery, useFacultiesQuery } from '../../../services/nomenclature/Nomeclature.queries';
 
 const PracticeProgramsSearch = (props: { showFilters: boolean }) => {
   const { t } = useTranslation();
@@ -130,7 +130,6 @@ const PracticeProgramsSearch = (props: { showFilters: boolean }) => {
           />
           {props.showFilters && (
             <button
-              id="create-organization-activity__button-back"
               type="button"
               className="text-sm sm:text-base sm:hidden text-yellow bg-black  px-4 flex items-center justify-center h-full"
               onClick={() => alert('Not now')}
