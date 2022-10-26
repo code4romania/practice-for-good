@@ -50,6 +50,13 @@
       "title": "Domenii"
     }
   },
+  "practice_programs": {
+    "one_program_title": "program de practică",
+    "many_programs_title": "programe de practică",
+    "no_programs": "Nu au fost găsite programe de practică",
+    "action": "Detalii",
+    "deadline": "Aplică până la"
+  },
   "about": {
     "p4g": {
       "title": "Despre Practice for Good",

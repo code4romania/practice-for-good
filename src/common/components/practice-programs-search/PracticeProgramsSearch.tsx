@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react';
 import { SearchIcon } from '@heroicons/react/solid';
 import { Controller, useForm } from 'react-hook-form';
 import DatePicker from '../date-picker/DatePicker';
@@ -13,7 +13,11 @@ import { usePracticePrograms } from '../../../store/Selectors';
 import { useNomenclature } from '../../../store/nomenclatures/Nomenclatures.selectors';
 import { mapItemToSelect, mapSelectToValue } from '../../helpers/Nomenclature.helper';
 import { useTranslation } from 'react-i18next';
-import { useCitiesQuery, useDomainsQuery, useFacultiesQuery } from '../../../services/nomenclature/Nomeclature.queries';
+import {
+  useCitiesQuery,
+  useDomainsQuery,
+  useFacultiesQuery,
+} from '../../../services/nomenclature/Nomeclature.queries';
 
 const PracticeProgramsSearch = (props: { showFilters: boolean }) => {
   const { t } = useTranslation();
@@ -56,13 +60,12 @@ const PracticeProgramsSearch = (props: { showFilters: boolean }) => {
   } = useForm({
     mode: 'onChange',
     reValidateMode: 'onChange',
-  })
+  });
 
   // Queries
-  useCitiesQuery(searchLocationTerm)
+  useCitiesQuery(searchLocationTerm);
   useDomainsQuery();
   useFacultiesQuery();
-
 
   useEffect(() => {
     if (practicePrograms?.meta) {
@@ -81,11 +84,11 @@ const PracticeProgramsSearch = (props: { showFilters: boolean }) => {
     setStart(data.start);
     setEnd(data.end);
     refetch();
-  }
+  };
 
   const loadOptionsLocationSearch = async (searchWord: string) => {
     seSearchtLocationTerm(searchWord);
-    return cities.map(mapItemToSelect)
+    return cities.map(mapItemToSelect);
   };
 
   const receiveFiltersFromModal = (e: any) => {
@@ -93,21 +96,20 @@ const PracticeProgramsSearch = (props: { showFilters: boolean }) => {
     setFilters(e);
     reset(e);
     handleSubmit(search)();
-  }
+  };
 
   useEffect(() => {
-    setFiltersCount([locationId, selectedFaculties, workingHours, selectedDomains, start, end].filter(Boolean).length)
-  }, [locationId, selectedFaculties,
-    workingHours,
-    selectedDomains,
-    start,
-    end])
+    setFiltersCount(
+      [locationId, selectedFaculties, workingHours, selectedDomains, start, end].filter(Boolean)
+        .length,
+    );
+  }, [locationId, selectedFaculties, workingHours, selectedDomains, start, end]);
 
   return (
-    <div className='bg-yellow w-full flex flex-col items-center px-2 sm:px-4 py-10 gap-8'>
-      <p className='font-titilliumBold sm:text-4xl text-xl  text-black'>{t('search:title')}</p>
-      <div className='flex flex-col gap-4 max-w-5xl w-full justify-items-center'>
-        <div className='flex w-full items-center h-14'>
+    <div className="bg-yellow w-full flex flex-col items-center px-2 sm:px-4 py-10 gap-8">
+      <p className="font-titilliumBold sm:text-4xl text-xl  text-black">{t('search:title')}</p>
+      <div className="flex flex-col gap-4 max-w-5xl w-full justify-items-center">
+        <div className="flex w-full items-center h-14">
           <Controller
             key={PracticeProgramsSearchConfig.search.key}
             name={PracticeProgramsSearchConfig.search.key}
@@ -134,11 +136,11 @@ const PracticeProgramsSearch = (props: { showFilters: boolean }) => {
               className="text-sm sm:text-base sm:hidden text-yellow bg-black  px-4 flex items-center justify-center h-full"
               onClick={() => alert('Not now')}
             >
-              <SearchIcon className='w-5 h-5' />
+              <SearchIcon className="w-5 h-5" />
             </button>
           )}
 
-          <div className='w-1/3 h-14 hidden sm:flex'>
+          <div className="w-1/3 h-14 hidden sm:flex">
             <Controller
               key={PracticeProgramsSearchConfig.locationId.key}
               name={PracticeProgramsSearchConfig.locationId.key}
@@ -162,25 +164,29 @@ const PracticeProgramsSearch = (props: { showFilters: boolean }) => {
           </div>
         </div>
         {props.showFilters && (
-          <div className='sm:hidden flex justify-flex-start h-14 items-center bg-white px-4 gap-2 rounded-md shadow w-fit cursor-pointer active:bg-gray-200'
-            onClick={() => setFilterModalOpen(true)}>
+          <div
+            className="sm:hidden flex justify-flex-start h-14 items-center bg-white px-4 gap-2 rounded-md shadow w-fit cursor-pointer active:bg-gray-200"
+            onClick={() => setFilterModalOpen(true)}
+          >
             <p
               id="create-organization-activity__button-back"
               className="text-sm sm:text-base  h-full flex items-center"
             >
               {t('search:filters')}
             </p>
-            <AdjustmentsIcon className='w-5 h-5' />
-            {filtersCount > 0 && <p
-              id="create-organization-activity__button-back"
-              className="text-base rounded-full bg-yellow p-2 flex items-center w-10 items-center justify-center"
-            >
-              {filtersCount}
-            </p>}
+            <AdjustmentsIcon className="w-5 h-5" />
+            {filtersCount > 0 && (
+              <p
+                id="create-organization-activity__button-back"
+                className="text-base rounded-full bg-yellow p-2 flex items-center w-10 justify-center"
+              >
+                {filtersCount}
+              </p>
+            )}
           </div>
         )}
 
-        <div className='hidden sm:flex w-full h-14 items-center h-14'>
+        <div className="hidden sm:flex w-full h-14 items-center">
           <Controller
             key={PracticeProgramsSearchConfig.faculties.key}
             name={PracticeProgramsSearchConfig.faculties.key}
@@ -206,25 +212,28 @@ const PracticeProgramsSearch = (props: { showFilters: boolean }) => {
             rules={PracticeProgramsSearchConfig.start.rules}
             control={control}
             render={({ field: { onChange, value } }) => {
-              return (<DatePicker
-                defaultValue={value ? value : undefined}
-                onChange={onChange}
-                placeholder={PracticeProgramsSearchConfig.start.placeholder}
-              />
-              )
-            }} />
+              return (
+                <DatePicker
+                  defaultValue={value ? value : undefined}
+                  onChange={onChange}
+                  placeholder={PracticeProgramsSearchConfig.start.placeholder}
+                />
+              );
+            }}
+          />
           <Controller
             key={PracticeProgramsSearchConfig.end.key}
             name={PracticeProgramsSearchConfig.end.key}
             rules={PracticeProgramsSearchConfig.end.rules}
             control={control}
             render={({ field: { onChange, value } }) => {
-              return (<DatePicker
-                defaultValue={value ? value : undefined}
-                onChange={onChange}
-                placeholder={PracticeProgramsSearchConfig.end.placeholder}
-              />
-              )
+              return (
+                <DatePicker
+                  defaultValue={value ? value : undefined}
+                  onChange={onChange}
+                  placeholder={PracticeProgramsSearchConfig.end.placeholder}
+                />
+              );
             }}
           />
           <Controller
@@ -278,11 +287,16 @@ const PracticeProgramsSearch = (props: { showFilters: boolean }) => {
       {isFilterModalOpen && (
         <FilterModal
           filters={filters}
-          onClose={() => { setFilterModalOpen(false) }}
-          onConfirm={(e: any) => { receiveFiltersFromModal(e) }}
+          onClose={() => {
+            setFilterModalOpen(false);
+          }}
+          onConfirm={(e: any) => {
+            receiveFiltersFromModal(e);
+          }}
         />
       )}
-    </div>)
-}
+    </div>
+  );
+};
 
 export default PracticeProgramsSearch;
