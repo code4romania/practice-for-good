@@ -10,7 +10,7 @@ const Landing = () => {
   return (
     <section className="w-full">
       <div className="bg-yellow w-full">
-        <PracticeProgramsSearch />
+        <PracticeProgramsSearch showFilters={true} />
       </div>
       <Counter counterItems={LANDING_COUNTER_ITEMS}></Counter>
       <ShapeWrapper>

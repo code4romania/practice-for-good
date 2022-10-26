@@ -3,10 +3,10 @@ import { CalendarIcon, ClockIcon, LocationMarkerIcon } from '@heroicons/react/so
 import { useTranslation } from 'react-i18next';
 import Card from '../../../common/components/card/Card';
 import { formatDate, formatDateYear } from '../../../common/helpers/Format.helper';
-import { PracticeProgram } from '../../../common/interfaces/PracticeProgram.interface';
+import { IPracticeProgram } from '../../../common/interfaces/PracticeProgram.interface';
 import p4g_logo from '../../../assets/images/logo.svg';
 
-const ProgramItem = ({ program }: { program: PracticeProgram }) => {
+const ProgramItem = ({ program }: { program: IPracticeProgram }) => {
   const { t } = useTranslation('practice-programs');
   return (
     <Card>

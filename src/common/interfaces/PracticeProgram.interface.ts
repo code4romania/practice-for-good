@@ -3,7 +3,7 @@ import { Domain } from './Domain.interface';
 import { Faculty } from './Faculty.interface';
 import { Skill } from './Skill.interface';
 
-export interface PracticeProgram {
+export interface IPracticeProgram {
   id: number;
   title: string;
   deadline: Date;

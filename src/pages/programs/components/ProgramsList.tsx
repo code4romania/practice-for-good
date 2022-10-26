@@ -1,10 +1,10 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { PracticeProgram } from '../../../common/interfaces/PracticeProgram.interface';
+import { IPracticeProgram } from '../../../common/interfaces/PracticeProgram.interface';
 import ProgramItem from './ProgramItem';
 
 interface ProgramsListProps {
-  programs: PracticeProgram[];
+  programs: IPracticeProgram[];
   total: number;
 }
 
@@ -16,7 +16,7 @@ const ProgramsList = ({ programs, total }: ProgramsListProps) => {
         total > 1 ? t('many-programs-title') : t('one-program-title')
       }`}</p>
       <div className="flex flex-col w-full gap-y-10">
-        {programs.map((program: PracticeProgram, index) => (
+        {programs.map((program: IPracticeProgram, index) => (
           <ProgramItem key={index} program={program}></ProgramItem>
         ))}
       </div>

@@ -7,6 +7,40 @@
     "ongs": "ONG-uri",
     "contact": "Contact"
   },
+  "search": {
+    "title": "Programe de practica la ONG-uri din România",
+    "filters": "Filtre",
+    "selected": "selectate",
+    "searchWord": "Cauta",
+    "config": {
+      "search": {
+        "max": "Cautarea nu poate avea mai mult de 50 de caractere",
+        "min": "Cautarea nu poate avea mai putin de 3 caractere",
+        "placeholder": "Cauta ong sau program..."
+      },
+      "location": {
+        "placeholder": "Toata Romania"
+      },
+      "faculties": {
+        "placeholder": "Facultate"
+      },
+      "start": {
+        "placeholder": "Data Inceput"
+      },
+      "end": {
+        "placeholder": "Data Sfarsit"
+      },
+      "workingHours": {
+        "placeholder": "Numar ore"
+      },
+      "domains": {
+        "placeholder": "Orice domeniu"
+      }
+    }
+  },
+  "filterModal": {
+    "apply": "Aplica filtre"
+  },
   "landing": {
     "counter": {
       "programs": "Programe și activități adăugate pe platformă",

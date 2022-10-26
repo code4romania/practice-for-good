@@ -1,22 +1,30 @@
-.reactserverselect__control {
+.reactselect__control {
   /* border-radius: 6px !important; */
   border: 1px solid #6B7280!important;
   border-radius: 0!important;
   padding: 8px;
   height: 56px;
-  /* max-width: 16rem; */
+  line-height: 1rem;
 }
 
-.reactserverselect__option--is-selected {
+.reactselect__option--is-selected {
   background-color: #6543C8 !important;
 }
 
-.reactserverselect__value-container--is-multi {
+@media only screen and (min-width: 675px) {
+  
+  .reactselect__menu {
+    width: 30rem!important;
+  }
+}
+
+
+.reactselect__value-container--is-multi {
  flex-direction: row!important;
  flex-wrap: nowrap!important;
 }
 
-.reactserverselect__multi-value {
+.reactselect__multi-value {
   background-color: #6543C8 !important;
   padding: 6px 12px !important;
   /* border-radius: 100px !important; */
@@ -25,7 +33,7 @@
   align-items: center;
 }
 
-.reactserverselect__multi-value__label {
+.reactselect__multi-value__label {
   font-size: 0.875rem !important;
   padding: 0 !important;
   color: white!important;
@@ -33,34 +41,34 @@
   max-width: 7rem;
 }
 
-.reactserverselect__input-container input[type='text']:focus {
+.reactselect__input-container input[type='text']:focus {
   box-shadow: none !important;
 }
 
-.reactserverselect__multi-value__remove {
+.reactselect__multi-value__remove {
   border-radius: 25px !important;
   background: white;
   padding: 4px !important;
   margin-left: 6px;
 }
 
-.reactserverselect__multi-value__remove:hover {
+.reactselect__multi-value__remove:hover {
   background-color: white !important;
 }
 
-.reactserverselect__multi-value__remove > svg {
+.reactselect__multi-value__remove > svg {
   color: #6543C8;
   font-size: 1rem;
   width: 16px;
   height: 16px;
 }
 
-.reactserverselect__menu {
+.reactselect__menu {
   border: 1px solid #6B7280;
   border-radius: 0px!important;
 }
 
-.reactserverselect__option:hover {
-  background-color: #6543C8;
+.reactselect__option:hover {
+  background-color: #8a76c5;
   color: white;
 }
