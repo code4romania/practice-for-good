@@ -14,7 +14,7 @@ const OngList = ({ ongs, total }: OngsProps) => {
   return (
     <div className="mx-auto">
       <p className="title text-center pb-8">{`${total} ${
-        total > 1 ? t('many-organizations-title') : t('one-organization-title')
+        total > 1 ? t('many_organizations_title') : t('one_organization_title')
       }`}</p>
       <div className="grid text-left grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-y-8 gap-x-6 mx-10">
         {ongs.map((ong: Organization, index) => (
