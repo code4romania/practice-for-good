@@ -42,6 +42,11 @@
     "apply": "Aplica filtre"
   },
   "landing": {
+    "about": {
+      "title": "Despre Practice4Good",
+      "paragraph_1": "Deși organizațiile neguvernamentale sunt poate cel mai dinamic loc de muncă în care un student sau un proaspăt absolvent ar putea activa pentru a câștiga experientă, mediul ONG nu este o destinație obișnuită pentru acesta. Vreem să schimbăm acest lucru! Practice4Good este o platformă cu  anunțuri de practică și internship în ONG-urile care ne fac viața de zi cu zi mai bună.",
+      "action": "Susține proiectul"
+    },
     "counter": {
       "programs": "Programe și activități adăugate pe platformă",
       "ngos": "ONG-uri din România active pe platformă"
