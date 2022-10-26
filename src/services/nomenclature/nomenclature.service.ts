@@ -1,10 +1,7 @@
 import API from '../API';
 
-export const getCounties = (): Promise<any> => {
-  return API.get(`/nomenclatures/counties`).then((res) => res.data);
-};
 
-export const getCities = (searchTerm: string, countyId?: number): Promise<any> => {
+export const getCities = (searchTerm: string): Promise<any> => {
   let queryParams = '';
   if (searchTerm) {
     queryParams = queryParams.concat(`search=${searchTerm}&`);
@@ -17,3 +14,7 @@ export const getDomains = (): Promise<any> => {
   return API.get(`/nomenclatures/domains`).then((res) => res.data);
 };
 
+
+export const getFaculties = (): Promise<any> => {
+  return API.get(`/nomenclatures/faculties`).then((res) => res.data);
+};
