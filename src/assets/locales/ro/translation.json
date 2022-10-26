@@ -50,10 +50,10 @@
       "title": "Domenii"
     }
   },
-  "practice-programs": {
-    "one-program-title": "program de practică",
-    "many-programs-title": "programe de practică",
-    "no-programs": "Nu au fost găsite programe de practică",
+  "practice_programs": {
+    "one_program_title": "program de practică",
+    "many_programs_title": "programe de practică",
+    "no_programs": "Nu au fost găsite programe de practică",
     "action": "Detalii",
     "deadline": "Aplică până la"
   },

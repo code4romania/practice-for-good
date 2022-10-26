@@ -6,10 +6,10 @@ import { Skill } from './Skill.interface';
 export interface IPracticeProgram {
   id: number;
   title: string;
-  deadline: Date;
+  deadline: Date | null;
   description: string;
   startDate: Date;
-  endDate: Date;
+  endDate: Date | null;
   minWorkingHours: number;
   maxWorkingHours: number;
   link: string;

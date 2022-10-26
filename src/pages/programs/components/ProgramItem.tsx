@@ -7,7 +7,7 @@ import { IPracticeProgram } from '../../../common/interfaces/PracticeProgram.int
 import p4g_logo from '../../../assets/images/logo.svg';
 
 const ProgramItem = ({ program }: { program: IPracticeProgram }) => {
-  const { t } = useTranslation('practice-programs');
+  const { t } = useTranslation('practice_programs');
   return (
     <Card>
       <div className="flex sm:flex-row flex-col w-full lg:min-h-32 min-h-[6rem] items-center gap-x-8 gap-y-5 h-full">

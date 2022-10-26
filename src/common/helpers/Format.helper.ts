@@ -1,9 +1,10 @@
 import { format } from 'date-fns';
 
-export const formatDateYear = (value: Date | string): string =>
-  format(new Date(value), 'dd MMM yyyy');
+export const formatDateYear = (value: Date | string | null): string =>
+  value ? format(new Date(value), 'dd MMM yyyy') : '';
 
-export const formatDate = (value: Date | string): string => format(new Date(value), 'dd MMM');
+export const formatDate = (value: Date | string | null): string =>
+  value ? format(new Date(value), 'dd MMM') : '';
 
 export const openInNewTab = (url: string): void => {
   // Temporary - TO REMOVE after fixing http addon on input
