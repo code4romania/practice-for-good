@@ -8,6 +8,7 @@ const Domain = ({ name, icon }: IDomain) => {
     <div className="bg-gray-100 hover:bg-yellow xs:aspect-square aspect-auto flex justify-center items-center flex-col gap-y-4 p-3 xs:h-auto h-full">
       {icon === IconTypes.USERS ? (
         <img
+          alt="domain image"
           className="xl:max-w-[8rem] md:max-w-[3rem] xs:max-w-[2.8rem] max-w-[1.5rem]"
           src={users}
         ></img>

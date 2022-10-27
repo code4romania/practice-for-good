@@ -11,15 +11,15 @@ const About = () => {
       <div className="sm:py-20 py-10 grid md:grid-cols-2 grid-cols-1 lg:gap-x-32 gap-x-12 lg:gap-y-10 gap-y-5">
         <div className="md:order-1 order-2">
           <p className="title sm:mb-10 mb-5 text-center xl:text-left">{t('p4g.title')}</p>
-          <p className="body w-full">{t('p4g.paragraph_1')}</p>
+          <p className="body-text w-full">{t('p4g.paragraph_1')}</p>
         </div>
         <img
           src={p4gLogo}
           alt="Practice for Good - logo"
           className="mx-auto md:order-2 order-1 md:h-auto h-16"
         />
-        <p className="order-3 body w-full">{t('p4g.paragraph_2')}</p>
-        <p className="order-4 body w-full">{t('p4g.paragraph_3')}</p>
+        <p className="order-3 body-text w-full">{t('p4g.paragraph_2')}</p>
+        <p className="order-4 body-text w-full">{t('p4g.paragraph_3')}</p>
       </div>
       <Description
         title={t('ong_hub.title')}

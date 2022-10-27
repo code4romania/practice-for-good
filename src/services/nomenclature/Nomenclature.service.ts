@@ -1,6 +1,5 @@
 import API from '../API';
 
-
 export const getCities = (searchTerm: string): Promise<any> => {
   let queryParams = '';
   if (searchTerm) {
@@ -13,7 +12,6 @@ export const getCities = (searchTerm: string): Promise<any> => {
 export const getDomains = (): Promise<any> => {
   return API.get(`/nomenclatures/domains`).then((res) => res.data);
 };
-
 
 export const getFaculties = (): Promise<any> => {
   return API.get(`/nomenclatures/faculties`).then((res) => res.data);

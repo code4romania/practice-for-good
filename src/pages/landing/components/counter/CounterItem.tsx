@@ -7,7 +7,7 @@ const CounterItem = ({ value, type }: ICounterItem) => {
   return (
     <div className="flex flex-col items-center max-w-xs text-center gap-y-4">
       <p className="font-titilliumSemiBold sm:text-6xl lg:text-7xl text-4xl">{value}</p>
-      <p className="sm:text-xl text-sm">{title}</p>
+      <p className="body-text">{title}</p>
     </div>
   );
 };
