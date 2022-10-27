@@ -36,7 +36,7 @@ const PracticeProgramsSearch = (props: { showFilters: boolean }) => {
   const { practicePrograms } = usePracticePrograms();
   const { cities, domains, faculties } = useNomenclature();
 
-  const { refetch } = usePracticeProgramsQuery(
+  usePracticeProgramsQuery(
     rowsPerPage as number,
     page as number,
     searchTerm,
@@ -63,16 +63,10 @@ const PracticeProgramsSearch = (props: { showFilters: boolean }) => {
   useDomainsQuery();
   useFacultiesQuery();
 
-
-  useEffect(() => {
-    if (practicePrograms?.meta) {
-      setPage(practicePrograms.meta.currentPage);
-      setRowsPerPage(practicePrograms.meta.itemsPerPage);
-    }
-  }, []);
-
   const search = (data: any) => {
     setFilters(data);
+    setPage(practicePrograms.meta.currentPage);
+    setRowsPerPage(practicePrograms.meta.itemsPerPage);
     setSearchTerm(data.search);
     setLocationId(data.locationId?.value);
     setSelectedFaculties(data.faculties?.map(mapSelectToValue));
@@ -80,7 +74,6 @@ const PracticeProgramsSearch = (props: { showFilters: boolean }) => {
     setWorkingHours(data.workingHours);
     setStart(data.start);
     setEnd(data.end);
-    refetch();
   }
 
   const loadOptionsLocationSearch = async (searchWord: string) => {
@@ -132,7 +125,7 @@ const PracticeProgramsSearch = (props: { showFilters: boolean }) => {
             <button
               type="button"
               className="text-sm sm:text-base sm:hidden text-yellow bg-black  px-4 flex items-center justify-center h-full"
-              onClick={() => refetch()}
+              onClick={handleSubmit(search)}
             >
               <SearchIcon className='w-5 h-5' />
             </button>

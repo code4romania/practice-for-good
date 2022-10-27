@@ -16,7 +16,7 @@ export const useOrganizationQuery = (
       onSuccess: (data: PaginatedEntity<any>) => {
         console.log(data);
       },
-      enabled: false,
+      enabled: !!(page && limit),
     },
   );
 }

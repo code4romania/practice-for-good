@@ -31,7 +31,7 @@ const NGOSearch = (props: { showFilters: boolean }) => {
   const { practicePrograms } = usePracticePrograms();
   const { cities, domains } = useNomenclature();
 
-  const { refetch } = useOrganizationQuery(
+  useOrganizationQuery(
     rowsPerPage as number,
     page as number,
     searchTerm,
@@ -54,20 +54,13 @@ const NGOSearch = (props: { showFilters: boolean }) => {
   useDomainsQuery();
   useFacultiesQuery();
 
-
-  useEffect(() => {
-    if (practicePrograms?.meta) {
-      setPage(practicePrograms.meta.currentPage);
-      setRowsPerPage(practicePrograms.meta.itemsPerPage);
-    }
-  }, []);
-
   const search = (data: any) => {
     setFilters(data);
+    setPage(practicePrograms.meta.currentPage);
+    setRowsPerPage(practicePrograms.meta.itemsPerPage);
     setSearchTerm(data.search);
     setLocationId(data.locationId?.value);
     setSelectedDomains(data.domains?.map(mapSelectToValue));
-    refetch();
   }
 
   const loadOptionsLocationSearch = async (searchWord: string) => {
@@ -89,7 +82,7 @@ const NGOSearch = (props: { showFilters: boolean }) => {
 
   return (
     <div className='bg-yellow w-full flex flex-col items-center px-2 sm:px-4 py-10 gap-8'>
-      <p className='font-titilliumBold sm:text-4xl text-xl  text-black'>{t('practice-programs-search:title')}</p>
+      <p className='font-titilliumBold sm:text-4xl text-xl  text-black'>{t('ngo-search:title')}</p>
       <div className='flex flex-col gap-4 max-w-5xl w-full justify-items-center'>
         <div className='flex w-full items-center h-14'>
           <Controller
@@ -116,7 +109,7 @@ const NGOSearch = (props: { showFilters: boolean }) => {
             <button
               type="button"
               className="text-sm sm:text-base sm:hidden text-yellow bg-black  px-4 flex items-center justify-center h-full"
-              onClick={() => alert('Not now')}
+              onClick={handleSubmit(search)}
             >
               <SearchIcon className='w-5 h-5' />
             </button>
