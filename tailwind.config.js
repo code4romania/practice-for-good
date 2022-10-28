@@ -58,10 +58,6 @@ module.exports = {
         titilliumSemiBold: 'TitilliumWeb-SemiBold',
         titillium: 'TitilliumWeb-Regular',
       },
-      padding: {
-        '9px': '9px',
-        '13px': '13px',
-      },
       boxShadow: {
         card: '0px 4px 10px rgba(0, 0, 0, 0.1)',
       },

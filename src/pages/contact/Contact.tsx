@@ -4,7 +4,7 @@ import { ContactConfig } from './configs/Contact.config';
 import { Controller, useForm } from 'react-hook-form';
 import ContactInputField from '../../common/components/contact-input-field/ContactInputField';
 import Textarea from '../../common/components/textarea/Textarea';
-import confirmLogo from '../../assets/images/confirm-icon.svg';
+import confirmLogo from '../../assets/icons/confirm-icon.svg';
 
 const Contact = () => {
   const [showForm, setShowForm] = useState(true);
