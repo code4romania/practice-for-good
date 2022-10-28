@@ -61,6 +61,11 @@
     "no_organizations": "Nu au fost găsite ONG-uri",
     "action": "Vezi mai mult"
   },
+  "organization_details": {
+    "activity_domains": "Domenii activitate",
+    "contact": "Contact",
+    "social_media": "Social media"
+  },
   "practice_programs": {
     "one_program_title": "program de practică",
     "many_programs_title": "programe de practică",
