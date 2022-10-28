@@ -10,7 +10,7 @@ const About = () => {
     <div className="mx-10 max-w-screen-xl xl:mx-auto divide-y-2 divide-gray-400">
       <div className="sm:py-20 py-10 grid md:grid-cols-2 grid-cols-1 lg:gap-x-32 gap-x-12 lg:gap-y-10 gap-y-5">
         <div className="md:order-1 order-2">
-          <p className="title sm:mb-10 mb-5 text-center xl:text-left">{t('p4g.title')}</p>
+          <p className="title text-center md:text-left">{t('p4g.title')}</p>
           <p className="body-text w-full">{t('p4g.paragraph_1')}</p>
         </div>
         <img
