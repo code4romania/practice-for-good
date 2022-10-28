@@ -49,6 +49,7 @@ module.exports = {
         700: '#B91C1C',
         800: '#991B1B',
         900: '#7F1D1D',
+      },
     },
     extend: {
       fontFamily: {

@@ -1,25 +1,26 @@
 import i18n from '../../../common/configs/i18n';
+import { EMAIL_REGEX, NAME_REGEX } from '../../../common/helpers/Format.helper';
 
 const translations = {
   name: {
-    required: i18n.t('contact:config.name.required'),
-    max: i18n.t('contact:config.name.max'),
-    min: i18n.t('contact:config.name.min'),
-    invalid: i18n.t('contact:config.name.invalid'),
-    label: i18n.t('contact:config.name.label'),
+    required: i18n.t('contact:form.name.required'),
+    max: i18n.t('contact:form.name.max'),
+    min: i18n.t('contact:form.name.min'),
+    invalid: i18n.t('contact:form.name.invalid'),
+    label: i18n.t('contact:form.name.label'),
   },
   email: {
-    required: i18n.t('contact:config.email.required'),
-    max: i18n.t('contact:config.email.max'),
-    min: i18n.t('contact:config.email.min'),
-    invalid: i18n.t('contact:config.email.invalid'),
-    label: i18n.t('contact:config.email.label'),
+    required: i18n.t('contact:form.email.required'),
+    max: i18n.t('contact:form.email.max'),
+    min: i18n.t('contact:form.email.min'),
+    invalid: i18n.t('contact:form.email.invalid'),
+    label: i18n.t('contact:form.email.label'),
   },
   message: {
-    required: i18n.t('contact:config.message.required'),
-    max: i18n.t('contact:config.message.max'),
-    min: i18n.t('contact:config.message.min'),
-    label: i18n.t('contact:config.message.label'),
+    required: i18n.t('contact:form.message.required'),
+    max: i18n.t('contact:form.message.max'),
+    min: i18n.t('contact:form.message.min'),
+    label: i18n.t('contact:form.message.label'),
   },
 };
 
@@ -40,7 +41,7 @@ export const ContactConfig: Record<string, any> = {
         message: translations.name.min,
       },
       pattern: {
-        // value: NAME_REGEX,
+        value: NAME_REGEX,
         message: translations.name.invalid,
       },
     },
@@ -67,7 +68,7 @@ export const ContactConfig: Record<string, any> = {
         message: translations.email.min,
       },
       pattern: {
-        // value: EMAIL_REGEX,
+        value: EMAIL_REGEX,
         message: translations.email.invalid,
       },
     },
