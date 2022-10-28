@@ -30,7 +30,7 @@ const Contact = () => {
     <div className="mx-10 max-w-screen-xl lg:mx-10 xl:mx-auto">
       <div className="grid lg:grid-cols-2">
         <div className="font-titillium">
-          <p className="text-big my-5 text-left">{t('contact_us')}</p>
+          <p className="text-big my-5 text-left">{t('title')}</p>
           <p className="text-small leading-7 text-left my-10 md:w-11/12 lg:w-10/12 xl:mx-0 xl:w-10/12">
             {t('description_1')}
           </p>
@@ -113,10 +113,10 @@ const Contact = () => {
             </form>
             <button
               type="button"
-              className="w-3/5 md:w-2/5 yellow-long-button text-center mb-10"
+              className="w-3/5 md:w-2/5 yellow-button text-center mb-10"
               onClick={onSendMail}
             >
-              {t('send')}
+              {t('action')}
             </button>
           </div>
         )}

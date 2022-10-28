@@ -3,7 +3,9 @@ export interface ISelectData {
   label: string;
 }
 
-export const mapCitiesToSelect = (item: any): ISelectData => ({
+export const mapItemToSelect = (item: any): ISelectData => ({
   value: item?.id,
-  label: `${item?.name}`,
+  label: item.name,
 });
+
+export const mapSelectToValue = (item: any) => item.value;

@@ -1,37 +1,62 @@
+import { LocationMarkerIcon, SearchIcon } from "@heroicons/react/solid";
 import i18n from "../../../configs/i18n";
+import { WorkingHours } from "../../../enums/WorkingHours.enum";
+import IconAddon from "../../icon-addon/IconAddon";
 
-const translations = {
-  name: {
-    required: i18n.t('organization:create_config.name.required'),
-    max: i18n.t('organization:create_config.name.max'),
-    min: i18n.t('organization:create_config.name.min'),
-    invalid: i18n.t('organization:create_config.name.invalid'),
-    label: i18n.t('organization:create_config.name.label'),
-  },
-};
 
 export const PracticeProgramsSearchConfig: Record<string, any> = {
-  name: {
-    key: 'name',
+  search: {
+    key: 'search',
     rules: {
-      maxLength: {
-        value: 100,
-        message: translations.name.max,
-      },
-      minLength: {
-        value: 3,
-        message: translations.name.min,
-      },
-      pattern: {
-        // value: NAME_REGEX,
-        message: translations.name.invalid,
-      },
     },
     config: {
       type: 'text',
-      label: translations.name.label,
+      label: '',
       helperText: '',
-      placeholder: 'Ana Maria Stoian',
+      placeholder: i18n.t("search:config.search.placeholder"),
+      addOn: () => IconAddon({ icon: SearchIcon })
     },
-  }
+  },
+  locationId: {
+    key: 'locationId',
+    label: '',
+    rules: {
+    },
+    placeholder: i18n.t('search:config.location.placeholder'),
+    addOn: () => IconAddon({ icon: LocationMarkerIcon })
+  },
+  faculties: {
+    key: 'faculties',
+    rules: {
+    },
+    placeholder: i18n.t('search:config.faculties.placeholder'),
+  },
+  start: {
+    key: 'start',
+    rules: {
+    },
+    placeholder: i18n.t('search:config.start.placeholder'),
+  },
+  end: {
+    key: 'end',
+    rules: {
+    },
+    placeholder: i18n.t('search:config.end.placeholder'),
+  },
+  workingHours: {
+    key: 'workingHours',
+    rules: {},
+    config: {
+      collection: [...WorkingHours],
+      placeholder: i18n.t('search:config.workingHours.placeholder')
+    },
+  },
+  domains: {
+    key: 'domains',
+    rules: {
+    },
+    config: {
+      placeholder: i18n.t('search:config.domains.placeholder')
+    },
+  },
 }

@@ -1,22 +1,42 @@
 // /** @type {import('tailwindcss').Config} */
 
+const defaultTheme = require('tailwindcss/defaultTheme');
 const colors = require('tailwindcss/colors');
 
 module.exports = {
   content: ['./src/**/*.{js,jsx,ts,tsx}'],
   theme: {
+    screens: {
+      xs: '300px',
+      ...defaultTheme.screens,
+    },
     colors: {
       current: 'currentColor',
       transparent: 'transparent',
       black: '#000000',
       white: '#FFFFFF',
-      yellow: { DEFAULT: '#FDED5A', 500: '#FFE870', 900: '#FFD84F' },
+      yellow: {
+        DEFAULT: '#FFF649',
+        50: '#FFFDE7',
+        100: '#FFF9C4',
+        200: '#FFF59D',
+        300: '#FFF176',
+        400: '#FFEE58',
+        500: '#FFEB3B',
+        600: '#FDD835',
+        700: '#FBC02D',
+        800: '#F9A825',
+        900: '#F57F17',
+      },
       gray: {
-        100: '#EFF0F3',
-        300: '#E5E7EB',
+        100: '#F7F7F7',
+        200: '#E5E7EB',
         400: '#828282',
         500: '#6B7280',
         700: '#374159',
+      },
+      purple: {
+        DEFAULT: '#6543C8',
       },
       red: {
         50: '#FEF2F2',
@@ -29,7 +49,6 @@ module.exports = {
         700: '#B91C1C',
         800: '#991B1B',
         900: '#7F1D1D',
-      },
     },
     extend: {
       fontFamily: {
@@ -42,29 +61,39 @@ module.exports = {
         '9px': '9px',
         '13px': '13px',
       },
-    },
-    fontSize: {
-      small: [
-        '1rem',
-        {
-          lineLeight: '1.75rem',
-          fontWeight: '400',
-        },
-      ],
-      medium: [
-        '1.25rem',
-        {
-          lineLeight: '1.5rem',
-          fontWeight: '600',
-        },
-      ],
-      big: [
-        '2.5rem',
-        {
-          lineLeight: '3.8125rem',
-          fontWeight: '700',
-        },
-      ],
+      boxShadow: {
+        card: '0px 4px 10px rgba(0, 0, 0, 0.1)',
+      },
+      fontSize: {
+        xs: [
+          '0.75rem',
+          {
+            lineHeight: '1.4rem',
+          },
+        ],
+        sm: [
+          '0.8rem',
+          {
+            lineHeight: '1.5rem',
+          },
+        ],
+        base: [
+          '1rem',
+          {
+            lineHeight: '1.75rem',
+          },
+        ],
+        medium: [
+          '1.25rem',
+          {
+            lineHeight: '1.5rem',
+            fontWeight: '600',
+          },
+        ],
+      },
+      backgroundImage: {
+        shape: 'url(./assets/images/shape-background.svg)',
+      },
     },
   },
   plugins: [],

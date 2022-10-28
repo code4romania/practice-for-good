@@ -13,13 +13,18 @@ const Header = ({ openSlidingMenu }: { openSlidingMenu?: any }) => {
             <img src={logo} alt="Code 4 Romania - ONG Hub" className="h-full w-full" />
           </div>
           <div className="flex gap-4">
-            <div className='gap-6 hidden sm:flex'>
-              {MENU_ROUTES.map(route =>
-                <a key={route.id} href={route.href}>{route.name}</a>)}
+            <div className="gap-6 hidden sm:flex">
+              {MENU_ROUTES.map((route) => (
+                <a className="text-black" key={route.id} href={route.href}>
+                  {route.name}
+                </a>
+              ))}
             </div>
             <div className="flex sm:hidden items-center">
-              <button className="flex items-center gap-4 hover:bg-green-tab py-2 px-4 rounded-xl focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500"
-                onClick={() => openSlidingMenu(true)}>
+              <button
+                className="flex items-center gap-4 hover:bg-green-tab py-2 px-4 rounded-xl focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500"
+                onClick={() => openSlidingMenu(true)}
+              >
                 <MenuIcon className="w-5 h-5" />
               </button>
             </div>
