@@ -22,6 +22,12 @@ const translations = {
     min: i18n.t('contact:form.message.min'),
     label: i18n.t('contact:form.message.label'),
   },
+  richtext: {
+    required: 'Campul este obligatoriu',
+    max: i18n.t('Maxim 500 caractere'),
+    min: i18n.t('Minim 3 caractere'),
+    label: i18n.t('Richtext'),
+  },
 };
 
 export const ContactConfig: Record<string, any> = {
@@ -98,6 +104,28 @@ export const ContactConfig: Record<string, any> = {
     config: {
       type: 'text',
       label: translations.message.label,
+      helperText: '',
+      placeholder: '',
+    },
+  },
+  richtext: {
+    key: 'richtext',
+    rules: {
+      required: {
+        value: true,
+        message: translations.richtext.required,
+      },
+      maxLength: {
+        value: 250,
+        message: translations.richtext.max,
+      },
+      minLength: {
+        value: 50,
+        message: translations.richtext.min,
+      },
+    },
+    config: {
+      label: translations.richtext.label,
       helperText: '',
       placeholder: '',
     },

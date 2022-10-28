@@ -5,6 +5,7 @@ import { Controller, useForm } from 'react-hook-form';
 import ContactInputField from '../../common/components/contact-input-field/ContactInputField';
 import Textarea from '../../common/components/textarea/Textarea';
 import confirmLogo from '../../assets/icons/confirm-icon.svg';
+import Richtext from '../../common/components/richtext/Richtext';
 
 const Contact = () => {
   const [showForm, setShowForm] = useState(true);
@@ -57,7 +58,7 @@ const Contact = () => {
                   );
                 }}
               />
-              <Controller
+              {/* <Controller
                 key={ContactConfig.email.key}
                 name={ContactConfig.email.key}
                 rules={ContactConfig.email.rules}
@@ -88,6 +89,25 @@ const Contact = () => {
                         ...ContactConfig.message.config,
                         name: ContactConfig.message.key,
                         error: errors[ContactConfig.message?.key]?.message,
+                        defaultValue: value,
+                        onChange: onChange,
+                      }}
+                    />
+                  );
+                }}
+              /> */}
+              <Controller
+                key={ContactConfig.richtext.key}
+                name={ContactConfig.richtext.key}
+                rules={ContactConfig.richtext.rules}
+                control={control}
+                render={({ field: { onChange, value } }) => {
+                  return (
+                    <Richtext
+                      config={{
+                        ...ContactConfig.richtext.config,
+                        name: ContactConfig.richtext.key,
+                        error: errors[ContactConfig.richtext?.key]?.message,
                         defaultValue: value,
                         onChange: onChange,
                       }}
