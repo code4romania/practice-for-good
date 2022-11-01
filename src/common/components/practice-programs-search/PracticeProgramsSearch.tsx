@@ -97,7 +97,7 @@ const PracticeProgramsSearch = (props: { showFilters: boolean }) => {
 
   return (
     <div className='bg-yellow w-full flex flex-col items-center px-2 sm:px-4 py-10 gap-8'>
-      <p className='font-titilliumBold sm:text-4xl text-xl  text-black'>{t('practice-programs-search:title')}</p>
+      <p className='title'>{t('practice_programs_search:title')}</p>
       <div className='flex flex-col gap-4 max-w-5xl w-full justify-items-center'>
         <div className='flex w-full items-center h-14'>
           <Controller
@@ -162,7 +162,7 @@ const PracticeProgramsSearch = (props: { showFilters: boolean }) => {
               id="create-organization-activity__button-back"
               className="text-sm sm:text-base  h-full flex items-center"
             >
-              {t('practice-programs-search:filters')}
+              {t('practice_programs_search:filters')}
             </p>
             <AdjustmentsIcon className="w-5 h-5" />
             {filtersCount > 0 && (
@@ -270,7 +270,7 @@ const PracticeProgramsSearch = (props: { showFilters: boolean }) => {
             className="text-sm sm:text-base text-yellow bg-black w-full h-full"
             onClick={handleSubmit(search)}
           >
-            {t('practice-programs-search:searchWord')}
+            {t('practice_programs_search:searchWord')}
           </button>
         </div>
       </div>

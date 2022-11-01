@@ -13,7 +13,7 @@ export const PracticeProgramsSearchConfig: Record<string, any> = {
       type: 'text',
       label: '',
       helperText: '',
-      placeholder: i18n.t("practice-programs-search:config.search.placeholder"),
+      placeholder: i18n.t("practice_programs_search:config.search.placeholder"),
       addOn: () => IconAddon({ icon: SearchIcon })
     },
   },
@@ -22,33 +22,33 @@ export const PracticeProgramsSearchConfig: Record<string, any> = {
     label: '',
     rules: {
     },
-    placeholder: i18n.t('practice-programs-search:config.location.placeholder'),
+    placeholder: i18n.t('practice_programs_search:config.location.placeholder'),
     addOn: () => IconAddon({ icon: LocationMarkerIcon })
   },
   faculties: {
     key: 'faculties',
     rules: {
     },
-    placeholder: i18n.t('practice-programs-search:config.faculties.placeholder'),
+    placeholder: i18n.t('practice_programs_search:config.faculties.placeholder'),
   },
   start: {
     key: 'start',
     rules: {
     },
-    placeholder: i18n.t('practice-programs-search:config.start.placeholder'),
+    placeholder: i18n.t('practice_programs_search:config.start.placeholder'),
   },
   end: {
     key: 'end',
     rules: {
     },
-    placeholder: i18n.t('practice-programs-search:config.end.placeholder'),
+    placeholder: i18n.t('practice_programs_search:config.end.placeholder'),
   },
   workingHours: {
     key: 'workingHours',
     rules: {},
     config: {
       collection: [...WorkingHours],
-      placeholder: i18n.t('practice-programs-search:config.workingHours.placeholder')
+      placeholder: i18n.t('practice_programs_search:config.workingHours.placeholder')
     },
   },
   domains: {
@@ -56,7 +56,7 @@ export const PracticeProgramsSearchConfig: Record<string, any> = {
     rules: {
     },
     config: {
-      placeholder: i18n.t('practice-programs-search:config.domains.placeholder')
+      placeholder: i18n.t('practice_programs_search:config.domains.placeholder')
     },
   },
 }
