@@ -15,6 +15,7 @@ module.exports = {
       transparent: 'transparent',
       black: '#000000',
       white: '#FFFFFF',
+      blue: "#0000FA",
       yellow: {
         DEFAULT: '#FFF649',
         50: '#FFFDE7',
@@ -27,13 +28,17 @@ module.exports = {
         700: '#FBC02D',
         800: '#F9A825',
         900: '#F57F17',
+        1000: '#FFEB4F',
       },
       gray: {
+        50: '#F1F1F1',
         100: '#F7F7F7',
         200: '#E5E7EB',
+        300: '#E6EDF4',
         400: '#828282',
         500: '#6B7280',
         700: '#374159',
+        900: '#151926',
       },
       purple: {
         DEFAULT: '#6543C8',

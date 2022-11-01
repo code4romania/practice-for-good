@@ -7,6 +7,10 @@
     "organizations": "ONG-uri",
     "contact": "Contact"
   },
+  "header": {
+    "commit_global_solution": "O solutie Commit Global.",
+    "learn_more": "Află mai multe"
+  },
   "search": {
     "title": "Programe de practica la ONG-uri din România",
     "filters": "Filtre",

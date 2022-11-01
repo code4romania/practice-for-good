@@ -58,6 +58,24 @@
     -webkit-box-orient: vertical;
   }
 
+  .menu-title {
+    @apply font-titilliumBold md:text-lg text-sm text-gray-900;
+  }
+
+  .footer-title {
+    @apply font-titilliumBold text-base text-yellow-1000
+  }
+
+  .footer-text {
+    @apply font-titillium text-base text-gray-300
+  }
+
+  .footer-url {
+    @apply footer-text hover:underline
+  }
+
+  
+
   a {
     @apply text-purple;
   }
