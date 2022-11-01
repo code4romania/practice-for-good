@@ -1,5 +1,5 @@
 {
-  "common": { "greeting": "buna" },
+  "common": { "greeting": "buna", "loading": "Se incarca..." },
   "menu": {
     "home": "Acasa",
     "about": "Despre Practice for Good",

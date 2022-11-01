@@ -8,18 +8,18 @@ export enum WorkingHoursEnum {
 export const WorkingHours = [
   {
     label: '0-30',
-    value: '0_30',
+    value: '0-30',
   },
   {
     label: '30-50',
-    value: '30_50',
+    value: '30-50',
   },
   {
     label: '50-100',
-    value: '50_100',
+    value: '50-100',
   },
   {
     label: '100+',
-    value: 'OVER_100',
+    value: '100+',
   },
-]
+];
