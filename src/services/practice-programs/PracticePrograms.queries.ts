@@ -42,6 +42,7 @@ export const usePracticeProgramsQuery = () => {
         setPracticePrograms(data);
       },
       enabled: !!(currentPage && itemsPerPage),
+      retry: 0,
     },
   );
 };

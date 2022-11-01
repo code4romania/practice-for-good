@@ -66,7 +66,10 @@
     "many_programs_title": "programe de practică",
     "no_programs": "Nu au fost găsite programe de practică",
     "action": "Detalii",
-    "deadline": "Aplică până la"
+    "deadline": "Aplică până la",
+    "errors": {
+      "search": "Eroare la incarcarea programelor de practica"
+    }
   },
   "about": {
     "p4g": {
