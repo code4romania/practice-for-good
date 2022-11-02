@@ -57,13 +57,13 @@
     -webkit-line-clamp: 5;
     -webkit-box-orient: vertical;
   }
+
+  a {
+    @apply text-purple;
+  }
 }
 
 .content {
   /* Give the content enought white space so the footer is at the bottom */
   min-height: calc(100vh - 6rem - 18rem);
-}
-
-a {
-  @apply text-purple;
 }

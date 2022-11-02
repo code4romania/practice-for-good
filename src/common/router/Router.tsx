@@ -4,7 +4,9 @@ import Landing from '../../pages/landing/Landing';
 import Organizations from '../../pages/organizations/Organizations';
 import Programs from '../../pages/programs/Programs';
 import Layout from '../containers/Layout';
+import Contact from '../../pages/contact/Contact';
 import About from '../../pages/about/About';
+import Organization from '../../pages/organizations/Organization';
 
 const Router = () => {
   return (
@@ -19,6 +21,12 @@ const Router = () => {
 
           {/* NGO list page */}
           <Route path="organizations" element={<Organizations />}></Route>
+
+          {/* NGO details page */}
+          <Route path="organizations/:id" element={<Organization />}></Route>
+
+          {/* Contact page */}
+          <Route path="contact" element={<Contact />}></Route>
 
           {/* About page */}
           <Route path="about" element={<About />}></Route>

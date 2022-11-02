@@ -21,10 +21,10 @@ const ProgramItem = ({ program }: { program: IPracticeProgram }) => {
               ></img>
             )}
           </div>
-          <div className="flex flex-col sm:h-full gap-y-3 flex-wrap">
+          <div className="flex flex-col sm:h-full sm:w-auto w-full gap-y-3 flex-wrap">
             <a
-              className="sm:mb-auto max-w-fit sm:text-sm lg:text-base text-xs"
-              href={`/organization/${program.organization?.id}`}
+              className="sm:mb-auto max-w-fit sm:text-sm lg:text-base text-xs font-titilliumSemiBold"
+              href={`/organizations/${program.organization?.id}`}
             >
               {program.organization?.organizationGeneral?.name}
             </a>
