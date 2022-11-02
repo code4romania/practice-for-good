@@ -1,4 +1,5 @@
 import create from 'zustand';
+import { ISelectData } from '../common/helpers/Nomenclature.helper';
 import { City } from '../common/interfaces/City.interface';
 import { Domain } from '../common/interfaces/Domain.interface';
 import { Faculty } from '../common/interfaces/Faculty.interface';
@@ -32,8 +33,8 @@ interface OrganizationsState {
   nextPageOrganizations: () => void;
   updateOrganizationFilters: (
     search: string,
-    locationId: number,
-    selectedDomains: number[],
+    locationId: ISelectData,
+    selectedDomains: ISelectData[],
   ) => void;
 }
 

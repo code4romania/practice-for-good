@@ -1,5 +1,7 @@
+import { ISelectData } from '../helpers/Nomenclature.helper';
+
 export interface OrganizationFilter {
   search?: string;
-  locationId?: number;
-  domains?: number[];
+  locationId?: ISelectData;
+  domains?: ISelectData[];
 }

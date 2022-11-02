@@ -7,12 +7,11 @@ import ServerSelect from '../server-select/ServerSelect';
 import { AdjustmentsIcon } from '@heroicons/react/outline';
 import { useOrganizations } from '../../../store/Selectors';
 import { useNomenclature } from '../../../store/nomenclatures/Nomenclatures.selectors';
-import { mapItemToSelect, mapSelectToValue } from '../../helpers/Nomenclature.helper';
+import { mapItemToSelect } from '../../helpers/Nomenclature.helper';
 import { useTranslation } from 'react-i18next';
 import {
   useCitiesQuery,
   useDomainsQuery,
-  useFacultiesQuery,
 } from '../../../services/nomenclature/Nomeclature.queries';
 import { NGOSearchConfig } from './configs/NGOSearch.config';
 import NGOFilterModal from '../ngo-filter-modal/NGOFilterModal';
@@ -29,7 +28,6 @@ const NGOSearch = ({ showFilters, children }: NGOSearchProps) => {
   const [isFilterModalOpen, setFilterModalOpen] = useState(false);
   const [searchLocationTerm, seSearchtLocationTerm] = useState('');
   const [filtersCount, setFiltersCount] = useState(0);
-  const [filters, setFilters] = useState<any>();
 
   // store hooks
   const { filters: activeFilters } = useOrganizations();
@@ -49,15 +47,9 @@ const NGOSearch = ({ showFilters, children }: NGOSearchProps) => {
   // Queries
   useCitiesQuery(searchLocationTerm);
   useDomainsQuery();
-  useFacultiesQuery();
 
   const search = (data: any) => {
-    setFilters(data);
-    updateOrganizationFilters(
-      data.search,
-      data.locationId?.value,
-      data.domains?.map(mapSelectToValue),
-    );
+    updateOrganizationFilters(data.search, data.locationId, data.domains);
   };
 
   const loadOptionsLocationSearch = async (searchWord: string) => {
@@ -65,18 +57,11 @@ const NGOSearch = ({ showFilters, children }: NGOSearchProps) => {
     return cities.map(mapItemToSelect);
   };
 
-  const receiveFiltersFromModal = (e: any) => {
-    setFilterModalOpen(false);
-    setFilters(e);
-    reset(e);
-    handleSubmit(search)();
-  };
-
   useEffect(() => {
     setFiltersCount(
-      [activeFilters.locationId, activeFilters.domains, activeFilters.search].filter(Boolean)
-        .length,
+      [activeFilters.locationId, activeFilters.domains?.length].filter(Boolean).length,
     );
+    reset({ ...activeFilters });
   }, [activeFilters.domains, activeFilters.locationId, activeFilters.search]);
 
   return (
@@ -193,12 +178,8 @@ const NGOSearch = ({ showFilters, children }: NGOSearchProps) => {
         </div>
         {isFilterModalOpen && (
           <NGOFilterModal
-            filters={filters}
             onClose={() => {
               setFilterModalOpen(false);
-            }}
-            onConfirm={(e: any) => {
-              receiveFiltersFromModal(e);
             }}
           />
         )}
