@@ -18,7 +18,7 @@ const Programs = () => {
     meta: { totalItems: total },
   } = usePracticePrograms();
 
-  const { isLoading, error } = usePracticeProgramsQuery();
+  const { isLoading, error, refetch } = usePracticeProgramsQuery();
 
   const loadMore = useCallback(() => {
     if (total > programs.length) nextPage();
@@ -28,7 +28,7 @@ const Programs = () => {
     <section className="w-full">
       <PracticeProgramsSearch showFilters preloadData>
         {error && !isLoading ? (
-          <NoData>{t('errors.search')}</NoData>
+          <NoData retry={refetch}>{t('errors.search')}</NoData>
         ) : (
           <div className="flex flex-col w-full lg:px-60 px-10 pt-10">
             {programs.length !== 0 && !isLoading && (
