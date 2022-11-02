@@ -7,17 +7,13 @@ import MultiSelect from '../select/Select';
 import ServerSelect from '../server-select/ServerSelect';
 import { PracticeProgramsSearchConfig } from './configs/PracticeProgramsSearch.config';
 import { AdjustmentsIcon } from '@heroicons/react/outline';
-import FilterModal from '../filter-modal/FilterModal';
 import { usePracticeProgramsQuery } from '../../../services/practice-programs/PracticePrograms.queries';
 import { usePracticePrograms } from '../../../store/Selectors';
 import { useNomenclature } from '../../../store/nomenclatures/Nomenclatures.selectors';
 import { mapItemToSelect, mapSelectToValue } from '../../helpers/Nomenclature.helper';
 import { useTranslation } from 'react-i18next';
-import {
-  useCitiesQuery,
-  useDomainsQuery,
-  useFacultiesQuery,
-} from '../../../services/nomenclature/Nomeclature.queries';
+import { useCitiesQuery, useDomainsQuery, useFacultiesQuery } from '../../../services/nomenclature/Nomeclature.queries';
+import PracticeProgramFilterModal from '../practice-program-filter-modal/PracticeProgramFilterModal';
 
 const PracticeProgramsSearch = (props: { showFilters: boolean }) => {
   const { t } = useTranslation();
@@ -40,7 +36,7 @@ const PracticeProgramsSearch = (props: { showFilters: boolean }) => {
   const { practicePrograms } = usePracticePrograms();
   const { cities, domains, faculties } = useNomenclature();
 
-  const { refetch } = usePracticeProgramsQuery(
+  usePracticeProgramsQuery(
     rowsPerPage as number,
     page as number,
     searchTerm,
@@ -67,15 +63,10 @@ const PracticeProgramsSearch = (props: { showFilters: boolean }) => {
   useDomainsQuery();
   useFacultiesQuery();
 
-  useEffect(() => {
-    if (practicePrograms?.meta) {
-      setPage(practicePrograms.meta.currentPage);
-      setRowsPerPage(practicePrograms.meta.itemsPerPage);
-    }
-  }, []);
-
   const search = (data: any) => {
     setFilters(data);
+    setPage(practicePrograms.meta.currentPage);
+    setRowsPerPage(practicePrograms.meta.itemsPerPage);
     setSearchTerm(data.search);
     setLocationId(data.locationId?.value);
     setSelectedFaculties(data.faculties?.map(mapSelectToValue));
@@ -83,8 +74,7 @@ const PracticeProgramsSearch = (props: { showFilters: boolean }) => {
     setWorkingHours(data.workingHours);
     setStart(data.start);
     setEnd(data.end);
-    refetch();
-  };
+  }
 
   const loadOptionsLocationSearch = async (searchWord: string) => {
     seSearchtLocationTerm(searchWord);
@@ -106,10 +96,10 @@ const PracticeProgramsSearch = (props: { showFilters: boolean }) => {
   }, [locationId, selectedFaculties, workingHours, selectedDomains, start, end]);
 
   return (
-    <div className="bg-yellow w-full flex flex-col items-center px-2 sm:px-4 py-10 gap-8">
-      <p className="font-titilliumBold sm:text-4xl text-xl  text-black">{t('search:title')}</p>
-      <div className="flex flex-col gap-4 max-w-5xl w-full justify-items-center">
-        <div className="flex w-full items-center h-14">
+    <div className='bg-yellow w-full flex flex-col items-center px-2 sm:px-4 py-10 gap-8'>
+      <p className='title'>{t('practice_programs_search:title')}</p>
+      <div className='flex flex-col gap-4 max-w-5xl w-full justify-items-center'>
+        <div className='flex w-full items-center h-14'>
           <Controller
             key={PracticeProgramsSearchConfig.search.key}
             name={PracticeProgramsSearchConfig.search.key}
@@ -134,7 +124,7 @@ const PracticeProgramsSearch = (props: { showFilters: boolean }) => {
             <button
               type="button"
               className="text-sm sm:text-base sm:hidden text-yellow bg-black  px-4 flex items-center justify-center h-full"
-              onClick={() => alert('Not now')}
+              onClick={handleSubmit(search)}
             >
               <SearchIcon className="w-5 h-5" />
             </button>
@@ -172,7 +162,7 @@ const PracticeProgramsSearch = (props: { showFilters: boolean }) => {
               id="create-organization-activity__button-back"
               className="text-sm sm:text-base  h-full flex items-center"
             >
-              {t('search:filters')}
+              {t('practice_programs_search:filters')}
             </p>
             <AdjustmentsIcon className="w-5 h-5" />
             {filtersCount > 0 && (
@@ -280,12 +270,12 @@ const PracticeProgramsSearch = (props: { showFilters: boolean }) => {
             className="text-sm sm:text-base text-yellow bg-black w-full h-full"
             onClick={handleSubmit(search)}
           >
-            {t('search:searchWord')}
+            {t('practice_programs_search:searchWord')}
           </button>
         </div>
       </div>
       {isFilterModalOpen && (
-        <FilterModal
+        <PracticeProgramFilterModal
           filters={filters}
           onClose={() => {
             setFilterModalOpen(false);

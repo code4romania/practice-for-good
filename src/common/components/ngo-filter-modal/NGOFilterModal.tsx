@@ -12,17 +12,17 @@ import DatePicker from '../date-picker/DatePicker';
 import MultiSelect from '../select/Select';
 import { useTranslation } from 'react-i18next';
 
-interface FilterModalProps {
+interface PracticeProgramFilterModalProps {
   filters: any,
   onClose: () => void;
   onConfirm: (e: any) => void;
 }
 
-const FilterModal = ({
+const NGOFilterModal = ({
   filters,
   onClose,
   onConfirm,
-}: FilterModalProps) => {
+}: PracticeProgramFilterModalProps) => {
   const { t } = useTranslation();
   const [searchLocationTerm, seSearchtLocationTerm] = useState('');
   const { cities, domains, faculties } = useNomenclature();
@@ -108,71 +108,6 @@ const FilterModal = ({
                         }}
                       />
                       <Controller
-                        key={PracticeProgramsSearchConfig.faculties.key}
-                        name={PracticeProgramsSearchConfig.faculties.key}
-                        rules={PracticeProgramsSearchConfig.faculties.rules}
-                        control={control}
-                        render={({ field: { onChange, value } }) => {
-                          return (
-                            <MultiSelect
-                              id="programs-search-faculties"
-                              value={value}
-                              isMulti={true}
-                              isClearable={false}
-                              placeholder={PracticeProgramsSearchConfig.faculties.placeholder}
-                              onChange={onChange}
-                              options={faculties.map(mapItemToSelect)}
-                            />
-                          );
-                        }}
-                      />
-                      <Controller
-                        key={PracticeProgramsSearchConfig.start.key}
-                        name={PracticeProgramsSearchConfig.start.key}
-                        rules={PracticeProgramsSearchConfig.start.rules}
-                        control={control}
-                        render={({ field: { onChange, value } }) => {
-                          return (<DatePicker
-                            defaultValue={value}
-                            onChange={onChange}
-                            placeholder={PracticeProgramsSearchConfig.start.placeholder}
-                          />
-                          )
-                        }} />
-                      <Controller
-                        key={PracticeProgramsSearchConfig.end.key}
-                        name={PracticeProgramsSearchConfig.end.key}
-                        rules={PracticeProgramsSearchConfig.end.rules}
-                        control={control}
-                        render={({ field: { onChange, value } }) => {
-                          return (<DatePicker
-                            defaultValue={value}
-                            onChange={onChange}
-                            placeholder={PracticeProgramsSearchConfig.end.placeholder}
-                          />
-                          )
-                        }}
-                      />
-                      <Controller
-                        key={PracticeProgramsSearchConfig.workingHours.key}
-                        name={PracticeProgramsSearchConfig.workingHours.key}
-                        rules={PracticeProgramsSearchConfig.workingHours.rules}
-                        control={control}
-                        render={({ field: { onChange, value } }) => {
-                          return (
-                            <MultiSelect
-                              id="create-organization-workingHours"
-                              value={value}
-                              isClearable={false}
-                              isMulti={false}
-                              onChange={onChange}
-                              placeholder={PracticeProgramsSearchConfig.workingHours.config.placeholder}
-                              options={PracticeProgramsSearchConfig.workingHours.config.collection}
-                            />
-                          );
-                        }}
-                      />
-                      <Controller
                         key={PracticeProgramsSearchConfig.domains.key}
                         name={PracticeProgramsSearchConfig.domains.key}
                         rules={PracticeProgramsSearchConfig.domains.rules}
@@ -212,4 +147,4 @@ const FilterModal = ({
   );
 };
 
-export default FilterModal;
+export default NGOFilterModal;

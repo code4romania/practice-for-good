@@ -20,7 +20,7 @@ export interface MultiSelectConfig {
 }
 
 const MultiValue = ({ getValue, index }: any) =>
-  !index ? <p>{getValue().length} {t('search:selected')}</p> : <p></p>;
+  !index ? <p>{getValue().length} {t('practice_programs_search:selected')}</p> : <p></p>;
 
 const MultiSelect = ({
   placeholder,

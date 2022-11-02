@@ -5,6 +5,8 @@
   padding: 8px;
   height: 56px;
   line-height: 1rem;
+ 
+  
 }
 
 .reactselect__option--is-selected {
@@ -15,6 +17,11 @@
   
   .reactselect__menu {
     width: 30rem!important;
+  }
+
+  .reactselect__control { 
+    font-size: 1.25rem!important;
+    font-family: 'TitilliumWeb-Regular'!important
   }
 }
 
@@ -31,6 +38,11 @@
   display: flex!important;
   color: white;
   align-items: center;
+  font-family: 'TitilliumWeb-Regular'!important;
+}
+.reactselect__input-container {
+  margin: 0!important;
+  padding: 0!important;
 }
 
 .reactselect__multi-value__label {
@@ -39,6 +51,7 @@
   color: white!important;
   font-weight: bold !important;
   max-width: 7rem;
+  font-family: 'TitilliumWeb-Regular'!important;
 }
 
 .reactselect__input-container input[type='text']:focus {
@@ -66,6 +79,7 @@
 .reactselect__menu {
   border: 1px solid #6B7280;
   border-radius: 0px!important;
+  font-family: 'TitilliumWeb-Regular'!important;
 }
 
 .reactselect__option:hover {
