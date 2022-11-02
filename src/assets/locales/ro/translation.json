@@ -1,5 +1,10 @@
 {
-  "common": { "greeting": "buna" },
+  "common": {
+    "greeting": "buna",
+    "loading": "Se incarca...",
+    "no_results": "Nu exista rezultate pentru criteriile de cautare selectate",
+    "end_of_list": "Nu mai sunt date de afisat"
+  },
   "menu": {
     "home": "Acasa",
     "about": "Despre Practice for Good",
@@ -90,7 +95,10 @@
     "many_programs_title": "programe de practică",
     "no_programs": "Nu au fost găsite programe de practică",
     "action": "Detalii",
-    "deadline": "Aplică până la"
+    "deadline": "Aplică până la",
+    "errors": {
+      "search": "Eroare la incarcarea programelor de practica"
+    }
   },
   "contact": {
     "form": {

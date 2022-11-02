@@ -1,5 +1,6 @@
-import { PaginatedEntity } from "../../common/interfaces/PaginatedEntity.interface";
-import API from "../API";
+import { ISelectData } from '../../common/helpers/Nomenclature.helper';
+import { PaginatedEntity } from '../../common/interfaces/PaginatedEntity.interface';
+import API from '../API';
 
 export const searchPracticePrograms = async (
   limit: number,
@@ -7,7 +8,7 @@ export const searchPracticePrograms = async (
   search?: string,
   locationId?: number,
   faculties?: number[],
-  workingHours?: string,
+  workingHours?: ISelectData,
   domains?: number[],
   start?: string,
   end?: string,
@@ -18,11 +19,13 @@ export const searchPracticePrograms = async (
 
   if (locationId) requestUrl = `${requestUrl}&locationId=${locationId}`;
 
-  if (faculties) requestUrl = `${requestUrl}&${faculties.map(f => `faculties[]=${f}`).join('&')}`;
+  if (faculties && faculties.length > 0)
+    requestUrl = `${requestUrl}&${faculties.map((f) => `faculties[]=${f}`).join('&')}`;
 
-  if (workingHours) requestUrl = `${requestUrl}&workingHours=${workingHours}`;
+  if (workingHours) requestUrl = `${requestUrl}&workingHours=${workingHours.value}`;
 
-  if (domains) requestUrl = `${requestUrl}&${domains.map(f => `domains[]=${f}`).join('&')}`;
+  if (domains && domains?.length > 0)
+    requestUrl = `${requestUrl}&${domains.map((f) => `domains[]=${f}`).join('&')}`;
 
   if (start) requestUrl = `${requestUrl}&start=${start}`;
 

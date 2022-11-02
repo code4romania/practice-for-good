@@ -1,6 +1,8 @@
-import useStore from "../Store";
+import useStore from '../Store';
 
 export const usePracticePrograms = () => {
-  const practicePrograms = useStore((state) => state.practicePrograms);
-  return { practicePrograms };
+  const practicePrograms = useStore((state) => state.practicePrograms.items);
+  const filters = useStore((state) => state.practicePrograms.filters);
+  const meta = useStore((state) => state.practicePrograms.meta);
+  return { practicePrograms, filters, meta };
 };
