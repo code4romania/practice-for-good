@@ -1,5 +1,10 @@
 {
-  "common": { "greeting": "buna", "loading": "Se incarca..." },
+  "common": {
+    "greeting": "buna",
+    "loading": "Se incarca...",
+    "no_results": "Nu exista rezultate pentru criteriile de cautare selectate",
+    "end_of_list": "Nu mai sunt date de afisat"
+  },
   "menu": {
     "home": "Acasa",
     "about": "Despre Practice for Good",

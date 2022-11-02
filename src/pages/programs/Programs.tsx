@@ -6,8 +6,8 @@ import { Virtuoso } from 'react-virtuoso';
 import ProgramItem from './components/ProgramItem';
 import useStore from '../../store/Store';
 import { usePracticeProgramsQuery } from '../../services/practice-programs/PracticePrograms.queries';
-import Loading from '../../common/components/loading/Loading';
 import NoData from '../../common/components/no-data/NoData';
+import InfiniteScrollFooter from '../../common/components/infinite-scroll-footer/InfiniteScrollFooter';
 
 const Programs = () => {
   const { t } = useTranslation('practice_programs');
@@ -31,9 +31,11 @@ const Programs = () => {
           <NoData>{t('errors.search')}</NoData>
         ) : (
           <div className="flex flex-col w-full lg:px-60 px-10 pt-10">
-            <p className="title text-center">{`${total} ${
-              total > 1 ? t('many_programs_title') : t('one_program_title')
-            }`}</p>
+            {programs.length !== 0 && !isLoading && (
+              <p className="title text-center">{`${total} ${
+                total > 1 ? t('many_programs_title') : t('one_program_title')
+              }`}</p>
+            )}
             <div className="mb-[10rem]">
               <Virtuoso
                 useWindowScroll
@@ -44,7 +46,13 @@ const Programs = () => {
                 data={programs}
                 itemContent={(index, program) => <ProgramItem key={index} program={program} />}
                 components={{
-                  Footer: () => (isLoading ? <Loading /> : <></>),
+                  Footer: () => (
+                    <InfiniteScrollFooter
+                      isLoading={isLoading}
+                      hasNoData={programs.length === 0}
+                      hasReachedTheEnd={programs.length === total}
+                    />
+                  ),
                 }}
               />
             </div>
