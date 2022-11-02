@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { classNames } from '../../helpers/Tailwind.helper';
 import logo from './../../../assets/images/logo.svg';
 import { MENU_ROUTES } from '../../constants/Menu.constants';
-import { XIcon } from '@heroicons/react/solid';
+import { RefreshIcon, XIcon } from '@heroicons/react/solid';
 import { useTranslation } from 'react-i18next';
 import { windowOpener } from '../../helpers/navigation.helper';
 
@@ -40,11 +40,11 @@ export default function SlidingMenu({ isOpen, setSlidingMenuOpen }: { isOpen: bo
               <Transition.Child
                 as={Fragment}
                 enter="transform transition ease-in-out duration-500 sm:duration-700"
-                enterFrom="translate-x-[-24rem]"
+                enterFrom="translate-x-[-100vw]"
                 enterTo="translate-x-0"
                 leave="transform transition ease-in-out duration-500 sm:duration-700"
                 leaveFrom="translate-x-0"
-                leaveTo="translate-x-[-24rem]"
+                leaveTo="translate-x-[-100vw]"
               >
                 <Dialog.Panel className="pointer-events-auto h-full  overflow-y-scroll w-full bg-white p-6 pt-0">
                   <Transition.Child

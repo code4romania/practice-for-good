@@ -23,7 +23,7 @@ const Header = ({ openSlidingMenu }: { openSlidingMenu?: any }) => {
             <img src={logo} alt="Code 4 Romania - ONG Hub" className="sm:h-full sm:w-full h-10" />
           </div>
           <div className="flex gap-4 items-center">
-            <div className="gap-6 hidden sm:flex">
+            <div className="gap-6 hidden lg:flex">
               {MENU_ROUTES.map((route) => (
                 <a className="text-black menu-title" key={route.id} href={route.href}>
                   {route.name}
@@ -32,13 +32,13 @@ const Header = ({ openSlidingMenu }: { openSlidingMenu?: any }) => {
             </div>
             <div className='lg:pl-8 block'>
               <button
-                className="yellow-button sm:flex hidden w-12 menu-title"
+                className="yellow-button lg:flex hidden w-12 menu-title"
                 onClick={() => windowOpener('https://code4.ro/ro/doneaza')}
               >
                 {t('donate')}
               </button>
             </div>
-            <div className="flex sm:hidden items-center">
+            <div className="flex lg:hidden items-center">
               <button
                 className="flex items-center gap-4 hover:bg-green-tab py-2 px-4 rounded-xl focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500"
                 onClick={() => openSlidingMenu(true)}
