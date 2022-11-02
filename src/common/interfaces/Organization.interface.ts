@@ -8,8 +8,10 @@ export interface Organization {
   name: string;
   shortDescription: string;
   description?: string;
-  email: string;
-  phone: string;
+  contact: {
+    email: string;
+    phone: string;
+  };
   website?: string;
   facebook?: string;
   instagram?: string;

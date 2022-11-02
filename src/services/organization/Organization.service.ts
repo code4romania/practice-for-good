@@ -20,3 +20,7 @@ export const searchOrganizations = async (
     },
   }).then((res) => res.data);
 };
+
+export const getOrganizationWithPracticePrograms = async (organizationId: string): Promise<any> => {
+  return API.get(`organization/${organizationId}/practice-program`).then((res) => res.data);
+};

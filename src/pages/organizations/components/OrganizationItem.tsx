@@ -1,10 +1,13 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
+import { useNavigate } from 'react-router-dom';
 import Card from '../../../common/components/card/Card';
 import { OrganizationFlat } from '../../../common/interfaces/OrganizationFlat.interface';
 
 const OrganizationItem = ({ organization }: { organization: OrganizationFlat }) => {
   const { t } = useTranslation('organizations');
+  const navigate = useNavigate();
+
   return (
     <div className="mt-10">
       <Card>
@@ -24,7 +27,7 @@ const OrganizationItem = ({ organization }: { organization: OrganizationFlat }) 
           </div>
           <button
             className="yellow-button w-full mt-auto"
-            onClick={() => console.log('Not yet implemented')}
+            onClick={() => navigate(`${organization.id}`)}
           >
             {t('action')}
           </button>
