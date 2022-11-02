@@ -5,6 +5,7 @@ import commitGlobalLogo from './../../../assets/images/commit-global-logo-black.
 import { MenuIcon } from '@heroicons/react/outline';
 import { MENU_ROUTES } from '../../constants/Menu.constants';
 import { useTranslation } from 'react-i18next';
+import { windowOpener } from '../../helpers/navigation.helper';
 
 const Header = ({ openSlidingMenu }: { openSlidingMenu?: any }) => {
   const { t } = useTranslation('header');
@@ -21,13 +22,21 @@ const Header = ({ openSlidingMenu }: { openSlidingMenu?: any }) => {
           <div className="flex items-center">
             <img src={logo} alt="Code 4 Romania - ONG Hub" className="sm:h-full sm:w-full h-10" />
           </div>
-          <div className="flex gap-4">
+          <div className="flex gap-4 items-center">
             <div className="gap-6 hidden sm:flex">
               {MENU_ROUTES.map((route) => (
                 <a className="text-black menu-title" key={route.id} href={route.href}>
                   {route.name}
                 </a>
               ))}
+            </div>
+            <div className='lg:pl-8 block'>
+              <button
+                className="yellow-button sm:flex hidden w-12 menu-title"
+                onClick={() => windowOpener('https://code4.ro/ro/doneaza')}
+              >
+                {t('donate')}
+              </button>
             </div>
             <div className="flex sm:hidden items-center">
               <button

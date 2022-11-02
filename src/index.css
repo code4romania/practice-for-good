@@ -59,11 +59,15 @@
   }
 
   .menu-title {
-    @apply font-titilliumBold md:text-lg text-sm text-gray-900;
+    @apply font-titilliumBold md:text-lg text-sm text-gray-900 leading-3;
+  }
+
+  .side-menu-title {
+    @apply font-titilliumBold text-lg text-gray-900 leading-3;
   }
 
   .footer-title {
-    @apply font-titilliumBold text-base text-yellow-1000
+    @apply font-titilliumBold text-base text-yellow-1000 
   }
 
   .footer-text {
@@ -71,7 +75,7 @@
   }
 
   .footer-url {
-    @apply footer-text hover:underline
+    @apply footer-text hover:underline cursor-pointer
   }
 
   
