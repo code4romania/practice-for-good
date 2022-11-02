@@ -1,9 +1,9 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import Card from '../../../common/components/card/Card';
-import { Organization } from '../../../common/interfaces/Organization.interface';
+import { OrganizationFlat } from '../../../common/interfaces/OrganizationFlat.interface';
 
-const OrganizationItem = ({ organization }: { organization: Organization }) => {
+const OrganizationItem = ({ organization }: { organization: OrganizationFlat }) => {
   const { t } = useTranslation('organizations');
   return (
     <Card>
@@ -19,7 +19,7 @@ const OrganizationItem = ({ organization }: { organization: Organization }) => {
         </div>
         <div className="flex flex-col gap-y-5">
           <p className="subtitle">{organization.name}</p>
-          <p className="article card-text-overflow">{organization.shortDescription}</p>
+          <p className="article card-text-overflow">{organization.description}</p>
         </div>
         <button
           className="yellow-button w-full mt-auto"

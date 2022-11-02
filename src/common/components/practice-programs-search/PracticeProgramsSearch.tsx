@@ -33,8 +33,10 @@ const PracticeProgramsSearch = (props: PracticeProgramsSearchProps) => {
   const [searchLocationTerm, seSearchtLocationTerm] = useState('');
   const [filtersCount, setFiltersCount] = useState(0);
   const [filters, setFilters] = useState<any>();
+
+  // store hooks
   const { cities, domains, faculties } = useNomenclature();
-  const { updateFilters } = useStore();
+  const { updatePracticeProgramsFilters } = useStore();
   const { filters: activeFilters } = usePracticePrograms();
 
   const {
@@ -58,7 +60,7 @@ const PracticeProgramsSearch = (props: PracticeProgramsSearchProps) => {
 
   const search = (data: any) => {
     setFilters(data);
-    updateFilters(
+    updatePracticeProgramsFilters(
       data.search,
       data.locationId?.value,
       data.faculties?.map(mapSelectToValue),

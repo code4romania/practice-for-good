@@ -1,36 +1,31 @@
-import { LocationMarkerIcon, SearchIcon } from "@heroicons/react/solid";
-import i18n from "../../../configs/i18n";
-import { WorkingHours } from "../../../enums/WorkingHours.enum";
-import IconAddon from "../../icon-addon/IconAddon";
-
+import { LocationMarkerIcon, SearchIcon } from '@heroicons/react/solid';
+import i18n from '../../../configs/i18n';
+import IconAddon from '../../icon-addon/IconAddon';
 
 export const NGOSearchConfig: Record<string, any> = {
   search: {
     key: 'search',
-    rules: {
-    },
+    rules: {},
     config: {
       type: 'text',
       label: '',
       helperText: '',
-      placeholder: i18n.t("ngo-search:config.search.placeholder"),
-      addOn: () => IconAddon({ icon: SearchIcon })
+      placeholder: i18n.t('ngo-search:config.search.placeholder'),
+      addOn: () => IconAddon({ icon: SearchIcon }),
     },
   },
   locationId: {
     key: 'locationId',
     label: '',
-    rules: {
-    },
+    rules: {},
     placeholder: i18n.t('ngo-search:config.location.placeholder'),
-    addOn: () => IconAddon({ icon: LocationMarkerIcon })
+    addOn: () => IconAddon({ icon: LocationMarkerIcon }),
   },
   domains: {
     key: 'domains',
-    rules: {
-    },
+    rules: {},
     config: {
-      placeholder: i18n.t('ngo-search:config.domains.placeholder')
+      placeholder: i18n.t('ngo-search:config.domains.placeholder'),
     },
   },
-}
+};
