@@ -1,4 +1,5 @@
 import create from 'zustand';
+import { ISelectData } from '../common/helpers/Nomenclature.helper';
 import { City } from '../common/interfaces/City.interface';
 import { Domain } from '../common/interfaces/Domain.interface';
 import { Faculty } from '../common/interfaces/Faculty.interface';
@@ -16,10 +17,10 @@ interface PracticeProgramsState {
   nextPage: () => void;
   updateFilters: (
     search: string,
-    locationId: number,
-    selectedFaculties: number[],
+    locationId: ISelectData,
+    selectedFaculties: ISelectData[],
     workingHours: any,
-    selectedDomains: number[],
+    selectedDomains: ISelectData[],
     start: Date,
     end: Date,
   ) => void;

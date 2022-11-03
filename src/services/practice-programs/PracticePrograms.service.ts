@@ -1,35 +1,30 @@
 import { ISelectData } from '../../common/helpers/Nomenclature.helper';
 import { PaginatedEntity } from '../../common/interfaces/PaginatedEntity.interface';
+import { IPracticeProgram } from '../../common/interfaces/PracticeProgram.interface';
 import API from '../API';
 
 export const searchPracticePrograms = async (
   limit: number,
   page: number,
   search?: string,
-  locationId?: number,
-  faculties?: number[],
+  locationId?: ISelectData,
+  faculties?: ISelectData[],
   workingHours?: ISelectData,
-  domains?: number[],
+  domains?: ISelectData[],
   start?: string,
   end?: string,
-): Promise<PaginatedEntity<any>> => {
-  let requestUrl = `/practice-program/search?limit=${limit}&page=${page}`;
-
-  if (search) requestUrl = `${requestUrl}&search=${search}`;
-
-  if (locationId) requestUrl = `${requestUrl}&locationId=${locationId}`;
-
-  if (faculties && faculties.length > 0)
-    requestUrl = `${requestUrl}&${faculties.map((f) => `faculties[]=${f}`).join('&')}`;
-
-  if (workingHours) requestUrl = `${requestUrl}&workingHours=${workingHours.value}`;
-
-  if (domains && domains?.length > 0)
-    requestUrl = `${requestUrl}&${domains.map((f) => `domains[]=${f}`).join('&')}`;
-
-  if (start) requestUrl = `${requestUrl}&start=${start}`;
-
-  if (end) requestUrl = `${requestUrl}&end=${end}`;
-
-  return API.get(requestUrl).then((res) => res.data);
+): Promise<PaginatedEntity<IPracticeProgram>> => {
+  return API.get('/practice-program/search', {
+    params: {
+      limit,
+      page,
+      search: search || undefined,
+      locationId: locationId?.value,
+      faculties: faculties?.map((faculty) => faculty.value),
+      domains: domains?.map((domain) => domain.value),
+      workingHours: workingHours?.value,
+      start,
+      end,
+    },
+  }).then((res) => res.data);
 };
