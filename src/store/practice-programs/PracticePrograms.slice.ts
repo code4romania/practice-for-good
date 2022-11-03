@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { OrderDirection } from '../../common/enums/OrderDirection.enum';
+import { ISelectData } from '../../common/helpers/Nomenclature.helper';
 import { PaginatedEntity } from '../../common/interfaces/PaginatedEntity.interface';
 import { IPracticeProgram } from '../../common/interfaces/PracticeProgram.interface';
 
@@ -47,10 +48,10 @@ export const practiceProgramsSlice = (set: any) => ({
   },
   updatePracticeProgramsFilters: (
     search: string,
-    locationId: number,
-    faculties: number[],
-    workingHours: any,
-    domains: number[],
+    locationId: ISelectData,
+    faculties: ISelectData[],
+    workingHours: ISelectData,
+    domains: ISelectData[],
     start: Date,
     end: Date,
   ) => {

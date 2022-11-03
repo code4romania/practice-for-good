@@ -18,10 +18,10 @@ interface PracticeProgramsState {
   nextPagePracticePrograms: () => void;
   updatePracticeProgramsFilters: (
     search: string,
-    locationId: number,
-    selectedFaculties: number[],
+    locationId: ISelectData,
+    selectedFaculties: ISelectData[],
     workingHours: any,
-    selectedDomains: number[],
+    selectedDomains: ISelectData[],
     start: Date,
     end: Date,
   ) => void;

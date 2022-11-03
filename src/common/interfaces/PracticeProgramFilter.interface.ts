@@ -2,10 +2,10 @@ import { ISelectData } from '../helpers/Nomenclature.helper';
 
 export interface PracticeProgramFilter {
   search?: string;
-  locationId?: number;
-  faculties?: number[];
+  locationId?: ISelectData;
+  faculties?: ISelectData[];
   workingHours?: ISelectData;
-  domains?: number[];
+  domains?: ISelectData[];
   start?: string;
   end?: string;
 }
