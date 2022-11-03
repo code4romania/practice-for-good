@@ -7,7 +7,6 @@ import MultiSelect from '../select/Select';
 import ServerSelect from '../server-select/ServerSelect';
 import { PracticeProgramsSearchConfig } from './configs/PracticeProgramsSearch.config';
 import { AdjustmentsIcon } from '@heroicons/react/outline';
-import FilterModal from '../filter-modal/FilterModal';
 import { useNomenclature } from '../../../store/nomenclatures/Nomenclatures.selectors';
 import { mapItemToSelect, mapSelectToValue } from '../../helpers/Nomenclature.helper';
 import { useTranslation } from 'react-i18next';
@@ -19,6 +18,7 @@ import {
 import ShapeWrapper from '../shape-wrapper/ShapeWrapper';
 import useStore from '../../../store/Store';
 import { usePracticePrograms } from '../../../store/Selectors';
+import PracticeProgramFilterModal from '../practice-program-filter-modal/PracticeProgramFilterModal';
 
 interface PracticeProgramsSearchProps {
   showFilters: boolean;
@@ -275,7 +275,7 @@ const PracticeProgramsSearch = (props: PracticeProgramsSearchProps) => {
           </div>
         </div>
         {isFilterModalOpen && (
-          <FilterModal
+          <PracticeProgramFilterModal
             filters={filters}
             onClose={() => {
               setFilterModalOpen(false);

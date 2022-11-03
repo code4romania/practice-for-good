@@ -12,7 +12,28 @@
     "organizations": "ONG-uri",
     "contact": "Contact"
   },
-  "search": {
+  "header": {
+    "commit_global_solution": "O solutie Commit Global.",
+    "learn_more": "Află mai multe",
+    "donate": "DONEAZĂ"
+  },
+  "footer": {
+    "urls": "Link-uri utile",
+    "donate": "Donează",
+    "about": "Despre proiect",
+    "source_code": "Codul sursă",
+    "info": "Informații legale",
+    "privacy_policy": "Politică de confidențialitate",
+    "terms": "Termeni și condiții",
+    "copyright_commit": "Commit Global.",
+    "about_ngo": "Organizație neguvernamentală independentă, neafiliată politic și apolitică."
+  },
+  "sliding_menu": {
+    "donate": "Donează",
+    "how": "Cum adaugi serviciile organizației tale?",
+    "learn_more": "Află mai multe"
+  },
+  "practice_programs_search": {
     "title": "Programe de practica la ONG-uri din România",
     "filters": "Filtre",
     "selected": "selectate",
@@ -37,6 +58,25 @@
       },
       "workingHours": {
         "placeholder": "Numar ore"
+      },
+      "domains": {
+        "placeholder": "Orice domeniu"
+      }
+    }
+  },
+  "ngo-search": {
+    "title": "Caută organizații",
+    "filters": "Filtre",
+    "selected": "selectate",
+    "searchWord": "Cauta",
+    "config": {
+      "search": {
+        "max": "Cautarea nu poate avea mai mult de 50 de caractere",
+        "min": "Cautarea nu poate avea mai putin de 3 caractere",
+        "placeholder": "Cauta ong sau program..."
+      },
+      "location": {
+        "placeholder": "Toata Romania"
       },
       "domains": {
         "placeholder": "Orice domeniu"

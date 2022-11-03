@@ -2,10 +2,12 @@ import create from 'zustand';
 import { City } from '../common/interfaces/City.interface';
 import { Domain } from '../common/interfaces/Domain.interface';
 import { Faculty } from '../common/interfaces/Faculty.interface';
+import { OrganizationFlat } from '../common/interfaces/OrganizationFlat.interface';
 import { PaginatedEntity } from '../common/interfaces/PaginatedEntity.interface';
 import { IPracticeProgram } from '../common/interfaces/PracticeProgram.interface';
 import { PracticeProgramFilter } from '../common/interfaces/PracticeProgramFilter.interface';
 import { nomenclatureSlice } from './nomenclatures/Nomenclatures.slice';
+import { organizationsSlice } from './organizations/Organizations.slice';
 import { practiceProgramsSlice } from './practice-programs/PracticePrograms.slice';
 
 interface PracticeProgramsState {
@@ -23,6 +25,11 @@ interface PracticeProgramsState {
   ) => void;
 }
 
+interface OrganizationsState {
+  organizations: PaginatedEntity<OrganizationFlat>;
+  setOrganizations: (organizations: PaginatedEntity<OrganizationFlat>) => void;
+}
+
 interface NomenclatureState {
   cities: City[];
   domains: Domain[];
@@ -32,9 +39,12 @@ interface NomenclatureState {
   setFaculties: (faculties: Faculty[]) => void;
 }
 
-const useStore = create<PracticeProgramsState & NomenclatureState>()((set: any) => ({
-  ...practiceProgramsSlice(set),
-  ...nomenclatureSlice(set),
-}));
+const useStore = create<PracticeProgramsState & NomenclatureState & OrganizationsState>()(
+  (set: any) => ({
+    ...practiceProgramsSlice(set),
+    ...nomenclatureSlice(set),
+    ...organizationsSlice(set),
+  }),
+);
 
 export default useStore;
