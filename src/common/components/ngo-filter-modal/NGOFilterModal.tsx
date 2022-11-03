@@ -13,21 +13,17 @@ import MultiSelect from '../select/Select';
 import { useTranslation } from 'react-i18next';
 
 interface PracticeProgramFilterModalProps {
-  filters: any,
+  filters: any;
   onClose: () => void;
   onConfirm: (e: any) => void;
 }
 
-const NGOFilterModal = ({
-  filters,
-  onClose,
-  onConfirm,
-}: PracticeProgramFilterModalProps) => {
+const NGOFilterModal = ({ filters, onClose, onConfirm }: PracticeProgramFilterModalProps) => {
   const { t } = useTranslation();
   const [searchLocationTerm, seSearchtLocationTerm] = useState('');
   const { cities, domains, faculties } = useNomenclature();
 
-  useCitiesQuery(searchLocationTerm)
+  useCitiesQuery(searchLocationTerm);
 
   const {
     handleSubmit,
@@ -37,20 +33,20 @@ const NGOFilterModal = ({
   } = useForm({
     mode: 'onChange',
     reValidateMode: 'onChange',
-  })
+  });
 
   useEffect(() => {
     reset({ ...filters });
-  }, [filters])
+  }, [filters]);
 
   const loadOptionsLocationSearch = async (searchWord: string) => {
     seSearchtLocationTerm(searchWord);
-    return cities.map(mapItemToSelect)
+    return cities.map(mapItemToSelect);
   };
 
   const onApply = (data: any) => {
     onConfirm(data);
-  }
+  };
 
   return (
     <Transition.Root show={true} as={Fragment}>
@@ -79,14 +75,16 @@ const NGOFilterModal = ({
               leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
             >
               <Dialog.Panel className="relative bg-white px-4 pt-5 pb-4 text-left overflow-hidden shadow-xl transform transition-all h-full w-full">
-                <div className='relative w-full h-full'>
+                <div className="relative w-full h-full">
                   <div className="flex justify-between items-center">
                     <img src={logo} alt="Code 4 Romania - ONG Hub" className="h-16" />
-                    <button onClick={onClose}><XIcon className='w-7 h-7' /></button>
+                    <button onClick={onClose}>
+                      <XIcon className="w-7 h-7" />
+                    </button>
                   </div>
-                  <div className='h-1 bg-gray-200 my-8'></div>
-                  <div className='flex  flex-col w-full justify-between'>
-                    <div className='flex flex-col w-full gap-4'>
+                  <div className="h-1 bg-gray-200 my-8"></div>
+                  <div className="flex  flex-col w-full justify-between">
+                    <div className="flex flex-col w-full gap-4">
                       <Controller
                         key={PracticeProgramsSearchConfig.locationId.key}
                         name={PracticeProgramsSearchConfig.locationId.key}
@@ -130,7 +128,7 @@ const NGOFilterModal = ({
                     <div className="flex flex-col gap-2 w-full absolute bottom-4">
                       <button
                         type="button"
-                        className='flex bg-yellow w-full rounded font-titilliumSemiBold text-xl items-center justify-center p-3'
+                        className="flex bg-yellow w-full rounded font-titilliumSemiBold text-xl items-center justify-center p-3"
                         onClick={handleSubmit(onApply)}
                       >
                         {t('filterModal:apply')}

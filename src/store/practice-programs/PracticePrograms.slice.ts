@@ -1,7 +1,8 @@
-import { OrderDirection } from "../../common/enums/OrderDirection.enum";
-import { PaginatedEntity } from "../../common/interfaces/PaginatedEntity.interface";
-import { IPracticeProgram } from "../../common/interfaces/PracticeProgram.interface";
-
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { OrderDirection } from '../../common/enums/OrderDirection.enum';
+import { ISelectData } from '../../common/helpers/Nomenclature.helper';
+import { PaginatedEntity } from '../../common/interfaces/PaginatedEntity.interface';
+import { IPracticeProgram } from '../../common/interfaces/PracticeProgram.interface';
 
 export const practiceProgramsSlice = (set: any) => ({
   practicePrograms: {
@@ -9,15 +10,69 @@ export const practiceProgramsSlice = (set: any) => ({
     meta: {
       currentPage: 1,
       itemCount: 0,
-      itemsPerPage: 10,
+      itemsPerPage: 5,
       totalItems: 0,
       totalPages: 1,
       orderByColumn: 'id',
       orderDirection: OrderDirection.ASC,
     },
+    filters: {
+      search: '',
+      locationId: undefined,
+      faculties: [],
+      workingHours: undefined,
+      domains: [],
+      start: undefined,
+      end: undefined,
+    },
   },
   setPracticePrograms: (practicePrograms: PaginatedEntity<IPracticeProgram>) => {
-    set({ practicePrograms });
+    set((state: { practicePrograms: PaginatedEntity<IPracticeProgram> }) => ({
+      practicePrograms: {
+        ...state.practicePrograms,
+        meta: practicePrograms.meta,
+        items: [...state.practicePrograms.items, ...practicePrograms.items],
+      },
+    }));
+  },
+  nextPage: () => {
+    set((state: { practicePrograms: PaginatedEntity<IPracticeProgram> }) => ({
+      practicePrograms: {
+        ...state.practicePrograms,
+        meta: {
+          ...state.practicePrograms.meta,
+          currentPage: state.practicePrograms.meta.currentPage + 1,
+        },
+      },
+    }));
+  },
+  updateFilters: (
+    search: string,
+    locationId: ISelectData,
+    faculties: ISelectData[],
+    workingHours: ISelectData,
+    domains: ISelectData[],
+    start: Date,
+    end: Date,
+  ) => {
+    set((state: { practicePrograms: PaginatedEntity<IPracticeProgram> }) => ({
+      practicePrograms: {
+        items: [],
+        meta: {
+          ...state.practicePrograms.meta,
+          currentPage: 1,
+        },
+        filters: {
+          search,
+          locationId,
+          faculties,
+          domains,
+          workingHours,
+          start,
+          end,
+        },
+      },
+    }));
   },
 });
 

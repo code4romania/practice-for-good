@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react';
 import { SearchIcon } from '@heroicons/react/solid';
 import { Controller, useForm } from 'react-hook-form';
 import SearchField from '../search-field/SearchField';
@@ -9,7 +9,11 @@ import { usePracticePrograms } from '../../../store/Selectors';
 import { useNomenclature } from '../../../store/nomenclatures/Nomenclatures.selectors';
 import { mapItemToSelect, mapSelectToValue } from '../../helpers/Nomenclature.helper';
 import { useTranslation } from 'react-i18next';
-import { useCitiesQuery, useDomainsQuery, useFacultiesQuery } from '../../../services/nomenclature/Nomeclature.queries';
+import {
+  useCitiesQuery,
+  useDomainsQuery,
+  useFacultiesQuery,
+} from '../../../services/nomenclature/Nomeclature.queries';
 import { NGOSearchConfig } from './configs/NGOSearch.config';
 import NGOFilterModal from '../ngo-filter-modal/NGOFilterModal';
 import { useOrganizationQuery } from '../../../services/organization/Organization.queries';
@@ -28,7 +32,7 @@ const NGOSearch = (props: { showFilters: boolean }) => {
   const [page, setPage] = useState<number>();
   const [rowsPerPage, setRowsPerPage] = useState<number>();
 
-  const { practicePrograms } = usePracticePrograms();
+  const { meta } = usePracticePrograms();
   const { cities, domains } = useNomenclature();
 
   useOrganizationQuery(
@@ -47,25 +51,25 @@ const NGOSearch = (props: { showFilters: boolean }) => {
   } = useForm({
     mode: 'onChange',
     reValidateMode: 'onChange',
-  })
+  });
 
   // Queries
-  useCitiesQuery(searchLocationTerm)
+  useCitiesQuery(searchLocationTerm);
   useDomainsQuery();
   useFacultiesQuery();
 
   const search = (data: any) => {
     setFilters(data);
-    setPage(practicePrograms.meta.currentPage);
-    setRowsPerPage(practicePrograms.meta.itemsPerPage);
+    setPage(meta.currentPage);
+    setRowsPerPage(meta.itemsPerPage);
     setSearchTerm(data.search);
     setLocationId(data.locationId?.value);
     setSelectedDomains(data.domains?.map(mapSelectToValue));
-  }
+  };
 
   const loadOptionsLocationSearch = async (searchWord: string) => {
     seSearchtLocationTerm(searchWord);
-    return cities.map(mapItemToSelect)
+    return cities.map(mapItemToSelect);
   };
 
   const receiveFiltersFromModal = (e: any) => {
@@ -73,18 +77,17 @@ const NGOSearch = (props: { showFilters: boolean }) => {
     setFilters(e);
     reset(e);
     handleSubmit(search)();
-  }
+  };
 
   useEffect(() => {
-    setFiltersCount([locationId,
-      selectedDomains].filter(Boolean).length)
-  }, [locationId, selectedDomains])
+    setFiltersCount([locationId, selectedDomains].filter(Boolean).length);
+  }, [locationId, selectedDomains]);
 
   return (
-    <div className='bg-yellow w-full flex flex-col items-center px-2 sm:px-4 py-10 gap-8'>
-      <p className='title'>{t('ngo-search:title')}</p>
-      <div className='flex flex-col gap-4 max-w-5xl w-full justify-items-center'>
-        <div className='flex w-full items-center h-14'>
+    <div className="bg-yellow w-full flex flex-col items-center px-2 sm:px-4 py-10 gap-8">
+      <p className="title">{t('ngo-search:title')}</p>
+      <div className="flex flex-col gap-4 max-w-5xl w-full justify-items-center">
+        <div className="flex w-full items-center h-14">
           <Controller
             key={NGOSearchConfig.search.key}
             name={NGOSearchConfig.search.key}
@@ -111,11 +114,11 @@ const NGOSearch = (props: { showFilters: boolean }) => {
               className="text-sm sm:text-base sm:hidden text-yellow bg-black  px-4 flex items-center justify-center h-full"
               onClick={handleSubmit(search)}
             >
-              <SearchIcon className='w-5 h-5' />
+              <SearchIcon className="w-5 h-5" />
             </button>
           )}
 
-          <div className='w-1/3 h-14 hidden sm:flex'>
+          <div className="w-1/3 h-14 hidden sm:flex">
             <Controller
               key={NGOSearchConfig.locationId.key}
               name={NGOSearchConfig.locationId.key}
@@ -139,25 +142,29 @@ const NGOSearch = (props: { showFilters: boolean }) => {
           </div>
         </div>
         {props.showFilters && (
-          <div className='sm:hidden flex justify-flex-start h-14 items-center bg-white px-4 gap-2 rounded-md shadow w-fit cursor-pointer active:bg-gray-200'
-            onClick={() => setFilterModalOpen(true)}>
+          <div
+            className="sm:hidden flex justify-flex-start h-14 items-center bg-white px-4 gap-2 rounded-md shadow w-fit cursor-pointer active:bg-gray-200"
+            onClick={() => setFilterModalOpen(true)}
+          >
             <p
               id="create-organization-activity__button-back"
               className="text-sm sm:text-base  h-full flex items-center"
             >
               {t('practice_programs_search:filters')}
             </p>
-            <AdjustmentsIcon className='w-5 h-5' />
-            {filtersCount > 0 && <p
-              id="create-organization-activity__button-back"
-              className="text-base rounded-full bg-yellow p-2 flex items-center w-10 items-center justify-center"
-            >
-              {filtersCount}
-            </p>}
+            <AdjustmentsIcon className="w-5 h-5" />
+            {filtersCount > 0 && (
+              <p
+                id="create-organization-activity__button-back"
+                className="text-base rounded-full bg-yellow p-2 flex items-center w-10 items-center justify-center"
+              >
+                {filtersCount}
+              </p>
+            )}
           </div>
         )}
 
-        <div className='hidden sm:flex w-full h-14 items-center h-14'>
+        <div className="hidden sm:flex w-full h-14 items-center h-14">
           <Controller
             key={NGOSearchConfig.domains.key}
             name={NGOSearchConfig.domains.key}
@@ -190,11 +197,16 @@ const NGOSearch = (props: { showFilters: boolean }) => {
       {isFilterModalOpen && (
         <NGOFilterModal
           filters={filters}
-          onClose={() => { setFilterModalOpen(false) }}
-          onConfirm={(e: any) => { receiveFiltersFromModal(e) }}
+          onClose={() => {
+            setFilterModalOpen(false);
+          }}
+          onConfirm={(e: any) => {
+            receiveFiltersFromModal(e);
+          }}
         />
       )}
-    </div>)
-}
+    </div>
+  );
+};
 
 export default NGOSearch;
