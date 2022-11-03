@@ -22,7 +22,7 @@ const PracticeProgramFilterModal = ({ onClose }: PracticeProgramFilterModalProps
   const { t } = useTranslation();
   const [searchLocationTerm, seSearchtLocationTerm] = useState('');
   const { cities, domains, faculties } = useNomenclature();
-  const { updateFilters } = useStore();
+  const { updatePracticeProgramsFilters } = useStore();
   const { filters } = usePracticePrograms();
 
   useCitiesQuery(searchLocationTerm);
@@ -42,7 +42,7 @@ const PracticeProgramFilterModal = ({ onClose }: PracticeProgramFilterModalProps
   };
 
   const onApply = (data: any) => {
-    updateFilters(
+    updatePracticeProgramsFilters(
       filters.search || '',
       data.locationId,
       data.faculties,
