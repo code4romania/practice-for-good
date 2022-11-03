@@ -32,8 +32,6 @@ const PracticeProgramsSearch = (props: PracticeProgramsSearchProps) => {
   const [isFilterModalOpen, setFilterModalOpen] = useState(false);
   const [searchLocationTerm, seSearchtLocationTerm] = useState('');
   const [filtersCount, setFiltersCount] = useState(0);
-
-  // store hooks
   const { cities, domains, faculties } = useNomenclature();
   const { updatePracticeProgramsFilters } = useStore();
   const { filters: activeFilters } = usePracticePrograms();
@@ -264,7 +262,7 @@ const PracticeProgramsSearch = (props: PracticeProgramsSearchProps) => {
               className="text-sm sm:text-base text-yellow bg-black w-full h-full"
               onClick={handleSubmit(search)}
             >
-              {t('search:searchWord')}
+              {t('searchWord')}
             </button>
           </div>
         </div>
