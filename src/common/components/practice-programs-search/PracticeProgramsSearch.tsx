@@ -8,7 +8,7 @@ import ServerSelect from '../server-select/ServerSelect';
 import { PracticeProgramsSearchConfig } from './configs/PracticeProgramsSearch.config';
 import { AdjustmentsIcon } from '@heroicons/react/outline';
 import { useNomenclature } from '../../../store/nomenclatures/Nomenclatures.selectors';
-import { mapItemToSelect, mapSelectToValue } from '../../helpers/Nomenclature.helper';
+import { mapItemToSelect } from '../../helpers/Nomenclature.helper';
 import { useTranslation } from 'react-i18next';
 import {
   useCitiesQuery,
@@ -28,13 +28,10 @@ interface PracticeProgramsSearchProps {
 }
 
 const PracticeProgramsSearch = (props: PracticeProgramsSearchProps) => {
-  const { t } = useTranslation();
+  const { t } = useTranslation('practice_programs_search');
   const [isFilterModalOpen, setFilterModalOpen] = useState(false);
   const [searchLocationTerm, seSearchtLocationTerm] = useState('');
   const [filtersCount, setFiltersCount] = useState(0);
-  const [filters, setFilters] = useState<any>();
-
-  // store hooks
   const { cities, domains, faculties } = useNomenclature();
   const { updatePracticeProgramsFilters } = useStore();
   const { filters: activeFilters } = usePracticePrograms();
@@ -59,13 +56,12 @@ const PracticeProgramsSearch = (props: PracticeProgramsSearchProps) => {
   }, []);
 
   const search = (data: any) => {
-    setFilters(data);
     updatePracticeProgramsFilters(
       data.search,
-      data.locationId?.value,
-      data.faculties?.map(mapSelectToValue),
+      data.locationId,
+      data.faculties,
       data.workingHours,
-      data.domains?.map(mapSelectToValue),
+      data.domains,
       data.start,
       data.end,
     );
@@ -77,29 +73,23 @@ const PracticeProgramsSearch = (props: PracticeProgramsSearchProps) => {
     return cities.map(mapItemToSelect);
   };
 
-  const receiveFiltersFromModal = (e: any) => {
-    setFilterModalOpen(false);
-    setFilters(e);
-    reset(e);
-    handleSubmit(search)();
-  };
-
   useEffect(() => {
     const count = [
       activeFilters.locationId,
-      activeFilters.faculties,
+      activeFilters.faculties?.length,
       activeFilters.workingHours,
-      activeFilters.domains,
+      activeFilters.domains?.length,
       activeFilters.start,
       activeFilters.end,
     ].filter(Boolean).length;
     setFiltersCount(count);
+    reset({ ...activeFilters });
   }, [activeFilters]);
 
   return (
     <>
       <div className="bg-yellow w-full flex flex-col items-center px-2 sm:px-4 py-10 gap-8">
-        <p className="font-titilliumBold sm:text-4xl text-xl  text-black">{t('search:title')}</p>
+        <p className="font-titilliumBold sm:text-4xl text-xl  text-black">{t('title')}</p>
         <div className="flex flex-col gap-4 max-w-5xl w-full justify-items-center">
           <div className="flex w-full items-center h-14">
             <Controller
@@ -126,7 +116,7 @@ const PracticeProgramsSearch = (props: PracticeProgramsSearchProps) => {
               <button
                 type="button"
                 className="text-sm sm:text-base sm:hidden text-yellow bg-black  px-4 flex items-center justify-center h-full"
-                onClick={() => alert('Not now')}
+                onClick={handleSubmit(search)}
               >
                 <SearchIcon className="w-5 h-5" />
               </button>
@@ -164,7 +154,7 @@ const PracticeProgramsSearch = (props: PracticeProgramsSearchProps) => {
                 id="create-organization-activity__button-back"
                 className="text-sm sm:text-base  h-full flex items-center"
               >
-                {t('search:filters')}
+                {t('filters')}
               </p>
               <AdjustmentsIcon className="w-5 h-5" />
               {filtersCount > 0 && (
@@ -272,18 +262,14 @@ const PracticeProgramsSearch = (props: PracticeProgramsSearchProps) => {
               className="text-sm sm:text-base text-yellow bg-black w-full h-full"
               onClick={handleSubmit(search)}
             >
-              {t('search:searchWord')}
+              {t('searchWord')}
             </button>
           </div>
         </div>
         {isFilterModalOpen && (
           <PracticeProgramFilterModal
-            filters={filters}
             onClose={() => {
               setFilterModalOpen(false);
-            }}
-            onConfirm={(e: any) => {
-              receiveFiltersFromModal(e);
             }}
           />
         )}
