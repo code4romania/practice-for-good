@@ -29,6 +29,7 @@ const OrganizationDetails = ({ organization }: OrganizationProps) => {
         </div>
         <div className="flex flex-col gap-y-5">
           <p className="subtitle">{organization.name}</p>
+          <p className="article">{organization.shortDescription}</p>
           <p className="article">{organization.description}</p>
           <div className="flex sm:flex-row flex-col gap-x-2 body-text">
             <p className="text-purple font-titilliumSemiBold">{t('activity_domains')}</p>

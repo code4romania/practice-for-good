@@ -83,14 +83,17 @@
     "one_organization_title": "ONG",
     "many_organizations_title": "ONG-uri",
     "no_organizations": "Nu au fost găsite ONG-uri",
-    "action": "Vezi mai mult"
+    "action": "Vezi mai mult",
+    "errors": {
+      "search": "Eroare la incarcarea ONG-urilor"
+    }
   },
   "organization_details": {
     "activity_domains": "Domenii activitate",
     "contact": "Contact",
     "social_media": "Social media",
     "errors": {
-      "search": "Eroare la incarcarea ONG-urilor"
+      "get": "Eroare la incarcarea organizatiei"
     }
   },
   "practice_programs": {
