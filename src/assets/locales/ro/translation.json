@@ -92,6 +92,7 @@
     "activity_domains": "Domenii activitate",
     "contact": "Contact",
     "social_media": "Social media",
+    "programs_title": "Programe de practica si activitati",
     "errors": {
       "get": "Eroare la incarcarea organizatiei"
     }

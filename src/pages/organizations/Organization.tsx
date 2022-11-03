@@ -23,6 +23,7 @@ const Organization = () => {
           {data && !isLoading && (
             <div className="content">
               <OrganizationDetails organization={data}></OrganizationDetails>
+              <h2 className="subtitle mt-10">{t('programs_title')}</h2>
               <Virtuoso
                 useWindowScroll
                 style={{ height: '100%', marginBottom: '24rem' }}
