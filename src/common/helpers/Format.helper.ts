@@ -3,6 +3,9 @@ import { format } from 'date-fns';
 export const formatDateYear = (value: Date | string | null): string =>
   value ? format(new Date(value), 'dd MMM yyyy') : '';
 
+export const formatDateMonthYear = (value: Date | string): string =>
+  format(new Date(value), 'MMM y');
+
 export const formatDate = (value: Date | string | null): string =>
   value ? format(new Date(value), 'dd MMM') : '';
 

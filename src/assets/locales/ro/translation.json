@@ -119,6 +119,27 @@
     "deadline": "Aplică până la",
     "errors": {
       "search": "Eroare la incarcarea programelor de practica"
+    },
+    "details": {
+      "deadline": "Deadline aplicare",
+      "deadline_unlimited": "nelimitat",
+      "period": "Perioada program",
+      "period_starting_with": "Incepand cu",
+      "working_hours": "Numar de ore",
+      "faculties": "Dedicat studentilor la",
+      "domains": "Domenii",
+      "skills": "Vei invata",
+      "list_error": "Eroare la incarcarea datelor!",
+      "delete_modal": {
+        "title": "Sterge Program Practica",
+        "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry"
+      },
+      "actions": {
+        "apply": "Aplica"
+      },
+      "errors": {
+        "get": "Eroare la incarcarea programului de practica"
+      }
     }
   },
   "contact": {

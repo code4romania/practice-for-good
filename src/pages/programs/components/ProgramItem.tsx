@@ -5,8 +5,11 @@ import Card from '../../../common/components/card/Card';
 import { formatDate, formatDateYear } from '../../../common/helpers/Format.helper';
 import { IPracticeProgram } from '../../../common/interfaces/PracticeProgram.interface';
 import p4g_logo from '../../../assets/images/logo.svg';
+import { useNavigate } from 'react-router-dom';
 
 const ProgramItem = ({ program }: { program: IPracticeProgram }) => {
+  const navigate = useNavigate();
+
   const { t } = useTranslation('practice_programs');
   return (
     <div className="mt-10">
@@ -50,7 +53,7 @@ const ProgramItem = ({ program }: { program: IPracticeProgram }) => {
             <button
               type="button"
               className="font-titilliumSemiBold yellow-button text-center h-fit lg:w-48 w-32 lg:text-base text-xs"
-              onClick={() => console.log('Not yet implemented')}
+              onClick={() => navigate(`/practice-programs/${program.id}`)}
             >
               {`${t('action')}`}
             </button>

@@ -23,4 +23,5 @@ export interface IPracticeProgram {
       name: string;
     };
   };
+  organizationName?: string;
 }

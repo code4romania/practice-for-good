@@ -67,18 +67,20 @@
   }
 
   .footer-title {
-    @apply font-titilliumBold text-base text-yellow-1000 
+    @apply font-titilliumBold text-base text-yellow-1000;
   }
 
   .footer-text {
-    @apply font-titillium text-base text-gray-300
+    @apply font-titillium text-base text-gray-300;
   }
 
   .footer-url {
-    @apply footer-text hover:underline cursor-pointer
+    @apply footer-text hover:underline cursor-pointer;
   }
 
-  
+  .show-more-text {
+    @apply text-blue cursor-pointer underline;
+  }
 
   a {
     @apply text-purple;
