@@ -119,13 +119,14 @@ const Program = () => {
                 </p>
               </div>
               <div className="ml-auto sm:flex sm:flex-col justify-center sm:h-full h-fit items-end gap-y-4 hidden">
-                <button
-                  type="button"
-                  className="font-titilliumSemiBold yellow-button text-center h-fit lg:w-48 w-32 lg:text-base text-xs"
-                  onClick={() => console.log('test me')}
-                >
-                  {`${t('details.actions.apply')}`}
-                </button>
+                <a target="_blank" href={program?.link} rel="noreferrer">
+                  <button
+                    type="button"
+                    className="font-titilliumSemiBold yellow-button text-center h-fit lg:w-48 w-32 lg:text-base text-xs"
+                  >
+                    {`${t('details.actions.apply')}`}
+                  </button>
+                </a>
               </div>
             </div>
             <div className="flex flex-col py-8 xl:flex-row">
@@ -157,13 +158,14 @@ const Program = () => {
               <p>{program?.description}</p>
             </div>
             <div className="ml-auto flex flex-col justify-center h-fit items-center gap-y-4 sm:hidden pt-8 px-8">
-              <button
-                type="button"
-                className="font-titilliumSemiBold yellow-button text-center h-fit w-full lg:text-base text-xs"
-                onClick={() => console.log('test me')}
-              >
-                {`${t('details.actions.apply')}`}
-              </button>
+              <a target="_blank" href={program?.link} rel="noreferrer">
+                <button
+                  type="button"
+                  className="font-titilliumSemiBold yellow-button text-center h-fit w-full lg:text-base text-xs"
+                >
+                  {`${t('details.actions.apply')}`}
+                </button>
+              </a>
             </div>
           </section>
         </Card>
