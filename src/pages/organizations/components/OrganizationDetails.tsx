@@ -14,6 +14,7 @@ interface OrganizationProps {
 
 const OrganizationDetails = ({ organization }: OrganizationProps) => {
   const { t } = useTranslation('organization_details');
+
   return (
     <Card>
       <div className="flex lg:flex-row flex-col gap-x-20 gap-y-10">
@@ -39,15 +40,15 @@ const OrganizationDetails = ({ organization }: OrganizationProps) => {
               <p className="text-purple font-titilliumSemiBold">{t('contact')}</p>
               <div className="flex gap-x-2">
                 <PhoneIcon className="w-4"></PhoneIcon>
-                <p>{organization.phone || '-'}</p>
+                <p>{organization.contact.phone || '-'}</p>
               </div>
               <div className="flex gap-x-2">
                 <MailIcon className="w-4"></MailIcon>
-                <p>{organization.email || '-'}</p>
+                <p>{organization.contact.email || '-'}</p>
               </div>
               <div className="flex gap-x-2">
                 <HomeIcon className="w-4"></HomeIcon>
-                <p>{[organization.city.name, organization.county.name].join(', ') || '-'}</p>
+                <p>{[organization.city, organization.county].join(', ') || '-'}</p>
               </div>
             </div>
             <div className="flex flex-col lg:gap-y-2 gap-y-1 flex-1">
