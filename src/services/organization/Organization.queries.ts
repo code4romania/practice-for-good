@@ -3,7 +3,7 @@ import { OrganizationFlat } from '../../common/interfaces/OrganizationFlat.inter
 import { PaginatedEntity } from '../../common/interfaces/PaginatedEntity.interface';
 import { useOrganizations } from '../../store/Selectors';
 import useStore from '../../store/Store';
-import { searchOrganizations } from './Organization.service';
+import { getOrganizationWithPracticePrograms, searchOrganizations } from './Organization.service';
 
 export const useOrganizationQuery = () => {
   const { setOrganizations } = useStore();
@@ -20,6 +20,17 @@ export const useOrganizationQuery = () => {
         setOrganizations(data);
       },
       enabled: !!(currentPage && itemsPerPage),
+      retry: 0,
+    },
+  );
+};
+
+export const useOrganization = (organizationId: string) => {
+  return useQuery(
+    ['organization', organizationId],
+    () => getOrganizationWithPracticePrograms(organizationId),
+    {
+      enabled: !!organizationId,
       retry: 0,
     },
   );
