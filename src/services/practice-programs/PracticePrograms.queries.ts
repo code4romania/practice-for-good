@@ -3,7 +3,7 @@ import { PaginatedEntity } from '../../common/interfaces/PaginatedEntity.interfa
 import { IPracticeProgram } from '../../common/interfaces/PracticeProgram.interface';
 import { usePracticePrograms } from '../../store/Selectors';
 import useStore from '../../store/Store';
-import { searchPracticePrograms } from './PracticePrograms.service';
+import { getPracticeProgramById, searchPracticePrograms } from './PracticePrograms.service';
 
 export const usePracticeProgramsQuery = () => {
   const { setPracticePrograms } = useStore();
@@ -46,3 +46,6 @@ export const usePracticeProgramsQuery = () => {
     },
   );
 };
+
+export const usePracticeProgram = (id: string) =>
+  useQuery(['practice-program', id], () => getPracticeProgramById(id), { enabled: !!id, retry: 0 });

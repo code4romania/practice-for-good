@@ -7,6 +7,7 @@ import Layout from '../containers/Layout';
 import Contact from '../../pages/contact/Contact';
 import About from '../../pages/about/About';
 import Organization from '../../pages/organizations/Organization';
+import Program from '../../pages/programs/Program';
 
 const Router = () => {
   return (
@@ -18,6 +19,9 @@ const Router = () => {
 
           {/* Practice programs page */}
           <Route path="practice-programs" element={<Programs />}></Route>
+
+          {/* Practice program details */}
+          <Route path="practice-programs/:id" element={<Program />}></Route>
 
           {/* NGO list page */}
           <Route path="organizations" element={<Organizations />}></Route>

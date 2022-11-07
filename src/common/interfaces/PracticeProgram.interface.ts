@@ -6,6 +6,7 @@ import { Skill } from './Skill.interface';
 export interface IPracticeProgram {
   id: number;
   title: string;
+  createdOn: Date;
   deadline: Date | null;
   description: string;
   startDate: Date;
@@ -23,4 +24,5 @@ export interface IPracticeProgram {
       name: string;
     };
   };
+  organizationName?: string;
 }

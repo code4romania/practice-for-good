@@ -28,3 +28,7 @@ export const searchPracticePrograms = async (
     },
   }).then((res) => res.data);
 };
+
+export const getPracticeProgramById = async (id: string): Promise<IPracticeProgram> => {
+  return API.get(`/practice-program/${id}/public`).then((res) => res.data);
+};
