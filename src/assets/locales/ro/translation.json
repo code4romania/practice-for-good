@@ -138,11 +138,6 @@
       "faculties": "Dedicat studentilor la",
       "domains": "Domenii",
       "skills": "Vei invata",
-      "list_error": "Eroare la incarcarea datelor!",
-      "delete_modal": {
-        "title": "Sterge Program Practica",
-        "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry"
-      },
       "actions": {
         "apply": "Aplica"
       },

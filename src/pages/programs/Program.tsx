@@ -112,7 +112,7 @@ const Program = () => {
 
   return (
     <ShapeWrapper>
-      <section className="py-4 px-[.5rem] sm:py-5 sm:px-[4rem] lg:py-10 lg:px-[9rem]">
+      <section className="w-full xl:px-60 px-4 lg:py-20 py-10">
         <Card>
           <section className="divide-y divide-gray-100">
             <div className="flex flex-col sm:flex-row">
