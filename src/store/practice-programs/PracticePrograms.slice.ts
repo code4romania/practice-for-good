@@ -35,7 +35,7 @@ export const practiceProgramsSlice = (set: any) => ({
       },
     }));
   },
-  nextPage: () => {
+  nextPagePracticePrograms: () => {
     set((state: { practicePrograms: PaginatedEntity<IPracticeProgram> }) => ({
       practicePrograms: {
         ...state.practicePrograms,
@@ -46,7 +46,7 @@ export const practiceProgramsSlice = (set: any) => ({
       },
     }));
   },
-  updateFilters: (
+  updatePracticeProgramsFilters: (
     search: string,
     locationId: ISelectData,
     faculties: ISelectData[],

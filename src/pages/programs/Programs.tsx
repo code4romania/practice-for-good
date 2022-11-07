@@ -11,7 +11,7 @@ import InfiniteScrollFooter from '../../common/components/infinite-scroll-footer
 
 const Programs = () => {
   const { t } = useTranslation('practice_programs');
-  const { nextPage } = useStore();
+  const { nextPagePracticePrograms } = useStore();
 
   const {
     practicePrograms: programs,
@@ -21,7 +21,7 @@ const Programs = () => {
   const { isLoading, error, refetch } = usePracticeProgramsQuery();
 
   const loadMore = useCallback(() => {
-    if (total > programs.length) nextPage();
+    if (total > programs.length) nextPagePracticePrograms();
   }, [programs, total]);
 
   return (
