@@ -1,5 +1,5 @@
-import { LocationMarkerIcon } from '@heroicons/react/solid';
-import React from 'react';
+import { CheckIcon, LocationMarkerIcon, ShareIcon } from '@heroicons/react/solid';
+import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useParams } from 'react-router-dom';
 import { formatDate, formatDateMonthYear } from '../../common/helpers/Format.helper';
@@ -9,6 +9,7 @@ import Card from '../../common/components/card/Card';
 import ShapeWrapper from '../../common/components/shape-wrapper/ShapeWrapper';
 import Loading from '../../common/components/loading/Loading';
 import NoData from '../../common/components/no-data/NoData';
+import copy from 'copy-to-clipboard';
 
 interface PracticeProgramContentItemProps {
   label: string;
@@ -51,9 +52,11 @@ const PracticeProgramContentExpandableItem = ({
 
 const Program = () => {
   const { id } = useParams();
+  const [sharedUrl, setSharedUrl] = useState<string>();
+
   const { data: program, error, isLoading } = usePracticeProgram(id as string);
 
-  const { t } = useTranslation('practice_programs');
+  const { t } = useTranslation(['practice_programs', 'common']);
 
   const calculatePeriod = () => {
     if (!program?.startDate) {
@@ -84,6 +87,11 @@ const Program = () => {
 
   const formatSkills = () => {
     return program?.skills.map((skill: { id: number; name: string }) => skill.name).join(', ');
+  };
+
+  const shareUrl = () => {
+    setSharedUrl(window.location.href);
+    copy(window.location.href);
   };
 
   if (isLoading) {
@@ -154,11 +162,11 @@ const Program = () => {
                 <PracticeProgramContentItem label={t('details.skills')} value={formatSkills()} />
               </div>
             </div>
-            <div className="pt-8">
+            <div className="py-8">
               <p>{program?.description}</p>
             </div>
-            <div className="ml-auto flex flex-col justify-center h-fit items-center gap-y-4 sm:hidden pt-8 px-8">
-              <a target="_blank" href={program?.link} rel="noreferrer">
+            <div className="ml-auto flex flex-col justify-center h-fit items-center gap-y-4 sm:hidden py-8 px-8">
+              <a target="_blank" className="w-full" href={program?.link} rel="noreferrer">
                 <button
                   type="button"
                   className="font-titilliumSemiBold yellow-button text-center h-fit w-full lg:text-base text-xs"
@@ -166,6 +174,23 @@ const Program = () => {
                   {`${t('details.actions.apply')}`}
                 </button>
               </a>
+            </div>
+
+            <div className="py-6 flex flex-row justify-between items-center">
+              <p className="text-base text-gray-400">
+                {formatDateMonthYear(program?.createdOn || '')}
+              </p>
+              {sharedUrl ? (
+                <div className="text-base flex flex-row items-center">
+                  <CheckIcon className="w-5 h-5 text-green" />
+                  <span className="text-gray-900 ml-1">{t('shared', { ns: 'common' })}</span>
+                </div>
+              ) : (
+                <div className="text-base flex flex-row items-center" onClick={shareUrl}>
+                  <ShareIcon className="w-5 h-5" />
+                  <span className="text-gray-900 ml-1">{t('share', { ns: 'common' })}</span>
+                </div>
+              )}
             </div>
           </section>
         </Card>

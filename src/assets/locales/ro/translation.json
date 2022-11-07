@@ -3,7 +3,9 @@
     "greeting": "buna",
     "loading": "Se incarca...",
     "no_results": "Nu exista rezultate pentru criteriile de cautare selectate",
-    "end_of_list": "Nu mai sunt date de afisat"
+    "end_of_list": "Nu mai sunt date de afisat",
+    "share": "Distribuie",
+    "shared": "Link-ul a fost copiat"
   },
   "menu": {
     "home": "Acasa",
