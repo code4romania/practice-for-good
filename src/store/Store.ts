@@ -3,6 +3,7 @@ import { ISelectData } from '../common/helpers/Nomenclature.helper';
 import { City } from '../common/interfaces/City.interface';
 import { Domain } from '../common/interfaces/Domain.interface';
 import { Faculty } from '../common/interfaces/Faculty.interface';
+import { OrganizationFilter } from '../common/interfaces/OrganizationFilter.interface';
 import { OrganizationFlat } from '../common/interfaces/OrganizationFlat.interface';
 import { PaginatedEntity } from '../common/interfaces/PaginatedEntity.interface';
 import { IPracticeProgram } from '../common/interfaces/PracticeProgram.interface';
@@ -14,8 +15,8 @@ import { practiceProgramsSlice } from './practice-programs/PracticePrograms.slic
 interface PracticeProgramsState {
   practicePrograms: PaginatedEntity<IPracticeProgram> & { filters: PracticeProgramFilter };
   setPracticePrograms: (practicePrograms: PaginatedEntity<IPracticeProgram>) => void;
-  nextPage: () => void;
-  updateFilters: (
+  nextPagePracticePrograms: () => void;
+  updatePracticeProgramsFilters: (
     search: string,
     locationId: ISelectData,
     selectedFaculties: ISelectData[],
@@ -27,8 +28,14 @@ interface PracticeProgramsState {
 }
 
 interface OrganizationsState {
-  organizations: PaginatedEntity<OrganizationFlat>;
+  organizations: PaginatedEntity<OrganizationFlat> & { filters: OrganizationFilter };
   setOrganizations: (organizations: PaginatedEntity<OrganizationFlat>) => void;
+  nextPageOrganizations: () => void;
+  updateOrganizationFilters: (
+    search: string,
+    locationId: ISelectData,
+    selectedDomains: ISelectData[],
+  ) => void;
 }
 
 interface NomenclatureState {

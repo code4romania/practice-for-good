@@ -33,7 +33,7 @@ const PracticeProgramsSearch = (props: PracticeProgramsSearchProps) => {
   const [searchLocationTerm, seSearchtLocationTerm] = useState('');
   const [filtersCount, setFiltersCount] = useState(0);
   const { cities, domains, faculties } = useNomenclature();
-  const { updateFilters } = useStore();
+  const { updatePracticeProgramsFilters } = useStore();
   const { filters: activeFilters } = usePracticePrograms();
 
   const {
@@ -56,7 +56,7 @@ const PracticeProgramsSearch = (props: PracticeProgramsSearchProps) => {
   }, []);
 
   const search = (data: any) => {
-    updateFilters(
+    updatePracticeProgramsFilters(
       data.search,
       data.locationId,
       data.faculties,

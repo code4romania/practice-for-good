@@ -111,7 +111,10 @@
   "organization_details": {
     "activity_domains": "Domenii activitate",
     "contact": "Contact",
-    "social_media": "Social media"
+    "social_media": "Social media",
+    "errors": {
+      "search": "Eroare la incarcarea ONG-urilor"
+    }
   },
   "practice_programs": {
     "one_program_title": "program de practică",

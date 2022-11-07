@@ -8,29 +8,25 @@ import ServerSelect from '../server-select/ServerSelect';
 import { mapItemToSelect } from '../../helpers/Nomenclature.helper';
 import { useNomenclature } from '../../../store/nomenclatures/Nomenclatures.selectors';
 import { useCitiesQuery } from '../../../services/nomenclature/Nomeclature.queries';
-import DatePicker from '../date-picker/DatePicker';
 import MultiSelect from '../select/Select';
 import { useTranslation } from 'react-i18next';
+import { useOrganizations } from '../../../store/Selectors';
+import useStore from '../../../store/Store';
 
 interface PracticeProgramFilterModalProps {
-  filters: any;
   onClose: () => void;
-  onConfirm: (e: any) => void;
 }
 
-const NGOFilterModal = ({ filters, onClose, onConfirm }: PracticeProgramFilterModalProps) => {
+const NGOFilterModal = ({ onClose }: PracticeProgramFilterModalProps) => {
   const { t } = useTranslation();
   const [searchLocationTerm, seSearchtLocationTerm] = useState('');
-  const { cities, domains, faculties } = useNomenclature();
+  const { updateOrganizationFilters } = useStore();
+  const { filters } = useOrganizations();
+  const { cities, domains } = useNomenclature();
 
   useCitiesQuery(searchLocationTerm);
 
-  const {
-    handleSubmit,
-    control,
-    formState: { errors },
-    reset,
-  } = useForm({
+  const { handleSubmit, control, reset } = useForm({
     mode: 'onChange',
     reValidateMode: 'onChange',
   });
@@ -45,7 +41,8 @@ const NGOFilterModal = ({ filters, onClose, onConfirm }: PracticeProgramFilterMo
   };
 
   const onApply = (data: any) => {
-    onConfirm(data);
+    updateOrganizationFilters(filters.search || '', data.locationId, data.domains);
+    onClose();
   };
 
   return (
