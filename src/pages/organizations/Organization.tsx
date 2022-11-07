@@ -18,7 +18,7 @@ const Organization = () => {
 
   return (
     <ShapeWrapper>
-      <div className="w-full xl:px-60 px-10 lg:py-20 py-10">
+      <div className="w-full xl:px-60 px-4 lg:py-20 py-10">
         <>
           {data && !isLoading && (
             <div className="content">
