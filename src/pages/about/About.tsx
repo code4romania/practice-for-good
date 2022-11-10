@@ -24,7 +24,7 @@ const About = () => {
       <Description
         title={t('ong_hub.title')}
         content={t('ong_hub.paragraph_1')}
-        cta={{ label: t('ong_hub.action'), link: 'onghub-dev.wearetribus.com/new' }}
+        cta={{ label: t('ong_hub.action'), link: process.env.REACT_APP_CREATE_ONG_PROFILE_LINK }}
         image={ongHubLogo}
       ></Description>
     </div>
