@@ -30,7 +30,7 @@ const Contact = () => {
         setShowSuccess(true);
       },
       onError: () => {
-        useErrorToast('Unexpected error');
+        useErrorToast(t('send_error'));
       },
     });
   };
