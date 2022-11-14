@@ -24,15 +24,18 @@ const Contact = () => {
   });
 
   const onSendMail = async (data: any) => {
-    sendContactMailMutation.mutate(data, {
-      onSuccess: () => {
-        reset();
-        setShowSuccess(true);
+    sendContactMailMutation.mutate(
+      { type: 'Practice Program', ...data },
+      {
+        onSuccess: () => {
+          reset();
+          setShowSuccess(true);
+        },
+        onError: () => {
+          useErrorToast(t('send_error'));
+        },
       },
-      onError: () => {
-        useErrorToast(t('send_error'));
-      },
-    });
+    );
   };
 
   return (
