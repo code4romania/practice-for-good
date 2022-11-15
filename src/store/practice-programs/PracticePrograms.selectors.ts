@@ -6,3 +6,9 @@ export const usePracticePrograms = () => {
   const meta = useStore((state) => state.practicePrograms.meta);
   return { practicePrograms, filters, meta };
 };
+
+
+export const useSelectedPracticeProgram = () => {
+  const selectedProgram = useStore((state) => state.selectedProgram);
+  return { selectedProgram }
+}

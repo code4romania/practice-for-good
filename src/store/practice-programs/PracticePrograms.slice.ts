@@ -26,6 +26,8 @@ export const practiceProgramsSlice = (set: any) => ({
       end: undefined,
     },
   },
+  selectedProgram: null,
+  setSelectedProgram: (selectedProgram: IPracticeProgram) => set({ selectedProgram }),
   setPracticePrograms: (practicePrograms: PaginatedEntity<IPracticeProgram>) => {
     set((state: { practicePrograms: PaginatedEntity<IPracticeProgram> }) => ({
       practicePrograms: {
