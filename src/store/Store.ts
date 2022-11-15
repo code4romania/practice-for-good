@@ -3,6 +3,7 @@ import { ISelectData } from '../common/helpers/Nomenclature.helper';
 import { City } from '../common/interfaces/City.interface';
 import { Domain } from '../common/interfaces/Domain.interface';
 import { Faculty } from '../common/interfaces/Faculty.interface';
+import { Organization } from '../common/interfaces/Organization.interface';
 import { OrganizationFilter } from '../common/interfaces/OrganizationFilter.interface';
 import { OrganizationFlat } from '../common/interfaces/OrganizationFlat.interface';
 import { PaginatedEntity } from '../common/interfaces/PaginatedEntity.interface';
@@ -14,6 +15,8 @@ import { practiceProgramsSlice } from './practice-programs/PracticePrograms.slic
 
 interface PracticeProgramsState {
   practicePrograms: PaginatedEntity<IPracticeProgram> & { filters: PracticeProgramFilter };
+  selectedProgram: IPracticeProgram | null;
+  setSelectedProgram: (selectedProgram: IPracticeProgram) => void;
   setPracticePrograms: (practicePrograms: PaginatedEntity<IPracticeProgram>) => void;
   nextPagePracticePrograms: () => void;
   updatePracticeProgramsFilters: (
@@ -29,6 +32,8 @@ interface PracticeProgramsState {
 
 interface OrganizationsState {
   organizations: PaginatedEntity<OrganizationFlat> & { filters: OrganizationFilter };
+  selectedOrganization: Organization | null;
+  setSelectedOrganization: (selectedOrganization: Organization) => void;
   setOrganizations: (organizations: PaginatedEntity<OrganizationFlat>) => void;
   nextPageOrganizations: () => void;
   updateOrganizationFilters: (

@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { classNames } from '../../helpers/Tailwind.helper';
 import logo from './../../../assets/images/logo.svg';
 import { MENU_ROUTES } from '../../constants/Menu.constants';
-import { RefreshIcon, XIcon } from '@heroicons/react/solid';
+import { XIcon } from '@heroicons/react/solid';
 import { useTranslation } from 'react-i18next';
 import { windowOpener } from '../../helpers/navigation.helper';
 
@@ -15,7 +15,7 @@ export default function SlidingMenu({ isOpen, setSlidingMenuOpen }: { isOpen: bo
 
   const handleMenuItemClick = (item: any) => {
     setSlidingMenuOpen(false);
-    navigate(`${item.href}`);
+    navigate(`/${item.href}`);
   };
 
 

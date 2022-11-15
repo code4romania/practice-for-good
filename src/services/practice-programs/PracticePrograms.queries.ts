@@ -47,5 +47,11 @@ export const usePracticeProgramsQuery = () => {
   );
 };
 
-export const usePracticeProgram = (id: string) =>
-  useQuery(['practice-program', id], () => getPracticeProgramById(id), { enabled: !!id, retry: 0 });
+export const usePracticeProgram = (id: string) => {
+  const { setSelectedProgram } = useStore();
+  return useQuery(['practice-program', id], () => getPracticeProgramById(id), {
+    enabled: !!id, retry: 0, onSuccess: (data: IPracticeProgram) => {
+      setSelectedProgram(data);
+    },
+  });
+}
