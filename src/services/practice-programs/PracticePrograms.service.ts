@@ -14,7 +14,7 @@ export const searchPracticePrograms = async (
   start?: string,
   end?: string,
 ): Promise<PaginatedEntity<IPracticeProgram>> => {
-  return API.get('/practice-program/search', {
+  return API.get('/api/practice-program/search', {
     params: {
       limit,
       page,
@@ -30,5 +30,5 @@ export const searchPracticePrograms = async (
 };
 
 export const getPracticeProgramById = async (id: string): Promise<IPracticeProgram> => {
-  return API.get(`/practice-program/${id}/public`).then((res) => res.data);
+  return API.get(`/api/practice-program/${id}`).then((res) => res.data);
 };
