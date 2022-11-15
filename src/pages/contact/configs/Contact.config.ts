@@ -90,10 +90,6 @@ export const ContactConfig: Record<string, any> = {
         value: 250,
         message: translations.text.max,
       },
-      minLength: {
-        value: 50,
-        message: translations.text.min,
-      },
     },
     config: {
       type: 'text',
