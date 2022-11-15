@@ -7,6 +7,7 @@ import Textarea from '../../common/components/textarea/Textarea';
 import confirmLogo from '../../assets/icons/confirm-icon.svg';
 import { useSendContactMailMutation } from '../../services/public/PublicApi.queries';
 import { useErrorToast } from '../../common/hooks/useToast';
+import { MAIL_APP_TYPE } from '../../common/constants/MailAppType.constants';
 
 const Contact = () => {
   const [showSuccess, setShowSuccess] = useState(false);
@@ -24,15 +25,18 @@ const Contact = () => {
   });
 
   const onSendMail = async (data: any) => {
-    sendContactMailMutation.mutate(data, {
-      onSuccess: () => {
-        reset();
-        setShowSuccess(true);
+    sendContactMailMutation.mutate(
+      { type: MAIL_APP_TYPE.PRACTICE_PROGRAM, ...data },
+      {
+        onSuccess: () => {
+          reset();
+          setShowSuccess(true);
+        },
+        onError: () => {
+          useErrorToast(t('send_error'));
+        },
       },
-      onError: () => {
-        useErrorToast(t('send_error'));
-      },
-    });
+    );
   };
 
   return (
