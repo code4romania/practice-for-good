@@ -1,4 +1,4 @@
-import { LocationMarkerIcon, SearchIcon } from '@heroicons/react/solid';
+import { LocationMarkerIcon, SearchIcon, ViewBoardsIcon } from '@heroicons/react/solid';
 import i18n from '../../../configs/i18n';
 import IconAddon from '../../icon-addon/IconAddon';
 
@@ -27,5 +27,6 @@ export const NGOSearchConfig: Record<string, any> = {
     config: {
       placeholder: i18n.t('ngo-search:config.domains.placeholder'),
     },
+    icon: ViewBoardsIcon
   },
 };

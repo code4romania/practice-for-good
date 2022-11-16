@@ -92,7 +92,7 @@ const PracticeProgramsSearch = (props: PracticeProgramsSearchProps) => {
       <div className="bg-yellow w-full flex flex-col items-center px-2 sm:px-4 sm:py-14 py-10 gap-8 bg-search bg-no-repeat bg-cover bg-center">
         <p className="font-titilliumBold sm:text-4xl text-xl  text-black">{t('title')}</p>
         <p className="font-titillium sm:text-2xl sm:text-xl text-black">{t('subtitle')}<a className='text-black underline cursor-pointer' href={MENU_ROUTES_HREF.practice_programs}>{t('subtitle_link')}</a></p>
-        <div className="flex flex-col gap-4 max-w-5xl w-full justify-items-center">
+        <div className="flex flex-col gap-4 max-w-6xl w-full justify-items-center">
           <div className="flex w-full items-center h-14">
             <Controller
               key={PracticeProgramsSearchConfig.search.key}
@@ -186,6 +186,8 @@ const PracticeProgramsSearch = (props: PracticeProgramsSearchProps) => {
                     placeholder={PracticeProgramsSearchConfig.faculties.placeholder}
                     onChange={onChange}
                     options={faculties.map(mapItemToSelect)}
+                    icon={PracticeProgramsSearchConfig.faculties.icon}
+
                   />
                 );
               }}
@@ -235,6 +237,7 @@ const PracticeProgramsSearch = (props: PracticeProgramsSearchProps) => {
                     onChange={onChange}
                     placeholder={PracticeProgramsSearchConfig.workingHours.config.placeholder}
                     options={PracticeProgramsSearchConfig.workingHours.config.collection}
+                    icon={PracticeProgramsSearchConfig.workingHours.icon}
                   />
                 );
               }}
@@ -254,6 +257,7 @@ const PracticeProgramsSearch = (props: PracticeProgramsSearchProps) => {
                     onChange={onChange}
                     placeholder={PracticeProgramsSearchConfig.domains.config.placeholder}
                     options={domains.map(mapItemToSelect)}
+                    icon={PracticeProgramsSearchConfig.domains.icon}
                   />
                 );
               }}
