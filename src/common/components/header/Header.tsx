@@ -41,7 +41,7 @@ const Header = ({ openSlidingMenu }: { openSlidingMenu?: any }) => {
           <div className="flex gap-4 items-center">
             <div className="gap-6 hidden lg:flex">
               {MENU_ROUTES.map((route) => (
-                <a className={classNames('menu-title', activeTab === route.href ? 'text-yellow-700' : 'text-black')} key={route.id} href={route.href}>
+                <a className={classNames('menu-title', activeTab === route.href ? 'text-yellow-700' : 'text-black')} key={route.id} onClick={() => navigate(route.href)}>
                   {route.name}
                 </a>
               ))}
