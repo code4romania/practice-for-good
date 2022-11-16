@@ -145,7 +145,8 @@
       },
       "errors": {
         "get": "Eroare la incarcarea programului de practica"
-      }
+      },
+      "published_on": "Publicat la"
     }
   },
   "contact": {

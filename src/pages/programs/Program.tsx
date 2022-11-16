@@ -2,7 +2,7 @@ import { CheckIcon, LocationMarkerIcon, ShareIcon } from '@heroicons/react/solid
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useParams } from 'react-router-dom';
-import { formatDate, formatDateMonthYear } from '../../common/helpers/Format.helper';
+import { formatDate, formatDateMonthYear, formatDateYear } from '../../common/helpers/Format.helper';
 import { usePracticeProgram } from '../../services/practice-programs/PracticePrograms.queries';
 import ShowMoreText from 'react-show-more-text';
 import Card from '../../common/components/card/Card';
@@ -130,7 +130,7 @@ const Program = () => {
                 <a target="_blank" href={program?.link} rel="noreferrer">
                   <button
                     type="button"
-                    className="font-titilliumSemiBold yellow-button text-center h-fit lg:w-48 w-32 lg:text-base text-xs"
+                    className="font-titilliumSemiBold yellow-button text-center h-fit lg:w-48 w-32 lg:text-base text-xs text-black"
                   >
                     {`${t('details.actions.apply')}`}
                   </button>
@@ -178,7 +178,8 @@ const Program = () => {
 
             <div className="py-6 flex flex-row justify-between items-center">
               <p className="text-base text-gray-400">
-                {formatDateMonthYear(program?.createdOn || '')}
+                <span>{t('details.published_on')}&nbsp;</span>
+                {formatDateYear(program?.createdOn || '')}
               </p>
               {sharedUrl ? (
                 <div className="text-base flex flex-row items-center">

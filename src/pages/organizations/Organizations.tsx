@@ -32,9 +32,8 @@ const Organizations = () => {
         ) : (
           <div className="flex flex-col w-full lg:px-60 px-10 pt-10">
             {organizations.length !== 0 && !isLoading && (
-              <p className="title text-center">{`${total} ${
-                total > 1 ? t('many_organizations_title') : t('one_organization_title')
-              }`}</p>
+              <p className="title text-center">{`${total} ${total > 1 ? t('many_organizations_title') : t('one_organization_title')
+                }`}</p>
             )}
             <div className="mb-[10rem]">
               <Virtuoso
@@ -45,15 +44,6 @@ const Organizations = () => {
                 overscan={200}
                 data={organizations}
                 itemContent={(index, ong) => <OrganizationItem key={index} organization={ong} />}
-                components={{
-                  Footer: () => (
-                    <InfiniteScrollFooter
-                      isLoading={isLoading}
-                      hasNoData={organizations.length === 0}
-                      hasReachedTheEnd={organizations.length === total}
-                    />
-                  ),
-                }}
               />
             </div>
           </div>
