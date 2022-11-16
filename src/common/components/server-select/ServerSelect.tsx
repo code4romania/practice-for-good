@@ -22,7 +22,6 @@ export interface ServerSelectConfig {
 }
 
 const Control = ({ children, ...props }: any) => {
-  console.log(children, props);
   return (
     components.Control && (
       <components.Control {...props}>
