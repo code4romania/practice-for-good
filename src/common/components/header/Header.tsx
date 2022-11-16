@@ -1,32 +1,47 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './Header.css';
 import logo from './../../../assets/images/logo.svg';
 import commitGlobalLogo from './../../../assets/images/commit-global-logo-black.svg';
 import { MenuIcon } from '@heroicons/react/outline';
-import { MENU_ROUTES } from '../../constants/Menu.constants';
+import { MENU_ROUTES, MENU_ROUTES_HREF } from '../../constants/Menu.constants';
 import { useTranslation } from 'react-i18next';
 import { windowOpener } from '../../helpers/navigation.helper';
 import { COMMIT_GLOBAL_URL, DONATE_URL } from '../../constants/ExternalURL.constants';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { classNames } from '../../helpers/Tailwind.helper';
 
 const Header = ({ openSlidingMenu }: { openSlidingMenu?: any }) => {
   const { t } = useTranslation('header');
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const [activeTab, setActiveTab] = useState<string>();
+
+  useEffect(() => {
+    if (location.pathname === '/') {
+      setActiveTab('/');
+    } else {
+      const found = Object.values(MENU_ROUTES_HREF).find(route => location.pathname.startsWith(`/${route}`));
+      setActiveTab(`/${found}`);
+    }
+  }, [location.pathname])
+
   return (
     <header className="bg-white max-h-">
       <nav aria-label="Top">
-        <div className='flex items-center gap-4 w-full lg:px-32 sm:px-8 sm:py-2 px-2 bg-gray-50 h-12'>
+        <div className='flex items-center gap-4 w-full xl:px-32 lg:px-18 sm:px-8 sm:py-2 px-2 bg-gray-50 h-12'>
           <img src={commitGlobalLogo} alt="Commit Global" className="sm:h-full h-6" />
           <span className='sm:text-base text-xs'>{t('commit_global_solution')}</span>
           <a className='text-blue font-bold hover:underline sm:text-base text-xs' href={COMMIT_GLOBAL_URL} target='_blank' rel="noreferrer">{t('learn_more')}</a>
-
         </div>
-        <div className="w-full lg:px-32 sm:px-8 px-2 py-4 flex gap-4 justify-between items-center">
-          <div className="flex items-center">
+        <div className="w-full xl:px-32 lg:px-18 sm:px-8 px-2 py-4 flex gap-4 justify-between items-center">
+          <div className="flex items-center cursor-pointer" onClick={() => navigate('/')}>
             <img src={logo} alt="Code 4 Romania - ONG Hub" className="sm:h-full sm:w-full h-10" />
           </div>
           <div className="flex gap-4 items-center">
             <div className="gap-6 hidden lg:flex">
               {MENU_ROUTES.map((route) => (
-                <a className="text-black menu-title" key={route.id} href={route.href}>
+                <a className={classNames('menu-title', activeTab === route.href ? 'text-yellow-700' : 'text-black')} key={route.id} href={route.href}>
                   {route.name}
                 </a>
               ))}

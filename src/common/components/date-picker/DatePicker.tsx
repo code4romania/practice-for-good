@@ -30,7 +30,7 @@ const DatePicker = ({ defaultValue, onChange, placeholder }: DateRangePickerProp
   return (
     <div className="relative w-full">
       <div className="relative rounded-md">
-        <div className="absolute inset-y-0 left-0 pl-3 hidden items-center pointer-events-none z-10 md:flex">
+        <div className="flex absolute inset-y-0 left-0 pl-3 items-center pointer-events-none z-10">
           <CalendarIcon className={classNames(`-ml-1 mr-2 h-5 w-5`, defaultValue ? 'text-purple' : 'text-gray-500')} aria-hidden="true" />
         </div>
         <ReactDatePicker
