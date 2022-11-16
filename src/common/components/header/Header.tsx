@@ -6,6 +6,7 @@ import { MenuIcon } from '@heroicons/react/outline';
 import { MENU_ROUTES } from '../../constants/Menu.constants';
 import { useTranslation } from 'react-i18next';
 import { windowOpener } from '../../helpers/navigation.helper';
+import { COMMIT_GLOBAL_URL, DONATE_URL } from '../../constants/ExternalURL.constants';
 
 const Header = ({ openSlidingMenu }: { openSlidingMenu?: any }) => {
   const { t } = useTranslation('header');
@@ -15,7 +16,7 @@ const Header = ({ openSlidingMenu }: { openSlidingMenu?: any }) => {
         <div className='flex items-center gap-4 w-full lg:px-32 sm:px-8 sm:py-2 px-2 bg-gray-50 h-12'>
           <img src={commitGlobalLogo} alt="Commit Global" className="sm:h-full h-6" />
           <span className='sm:text-base text-xs'>{t('commit_global_solution')}</span>
-          <a className='text-blue font-bold hover:underline sm:text-base text-xs' href="https://www.commitglobal.org/en" target='_blank' rel="noreferrer">{t('learn_more')}</a>
+          <a className='text-blue font-bold hover:underline sm:text-base text-xs' href={COMMIT_GLOBAL_URL} target='_blank' rel="noreferrer">{t('learn_more')}</a>
 
         </div>
         <div className="w-full lg:px-32 sm:px-8 px-2 py-4 flex gap-4 justify-between items-center">
@@ -33,7 +34,7 @@ const Header = ({ openSlidingMenu }: { openSlidingMenu?: any }) => {
             <div className='lg:pl-8 block'>
               <button
                 className="yellow-button lg:flex hidden w-12 menu-title"
-                onClick={() => windowOpener('https://code4.ro/ro/doneaza')}
+                onClick={() => windowOpener(DONATE_URL)}
               >
                 {t('donate')}
               </button>

@@ -8,6 +8,7 @@ import Description from '../../common/components/description/Description';
 import { useTranslation } from 'react-i18next';
 import p4g from '../../assets/images/p4g.svg';
 import { useNavigate } from 'react-router-dom';
+import { DONATE_URL } from '../../common/constants/ExternalURL.constants';
 
 const Landing = () => {
   const { t } = useTranslation('landing');
@@ -25,7 +26,7 @@ const Landing = () => {
         <Description
           title={t('about.title')}
           content={t('about.paragraph_1')}
-          cta={{ label: t('about.action'), link: '' }}
+          cta={{ label: t('about.action'), link: DONATE_URL }}
           image={p4g}
           isTextRight={true}
         ></Description>

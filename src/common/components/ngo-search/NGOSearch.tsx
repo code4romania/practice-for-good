@@ -66,7 +66,7 @@ const NGOSearch = ({ showFilters, children }: NGOSearchProps) => {
 
   return (
     <>
-      <div className="bg-yellow w-full flex flex-col items-center px-2 sm:px-4 py-10 gap-8">
+      <div className="bg-yellow w-full flex flex-col items-center px-2 sm:px-4 sm:py-14 py-10 gap-8 bg-search bg-no-repeat bg-cover bg-center">
         <p className="title">{t('ngo-search:title')}</p>
         <div className="flex flex-col gap-4 max-w-5xl w-full justify-items-center">
           <div className="flex w-full items-center h-14">

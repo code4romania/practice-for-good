@@ -6,7 +6,7 @@ const Footer = () => {
   const { t } = useTranslation('footer');
   return (
     <div className="flex flex-col md:flex-row gap-6 bg-black text-white w-full px-4 py-6 lg:py-24 lg:px-40 md:px-8 md:justify-between">
-      <div className='flex gap-4 flex-col md:flex-row'>
+      <div className='flex lg:gap-20 md:gap-8 flex-col md:flex-row'>
         <div className='flex flex-col'>
           <span className='footer-title pb-4'>{t('urls')}</span>
           <span className='footer-url'>{t('donate')}</span>
