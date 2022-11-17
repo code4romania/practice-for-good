@@ -1,4 +1,4 @@
-import { DateParam, DelimitedNumericArrayParam, NumberParam, StringParam } from 'use-query-params';
+import { DateParam, DelimitedNumericArrayParam, StringParam } from 'use-query-params';
 
 export const POGRAMS_QUERY_PARAMS = {
   search: StringParam,
@@ -8,5 +8,4 @@ export const POGRAMS_QUERY_PARAMS = {
   end: DateParam,
   faculties: DelimitedNumericArrayParam,
   domains: DelimitedNumericArrayParam,
-  page: NumberParam,
 };

@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import PracticeProgramsSearch from '../../common/components/practice-programs-search/PracticeProgramsSearch';
 import { usePracticePrograms } from '../../store/Selectors';
@@ -13,8 +13,8 @@ import { WorkingHoursEnum } from '../../common/enums/WorkingHours.enum';
 
 const Programs = () => {
   const { t } = useTranslation('practice_programs');
-  const { meta } = usePracticePrograms();
-  const [query, setQuery] = useQueryParams(POGRAMS_QUERY_PARAMS);
+  const [query] = useQueryParams(POGRAMS_QUERY_PARAMS);
+  const [page, setPage] = useState<number>(1);
 
   const {
     practicePrograms: programs,
@@ -22,9 +22,9 @@ const Programs = () => {
   } = usePracticePrograms();
 
   const { isLoading, error, refetch } = usePracticeProgramsQuery(
-    query.page || meta.currentPage,
+    page,
     query.search,
-    undefined,
+    query.locationId,
     query.faculties,
     query.workingHours as WorkingHoursEnum,
     query.domains,
@@ -33,7 +33,7 @@ const Programs = () => {
   );
 
   const loadMore = useCallback(() => {
-    if (total > programs.length && query.page) setQuery({ ...query, page: query.page + 1 });
+    if (total > programs.length) setPage(page + 1);
   }, [programs, total]);
 
   return (
