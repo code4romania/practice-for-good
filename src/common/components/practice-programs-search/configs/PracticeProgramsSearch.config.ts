@@ -1,46 +1,40 @@
-import { LocationMarkerIcon, SearchIcon } from "@heroicons/react/solid";
-import i18n from "../../../configs/i18n";
-import { WorkingHours } from "../../../enums/WorkingHours.enum";
-import IconAddon from "../../icon-addon/IconAddon";
-
+import { LocationMarkerIcon, SearchIcon } from '@heroicons/react/solid';
+import i18n from '../../../configs/i18n';
+import { WorkingHours } from '../../../enums/WorkingHours.enum';
+import IconAddon from '../../icon-addon/IconAddon';
 
 export const PracticeProgramsSearchConfig: Record<string, any> = {
   search: {
     key: 'search',
-    rules: {
-    },
+    rules: {},
     config: {
       type: 'text',
       label: '',
       helperText: '',
-      placeholder: i18n.t("practice_programs_search:config.search.placeholder"),
-      addOn: () => IconAddon({ icon: SearchIcon })
+      placeholder: i18n.t('practice_programs_search:config.search.placeholder'),
+      addOn: () => IconAddon({ icon: SearchIcon }),
     },
   },
-  locationId: {
-    key: 'locationId',
+  location: {
+    key: 'location',
     label: '',
-    rules: {
-    },
+    rules: {},
     placeholder: i18n.t('practice_programs_search:config.location.placeholder'),
-    addOn: () => IconAddon({ icon: LocationMarkerIcon })
+    addOn: () => IconAddon({ icon: LocationMarkerIcon }),
   },
   faculties: {
     key: 'faculties',
-    rules: {
-    },
+    rules: {},
     placeholder: i18n.t('practice_programs_search:config.faculties.placeholder'),
   },
   start: {
     key: 'start',
-    rules: {
-    },
+    rules: {},
     placeholder: i18n.t('practice_programs_search:config.start.placeholder'),
   },
   end: {
     key: 'end',
-    rules: {
-    },
+    rules: {},
     placeholder: i18n.t('practice_programs_search:config.end.placeholder'),
   },
   workingHours: {
@@ -48,15 +42,14 @@ export const PracticeProgramsSearchConfig: Record<string, any> = {
     rules: {},
     config: {
       collection: [...WorkingHours],
-      placeholder: i18n.t('practice_programs_search:config.workingHours.placeholder')
+      placeholder: i18n.t('practice_programs_search:config.workingHours.placeholder'),
     },
   },
   domains: {
     key: 'domains',
-    rules: {
-    },
+    rules: {},
     config: {
-      placeholder: i18n.t('practice_programs_search:config.domains.placeholder')
+      placeholder: i18n.t('practice_programs_search:config.domains.placeholder'),
     },
   },
-}
+};

@@ -3,7 +3,7 @@ import { DateParam, DelimitedNumericArrayParam, StringParam } from 'use-query-pa
 export const POGRAMS_QUERY_PARAMS = {
   search: StringParam,
   workingHours: StringParam,
-  locationId: StringParam,
+  location: StringParam,
   start: DateParam,
   end: DateParam,
   faculties: DelimitedNumericArrayParam,

@@ -24,7 +24,7 @@ const Programs = () => {
   const { isLoading, error, refetch } = usePracticeProgramsQuery(
     page,
     query.search,
-    query.locationId,
+    query.location,
     query.faculties,
     query.workingHours as WorkingHoursEnum,
     query.domains,

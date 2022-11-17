@@ -22,6 +22,7 @@ import { stringify } from 'query-string';
 import { getDomains, getFaculties } from '../../../services/nomenclature/Nomenclature.service';
 import { WorkingHours } from '../../enums/WorkingHours.enum';
 import { POGRAMS_QUERY_PARAMS } from '../../constants/Programs.constants';
+import { countFilters } from '../../helpers/Filters.helpers';
 
 interface PracticeProgramsSearchProps {
   children?: React.ReactNode;
@@ -75,7 +76,7 @@ const PracticeProgramsSearch = (props: PracticeProgramsSearchProps) => {
     const queryValues = {
       search: data?.search,
       workingHours: data?.workingHours?.value,
-      locationId: data?.locationId?.label,
+      location: data?.location?.label,
       faculties: selectedFaculties?.length > 0 ? selectedFaculties : undefined,
       domains: selectedDomains?.length > 0 ? selectedDomains : undefined,
       start: data?.start,
@@ -101,7 +102,7 @@ const PracticeProgramsSearch = (props: PracticeProgramsSearchProps) => {
   // TODO: These operations should take place in each form cell which requires server data
   const initFilters = async () => {
     const {
-      locationId,
+      location,
       domains: queryDomains,
       faculties: queryFaculties,
       workingHours,
@@ -109,12 +110,12 @@ const PracticeProgramsSearch = (props: PracticeProgramsSearchProps) => {
     } = query;
 
     // init should get me the correct values for
-    let selectedLocationId, selectedFaculties, selectedWorkingHours, selectedDomains;
+    let selectedLocation, selectedFaculties, selectedWorkingHours, selectedDomains;
 
     // 1. city
-    if (locationId) {
-      const citiesResults = await loadOptionsLocationSearch(locationId);
-      selectedLocationId = citiesResults[0];
+    if (location) {
+      const citiesResults = await loadOptionsLocationSearch(location);
+      selectedLocation = citiesResults[0];
     }
 
     // 2. faculties
@@ -141,22 +142,12 @@ const PracticeProgramsSearch = (props: PracticeProgramsSearchProps) => {
     setFiltersCount(countFilters(query));
 
     return {
-      locationId: selectedLocationId,
+      location: selectedLocation,
       domains: selectedDomains,
       faculties: selectedFaculties,
       workingHours: selectedWorkingHours,
       ...otherQueryParams,
     };
-  };
-
-  /**
-   * Count active filters apart from 'page' and 'search word'
-   */
-  const countFilters = (queryValues: any): number => {
-    return Object.getOwnPropertyNames(queryValues).reduce((total, current) => {
-      total += (queryValues as any)[current] && current !== 'page' && current !== 'search' ? 1 : 0;
-      return total;
-    }, 0);
   };
 
   return (
@@ -195,9 +186,9 @@ const PracticeProgramsSearch = (props: PracticeProgramsSearchProps) => {
 
             <div className="w-1/3 h-14 hidden sm:flex">
               <Controller
-                key={PracticeProgramsSearchConfig.locationId.key}
-                name={PracticeProgramsSearchConfig.locationId.key}
-                rules={PracticeProgramsSearchConfig.locationId.rules}
+                key={PracticeProgramsSearchConfig.location.key}
+                name={PracticeProgramsSearchConfig.location.key}
+                rules={PracticeProgramsSearchConfig.location.rules}
                 control={control}
                 render={({ field: { onChange, value } }) => {
                   return (
@@ -206,10 +197,10 @@ const PracticeProgramsSearch = (props: PracticeProgramsSearchProps) => {
                       value={value}
                       isMulti={false}
                       isClearable={false}
-                      placeholder={PracticeProgramsSearchConfig.locationId.placeholder}
+                      placeholder={PracticeProgramsSearchConfig.location.placeholder}
                       onChange={onChange}
                       loadOptions={loadOptionsLocationSearch}
-                      addOn={PracticeProgramsSearchConfig.locationId.addOn}
+                      addOn={PracticeProgramsSearchConfig.location.addOn}
                     />
                   );
                 }}

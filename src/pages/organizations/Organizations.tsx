@@ -1,27 +1,34 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Virtuoso } from 'react-virtuoso';
+import { useQueryParams } from 'use-query-params';
 import InfiniteScrollFooter from '../../common/components/infinite-scroll-footer/InfiniteScrollFooter';
 import NGOSearch from '../../common/components/ngo-search/NGOSearch';
 import NoData from '../../common/components/no-data/NoData';
+import { ORGANIZATIONS_QUERY_PARAMS } from '../../common/constants/Organizations.constants';
 import { useOrganizationQuery } from '../../services/organization/Organization.queries';
 import { useOrganizations } from '../../store/Selectors';
-import useStore from '../../store/Store';
 import OrganizationItem from './components/OrganizationItem';
 
 const Organizations = () => {
   const { t } = useTranslation('organizations');
-  const { nextPageOrganizations } = useStore();
+  const [page, setPage] = useState<number>(1);
+  const [query] = useQueryParams(ORGANIZATIONS_QUERY_PARAMS);
 
   const {
     organizations,
     meta: { totalItems: total },
   } = useOrganizations();
 
-  const { isLoading, error, refetch } = useOrganizationQuery();
+  const { isLoading, error, refetch } = useOrganizationQuery(
+    page,
+    query?.search,
+    query?.location,
+    query?.domains,
+  );
 
   const loadMore = useCallback(() => {
-    if (total > organizations.length) nextPageOrganizations();
+    if (total > organizations.length) setPage(page + 1);
   }, [organizations, total]);
 
   return (

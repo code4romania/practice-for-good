@@ -1,8 +1,8 @@
-import React, { Fragment, useEffect, useState } from 'react';
+import React, { Fragment, useState } from 'react';
 import { Dialog, Transition } from '@headlessui/react';
 import logo from './../../../assets/images/logo.svg';
 import { XIcon } from '@heroicons/react/solid';
-import { Controller, useForm } from 'react-hook-form';
+import { Controller } from 'react-hook-form';
 import { PracticeProgramsSearchConfig } from '../practice-programs-search/configs/PracticeProgramsSearch.config';
 import ServerSelect from '../server-select/ServerSelect';
 import { mapItemToSelect } from '../../helpers/Nomenclature.helper';
@@ -10,30 +10,21 @@ import { useNomenclature } from '../../../store/nomenclatures/Nomenclatures.sele
 import { useCitiesQuery } from '../../../services/nomenclature/Nomeclature.queries';
 import MultiSelect from '../select/Select';
 import { useTranslation } from 'react-i18next';
-import { useOrganizations } from '../../../store/Selectors';
-import useStore from '../../../store/Store';
 
 interface PracticeProgramFilterModalProps {
   onClose: () => void;
+  form: any;
+  onSubmit: (data: any) => void;
 }
 
-const NGOFilterModal = ({ onClose }: PracticeProgramFilterModalProps) => {
+const NGOFilterModal = ({ onClose, form, onSubmit }: PracticeProgramFilterModalProps) => {
   const { t } = useTranslation();
   const [searchLocationTerm, seSearchtLocationTerm] = useState('');
-  const { updateOrganizationFilters } = useStore();
-  const { filters } = useOrganizations();
   const { cities, domains } = useNomenclature();
 
   useCitiesQuery(searchLocationTerm);
 
-  const { handleSubmit, control, reset } = useForm({
-    mode: 'onChange',
-    reValidateMode: 'onChange',
-  });
-
-  useEffect(() => {
-    reset({ ...filters });
-  }, [filters]);
+  const { handleSubmit, control } = form;
 
   const loadOptionsLocationSearch = async (searchWord: string) => {
     seSearchtLocationTerm(searchWord);
@@ -41,7 +32,7 @@ const NGOFilterModal = ({ onClose }: PracticeProgramFilterModalProps) => {
   };
 
   const onApply = (data: any) => {
-    updateOrganizationFilters(filters.search || '', data.locationId, data.domains);
+    onSubmit(data);
     onClose();
   };
 
@@ -83,9 +74,9 @@ const NGOFilterModal = ({ onClose }: PracticeProgramFilterModalProps) => {
                   <div className="flex  flex-col w-full justify-between">
                     <div className="flex flex-col w-full gap-4">
                       <Controller
-                        key={PracticeProgramsSearchConfig.locationId.key}
-                        name={PracticeProgramsSearchConfig.locationId.key}
-                        rules={PracticeProgramsSearchConfig.locationId.rules}
+                        key={PracticeProgramsSearchConfig.location.key}
+                        name={PracticeProgramsSearchConfig.location.key}
+                        rules={PracticeProgramsSearchConfig.location.rules}
                         control={control}
                         render={({ field: { onChange, value } }) => {
                           return (
@@ -94,10 +85,10 @@ const NGOFilterModal = ({ onClose }: PracticeProgramFilterModalProps) => {
                               value={value}
                               isMulti={false}
                               isClearable={false}
-                              placeholder={PracticeProgramsSearchConfig.locationId.placeholder}
+                              placeholder={PracticeProgramsSearchConfig.location.placeholder}
                               onChange={onChange}
                               loadOptions={loadOptionsLocationSearch}
-                              addOn={PracticeProgramsSearchConfig.locationId.addOn}
+                              addOn={PracticeProgramsSearchConfig.location.addOn}
                             />
                           );
                         }}
