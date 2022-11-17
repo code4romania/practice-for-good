@@ -79,9 +79,9 @@ const PracticeProgramFilterModal = ({
                   <div className="flex  flex-col w-full justify-between">
                     <div className="flex flex-col w-full gap-4">
                       <Controller
-                        key={PracticeProgramsSearchConfig.location.key}
-                        name={PracticeProgramsSearchConfig.location.key}
-                        rules={PracticeProgramsSearchConfig.location.rules}
+                        key={PracticeProgramsSearchConfig.locationId.key}
+                        name={PracticeProgramsSearchConfig.locationId.key}
+                        rules={PracticeProgramsSearchConfig.locationId.rules}
                         control={control}
                         render={({ field: { onChange, value } }) => {
                           return (
@@ -90,10 +90,10 @@ const PracticeProgramFilterModal = ({
                               value={value}
                               isMulti={false}
                               isClearable={false}
-                              placeholder={PracticeProgramsSearchConfig.location.placeholder}
+                              placeholder={PracticeProgramsSearchConfig.locationId.placeholder}
                               onChange={onChange}
                               loadOptions={loadOptionsLocationSearch}
-                              addOn={PracticeProgramsSearchConfig.location.addOn}
+                              addOn={PracticeProgramsSearchConfig.locationId.addOn}
                             />
                           );
                         }}

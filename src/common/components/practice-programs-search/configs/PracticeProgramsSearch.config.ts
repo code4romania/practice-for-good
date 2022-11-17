@@ -15,8 +15,8 @@ export const PracticeProgramsSearchConfig: Record<string, any> = {
       addOn: () => IconAddon({ icon: SearchIcon }),
     },
   },
-  location: {
-    key: 'location',
+  locationId: {
+    key: 'locationId',
     label: '',
     rules: {},
     placeholder: i18n.t('practice_programs_search:config.location.placeholder'),

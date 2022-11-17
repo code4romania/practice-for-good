@@ -1,10 +1,9 @@
-import { useQuery } from "@tanstack/react-query";
-import { City } from "../../common/interfaces/City.interface";
-import { Domain } from "../../common/interfaces/Domain.interface";
-import { Faculty } from "../../common/interfaces/Faculty.interface";
-import useStore from "../../store/Store";
-import { getCities, getDomains, getFaculties } from "./Nomenclature.service";
-
+import { useQuery } from '@tanstack/react-query';
+import { City } from '../../common/interfaces/City.interface';
+import { Domain } from '../../common/interfaces/Domain.interface';
+import { Faculty } from '../../common/interfaces/Faculty.interface';
+import useStore from '../../store/Store';
+import { getCities, getDomains, getFaculties } from './Nomenclature.service';
 
 export const useCitiesQuery = (searchTerm: string) => {
   const { setCities } = useStore();
@@ -12,7 +11,7 @@ export const useCitiesQuery = (searchTerm: string) => {
     onSuccess: (data: City[]) => {
       setCities(data);
     },
-    enabled: !!searchTerm
+    enabled: !!searchTerm,
   });
 };
 

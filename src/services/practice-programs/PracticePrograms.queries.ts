@@ -9,7 +9,7 @@ import { getPracticeProgramById, searchPracticePrograms } from './PracticeProgra
 export const usePracticeProgramsQuery = (
   page: number,
   search?: string | null,
-  location?: string | null,
+  location?: number | null,
   faculties?: (number | null)[] | null,
   workingHours?: WorkingHoursEnum | null,
   domains?: (number | null)[] | null,

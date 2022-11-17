@@ -19,7 +19,11 @@ import ShapeWrapper from '../shape-wrapper/ShapeWrapper';
 import PracticeProgramFilterModal from '../practice-program-filter-modal/PracticeProgramFilterModal';
 import { useQueryParams, encodeQueryParams } from 'use-query-params';
 import { stringify } from 'query-string';
-import { getDomains, getFaculties } from '../../../services/nomenclature/Nomenclature.service';
+import {
+  getCities,
+  getDomains,
+  getFaculties,
+} from '../../../services/nomenclature/Nomenclature.service';
 import { WorkingHours } from '../../enums/WorkingHours.enum';
 import { POGRAMS_QUERY_PARAMS } from '../../constants/Programs.constants';
 import { countFilters } from '../../helpers/Filters.helpers';
@@ -76,12 +80,11 @@ const PracticeProgramsSearch = (props: PracticeProgramsSearchProps) => {
     const queryValues = {
       search: data?.search,
       workingHours: data?.workingHours?.value,
-      location: data?.location?.label,
+      locationId: data?.locationId?.value,
       faculties: selectedFaculties?.length > 0 ? selectedFaculties : undefined,
       domains: selectedDomains?.length > 0 ? selectedDomains : undefined,
       start: data?.start,
       end: data?.end,
-      page: 1,
     };
 
     // 2. set query params
@@ -102,7 +105,7 @@ const PracticeProgramsSearch = (props: PracticeProgramsSearchProps) => {
   // TODO: These operations should take place in each form cell which requires server data
   const initFilters = async () => {
     const {
-      location,
+      locationId,
       domains: queryDomains,
       faculties: queryFaculties,
       workingHours,
@@ -110,12 +113,12 @@ const PracticeProgramsSearch = (props: PracticeProgramsSearchProps) => {
     } = query;
 
     // init should get me the correct values for
-    let selectedLocation, selectedFaculties, selectedWorkingHours, selectedDomains;
+    let selectedLocationId, selectedFaculties, selectedWorkingHours, selectedDomains;
 
     // 1. city
-    if (location) {
-      const citiesResults = await loadOptionsLocationSearch(location);
-      selectedLocation = citiesResults[0];
+    if (locationId) {
+      const citiesResults = await getCities(undefined, locationId.toString());
+      selectedLocationId = mapItemToSelect(citiesResults[0]);
     }
 
     // 2. faculties
@@ -142,7 +145,7 @@ const PracticeProgramsSearch = (props: PracticeProgramsSearchProps) => {
     setFiltersCount(countFilters(query));
 
     return {
-      location: selectedLocation,
+      locationId: selectedLocationId,
       domains: selectedDomains,
       faculties: selectedFaculties,
       workingHours: selectedWorkingHours,
@@ -186,9 +189,9 @@ const PracticeProgramsSearch = (props: PracticeProgramsSearchProps) => {
 
             <div className="w-1/3 h-14 hidden sm:flex">
               <Controller
-                key={PracticeProgramsSearchConfig.location.key}
-                name={PracticeProgramsSearchConfig.location.key}
-                rules={PracticeProgramsSearchConfig.location.rules}
+                key={PracticeProgramsSearchConfig.locationId.key}
+                name={PracticeProgramsSearchConfig.locationId.key}
+                rules={PracticeProgramsSearchConfig.locationId.rules}
                 control={control}
                 render={({ field: { onChange, value } }) => {
                   return (
@@ -197,10 +200,10 @@ const PracticeProgramsSearch = (props: PracticeProgramsSearchProps) => {
                       value={value}
                       isMulti={false}
                       isClearable={false}
-                      placeholder={PracticeProgramsSearchConfig.location.placeholder}
+                      placeholder={PracticeProgramsSearchConfig.locationId.placeholder}
                       onChange={onChange}
                       loadOptions={loadOptionsLocationSearch}
-                      addOn={PracticeProgramsSearchConfig.location.addOn}
+                      addOn={PracticeProgramsSearchConfig.locationId.addOn}
                     />
                   );
                 }}
