@@ -4,29 +4,41 @@ import PracticeProgramsSearch from '../../common/components/practice-programs-se
 import { usePracticePrograms } from '../../store/Selectors';
 import { Virtuoso } from 'react-virtuoso';
 import ProgramItem from './components/ProgramItem';
-import useStore from '../../store/Store';
 import { usePracticeProgramsQuery } from '../../services/practice-programs/PracticePrograms.queries';
 import NoData from '../../common/components/no-data/NoData';
 import InfiniteScrollFooter from '../../common/components/infinite-scroll-footer/InfiniteScrollFooter';
+import { useQueryParams } from 'use-query-params';
+import { POGRAMS_QUERY_PARAMS } from '../../common/constants/Programs.constants';
+import { WorkingHoursEnum } from '../../common/enums/WorkingHours.enum';
 
 const Programs = () => {
   const { t } = useTranslation('practice_programs');
-  const { nextPagePracticePrograms } = useStore();
+  const { meta } = usePracticePrograms();
+  const [query, setQuery] = useQueryParams(POGRAMS_QUERY_PARAMS);
 
   const {
     practicePrograms: programs,
     meta: { totalItems: total },
   } = usePracticePrograms();
 
-  const { isLoading, error, refetch } = usePracticeProgramsQuery();
+  const { isLoading, error, refetch } = usePracticeProgramsQuery(
+    query.page || meta.currentPage,
+    query.search,
+    undefined,
+    query.faculties,
+    query.workingHours as WorkingHoursEnum,
+    query.domains,
+    query.start,
+    query.end,
+  );
 
   const loadMore = useCallback(() => {
-    if (total > programs.length) nextPagePracticePrograms();
+    if (total > programs.length && query.page) setQuery({ ...query, page: query.page + 1 });
   }, [programs, total]);
 
   return (
     <section className="w-full">
-      <PracticeProgramsSearch showFilters preloadData>
+      <PracticeProgramsSearch>
         {error && !isLoading ? (
           <NoData retry={refetch}>{t('errors.search')}</NoData>
         ) : (

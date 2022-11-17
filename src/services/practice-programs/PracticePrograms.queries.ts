@@ -1,22 +1,31 @@
 import { useQuery } from '@tanstack/react-query';
+import { WorkingHoursEnum } from '../../common/enums/WorkingHours.enum';
 import { PaginatedEntity } from '../../common/interfaces/PaginatedEntity.interface';
 import { IPracticeProgram } from '../../common/interfaces/PracticeProgram.interface';
 import { usePracticePrograms } from '../../store/Selectors';
 import useStore from '../../store/Store';
 import { getPracticeProgramById, searchPracticePrograms } from './PracticePrograms.service';
 
-export const usePracticeProgramsQuery = () => {
-  const { setPracticePrograms } = useStore();
+export const usePracticeProgramsQuery = (
+  page: number,
+  search?: string | null,
+  locationId?: string | null,
+  faculties?: (number | null)[] | null,
+  workingHours?: WorkingHoursEnum | null,
+  domains?: (number | null)[] | null,
+  start?: Date | null,
+  end?: Date | null,
+) => {
+  const { setPracticePrograms, nextPracticePrograms } = useStore();
   const {
-    filters: { search, locationId, faculties, workingHours, domains, start, end },
-    meta: { currentPage, itemsPerPage },
+    meta: { itemsPerPage },
   } = usePracticePrograms();
 
   return useQuery(
     [
       'practice-programs',
       itemsPerPage,
-      currentPage,
+      page,
       search,
       locationId,
       faculties,
@@ -28,7 +37,7 @@ export const usePracticeProgramsQuery = () => {
     () =>
       searchPracticePrograms(
         itemsPerPage,
-        currentPage,
+        page,
         search,
         locationId,
         faculties,
@@ -39,9 +48,13 @@ export const usePracticeProgramsQuery = () => {
       ),
     {
       onSuccess: (data: PaginatedEntity<IPracticeProgram>) => {
-        setPracticePrograms(data);
+        if (page > 1) {
+          nextPracticePrograms(data);
+        } else {
+          setPracticePrograms(data);
+        }
       },
-      enabled: !!(currentPage && itemsPerPage),
+      enabled: !!(page && itemsPerPage),
       retry: 0,
     },
   );
@@ -50,8 +63,10 @@ export const usePracticeProgramsQuery = () => {
 export const usePracticeProgram = (id: string) => {
   const { setSelectedProgram } = useStore();
   return useQuery(['practice-program', id], () => getPracticeProgramById(id), {
-    enabled: !!id, retry: 0, onSuccess: (data: IPracticeProgram) => {
+    enabled: !!id,
+    retry: 0,
+    onSuccess: (data: IPracticeProgram) => {
       setSelectedProgram(data);
     },
   });
-}
+};
