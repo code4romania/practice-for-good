@@ -7,7 +7,7 @@ export const searchOrganizations = async (
   limit: number,
   page: number,
   search?: string | null,
-  location?: string | null,
+  locationId?: number | null,
   domains?: (number | null)[] | null,
 ): Promise<PaginatedEntity<OrganizationFlat>> => {
   return API.get('/api/practice-program/organization', {
@@ -15,7 +15,7 @@ export const searchOrganizations = async (
       limit,
       page,
       search: search || undefined,
-      location,
+      cityId: locationId,
       domains,
     },
   }).then((res) => res.data);

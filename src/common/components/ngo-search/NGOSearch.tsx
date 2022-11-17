@@ -17,7 +17,7 @@ import NGOFilterModal from '../ngo-filter-modal/NGOFilterModal';
 import ShapeWrapper from '../shape-wrapper/ShapeWrapper';
 import { useQueryParams } from 'use-query-params';
 import { ORGANIZATIONS_QUERY_PARAMS } from '../../constants/Organizations.constants';
-import { getDomains } from '../../../services/nomenclature/Nomenclature.service';
+import { getCities, getDomains } from '../../../services/nomenclature/Nomenclature.service';
 import { countFilters } from '../../helpers/Filters.helpers';
 
 interface NGOSearchProps {
@@ -70,9 +70,8 @@ const NGOSearch = ({ showFilters, children }: NGOSearchProps) => {
     const selectedDomains = data?.domains?.map((domain: ISelectData) => domain.value);
     const queryValues = {
       search: data?.search,
-      location: data?.location?.label,
+      locationId: data?.locationId?.value,
       domains: selectedDomains?.length > 0 ? selectedDomains : undefined,
-      page: 1,
     };
 
     // 2. set query params
@@ -87,15 +86,15 @@ const NGOSearch = ({ showFilters, children }: NGOSearchProps) => {
   };
 
   const initFilters = async () => {
-    const { location, domains: queryDomains, ...otherQueryParams } = query;
+    const { locationId, domains: queryDomains, ...otherQueryParams } = query;
 
     // init should get me the correct values for
     let selectedLocation, selectedDomains;
 
     // 1. city
-    if (location) {
-      const citiesResults = await loadOptionsLocationSearch(location);
-      selectedLocation = citiesResults[0];
+    if (locationId) {
+      const citiesResults = await getCities(undefined, locationId.toString());
+      selectedLocation = mapItemToSelect(citiesResults[0]);
     }
 
     // 4. domains
@@ -109,7 +108,7 @@ const NGOSearch = ({ showFilters, children }: NGOSearchProps) => {
     setFiltersCount(countFilters(query));
 
     return {
-      location: selectedLocation,
+      locationId: selectedLocation,
       domains: selectedDomains,
       ...otherQueryParams,
     };
@@ -153,9 +152,9 @@ const NGOSearch = ({ showFilters, children }: NGOSearchProps) => {
 
             <div className="w-1/3 h-14 hidden sm:flex">
               <Controller
-                key={NGOSearchConfig.location.key}
-                name={NGOSearchConfig.location.key}
-                rules={NGOSearchConfig.location.rules}
+                key={NGOSearchConfig.locationId.key}
+                name={NGOSearchConfig.locationId.key}
+                rules={NGOSearchConfig.locationId.rules}
                 control={control}
                 render={({ field: { onChange, value } }) => {
                   return (
@@ -164,10 +163,10 @@ const NGOSearch = ({ showFilters, children }: NGOSearchProps) => {
                       value={value}
                       isMulti={false}
                       isClearable={false}
-                      placeholder={NGOSearchConfig.location.placeholder}
+                      placeholder={NGOSearchConfig.locationId.placeholder}
                       onChange={onChange}
                       loadOptions={loadOptionsLocationSearch}
-                      addOn={NGOSearchConfig.location.addOn}
+                      addOn={NGOSearchConfig.locationId.addOn}
                     />
                   );
                 }}

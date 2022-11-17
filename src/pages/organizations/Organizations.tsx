@@ -23,7 +23,7 @@ const Organizations = () => {
   const { isLoading, error, refetch } = useOrganizationQuery(
     page,
     query?.search,
-    query?.location,
+    query?.locationId,
     query?.domains,
   );
 

@@ -9,7 +9,7 @@ import { getOrganizationWithPracticePrograms, searchOrganizations } from './Orga
 export const useOrganizationQuery = (
   currentPage: number,
   search?: string | null,
-  location?: string | null,
+  locationId?: number | null,
   domains?: (number | null)[] | null,
 ) => {
   const { setOrganizations, nextOrganizations } = useStore();
@@ -18,8 +18,8 @@ export const useOrganizationQuery = (
   } = useOrganizations();
 
   return useQuery(
-    ['organizations', itemsPerPage, currentPage, search, location, domains],
-    () => searchOrganizations(itemsPerPage, currentPage, search, location, domains),
+    ['organizations', itemsPerPage, currentPage, search, locationId, domains],
+    () => searchOrganizations(itemsPerPage, currentPage, search, locationId, domains),
     {
       onSuccess: (data: PaginatedEntity<OrganizationFlat>) => {
         if (currentPage > 1) {

@@ -1,7 +1,7 @@
-import { DelimitedNumericArrayParam, StringParam } from 'use-query-params';
+import { DelimitedNumericArrayParam, NumberParam, StringParam } from 'use-query-params';
 
 export const ORGANIZATIONS_QUERY_PARAMS = {
   search: StringParam,
-  location: StringParam,
+  locationId: NumberParam,
   domains: DelimitedNumericArrayParam,
 };

@@ -14,8 +14,8 @@ export const NGOSearchConfig: Record<string, any> = {
       addOn: () => IconAddon({ icon: SearchIcon }),
     },
   },
-  location: {
-    key: 'location',
+  locationId: {
+    key: 'locationId',
     label: '',
     rules: {},
     placeholder: i18n.t('ngo-search:config.location.placeholder'),
