@@ -126,6 +126,7 @@ const PracticeProgramFilterModal = ({ onClose }: PracticeProgramFilterModalProps
                               placeholder={PracticeProgramsSearchConfig.faculties.placeholder}
                               onChange={onChange}
                               options={faculties.map(mapItemToSelect)}
+                              icon={PracticeProgramsSearchConfig.faculties.icon}
                             />
                           );
                         }}
@@ -177,6 +178,7 @@ const PracticeProgramFilterModal = ({ onClose }: PracticeProgramFilterModalProps
                                 PracticeProgramsSearchConfig.workingHours.config.placeholder
                               }
                               options={PracticeProgramsSearchConfig.workingHours.config.collection}
+                              icon={PracticeProgramsSearchConfig.workingHours.icon}
                             />
                           );
                         }}
@@ -196,6 +198,7 @@ const PracticeProgramFilterModal = ({ onClose }: PracticeProgramFilterModalProps
                               onChange={onChange}
                               placeholder={PracticeProgramsSearchConfig.domains.config.placeholder}
                               options={domains.map(mapItemToSelect)}
+                              icon={PracticeProgramsSearchConfig.domains.icon}
                             />
                           );
                         }}

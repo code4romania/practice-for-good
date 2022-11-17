@@ -27,7 +27,7 @@ const Control = ({ children, ...props }: any) => {
     components.Control && (
       <components.Control {...props}>
         {props.icon && (
-          <props.icon className={classNames(`w-5 h-5`, props.hasValue ? 'text-purple' : 'text-gray-500')} />
+          <props.icon className={classNames(`ml-1 w-5 h-5`, props.hasValue ? 'text-purple' : 'text-gray-500')} />
         )}
         {children}
       </components.Control>

@@ -80,6 +80,7 @@
   border: 1px solid #6B7280;
   border-radius: 0px!important;
   font-family: 'TitilliumWeb-Regular'!important;
+  z-index: 999!important;
 }
 
 .reactselect__option:hover {
