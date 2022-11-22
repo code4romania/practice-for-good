@@ -44,9 +44,8 @@ const Programs = () => {
         ) : (
           <div className="flex flex-col w-full lg:px-60 px-10 pt-10">
             {programs.length !== 0 && !isLoading && (
-              <p className="title text-center">{`${total} ${
-                total > 1 ? t('many_programs_title') : t('one_program_title')
-              }`}</p>
+              <p className="title text-center">{`${total} ${total > 1 ? t('many_programs_title') : t('one_program_title')
+                }`}</p>
             )}
             <div className="mb-[10rem]">
               <Virtuoso
@@ -57,15 +56,6 @@ const Programs = () => {
                 overscan={200}
                 data={programs}
                 itemContent={(index, program) => <ProgramItem key={index} program={program} />}
-                components={{
-                  Footer: () => (
-                    <InfiniteScrollFooter
-                      isLoading={isLoading}
-                      hasNoData={programs.length === 0}
-                      hasReachedTheEnd={programs.length === total}
-                    />
-                  ),
-                }}
               />
             </div>
           </div>

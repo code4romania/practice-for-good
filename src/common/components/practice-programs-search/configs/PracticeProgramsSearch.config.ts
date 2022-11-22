@@ -1,7 +1,13 @@
-import { LocationMarkerIcon, SearchIcon } from '@heroicons/react/solid';
 import i18n from '../../../configs/i18n';
 import { WorkingHours } from '../../../enums/WorkingHours.enum';
 import IconAddon from '../../icon-addon/IconAddon';
+import {
+  AcademicCapIcon,
+  ClockIcon,
+  LocationMarkerIcon,
+  SearchIcon,
+  ViewBoardsIcon,
+} from '@heroicons/react/solid';
 
 export const PracticeProgramsSearchConfig: Record<string, any> = {
   search: {
@@ -26,6 +32,7 @@ export const PracticeProgramsSearchConfig: Record<string, any> = {
     key: 'faculties',
     rules: {},
     placeholder: i18n.t('practice_programs_search:config.faculties.placeholder'),
+    icon: AcademicCapIcon,
   },
   start: {
     key: 'start',
@@ -44,6 +51,7 @@ export const PracticeProgramsSearchConfig: Record<string, any> = {
       collection: [...WorkingHours],
       placeholder: i18n.t('practice_programs_search:config.workingHours.placeholder'),
     },
+    icon: ClockIcon,
   },
   domains: {
     key: 'domains',
@@ -51,5 +59,6 @@ export const PracticeProgramsSearchConfig: Record<string, any> = {
     config: {
       placeholder: i18n.t('practice_programs_search:config.domains.placeholder'),
     },
+    icon: ViewBoardsIcon,
   },
 };

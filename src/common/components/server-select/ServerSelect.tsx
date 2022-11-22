@@ -5,6 +5,7 @@ import AsyncSelect from 'react-select/async';
 import debounce from 'debounce-promise';
 import './ServerSelect.css';
 import { LocationMarkerIcon } from '@heroicons/react/solid';
+import { classNames } from '../../helpers/Tailwind.helper';
 
 export interface ServerSelectConfig {
   label?: string;
@@ -20,9 +21,20 @@ export interface ServerSelectConfig {
   addOn?: any;
 }
 
-const Control = ({ addOn, children, ...props }: any) => (
-  <components.Control {...props}>{children}</components.Control>
-);
+const Control = ({ children, ...props }: any) => {
+  return (
+    components.Control && (
+      <components.Control {...props}>
+        {
+          <LocationMarkerIcon
+            className={classNames(`w-5 h-5`, props.hasValue ? 'text-purple' : 'text-gray-500')}
+          />
+        }
+        {children}
+      </components.Control>
+    )
+  );
+};
 
 const ServerSelect = ({
   placeholder,
@@ -59,7 +71,7 @@ const ServerSelect = ({
         isClearable={isClearable}
         isMulti={isMulti}
         value={defaultValue}
-        components={{ DropdownIndicator: null, CrossIcon: LocationMarkerIcon }}
+        components={{ DropdownIndicator: null, Control }}
       />
     </div>
   );

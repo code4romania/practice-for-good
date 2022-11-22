@@ -37,6 +37,8 @@
   },
   "practice_programs_search": {
     "title": "Programe de practica la ONG-uri din România",
+    "subtitle": "Caută programele de practică pe profilul tău, sau ",
+    "subtitle_link": "Descoperă toate programele.",
     "filters": "Filtre",
     "selected": "selectate",
     "searchWord": "Cauta",
@@ -143,7 +145,8 @@
       },
       "errors": {
         "get": "Eroare la incarcarea programului de practica"
-      }
+      },
+      "published_on": "Publicat la"
     }
   },
   "contact": {
