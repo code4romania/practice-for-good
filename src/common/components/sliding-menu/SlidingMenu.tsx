@@ -1,9 +1,9 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useEffect, useState } from 'react';
 import { Dialog, Transition } from '@headlessui/react';
-import { useNavigate } from 'react-router-dom';
+import { useHref, useLocation, useNavigate } from 'react-router-dom';
 import { classNames } from '../../helpers/Tailwind.helper';
 import logo from './../../../assets/images/logo.svg';
-import { MENU_ROUTES } from '../../constants/Menu.constants';
+import { MENU_ROUTES, MENU_ROUTES_HREF } from '../../constants/Menu.constants';
 import { XIcon } from '@heroicons/react/solid';
 import { useTranslation } from 'react-i18next';
 import { windowOpener } from '../../helpers/navigation.helper';
@@ -11,12 +11,24 @@ import { windowOpener } from '../../helpers/navigation.helper';
 export default function SlidingMenu({ isOpen, setSlidingMenuOpen }: { isOpen: boolean, setSlidingMenuOpen: any }) {
   const { t } = useTranslation('sliding_menu');
   const navigate = useNavigate();
+  const location = useLocation();
+
+  const [activeTab, setActiveTab] = useState<string>();
 
 
   const handleMenuItemClick = (item: any) => {
     setSlidingMenuOpen(false);
-    navigate(`/${item.href}`);
+    navigate(`${item.href}`);
   };
+
+  useEffect(() => {
+    if (location.pathname === '/') {
+      setActiveTab('/');
+    } else {
+      const found = Object.values(MENU_ROUTES_HREF).find(route => location.pathname.startsWith(`/${route}`));
+      setActiveTab(`/${found}`);
+    }
+  }, [location.pathname])
 
 
   return (
@@ -84,7 +96,7 @@ export default function SlidingMenu({ isOpen, setSlidingMenuOpen }: { isOpen: bo
                           <a
                             key={item.name}
                             className={classNames(
-                              'side-menu-title active:text-yellow-600',
+                              'side-menu-title active:text-yellow-600', activeTab === item.href && 'text-yellow-700',
                             )}
                             onClick={() => handleMenuItemClick(item)}
                           >
