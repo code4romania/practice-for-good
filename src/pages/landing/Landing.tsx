@@ -14,13 +14,17 @@ const Landing = () => {
   const { t } = useTranslation('landing');
   const navigate = useNavigate();
 
+  const onGoToPrograms = (search: string) => {
+    navigate({
+      pathname: '/practice-programs',
+      search,
+    });
+  };
+
   return (
     <section className="w-full">
       <div className="bg-yellow w-full">
-        <PracticeProgramsSearch
-          showFilters={true}
-          onSearchCallback={() => navigate('/practice-programs')}
-        />
+        <PracticeProgramsSearch onSearchCallback={onGoToPrograms} />
       </div>
       <div className="max-w-screen-xl mx-auto px-10">
         <Description
@@ -33,7 +37,6 @@ const Landing = () => {
       </div>
       <Counter></Counter>
       <ShapeWrapper>
-        {' '}
         <Domains domains={LANDING_DOMAINS}></Domains>
       </ShapeWrapper>
     </section>

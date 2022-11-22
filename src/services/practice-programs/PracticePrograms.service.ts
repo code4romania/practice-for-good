@@ -1,4 +1,4 @@
-import { ISelectData } from '../../common/helpers/Nomenclature.helper';
+import { WorkingHoursEnum } from '../../common/enums/WorkingHours.enum';
 import { PaginatedEntity } from '../../common/interfaces/PaginatedEntity.interface';
 import { IPracticeProgram } from '../../common/interfaces/PracticeProgram.interface';
 import API from '../API';
@@ -6,23 +6,23 @@ import API from '../API';
 export const searchPracticePrograms = async (
   limit: number,
   page: number,
-  search?: string,
-  locationId?: ISelectData,
-  faculties?: ISelectData[],
-  workingHours?: ISelectData,
-  domains?: ISelectData[],
-  start?: string,
-  end?: string,
+  search?: string | null,
+  locationId?: number | null,
+  faculties?: (number | null)[] | null,
+  workingHours?: WorkingHoursEnum | null,
+  domains?: (number | null)[] | null,
+  start?: Date | null,
+  end?: Date | null,
 ): Promise<PaginatedEntity<IPracticeProgram>> => {
   return API.get('/api/practice-program/search', {
     params: {
       limit,
       page,
-      search: search || undefined,
-      locationId: locationId?.value,
-      faculties: faculties?.map((faculty) => faculty.value),
-      domains: domains?.map((domain) => domain.value),
-      workingHours: workingHours?.value,
+      search,
+      locationId,
+      faculties,
+      domains,
+      workingHours,
       start,
       end,
     },

@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { OrderDirection } from '../../common/enums/OrderDirection.enum';
-import { ISelectData } from '../../common/helpers/Nomenclature.helper';
 import { PaginatedEntity } from '../../common/interfaces/PaginatedEntity.interface';
 import { IPracticeProgram } from '../../common/interfaces/PracticeProgram.interface';
 
@@ -16,63 +15,19 @@ export const practiceProgramsSlice = (set: any) => ({
       orderByColumn: 'id',
       orderDirection: OrderDirection.ASC,
     },
-    filters: {
-      search: '',
-      locationId: undefined,
-      faculties: [],
-      workingHours: undefined,
-      domains: [],
-      start: undefined,
-      end: undefined,
-    },
   },
   selectedProgram: null,
   setSelectedProgram: (selectedProgram: IPracticeProgram) => set({ selectedProgram }),
-  setPracticePrograms: (practicePrograms: PaginatedEntity<IPracticeProgram>) => {
+  setPracticePrograms: (practicePrograms: PaginatedEntity<IPracticeProgram>) =>
+    set({
+      practicePrograms,
+    }),
+  nextPracticePrograms: (practicePrograms: PaginatedEntity<IPracticeProgram>) => {
     set((state: { practicePrograms: PaginatedEntity<IPracticeProgram> }) => ({
       practicePrograms: {
         ...state.practicePrograms,
         meta: practicePrograms.meta,
         items: [...state.practicePrograms.items, ...practicePrograms.items],
-      },
-    }));
-  },
-  nextPagePracticePrograms: () => {
-    set((state: { practicePrograms: PaginatedEntity<IPracticeProgram> }) => ({
-      practicePrograms: {
-        ...state.practicePrograms,
-        meta: {
-          ...state.practicePrograms.meta,
-          currentPage: state.practicePrograms.meta.currentPage + 1,
-        },
-      },
-    }));
-  },
-  updatePracticeProgramsFilters: (
-    search: string,
-    locationId: ISelectData,
-    faculties: ISelectData[],
-    workingHours: ISelectData,
-    domains: ISelectData[],
-    start: Date,
-    end: Date,
-  ) => {
-    set((state: { practicePrograms: PaginatedEntity<IPracticeProgram> }) => ({
-      practicePrograms: {
-        items: [],
-        meta: {
-          ...state.practicePrograms.meta,
-          currentPage: 1,
-        },
-        filters: {
-          search,
-          locationId,
-          faculties,
-          domains,
-          workingHours,
-          start,
-          end,
-        },
       },
     }));
   },
