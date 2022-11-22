@@ -93,7 +93,7 @@ const NGOSearch = ({ showFilters, children }: NGOSearchProps) => {
 
     // 1. city
     if (locationId) {
-      const citiesResults = await getCities(undefined, locationId.toString());
+      const citiesResults = await getCities({ cityId: locationId.toString() });
       selectedLocation = mapItemToSelect(citiesResults[0]);
     }
 
