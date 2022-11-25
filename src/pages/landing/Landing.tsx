@@ -1,7 +1,6 @@
 import React from 'react';
 import PracticeProgramsSearch from '../../common/components/practice-programs-search/PracticeProgramsSearch';
 import ShapeWrapper from '../../common/components/shape-wrapper/ShapeWrapper';
-import { LANDING_DOMAINS } from '../../common/constants/nomenclature.constants';
 import Domains from './components/domains/Domains';
 import Counter from './components/counter/Counter';
 import Description from '../../common/components/description/Description';
@@ -35,9 +34,9 @@ const Landing = () => {
           isTextRight={true}
         ></Description>
       </div>
-      <Counter></Counter>
+      <Counter />
       <ShapeWrapper>
-        <Domains domains={LANDING_DOMAINS}></Domains>
+        <Domains />
       </ShapeWrapper>
     </section>
   );
