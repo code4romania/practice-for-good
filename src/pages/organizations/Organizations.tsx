@@ -1,6 +1,6 @@
 import React, { useCallback, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Virtuoso } from 'react-virtuoso';
+import { Virtuoso, VirtuosoGrid } from 'react-virtuoso';
 import { useQueryParams } from 'use-query-params';
 import InfiniteScrollFooter from '../../common/components/infinite-scroll-footer/InfiniteScrollFooter';
 import NGOSearch from '../../common/components/ngo-search/NGOSearch';
@@ -43,7 +43,7 @@ const Organizations = () => {
                 }`}</p>
             )}
             <div className="mb-[10rem]">
-              <Virtuoso
+              <VirtuosoGrid
                 useWindowScroll
                 style={{ height: '100vw' }}
                 context={{ loadMore }}
@@ -51,6 +51,8 @@ const Organizations = () => {
                 overscan={200}
                 data={organizations}
                 itemContent={(index, ong) => <OrganizationItem key={index} organization={ong} />}
+                itemClassName='virtuso-grid-item'
+                listClassName='virtuso-grid-list'
               />
             </div>
           </div>
