@@ -54,8 +54,16 @@
   .card-text-overflow {
     @apply text-ellipsis overflow-hidden;
     display: -webkit-box;
-    -webkit-line-clamp: 5;
+    -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
+  }
+
+  .virtuso-grid-item {
+    @apply w-[22.75rem] h-[34.375rem]
+  }
+
+  .virtuso-grid-list {
+    @apply flex flex-wrap gap-8;
   }
 
   .menu-title {
