@@ -6,7 +6,6 @@ import { Virtuoso } from 'react-virtuoso';
 import ProgramItem from './components/ProgramItem';
 import { usePracticeProgramsQuery } from '../../services/practice-programs/PracticePrograms.queries';
 import NoData from '../../common/components/no-data/NoData';
-import InfiniteScrollFooter from '../../common/components/infinite-scroll-footer/InfiniteScrollFooter';
 import { useQueryParams } from 'use-query-params';
 import { POGRAMS_QUERY_PARAMS } from '../../common/constants/Programs.constants';
 import { WorkingHoursEnum } from '../../common/enums/WorkingHours.enum';
@@ -44,8 +43,9 @@ const Programs = () => {
         ) : (
           <div className="flex flex-col w-full lg:px-60 px-10 pt-10">
             {programs.length !== 0 && !isLoading && (
-              <p className="title text-center">{`${total} ${total > 1 ? t('many_programs_title') : t('one_program_title')
-                }`}</p>
+              <p className="title text-center">{`${total} ${
+                total > 1 ? t('many_programs_title') : t('one_program_title')
+              }`}</p>
             )}
             <div className="mb-[10rem]">
               <Virtuoso

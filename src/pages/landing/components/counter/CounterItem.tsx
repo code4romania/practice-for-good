@@ -13,6 +13,7 @@ const CounterItem = ({ value, type }: ICounterItem) => {
           end={value}
           duration={5}
           enableScrollSpy={true} // https://github.com/glennreyes/react-countup/issues/699
+          scrollSpyOnce={true}
         />
       )}
       {value === undefined && (
