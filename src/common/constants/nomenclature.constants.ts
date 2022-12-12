@@ -1,4 +1,4 @@
-export const DOMAINS = ['Mediu', 'IT', 'Comert', 'Transport', 'Administratie', 'Management'];
+export const DOMAINS = ['Medical', 'Jurnalism', 'Educatie', 'Inginerie', 'Tech', 'Advocacy'];
 
 export const PRACTICE_PROGRAMS = {
   meta: {
