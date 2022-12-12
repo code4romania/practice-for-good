@@ -55,7 +55,9 @@ const Programs = () => {
                 endReached={loadMore}
                 overscan={200}
                 data={programs}
-                itemContent={(index, program) => <ProgramItem key={index} program={program} />}
+                itemContent={(index, program) =>
+                  program && <ProgramItem key={index} program={program} />
+                }
               />
             </div>
           </div>

@@ -19,6 +19,7 @@ import { useQueryParams } from 'use-query-params';
 import { ORGANIZATIONS_QUERY_PARAMS } from '../../constants/Organizations.constants';
 import { getCities, getDomains } from '../../../services/nomenclature/Nomenclature.service';
 import { countFilters } from '../../helpers/Filters.helpers';
+import { handleEnterKey } from '../../helpers/Format.helper';
 
 interface NGOSearchProps {
   showFilters: boolean;
@@ -114,6 +115,8 @@ const NGOSearch = ({ showFilters, children }: NGOSearchProps) => {
     };
   };
 
+  handleEnterKey('organizations-search__term__input', 'organizations-search__button__submit');
+
   return (
     <>
       <div className="bg-yellow w-full flex flex-col items-center px-2 sm:px-4 sm:py-14 py-10 gap-8 bg-search bg-no-repeat bg-cover bg-center">
@@ -134,7 +137,7 @@ const NGOSearch = ({ showFilters, children }: NGOSearchProps) => {
                       error: errors[NGOSearchConfig.search.key]?.message,
                       defaultValue: value,
                       onChange: onChange,
-                      id: 'programs-search-search__term',
+                      id: 'organizations-search__term',
                     }}
                   />
                 );
@@ -159,7 +162,7 @@ const NGOSearch = ({ showFilters, children }: NGOSearchProps) => {
                 render={({ field: { onChange, value } }) => {
                   return (
                     <ServerSelect
-                      id="programs-search-location"
+                      id="organizations-search__location"
                       value={value}
                       isMulti={false}
                       isClearable={false}
@@ -218,7 +221,7 @@ const NGOSearch = ({ showFilters, children }: NGOSearchProps) => {
               }}
             />
             <button
-              id="create-organization-activity__button-back"
+              id="organizations-search__button__submit"
               type="button"
               className="text-sm sm:text-xl text-yellow bg-black px-6 h-full sm:w-56 w-24"
               onClick={handleSubmit(search)}
