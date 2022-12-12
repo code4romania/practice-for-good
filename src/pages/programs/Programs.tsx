@@ -5,10 +5,11 @@ import { usePracticePrograms } from '../../store/Selectors';
 import { Virtuoso } from 'react-virtuoso';
 import ProgramItem from './components/ProgramItem';
 import { usePracticeProgramsQuery } from '../../services/practice-programs/PracticePrograms.queries';
-import NoData from '../../common/components/no-data/NoData';
+import ListError from '../../common/components/list-error/ListError';
 import { useQueryParams } from 'use-query-params';
 import { POGRAMS_QUERY_PARAMS } from '../../common/constants/Programs.constants';
 import { WorkingHoursEnum } from '../../common/enums/WorkingHours.enum';
+import InfiniteScrollFooter from '../../common/components/infinite-scroll-footer/InfiniteScrollFooter';
 
 const Programs = () => {
   const { t } = useTranslation('practice_programs');
@@ -39,7 +40,7 @@ const Programs = () => {
     <section className="w-full">
       <PracticeProgramsSearch>
         {error && !isLoading ? (
-          <NoData retry={refetch}>{t('errors.search')}</NoData>
+          <ListError retry={refetch}>{t('errors.search')}</ListError>
         ) : (
           <div className="flex flex-col w-full lg:px-60 px-10 pt-10">
             {programs.length !== 0 && !isLoading && (
@@ -56,6 +57,14 @@ const Programs = () => {
                 overscan={200}
                 data={programs}
                 itemContent={(index, program) => <ProgramItem key={index} program={program} />}
+                components={{
+                  Footer: () => (
+                    <InfiniteScrollFooter
+                      hasNoData={programs?.length === 0}
+                      isLoading={isLoading}
+                    />
+                  ),
+                }}
               />
             </div>
           </div>

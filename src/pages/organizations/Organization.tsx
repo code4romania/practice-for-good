@@ -2,8 +2,8 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { useParams } from 'react-router-dom';
 import { Virtuoso } from 'react-virtuoso';
-import Loading from '../../common/components/loading/Loading';
-import NoData from '../../common/components/no-data/NoData';
+import InfiniteScrollFooter from '../../common/components/infinite-scroll-footer/InfiniteScrollFooter';
+import ListError from '../../common/components/list-error/ListError';
 import ShapeWrapper from '../../common/components/shape-wrapper/ShapeWrapper';
 import { useOrganization } from '../../services/organization/Organization.queries';
 import ProgramItem from '../programs/components/ProgramItem';
@@ -31,11 +31,18 @@ const Organization = () => {
                 data={data.practicePrograms}
                 topItemCount={data.practicePrograms?.length}
                 itemContent={(index, program) => <ProgramItem key={index} program={program} />}
+                components={{
+                  Footer: () => (
+                    <InfiniteScrollFooter
+                      hasNoData={data?.practicePrograms?.length === 0}
+                      isLoading={isLoading}
+                    />
+                  ),
+                }}
               />
             </div>
           )}
-          {error && !isLoading && <NoData retry={refetch}>{t('errors.get')}</NoData>}
-          {isLoading && <Loading />}
+          {error && !isLoading && <ListError retry={refetch}>{t('errors.get')}</ListError>}
         </>
       </div>
     </ShapeWrapper>
