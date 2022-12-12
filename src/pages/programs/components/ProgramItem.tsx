@@ -45,7 +45,7 @@ const ProgramItem = ({ program }: { program: IPracticeProgram }) => {
               </div>
               <div className="flex flex-row items-center gap-x-1">
                 <ClockIcon className="w-4"></ClockIcon>
-                <p className="sm:text-sm lg:text-base text-xs">{`min. ${program.minWorkingHours}`}</p>
+                <p className="sm:text-sm lg:text-base text-xs">{`min. ${program.minWorkingHours} ore`}</p>
               </div>
             </div>
           </div>
