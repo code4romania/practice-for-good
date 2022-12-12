@@ -59,7 +59,7 @@
   }
 
   .virtuso-grid-item {
-    @apply w-[22.75rem] h-[34.375rem]
+    @apply w-[22.75rem] h-[34.375rem];
   }
 
   .virtuso-grid-list {

@@ -1,8 +1,7 @@
 import React, { useCallback, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Virtuoso, VirtuosoGrid } from 'react-virtuoso';
+import { VirtuosoGrid } from 'react-virtuoso';
 import { useQueryParams } from 'use-query-params';
-import InfiniteScrollFooter from '../../common/components/infinite-scroll-footer/InfiniteScrollFooter';
 import NGOSearch from '../../common/components/ngo-search/NGOSearch';
 import NoData from '../../common/components/no-data/NoData';
 import { ORGANIZATIONS_QUERY_PARAMS } from '../../common/constants/Organizations.constants';
@@ -39,8 +38,9 @@ const Organizations = () => {
         ) : (
           <div className="flex flex-col w-full lg:px-60 px-10 pt-10">
             {organizations.length !== 0 && !isLoading && (
-              <p className="title text-center">{`${total} ${total > 1 ? t('many_organizations_title') : t('one_organization_title')
-                }`}</p>
+              <p className="title text-center">{`${total} ${
+                total > 1 ? t('many_organizations_title') : t('one_organization_title')
+              }`}</p>
             )}
             <div className="mb-[10rem]">
               <VirtuosoGrid
@@ -51,8 +51,8 @@ const Organizations = () => {
                 overscan={200}
                 data={organizations}
                 itemContent={(index, ong) => <OrganizationItem key={index} organization={ong} />}
-                itemClassName='virtuso-grid-item'
-                listClassName='virtuso-grid-list'
+                itemClassName="virtuso-grid-item"
+                listClassName="virtuso-grid-list"
               />
             </div>
           </div>
