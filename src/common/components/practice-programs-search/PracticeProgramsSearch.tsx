@@ -79,7 +79,7 @@ const PracticeProgramsSearch = (props: PracticeProgramsSearchProps) => {
     const selectedFaculties = data?.faculties?.map((faculty: ISelectData) => faculty.value);
     const selectedDomains = data?.domains?.map((domain: ISelectData) => domain.value);
     const queryValues = {
-      search: data?.search,
+      search: data?.search.trim(),
       workingHours: data?.workingHours?.value,
       locationId: data?.locationId?.value,
       faculties: selectedFaculties?.length > 0 ? selectedFaculties : undefined,
