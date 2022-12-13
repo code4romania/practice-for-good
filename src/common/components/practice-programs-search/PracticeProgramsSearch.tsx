@@ -99,7 +99,7 @@ const PracticeProgramsSearch = (props: PracticeProgramsSearchProps) => {
   };
 
   const loadOptionsLocationSearch = async (searchWord: string) => {
-    seSearchtLocationTerm(searchWord);
+    seSearchtLocationTerm(searchWord.trim());
     return cities.map(mapItemToSelect);
   };
 

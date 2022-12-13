@@ -81,7 +81,7 @@ const NGOSearch = ({ showFilters, children }: NGOSearchProps) => {
   };
 
   const loadOptionsLocationSearch = async (searchWord: string) => {
-    seSearchtLocationTerm(searchWord);
+    seSearchtLocationTerm(searchWord.trim());
     return cities.map(mapItemToSelect);
   };
 
