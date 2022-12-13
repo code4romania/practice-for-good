@@ -87,6 +87,7 @@ const PracticeProgramsSearch = (props: PracticeProgramsSearchProps) => {
       domains: selectedDomains?.length > 0 ? selectedDomains : undefined,
       start: data?.start,
       end: data?.end,
+      page: 1,
     };
 
     // 2. set query params
@@ -107,6 +108,7 @@ const PracticeProgramsSearch = (props: PracticeProgramsSearchProps) => {
   // TODO: These operations should take place in each form cell which requires server data
   const initFilters = async () => {
     const {
+      page,
       locationId,
       domains: queryDomains,
       faculties: queryFaculties,
@@ -144,7 +146,7 @@ const PracticeProgramsSearch = (props: PracticeProgramsSearchProps) => {
         .map(mapItemToSelect);
     }
 
-    setFiltersCount(countFilters(query));
+    setFiltersCount(page ? countFilters(query) - 1 : countFilters(query));
 
     return {
       locationId: selectedLocationId,
