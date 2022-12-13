@@ -4,15 +4,6 @@ import { DOMAINS } from '../../../../common/constants/nomenclature.constants';
 import { useNomenclature } from '../../../../store/Selectors';
 import Domain from './Domain';
 
-export interface IDomain {
-  name: string;
-  id: number;
-}
-
-interface Domains {
-  domains: IDomain[];
-}
-
 const Domains = () => {
   const { domains } = useNomenclature();
   const title = i18n.t('landing:domains:title');

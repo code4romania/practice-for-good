@@ -2,13 +2,17 @@ import { CheckIcon, LocationMarkerIcon, ShareIcon } from '@heroicons/react/solid
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useParams } from 'react-router-dom';
-import { formatDate, formatDateMonthYear, formatDateYear } from '../../common/helpers/Format.helper';
+import {
+  formatDate,
+  formatDateMonthYear,
+  formatDateYear,
+} from '../../common/helpers/Format.helper';
 import { usePracticeProgram } from '../../services/practice-programs/PracticePrograms.queries';
 import ShowMoreText from 'react-show-more-text';
 import Card from '../../common/components/card/Card';
 import ShapeWrapper from '../../common/components/shape-wrapper/ShapeWrapper';
 import Loading from '../../common/components/loading/Loading';
-import NoData from '../../common/components/no-data/NoData';
+import ListError from '../../common/components/list-error/ListError';
 import copy from 'copy-to-clipboard';
 
 interface PracticeProgramContentItemProps {
@@ -105,7 +109,7 @@ const Program = () => {
   if (error) {
     return (
       <ShapeWrapper>
-        <NoData>{t('details.errors.get')}</NoData>
+        <ListError>{t('details.errors.get')}</ListError>
       </ShapeWrapper>
     );
   }
