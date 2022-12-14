@@ -28,7 +28,6 @@ import { WorkingHours } from '../../enums/WorkingHours.enum';
 import { POGRAMS_QUERY_PARAMS } from '../../constants/Programs.constants';
 import { countFilters } from '../../helpers/Filters.helpers';
 import { MENU_ROUTES_HREF } from '../../constants/Menu.constants';
-import { handleEnterKey } from '../../helpers/Format.helper';
 
 interface PracticeProgramsSearchProps {
   children?: React.ReactNode;
@@ -157,8 +156,6 @@ const PracticeProgramsSearch = (props: PracticeProgramsSearchProps) => {
     };
   };
 
-  handleEnterKey('programs-search__term__input', 'programs-search__button__submit');
-
   return (
     <>
       <div className="bg-yellow w-full flex flex-col items-center px-2 sm:px-4 sm:py-14 py-10 gap-8 bg-search bg-no-repeat bg-cover bg-center">
@@ -189,6 +186,7 @@ const PracticeProgramsSearch = (props: PracticeProgramsSearchProps) => {
                       defaultValue: value,
                       onChange: onChange,
                       id: 'programs-search__term',
+                      onSearch: handleSubmit(search),
                     }}
                   />
                 );
