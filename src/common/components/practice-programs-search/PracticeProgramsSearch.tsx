@@ -11,7 +11,6 @@ import { useNomenclature } from '../../../store/nomenclatures/Nomenclatures.sele
 import { ISelectData, mapItemToSelect } from '../../helpers/Nomenclature.helper';
 import { useTranslation } from 'react-i18next';
 import {
-  useCitiesQuery,
   useDomainsQuery,
   useFacultiesQuery,
 } from '../../../services/nomenclature/Nomeclature.queries';
@@ -40,10 +39,8 @@ const PracticeProgramsSearch = (props: PracticeProgramsSearchProps) => {
   // filter modal state
   const [isFilterModalOpen, setFilterModalOpen] = useState(false);
   const [filtersCount, setFiltersCount] = useState(0);
-  // search state
-  const [searchLocationTerm, seSearchtLocationTerm] = useState('');
   // nomenclature values
-  const { cities, domains, faculties } = useNomenclature();
+  const { domains, faculties } = useNomenclature();
 
   // query params state
   const [query, setQuery] = useQueryParams(POGRAMS_QUERY_PARAMS);
@@ -63,7 +60,6 @@ const PracticeProgramsSearch = (props: PracticeProgramsSearchProps) => {
 
   // Queries
   // TODO: This should be at cell level, each cell should request it's own data
-  useCitiesQuery(searchLocationTerm);
   useDomainsQuery();
   useFacultiesQuery();
 
@@ -100,8 +96,7 @@ const PracticeProgramsSearch = (props: PracticeProgramsSearchProps) => {
   };
 
   const loadOptionsLocationSearch = async (searchWord: string) => {
-    seSearchtLocationTerm(searchWord);
-    return cities.map(mapItemToSelect);
+    return getCities({ search: searchWord }).then((cities) => cities.map(mapItemToSelect));
   };
 
   // TODO: These operations should take place in each form cell which requires server data
