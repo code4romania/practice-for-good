@@ -10,7 +10,7 @@ import { useNavigate } from 'react-router-dom';
 const ProgramItem = ({ program }: { program: IPracticeProgram }) => {
   const navigate = useNavigate();
 
-  const { t } = useTranslation('practice_programs');
+  const { t } = useTranslation(['practice_programs', 'common']);
   return (
     <div className="mt-10">
       <Card>
@@ -45,7 +45,9 @@ const ProgramItem = ({ program }: { program: IPracticeProgram }) => {
               </div>
               <div className="flex flex-row items-center gap-x-1">
                 <ClockIcon className="w-4"></ClockIcon>
-                <p className="sm:text-sm lg:text-base text-xs">{`min. ${program.minWorkingHours}`}</p>
+                <p className="sm:text-sm lg:text-base text-xs">{`min. ${
+                  program.minWorkingHours
+                } ${t('hours', { ns: 'common' })}`}</p>
               </div>
             </div>
           </div>
