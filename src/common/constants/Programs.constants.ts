@@ -8,4 +8,5 @@ export const POGRAMS_QUERY_PARAMS = {
   end: DateParam,
   faculties: DelimitedNumericArrayParam,
   domains: DelimitedNumericArrayParam,
+  page: NumberParam,
 };
