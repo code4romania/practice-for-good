@@ -186,7 +186,7 @@ const PracticeProgramsSearch = (props: PracticeProgramsSearchProps) => {
                       defaultValue: value,
                       onChange: onChange,
                       id: 'programs-search__term',
-                      onSearch: handleSubmit(search),
+                      onKeyUp: handleSubmit(search),
                     }}
                   />
                 );

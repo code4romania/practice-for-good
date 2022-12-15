@@ -34,7 +34,7 @@ const SearchField = (props: { config: Partial<any>; readonly?: boolean; disabled
           maxLength={100}
           onKeyUp={(event) => {
             console.log(event);
-            if (event.key === 'Enter') props.config.onSearch(props.config.defaultValue);
+            if (event.key === 'Enter') props.config.onKeyUp(props.config.defaultValue);
           }}
         />
       </div>
