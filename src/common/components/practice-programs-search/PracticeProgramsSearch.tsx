@@ -185,7 +185,8 @@ const PracticeProgramsSearch = (props: PracticeProgramsSearchProps) => {
                       error: errors[PracticeProgramsSearchConfig.search.key]?.message,
                       defaultValue: value,
                       onChange: onChange,
-                      id: 'programs-search-search__term',
+                      id: 'programs-search__term',
+                      onKeyUp: handleSubmit(search),
                     }}
                   />
                 );
@@ -335,7 +336,7 @@ const PracticeProgramsSearch = (props: PracticeProgramsSearchProps) => {
               }}
             />
             <button
-              id="create-organization-activity__button-back"
+              id="programs-search__button__submit"
               type="button"
               className="text-sm sm:text-base text-yellow bg-black w-full h-full"
               onClick={handleSubmit(search)}
