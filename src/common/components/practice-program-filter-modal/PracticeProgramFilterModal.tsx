@@ -85,7 +85,7 @@ const PracticeProgramFilterModal = ({
                               id="programs-search-location"
                               value={value}
                               isMulti={false}
-                              isClearable={false}
+                              isClearable
                               placeholder={PracticeProgramsSearchConfig.locationId.placeholder}
                               onChange={onChange}
                               loadOptions={loadOptionsLocationSearch}
@@ -105,7 +105,7 @@ const PracticeProgramFilterModal = ({
                               id="programs-search-faculties"
                               value={value}
                               isMulti={true}
-                              isClearable={false}
+                              isClearable
                               placeholder={PracticeProgramsSearchConfig.faculties.placeholder}
                               onChange={onChange}
                               options={faculties.map(mapItemToSelect)}
@@ -154,7 +154,7 @@ const PracticeProgramFilterModal = ({
                             <MultiSelect
                               id="create-organization-workingHours"
                               value={value}
-                              isClearable={false}
+                              isClearable
                               isMulti={false}
                               onChange={onChange}
                               placeholder={
@@ -176,7 +176,7 @@ const PracticeProgramFilterModal = ({
                             <MultiSelect
                               id="create-organization-domains"
                               value={value}
-                              isClearable={false}
+                              isClearable
                               isMulti={true}
                               onChange={onChange}
                               placeholder={PracticeProgramsSearchConfig.domains.config.placeholder}

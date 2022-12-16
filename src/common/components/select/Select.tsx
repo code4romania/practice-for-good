@@ -7,7 +7,6 @@ import './Select.css';
 import { AcademicCapIcon } from '@heroicons/react/solid';
 import { classNames } from '../../helpers/Tailwind.helper';
 
-
 export interface MultiSelectConfig {
   label?: string;
   helperText?: string;
@@ -27,7 +26,9 @@ const Control = ({ children, ...props }: any) => {
     components.Control && (
       <components.Control {...props}>
         {props.icon && (
-          <props.icon className={classNames(`ml-1 w-5 h-5`, props.hasValue ? 'text-purple' : 'text-gray-500')} />
+          <props.icon
+            className={classNames(`ml-1 w-5 h-5`, props.hasValue ? 'text-purple' : 'text-gray-500')}
+          />
         )}
         {children}
       </components.Control>
@@ -36,7 +37,13 @@ const Control = ({ children, ...props }: any) => {
 };
 
 const MultiValue = ({ getValue, index }: any) =>
-  !index ? <p className='text-lg '>{getValue().length} {t('practice_programs_search:selected')}</p> : <p></p>;
+  !index ? (
+    <p className="text-lg ">
+      {getValue().length} {t('practice_programs_search:selected')}
+    </p>
+  ) : (
+    <p></p>
+  );
 
 const MultiSelect = ({
   placeholder,
@@ -50,11 +57,17 @@ const MultiSelect = ({
 }: MultiSelectConfig) => {
   const [defaultValue, setDefaultValue] = useState<any[]>([]);
 
-  useEffect(() => { setDefaultValue(value) }, [value])
+  useEffect(() => {
+    setDefaultValue(value);
+  }, [value]);
 
-  const components = { MultiValue, Control: (e: any) => Control({ ...e, icon }), DropdownIndicator: null };
+  const components = {
+    MultiValue,
+    Control: (e: any) => Control({ ...e, icon }),
+    DropdownIndicator: null,
+  };
   return (
-    <div className='w-full'>
+    <div className="w-full">
       <Select
         placeholder={placeholder}
         classNamePrefix="reactselect"

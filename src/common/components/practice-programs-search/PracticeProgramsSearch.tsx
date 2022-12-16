@@ -166,27 +166,29 @@ const PracticeProgramsSearch = (props: PracticeProgramsSearchProps) => {
         </p>
         <div className="flex flex-col gap-4 max-w-6xl w-full justify-items-center">
           <div className="flex w-full items-center h-14">
-            <Controller
-              key={PracticeProgramsSearchConfig.search.key}
-              name={PracticeProgramsSearchConfig.search.key}
-              rules={PracticeProgramsSearchConfig.search.rules}
-              control={control}
-              render={({ field: { onChange, value } }) => {
-                return (
-                  <SearchField
-                    config={{
-                      ...PracticeProgramsSearchConfig.search.config,
-                      name: PracticeProgramsSearchConfig.search.key,
-                      error: errors[PracticeProgramsSearchConfig.search.key]?.message,
-                      defaultValue: value,
-                      onChange: onChange,
-                      id: 'programs-search__term',
-                      onKeyUp: handleSubmit(search),
-                    }}
-                  />
-                );
-              }}
-            />
+            <div className="sm:w-3/4 w-full">
+              <Controller
+                key={PracticeProgramsSearchConfig.search.key}
+                name={PracticeProgramsSearchConfig.search.key}
+                rules={PracticeProgramsSearchConfig.search.rules}
+                control={control}
+                render={({ field: { onChange, value } }) => {
+                  return (
+                    <SearchField
+                      config={{
+                        ...PracticeProgramsSearchConfig.search.config,
+                        name: PracticeProgramsSearchConfig.search.key,
+                        error: errors[PracticeProgramsSearchConfig.search.key]?.message,
+                        defaultValue: value,
+                        onChange: onChange,
+                        id: 'programs-search__term',
+                        onKeyUp: handleSubmit(search),
+                      }}
+                    />
+                  );
+                }}
+              />
+            </div>
             <button
               type="button"
               className="text-sm sm:text-base sm:hidden text-yellow bg-black  px-4 flex items-center justify-center h-full"
@@ -195,7 +197,7 @@ const PracticeProgramsSearch = (props: PracticeProgramsSearchProps) => {
               <SearchIcon className="w-5 h-5" />
             </button>
 
-            <div className="w-1/3 h-14 hidden sm:flex">
+            <div className="w-1/4 h-14 hidden sm:flex">
               <Controller
                 key={PracticeProgramsSearchConfig.locationId.key}
                 name={PracticeProgramsSearchConfig.locationId.key}
@@ -207,7 +209,7 @@ const PracticeProgramsSearch = (props: PracticeProgramsSearchProps) => {
                       id="programs-search-location"
                       value={value}
                       isMulti={false}
-                      isClearable={false}
+                      isClearable
                       placeholder={PracticeProgramsSearchConfig.locationId.placeholder}
                       onChange={onChange}
                       loadOptions={loadOptionsLocationSearch}
@@ -239,7 +241,7 @@ const PracticeProgramsSearch = (props: PracticeProgramsSearchProps) => {
             )}
           </div>
 
-          <div className="hidden sm:flex w-full h-14 items-center">
+          <div className="hidden sm:grid sm:grid-cols-6 w-full h-14 items-center">
             <Controller
               key={PracticeProgramsSearchConfig.faculties.key}
               name={PracticeProgramsSearchConfig.faculties.key}
@@ -251,7 +253,7 @@ const PracticeProgramsSearch = (props: PracticeProgramsSearchProps) => {
                     id="programs-search-faculties"
                     value={value}
                     isMulti={true}
-                    isClearable={false}
+                    isClearable
                     placeholder={PracticeProgramsSearchConfig.faculties.placeholder}
                     onChange={onChange}
                     options={faculties.map(mapItemToSelect)}
@@ -300,7 +302,7 @@ const PracticeProgramsSearch = (props: PracticeProgramsSearchProps) => {
                   <MultiSelect
                     id="create-organization-workingHours"
                     value={value}
-                    isClearable={false}
+                    isClearable
                     isMulti={false}
                     onChange={onChange}
                     placeholder={PracticeProgramsSearchConfig.workingHours.config.placeholder}
@@ -320,7 +322,7 @@ const PracticeProgramsSearch = (props: PracticeProgramsSearchProps) => {
                   <MultiSelect
                     id="create-organization-domains"
                     value={value}
-                    isClearable={false}
+                    isClearable
                     isMulti={true}
                     onChange={onChange}
                     placeholder={PracticeProgramsSearchConfig.domains.config.placeholder}

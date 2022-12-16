@@ -80,7 +80,7 @@ const NGOFilterModal = ({ onClose, form, onSubmit }: PracticeProgramFilterModalP
                               id="programs-search-location"
                               value={value}
                               isMulti={false}
-                              isClearable={false}
+                              isClearable
                               placeholder={PracticeProgramsSearchConfig.locationId.placeholder}
                               onChange={onChange}
                               loadOptions={loadOptionsLocationSearch}
@@ -99,7 +99,7 @@ const NGOFilterModal = ({ onClose, form, onSubmit }: PracticeProgramFilterModalP
                             <MultiSelect
                               id="create-organization-domains"
                               value={value}
-                              isClearable={false}
+                              isClearable
                               isMulti={true}
                               onChange={onChange}
                               placeholder={PracticeProgramsSearchConfig.domains.config.placeholder}
