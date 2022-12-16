@@ -90,6 +90,14 @@
     @apply text-blue cursor-pointer underline;
   }
 
+  .range-clear-button::after {
+    background-color: transparent !important;
+    color: #c0c0c0 !important;
+    height: 20px !important;
+    width: 20px !important;
+    font-size: 20px !important;
+  }
+
   a {
     @apply text-purple;
   }
