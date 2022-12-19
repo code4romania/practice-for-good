@@ -146,8 +146,8 @@ const Program = () => {
                 <PracticeProgramContentItem
                   label={t('details.deadline')}
                   value={
-                    program?.endDate
-                      ? formatDate(program?.endDate)
+                    program?.deadline
+                      ? formatDateYear(program?.deadline)
                       : t('details.deadline_unlimited')
                   }
                 />
