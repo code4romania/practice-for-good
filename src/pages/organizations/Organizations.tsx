@@ -1,10 +1,10 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Virtuoso, VirtuosoGrid } from 'react-virtuoso';
+import { VirtuosoGrid } from 'react-virtuoso';
 import { useQueryParams } from 'use-query-params';
 import InfiniteScrollFooter from '../../common/components/infinite-scroll-footer/InfiniteScrollFooter';
 import NGOSearch from '../../common/components/ngo-search/NGOSearch';
-import NoData from '../../common/components/no-data/NoData';
+import ListError from '../../common/components/list-error/ListError';
 import { ORGANIZATIONS_QUERY_PARAMS } from '../../common/constants/Organizations.constants';
 import { useOrganizationQuery } from '../../services/organization/Organization.queries';
 import { useOrganizations } from '../../store/Selectors';
@@ -12,8 +12,7 @@ import OrganizationItem from './components/OrganizationItem';
 
 const Organizations = () => {
   const { t } = useTranslation('organizations');
-  const [page, setPage] = useState<number>(1);
-  const [query] = useQueryParams(ORGANIZATIONS_QUERY_PARAMS);
+  const [query, setQuery] = useQueryParams(ORGANIZATIONS_QUERY_PARAMS);
 
   const {
     organizations,
@@ -21,26 +20,32 @@ const Organizations = () => {
   } = useOrganizations();
 
   const { isLoading, error, refetch } = useOrganizationQuery(
-    page,
+    query?.page as number,
     query?.search,
     query?.locationId,
     query?.domains,
   );
 
+  useEffect(() => {
+    setQuery({ ...query, page: 1 });
+  }, []);
+
   const loadMore = useCallback(() => {
-    if (total > organizations.length) setPage(page + 1);
+    if (total > organizations.length)
+      setQuery({ ...query, page: query?.page ? query?.page + 1 : 1 });
   }, [organizations, total]);
 
   return (
     <section className="w-full">
       <NGOSearch showFilters>
         {error && !isLoading ? (
-          <NoData retry={refetch}>{t('errors.search')}</NoData>
+          <ListError retry={refetch}>{t('errors.search')}</ListError>
         ) : (
           <div className="flex flex-col w-full lg:px-60 px-10 pt-10">
             {organizations.length !== 0 && !isLoading && (
-              <p className="title text-center">{`${total} ${total > 1 ? t('many_organizations_title') : t('one_organization_title')
-                }`}</p>
+              <p className="title text-center">{`${total} ${
+                total > 1 ? t('many_organizations_title') : t('one_organization_title')
+              }`}</p>
             )}
             <div className="mb-[10rem]">
               <VirtuosoGrid
@@ -51,8 +56,16 @@ const Organizations = () => {
                 overscan={200}
                 data={organizations}
                 itemContent={(index, ong) => <OrganizationItem key={index} organization={ong} />}
-                itemClassName='virtuso-grid-item'
-                listClassName='virtuso-grid-list'
+                itemClassName="virtuso-grid-item"
+                listClassName="virtuso-grid-list"
+                components={{
+                  Footer: () => (
+                    <InfiniteScrollFooter
+                      hasNoData={organizations?.length === 0}
+                      isLoading={isLoading}
+                    />
+                  ),
+                }}
               />
             </div>
           </div>

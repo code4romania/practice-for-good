@@ -11,7 +11,6 @@ import { useNomenclature } from '../../../store/nomenclatures/Nomenclatures.sele
 import { ISelectData, mapItemToSelect } from '../../helpers/Nomenclature.helper';
 import { useTranslation } from 'react-i18next';
 import {
-  useCitiesQuery,
   useDomainsQuery,
   useFacultiesQuery,
 } from '../../../services/nomenclature/Nomeclature.queries';
@@ -40,10 +39,8 @@ const PracticeProgramsSearch = (props: PracticeProgramsSearchProps) => {
   // filter modal state
   const [isFilterModalOpen, setFilterModalOpen] = useState(false);
   const [filtersCount, setFiltersCount] = useState(0);
-  // search state
-  const [searchLocationTerm, seSearchtLocationTerm] = useState('');
   // nomenclature values
-  const { cities, domains, faculties } = useNomenclature();
+  const { domains, faculties } = useNomenclature();
 
   // query params state
   const [query, setQuery] = useQueryParams(POGRAMS_QUERY_PARAMS);
@@ -63,7 +60,6 @@ const PracticeProgramsSearch = (props: PracticeProgramsSearchProps) => {
 
   // Queries
   // TODO: This should be at cell level, each cell should request it's own data
-  useCitiesQuery(searchLocationTerm);
   useDomainsQuery();
   useFacultiesQuery();
 
@@ -79,13 +75,14 @@ const PracticeProgramsSearch = (props: PracticeProgramsSearchProps) => {
     const selectedFaculties = data?.faculties?.map((faculty: ISelectData) => faculty.value);
     const selectedDomains = data?.domains?.map((domain: ISelectData) => domain.value);
     const queryValues = {
-      search: data?.search,
+      search: data?.search.trim(),
       workingHours: data?.workingHours?.value,
       locationId: data?.locationId?.value,
       faculties: selectedFaculties?.length > 0 ? selectedFaculties : undefined,
       domains: selectedDomains?.length > 0 ? selectedDomains : undefined,
       start: data?.start,
       end: data?.end,
+      page: 1,
     };
 
     // 2. set query params
@@ -99,13 +96,13 @@ const PracticeProgramsSearch = (props: PracticeProgramsSearchProps) => {
   };
 
   const loadOptionsLocationSearch = async (searchWord: string) => {
-    seSearchtLocationTerm(searchWord);
-    return cities.map(mapItemToSelect);
+    return getCities({ search: searchWord }).then((cities) => cities.map(mapItemToSelect));
   };
 
   // TODO: These operations should take place in each form cell which requires server data
   const initFilters = async () => {
     const {
+      page,
       locationId,
       domains: queryDomains,
       faculties: queryFaculties,
@@ -143,7 +140,7 @@ const PracticeProgramsSearch = (props: PracticeProgramsSearchProps) => {
         .map(mapItemToSelect);
     }
 
-    setFiltersCount(countFilters(query));
+    setFiltersCount(page ? countFilters(query) - 1 : countFilters(query));
 
     return {
       locationId: selectedLocationId,
@@ -183,7 +180,8 @@ const PracticeProgramsSearch = (props: PracticeProgramsSearchProps) => {
                       error: errors[PracticeProgramsSearchConfig.search.key]?.message,
                       defaultValue: value,
                       onChange: onChange,
-                      id: 'programs-search-search__term',
+                      id: 'programs-search__term',
+                      onKeyUp: handleSubmit(search),
                     }}
                   />
                 );
@@ -333,7 +331,7 @@ const PracticeProgramsSearch = (props: PracticeProgramsSearchProps) => {
               }}
             />
             <button
-              id="create-organization-activity__button-back"
+              id="programs-search__button__submit"
               type="button"
               className="text-sm sm:text-base text-yellow bg-black w-full h-full"
               onClick={handleSubmit(search)}

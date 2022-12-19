@@ -8,10 +8,7 @@ import { AdjustmentsIcon } from '@heroicons/react/outline';
 import { useNomenclature } from '../../../store/nomenclatures/Nomenclatures.selectors';
 import { ISelectData, mapItemToSelect } from '../../helpers/Nomenclature.helper';
 import { useTranslation } from 'react-i18next';
-import {
-  useCitiesQuery,
-  useDomainsQuery,
-} from '../../../services/nomenclature/Nomeclature.queries';
+import { useDomainsQuery } from '../../../services/nomenclature/Nomeclature.queries';
 import { NGOSearchConfig } from './configs/NGOSearch.config';
 import NGOFilterModal from '../ngo-filter-modal/NGOFilterModal';
 import ShapeWrapper from '../shape-wrapper/ShapeWrapper';
@@ -32,11 +29,8 @@ const NGOSearch = ({ showFilters, children }: NGOSearchProps) => {
   const [isFilterModalOpen, setFilterModalOpen] = useState(false);
   const [filtersCount, setFiltersCount] = useState(0);
 
-  // search state
-  const [searchLocationTerm, seSearchtLocationTerm] = useState('');
-
   // nomenclature state
-  const { cities, domains } = useNomenclature();
+  const { domains } = useNomenclature();
 
   // query params state
   const [query, setQuery] = useQueryParams(ORGANIZATIONS_QUERY_PARAMS);
@@ -55,7 +49,6 @@ const NGOSearch = ({ showFilters, children }: NGOSearchProps) => {
   } = form;
 
   // Queries
-  useCitiesQuery(searchLocationTerm);
   useDomainsQuery();
 
   useEffect(() => {
@@ -69,9 +62,10 @@ const NGOSearch = ({ showFilters, children }: NGOSearchProps) => {
     // 1. map query values
     const selectedDomains = data?.domains?.map((domain: ISelectData) => domain.value);
     const queryValues = {
-      search: data?.search,
+      search: data?.search.trim(),
       locationId: data?.locationId?.value,
       domains: selectedDomains?.length > 0 ? selectedDomains : undefined,
+      page: 1,
     };
 
     // 2. set query params
@@ -81,12 +75,11 @@ const NGOSearch = ({ showFilters, children }: NGOSearchProps) => {
   };
 
   const loadOptionsLocationSearch = async (searchWord: string) => {
-    seSearchtLocationTerm(searchWord);
-    return cities.map(mapItemToSelect);
+    return getCities({ search: searchWord }).then((cities) => cities.map(mapItemToSelect));
   };
 
   const initFilters = async () => {
-    const { locationId, domains: queryDomains, ...otherQueryParams } = query;
+    const { page, locationId, domains: queryDomains, ...otherQueryParams } = query;
 
     // init should get me the correct values for
     let selectedLocation, selectedDomains;
@@ -105,7 +98,7 @@ const NGOSearch = ({ showFilters, children }: NGOSearchProps) => {
         .map(mapItemToSelect);
     }
 
-    setFiltersCount(countFilters(query));
+    setFiltersCount(page ? countFilters(query) - 1 : countFilters(query));
 
     return {
       locationId: selectedLocation,
@@ -134,7 +127,8 @@ const NGOSearch = ({ showFilters, children }: NGOSearchProps) => {
                       error: errors[NGOSearchConfig.search.key]?.message,
                       defaultValue: value,
                       onChange: onChange,
-                      id: 'programs-search-search__term',
+                      id: 'organizations-search__term',
+                      onKeyUp: handleSubmit(search),
                     }}
                   />
                 );
@@ -159,7 +153,7 @@ const NGOSearch = ({ showFilters, children }: NGOSearchProps) => {
                 render={({ field: { onChange, value } }) => {
                   return (
                     <ServerSelect
-                      id="programs-search-location"
+                      id="organizations-search__location"
                       value={value}
                       isMulti={false}
                       isClearable={false}
@@ -218,7 +212,7 @@ const NGOSearch = ({ showFilters, children }: NGOSearchProps) => {
               }}
             />
             <button
-              id="create-organization-activity__button-back"
+              id="organizations-search__button__submit"
               type="button"
               className="text-sm sm:text-xl text-yellow bg-black px-6 h-full sm:w-56 w-24"
               onClick={handleSubmit(search)}
