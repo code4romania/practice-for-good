@@ -16,6 +16,7 @@ import { useQueryParams } from 'use-query-params';
 import { ORGANIZATIONS_QUERY_PARAMS } from '../../constants/Organizations.constants';
 import { getCities, getDomains } from '../../../services/nomenclature/Nomenclature.service';
 import { countFilters } from '../../helpers/Filters.helpers';
+import { mapCitiesToSelect } from '../../helpers/Format.helper';
 
 interface NGOSearchProps {
   showFilters: boolean;
@@ -62,7 +63,7 @@ const NGOSearch = ({ showFilters, children }: NGOSearchProps) => {
     // 1. map query values
     const selectedDomains = data?.domains?.map((domain: ISelectData) => domain.value);
     const queryValues = {
-      search: data?.search.trim(),
+      search: data?.search?.trim(),
       locationId: data?.locationId?.value,
       domains: selectedDomains?.length > 0 ? selectedDomains : undefined,
       page: 1,
@@ -75,7 +76,7 @@ const NGOSearch = ({ showFilters, children }: NGOSearchProps) => {
   };
 
   const loadOptionsLocationSearch = async (searchWord: string) => {
-    return getCities({ search: searchWord }).then((cities) => cities.map(mapItemToSelect));
+    return getCities({ search: searchWord }).then((cities) => cities.map(mapCitiesToSelect));
   };
 
   const initFilters = async () => {
@@ -87,7 +88,7 @@ const NGOSearch = ({ showFilters, children }: NGOSearchProps) => {
     // 1. city
     if (locationId) {
       const citiesResults = await getCities({ cityId: locationId.toString() });
-      selectedLocation = mapItemToSelect(citiesResults[0]);
+      selectedLocation = mapCitiesToSelect(citiesResults[0]);
     }
 
     // 4. domains

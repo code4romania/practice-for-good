@@ -27,6 +27,7 @@ import { WorkingHours } from '../../enums/WorkingHours.enum';
 import { POGRAMS_QUERY_PARAMS } from '../../constants/Programs.constants';
 import { countFilters } from '../../helpers/Filters.helpers';
 import { MENU_ROUTES_HREF } from '../../constants/Menu.constants';
+import { mapCitiesToSelect } from '../../helpers/Format.helper';
 
 interface PracticeProgramsSearchProps {
   children?: React.ReactNode;
@@ -75,7 +76,7 @@ const PracticeProgramsSearch = (props: PracticeProgramsSearchProps) => {
     const selectedFaculties = data?.faculties?.map((faculty: ISelectData) => faculty.value);
     const selectedDomains = data?.domains?.map((domain: ISelectData) => domain.value);
     const queryValues = {
-      search: data?.search.trim(),
+      search: data?.search?.trim(),
       workingHours: data?.workingHours?.value,
       locationId: data?.locationId?.value,
       faculties: selectedFaculties?.length > 0 ? selectedFaculties : undefined,
@@ -96,7 +97,7 @@ const PracticeProgramsSearch = (props: PracticeProgramsSearchProps) => {
   };
 
   const loadOptionsLocationSearch = async (searchWord: string) => {
-    return getCities({ search: searchWord }).then((cities) => cities.map(mapItemToSelect));
+    return getCities({ search: searchWord }).then((cities) => cities.map(mapCitiesToSelect));
   };
 
   // TODO: These operations should take place in each form cell which requires server data
@@ -116,7 +117,7 @@ const PracticeProgramsSearch = (props: PracticeProgramsSearchProps) => {
     // 1. city
     if (locationId) {
       const citiesResults = await getCities({ cityId: locationId.toString() });
-      selectedLocationId = mapItemToSelect(citiesResults[0]);
+      selectedLocationId = mapCitiesToSelect(citiesResults[0]);
     }
 
     // 2. faculties
