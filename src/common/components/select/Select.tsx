@@ -39,7 +39,7 @@ const MultiValue = ({ getValue, index, ...rest }: any) => {
     return <p>({getValue().length})&nbsp;</p>;
   } else {
     return index == 0 ? (
-      <p className="text-lg ">
+      <p className="text-lg truncate">
         {getValue().length} {t('practice_programs_search:selected')}
       </p>
     ) : (
