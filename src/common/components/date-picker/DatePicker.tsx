@@ -11,7 +11,6 @@ interface DateRangePickerProps {
   onChange?: (range: any) => void;
 }
 
-
 const DatePicker = ({ defaultValue, onChange, placeholder }: DateRangePickerProps) => {
   const [date, setDate] = useState<Date>();
 
@@ -27,14 +26,36 @@ const DatePicker = ({ defaultValue, onChange, placeholder }: DateRangePickerProp
     }
   }, [date]);
 
+  // eslint-disable-next-line react/display-name
+  const CustomInput = React.forwardRef((props: any, ref: any) => {
+    return (
+      <div className="flex h-14 w-full border border-gray-500 shadow-md sm:text-lg text-base disabled:bg-gray-100 font-titillium">
+        <div className="flex absolute inset-y-0 left-0 pl-4 items-center pointer-events-none">
+          <CalendarIcon
+            className={classNames(
+              `-ml-1 mr-2 h-5 w-5`,
+              defaultValue ? 'text-purple' : 'text-gray-500',
+            )}
+            aria-hidden="true"
+          />
+        </div>
+        <input
+          onClick={props.onClick}
+          ref={ref}
+          onChange={props.onChange}
+          className="block h-full w-full pl-10"
+          placeholder={props.placeholder}
+          defaultValue={props.value}
+          maxLength={100}
+        />
+      </div>
+    );
+  });
+
   return (
     <div className="relative w-full">
       <div className="relative rounded-md">
-        <div className="flex absolute inset-y-0 left-0 pl-3 items-center pointer-events-none z-10">
-          <CalendarIcon className={classNames(`-ml-1 mr-2 h-5 w-5`, defaultValue ? 'text-purple' : 'text-gray-500')} aria-hidden="true" />
-        </div>
         <ReactDatePicker
-          className="block h-14 w-full p-4 pl-8 shadow-sm sm:text-lg border border-gray-500 placeholder:text-gray-500"
           selectsRange={false}
           onChange={(update: Date) => {
             setDate(update);
@@ -42,7 +63,8 @@ const DatePicker = ({ defaultValue, onChange, placeholder }: DateRangePickerProp
           selected={date}
           isClearable={false}
           placeholderText={placeholder}
-          dateFormat='dd.MM.yyyy'
+          dateFormat="dd.MM.yyyy"
+          customInput={<CustomInput />}
         />
       </div>
     </div>
