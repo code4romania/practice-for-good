@@ -62,10 +62,10 @@
         "placeholder": "Data Sfarsit"
       },
       "workingHours": {
-        "placeholder": "Numar ore"
+        "placeholder": "Nr. Ore"
       },
       "domains": {
-        "placeholder": "Orice domeniu"
+        "placeholder": "Domeniu"
       }
     }
   },
@@ -84,7 +84,7 @@
         "placeholder": "Toata Romania"
       },
       "domains": {
-        "placeholder": "Orice domeniu"
+        "placeholder": "Domeniu"
       }
     }
   },

@@ -58,7 +58,7 @@ const Program = () => {
   const { id } = useParams();
   const [sharedUrl, setSharedUrl] = useState<string>();
 
-  const { data: program, error, isLoading } = usePracticeProgram(id as string);
+  const { data: program, error, isLoading, refetch } = usePracticeProgram(id as string);
 
   const { t } = useTranslation(['practice_programs', 'common']);
 
@@ -109,7 +109,7 @@ const Program = () => {
   if (error) {
     return (
       <ShapeWrapper>
-        <ListError>{t('details.errors.get')}</ListError>
+        <ListError retry={refetch}>{t('details.errors.get')}</ListError>
       </ShapeWrapper>
     );
   }
@@ -146,8 +146,8 @@ const Program = () => {
                 <PracticeProgramContentItem
                   label={t('details.deadline')}
                   value={
-                    program?.endDate
-                      ? formatDate(program?.endDate)
+                    program?.deadline
+                      ? formatDateYear(program?.deadline)
                       : t('details.deadline_unlimited')
                   }
                 />

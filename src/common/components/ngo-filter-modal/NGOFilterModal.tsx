@@ -10,6 +10,7 @@ import { useNomenclature } from '../../../store/nomenclatures/Nomenclatures.sele
 import MultiSelect from '../select/Select';
 import { useTranslation } from 'react-i18next';
 import { getCities } from '../../../services/nomenclature/Nomenclature.service';
+import { mapCitiesToSelect } from '../../helpers/Format.helper';
 
 interface PracticeProgramFilterModalProps {
   onClose: () => void;
@@ -24,7 +25,7 @@ const NGOFilterModal = ({ onClose, form, onSubmit }: PracticeProgramFilterModalP
   const { handleSubmit, control } = form;
 
   const loadOptionsLocationSearch = async (searchWord: string) => {
-    return getCities({ search: searchWord }).then((cities) => cities.map(mapItemToSelect));
+    return getCities({ search: searchWord }).then((cities) => cities.map(mapCitiesToSelect));
   };
 
   const onApply = (data: any) => {
@@ -80,7 +81,7 @@ const NGOFilterModal = ({ onClose, form, onSubmit }: PracticeProgramFilterModalP
                               id="programs-search-location"
                               value={value}
                               isMulti={false}
-                              isClearable={false}
+                              isClearable
                               placeholder={PracticeProgramsSearchConfig.locationId.placeholder}
                               onChange={onChange}
                               loadOptions={loadOptionsLocationSearch}
@@ -99,7 +100,7 @@ const NGOFilterModal = ({ onClose, form, onSubmit }: PracticeProgramFilterModalP
                             <MultiSelect
                               id="create-organization-domains"
                               value={value}
-                              isClearable={false}
+                              isClearable
                               isMulti={true}
                               onChange={onChange}
                               placeholder={PracticeProgramsSearchConfig.domains.config.placeholder}

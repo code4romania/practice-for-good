@@ -21,9 +21,7 @@ const DatePicker = ({ defaultValue, onChange, placeholder }: DateRangePickerProp
   }, [defaultValue]);
 
   useEffect(() => {
-    if (date) {
-      onChange && onChange(date);
-    }
+    onChange && onChange(date);
   }, [date]);
 
   // eslint-disable-next-line react/display-name
@@ -61,8 +59,9 @@ const DatePicker = ({ defaultValue, onChange, placeholder }: DateRangePickerProp
             setDate(update);
           }}
           selected={date}
-          isClearable={false}
+          isClearable
           placeholderText={placeholder}
+          clearButtonClassName="range-clear-button"
           dateFormat="dd.MM.yyyy"
           customInput={<CustomInput />}
         />
