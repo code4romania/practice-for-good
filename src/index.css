@@ -54,6 +54,13 @@
   .card-text-overflow {
     @apply text-ellipsis overflow-hidden;
     display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+  }
+
+  .card-title-overflow {
+    @apply text-ellipsis overflow-hidden;
+    display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
   }
