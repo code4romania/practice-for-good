@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-empty-function */
 import React, { useEffect, useState } from 'react';
-import Select, { components } from 'react-select';
+import { components } from 'react-select';
 import AsyncSelect from 'react-select/async';
 import debounce from 'debounce-promise';
 import './ServerSelect.css';
@@ -44,7 +44,6 @@ const ServerSelect = ({
   value,
   loadOptions,
   id,
-  addOn,
 }: ServerSelectConfig) => {
   const [defaultValue, setDefaultValue] = useState<any>();
 

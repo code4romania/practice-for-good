@@ -1,12 +1,8 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint-disable @typescript-eslint/no-empty-function */
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { t } from 'i18next';
 import Select, { components } from 'react-select';
 import './Select.css';
-import { AcademicCapIcon } from '@heroicons/react/solid';
 import { classNames } from '../../helpers/Tailwind.helper';
-
 
 export interface MultiSelectConfig {
   label?: string;
@@ -26,8 +22,10 @@ const Control = ({ children, ...props }: any) => {
   return (
     components.Control && (
       <components.Control {...props}>
-        {props.icon && (
-          <props.icon className={classNames(`ml-1 w-5 h-5`, props.hasValue ? 'text-purple' : 'text-gray-500')} />
+        {props.selectProps.icon && (
+          <props.selectProps.icon
+            className={classNames(`ml-1 w-5 h-5`, props.hasValue ? 'text-purple' : 'text-gray-500')}
+          />
         )}
         {children}
       </components.Control>
@@ -35,8 +33,20 @@ const Control = ({ children, ...props }: any) => {
   );
 };
 
-const MultiValue = ({ getValue, index }: any) =>
-  !index ? <p className='text-lg '>{getValue().length} {t('practice_programs_search:selected')}</p> : <p></p>;
+const MultiValue = ({ getValue, index, ...rest }: any) => {
+  console.log(rest.isFocused, rest);
+  if (rest.selectProps.menuIsOpen && index == 0) {
+    return <p>({getValue().length})&nbsp;</p>;
+  } else {
+    return index == 0 ? (
+      <p className="text-lg truncate">
+        {getValue().length} {t('practice_programs_search:selected')}
+      </p>
+    ) : (
+      <></>
+    );
+  }
+};
 
 const MultiSelect = ({
   placeholder,
@@ -48,24 +58,27 @@ const MultiSelect = ({
   isMulti,
   icon,
 }: MultiSelectConfig) => {
-  const [defaultValue, setDefaultValue] = useState<any[]>([]);
-
-  useEffect(() => { setDefaultValue(value) }, [value])
-
-  const components = { MultiValue, Control: (e: any) => Control({ ...e, icon }), DropdownIndicator: null };
   return (
-    <div className='w-full'>
+    <div className="w-full">
       <Select
         placeholder={placeholder}
         classNamePrefix="reactselect"
         onChange={onChange}
         isClearable={isClearable}
         isMulti={isMulti}
-        value={defaultValue}
+        value={value}
         hideSelectedOptions={false}
         options={options}
+        closeMenuOnSelect={false}
+        closeMenuOnScroll={true}
         id={id}
-        components={components}
+        isSearchable={true}
+        icon={icon}
+        components={{
+          Control,
+          MultiValue,
+          DropdownIndicator: null,
+        }}
       />
     </div>
   );
