@@ -30,7 +30,7 @@ const Programs = () => {
         <PracticeProgramsSearch />
       </div>
       <ShapeWrapper>
-        <div className="min-h-[30rem] p-4 sm:p-8 md:px-12 md:pt-8 lg:px-24 xl:">
+        <div className="min-h-[30rem] p-4 sm:p-8 md:px-12 md:pt-8 lg:px-24">
           {error && !isFetching ? (
             <ListError retry={refetch}>{t('errors.search')}</ListError>
           ) : (

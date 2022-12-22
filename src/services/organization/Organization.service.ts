@@ -3,20 +3,17 @@ import { OrganizationFlat } from '../../common/interfaces/OrganizationFlat.inter
 import { PaginatedEntity } from '../../common/interfaces/PaginatedEntity.interface';
 import API from '../API';
 
-export const searchOrganizations = async (
-  limit: number,
-  page: number,
-  search?: string | null,
-  locationId?: number | null,
-  domains?: (number | null)[] | null,
-): Promise<PaginatedEntity<OrganizationFlat>> => {
+export const getOrganizations = async ({
+  pageParam = 1,
+  ...query
+}: {
+  pageParam?: number;
+} & Partial<any>): Promise<PaginatedEntity<OrganizationFlat>> => {
   return API.get('/api/practice-program/organization', {
     params: {
-      limit,
-      page,
-      search: search || undefined,
-      cityId: locationId,
-      domains,
+      limit: 25,
+      page: pageParam,
+      ...query,
     },
   }).then((res) => res.data);
 };
