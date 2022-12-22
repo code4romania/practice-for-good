@@ -5,19 +5,8 @@ import { Faculty } from '../common/interfaces/Faculty.interface';
 import { Organization } from '../common/interfaces/Organization.interface';
 import { OrganizationFlat } from '../common/interfaces/OrganizationFlat.interface';
 import { PaginatedEntity } from '../common/interfaces/PaginatedEntity.interface';
-import { IPracticeProgram } from '../common/interfaces/PracticeProgram.interface';
 import { nomenclatureSlice } from './nomenclatures/Nomenclatures.slice';
 import { organizationsSlice } from './organizations/Organizations.slice';
-import { practiceProgramsSlice } from './practice-programs/PracticePrograms.slice';
-
-interface PracticeProgramsState {
-  practicePrograms: PaginatedEntity<IPracticeProgram>;
-  selectedProgram: IPracticeProgram | null;
-  setSelectedProgram: (selectedProgram: IPracticeProgram) => void;
-  setPracticePrograms: (practicePrograms: PaginatedEntity<IPracticeProgram>) => void;
-  nextPracticePrograms: (practicePrograms: PaginatedEntity<IPracticeProgram>) => void;
-}
-
 interface OrganizationsState {
   organizations: PaginatedEntity<OrganizationFlat>;
   selectedOrganization: Organization | null;
@@ -35,12 +24,9 @@ interface NomenclatureState {
   setFaculties: (faculties: Faculty[]) => void;
 }
 
-const useStore = create<PracticeProgramsState & NomenclatureState & OrganizationsState>()(
-  (set: any) => ({
-    ...practiceProgramsSlice(set),
-    ...nomenclatureSlice(set),
-    ...organizationsSlice(set),
-  }),
-);
+const useStore = create<NomenclatureState & OrganizationsState>()((set: any) => ({
+  ...nomenclatureSlice(set),
+  ...organizationsSlice(set),
+}));
 
 export default useStore;

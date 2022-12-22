@@ -1,30 +1,19 @@
-import { WorkingHoursEnum } from '../../common/enums/WorkingHours.enum';
 import { PaginatedEntity } from '../../common/interfaces/PaginatedEntity.interface';
 import { IPracticeProgram } from '../../common/interfaces/PracticeProgram.interface';
+import { PracticeProgramsQuery } from '../../common/interfaces/PracticeProgramQuery.interface';
 import API from '../API';
 
-export const searchPracticePrograms = async (
-  limit: number,
-  page: number,
-  search?: string | null,
-  locationId?: number | null,
-  faculties?: (number | null)[] | null,
-  workingHours?: WorkingHoursEnum | null,
-  domains?: (number | null)[] | null,
-  start?: Date | null,
-  end?: Date | null,
-): Promise<PaginatedEntity<IPracticeProgram>> => {
+export const getPracticePrograms = async ({
+  pageParam = 1,
+  ...query
+}: {
+  pageParam?: number;
+} & Partial<PracticeProgramsQuery>): Promise<PaginatedEntity<IPracticeProgram>> => {
   return API.get('/api/practice-program/search', {
     params: {
-      limit,
-      page,
-      search,
-      locationId,
-      faculties,
-      domains,
-      workingHours,
-      start,
-      end,
+      limit: 25,
+      page: pageParam,
+      ...query,
     },
   }).then((res) => res.data);
 };
