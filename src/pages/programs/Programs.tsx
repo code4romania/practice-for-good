@@ -40,11 +40,7 @@ const Programs = () => {
               endReached={loadMore}
               overscan={200}
               data={mapPagesToItems<IPracticeProgram>(data?.pages)}
-              itemContent={(index, program) => (
-                <div className="py-5">
-                  <ProgramItem key={index} program={program} />
-                </div>
-              )}
+              itemContent={(index, program) => <ProgramItem key={index} program={program} />}
               components={{
                 Footer: () => (
                   <InfiniteScrollFooter

@@ -18,7 +18,7 @@ const Organization = () => {
 
   return (
     <ShapeWrapper>
-      <div className="w-full xl:px-60 px-4 lg:py-20 py-10">
+      <div className="w-full lg:py-20 py-10 px-[5%] lg:px-[10%] pb-5">
         <>
           {data && !isLoading && (
             <div className="content">
@@ -26,11 +26,15 @@ const Organization = () => {
               <h2 className="subtitle mt-10">{t('programs_title')}</h2>
               <Virtuoso
                 useWindowScroll
-                style={{ height: '100%', marginBottom: '24rem' }}
                 overscan={200}
                 data={data.practicePrograms}
                 topItemCount={data.practicePrograms?.length}
-                itemContent={(index, program) => <ProgramItem key={index} program={program} />}
+                itemContent={(index, program) => (
+                  <ProgramItem
+                    key={index}
+                    program={{ ...program, logo: data.logo, organizationName: data.name }}
+                  />
+                )}
                 components={{
                   Footer: () => (
                     <InfiniteScrollFooter
