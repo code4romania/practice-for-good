@@ -1,7 +1,8 @@
 import { useInfiniteQuery, useQuery } from '@tanstack/react-query';
+import { OrganizationQuery } from '../../common/interfaces/OrganizationQuery.interface';
 import { getOrganizations, getOrganizationWithPracticePrograms } from './Organization.service';
 
-export const useOrganizationsInfiniteQuery = (query?: any) => {
+export const useOrganizationsInfiniteQuery = (query?: OrganizationQuery) => {
   return useInfiniteQuery(
     ['organizations', query],
     ({ pageParam }) => {

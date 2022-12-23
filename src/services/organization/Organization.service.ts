@@ -1,5 +1,6 @@
 import { Organization } from '../../common/interfaces/Organization.interface';
 import { OrganizationFlat } from '../../common/interfaces/OrganizationFlat.interface';
+import { OrganizationQuery } from '../../common/interfaces/OrganizationQuery.interface';
 import { PaginatedEntity } from '../../common/interfaces/PaginatedEntity.interface';
 import API from '../API';
 
@@ -8,7 +9,7 @@ export const getOrganizations = async ({
   ...query
 }: {
   pageParam?: number;
-} & Partial<any>): Promise<PaginatedEntity<OrganizationFlat>> => {
+} & Partial<OrganizationQuery>): Promise<PaginatedEntity<OrganizationFlat>> => {
   return API.get('/api/practice-program/organization', {
     params: {
       limit: 25,

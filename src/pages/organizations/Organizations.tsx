@@ -10,13 +10,14 @@ import OrganizationItem from './components/OrganizationItem';
 import { useOrganizationsInfiniteQuery } from '../../services/organization/Organization.queries';
 import { OrganizationFlat } from '../../common/interfaces/OrganizationFlat.interface';
 import { mapPagesToItems } from '../../common/helpers/Format.helper';
+import { OrganizationQuery } from '../../common/interfaces/OrganizationQuery.interface';
 
 const Organizations = () => {
   const { t } = useTranslation('organizations');
   const [query] = useQueryParams(ORGANIZATIONS_QUERY_PARAMS);
 
   const { data, isFetching, fetchNextPage, hasNextPage, error, refetch } =
-    useOrganizationsInfiniteQuery(query as any);
+    useOrganizationsInfiniteQuery(query as OrganizationQuery);
 
   const loadMore = () => {
     if (!isFetching && hasNextPage) fetchNextPage();
@@ -35,7 +36,9 @@ const Organizations = () => {
             endReached={loadMore}
             overscan={200}
             data={mapPagesToItems<OrganizationFlat>(data?.pages)}
-            itemContent={(index, ong) => <OrganizationItem key={index} organization={ong} />}
+            itemContent={(index, ong) => {
+              return ong && <OrganizationItem key={index} organization={ong} />;
+            }}
             listClassName="virtuso-grid-list"
             components={{
               Footer: () => (
