@@ -28,16 +28,14 @@ const Organizations = () => {
       {error && !isFetching ? (
         <ListError retry={refetch}>{t('errors.search')}</ListError>
       ) : (
-        <div className="min-h-[30rem] p-4 sm:p-8 md:px-12 md:pt-8 lg:px-24">
+        <div className="min-h-[30rem] px-[10%] sm:px-[5%] pb-28 sm:pb-40">
           <VirtuosoGrid
             useWindowScroll
-            style={{ height: '100vw' }}
             context={{ loadMore }}
             endReached={loadMore}
             overscan={200}
             data={mapPagesToItems<OrganizationFlat>(data?.pages)}
             itemContent={(index, ong) => <OrganizationItem key={index} organization={ong} />}
-            // itemClassName="virtuso-grid-item"
             listClassName="virtuso-grid-list"
             components={{
               Footer: () => (
@@ -48,7 +46,9 @@ const Organizations = () => {
               ),
               Header: () => {
                 return data?.pages.length !== 0 && !isFetching ? (
-                  <p className="title text-center">{`${data?.pages[0]?.meta?.totalItems} ${
+                  <p className="title text-center py-5 sm:py-10">{`${
+                    data?.pages[0]?.meta?.totalItems
+                  } ${
                     data?.pages[0]?.meta?.totalItems && data?.pages[0]?.meta?.totalItems > 1
                       ? t('many_organizations_title')
                       : t('one_organization_title')

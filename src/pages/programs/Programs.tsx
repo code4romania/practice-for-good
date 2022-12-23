@@ -30,7 +30,7 @@ const Programs = () => {
         <PracticeProgramsSearch />
       </div>
       <ShapeWrapper>
-        <div className="min-h-[30rem] p-4 sm:p-8 md:px-12 md:pt-8 lg:px-24">
+        <div className="min-h-[30rem] px-[5%] lg:px-[10%] pb-5">
           {error && !isFetching ? (
             <ListError retry={refetch}>{t('errors.search')}</ListError>
           ) : (
@@ -53,8 +53,10 @@ const Programs = () => {
                   />
                 ),
                 Header: () => {
-                  return data?.pages.length !== 0 && !isFetching ? (
-                    <p className="title text-center">{`${data?.pages[0]?.meta?.totalItems} ${
+                  return data?.pages?.length !== 0 && !isFetching ? (
+                    <p className="title text-center pb-5 pt-10">{`${
+                      data?.pages[0]?.meta?.totalItems
+                    } ${
                       data?.pages[0]?.meta?.totalItems && data?.pages[0]?.meta?.totalItems > 1
                         ? t('many_programs_title')
                         : t('one_program_title')

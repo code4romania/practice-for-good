@@ -65,12 +65,8 @@
     -webkit-box-orient: vertical;
   }
 
-  .virtuso-grid-item {
-    @apply w-[22.75rem] h-[34.375rem];
-  }
-
   .virtuso-grid-list {
-    @apply grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4;
+    @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-5 sm:gap-8;
   }
 
   .menu-title {

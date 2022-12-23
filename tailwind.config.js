@@ -15,7 +15,7 @@ module.exports = {
       transparent: 'transparent',
       black: '#000000',
       white: '#FFFFFF',
-      blue: "#0000FA",
+      blue: '#0000FA',
       yellow: {
         DEFAULT: '#FFF649',
         50: '#FFFDE7',
@@ -39,7 +39,7 @@ module.exports = {
         500: '#6B7280',
         700: '#374159',
         900: '#151926',
-        1000: '#7F88A7'
+        1000: '#7F88A7',
       },
       purple: {
         DEFAULT: '#6543C8',
@@ -58,6 +58,9 @@ module.exports = {
       },
     },
     extend: {
+      flex: {
+        2: '2 2 0%',
+      },
       fontFamily: {
         roboto: 'Roboto',
         titilliumBold: 'TitilliumWeb-Bold',
