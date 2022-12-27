@@ -41,7 +41,7 @@ const DatePicker = ({ defaultValue, onChange, placeholder }: DateRangePickerProp
           onClick={props.onClick}
           ref={ref}
           onChange={props.onChange}
-          className="block h-full w-full pl-10"
+          className="block h-full w-full pl-10 outline-none focus:shadow-input font-titillium"
           placeholder={props.placeholder}
           defaultValue={props.value}
           maxLength={100}
@@ -61,7 +61,7 @@ const DatePicker = ({ defaultValue, onChange, placeholder }: DateRangePickerProp
           selected={date}
           isClearable
           placeholderText={placeholder}
-          clearButtonClassName="range-clear-button"
+          clearButtonClassName="datepicker-clear-button"
           dateFormat="dd.MM.yyyy"
           customInput={<CustomInput />}
         />

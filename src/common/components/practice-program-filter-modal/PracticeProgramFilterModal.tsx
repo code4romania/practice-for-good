@@ -64,7 +64,7 @@ const PracticeProgramFilterModal = ({
               leaveFrom="opacity-100 translate-y-0 sm:scale-100"
               leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
             >
-              <Dialog.Panel className="relative bg-white px-4 pt-5 pb-4 text-left overflow-hidden shadow-xl transform transition-all h-full w-full">
+              <Dialog.Panel className="relative bg-white px-4 pt-5 pb-4 text-left overflow-scroll shadow-xl transform transition-all h-full w-full">
                 <div className="relative w-full h-full">
                   <div className="flex justify-between items-center">
                     <img src={logo} alt="Code 4 Romania - ONG Hub" className="h-16" />
@@ -73,7 +73,7 @@ const PracticeProgramFilterModal = ({
                     </button>
                   </div>
                   <div className="h-1 bg-gray-200 my-8"></div>
-                  <div className="flex  flex-col w-full justify-between">
+                  <div className="flex flex-col w-full justify-between">
                     <div className="flex flex-col w-full gap-4">
                       <Controller
                         key={PracticeProgramsSearchConfig.locationId.key}
@@ -188,10 +188,10 @@ const PracticeProgramFilterModal = ({
                         }}
                       />
                     </div>
-                    <div className="flex flex-col gap-2 w-full absolute bottom-4">
+                    <div className="flex flex-col gap-2 w-full bottom-4">
                       <button
                         type="button"
-                        className="flex bg-yellow w-full rounded font-titilliumSemiBold text-xl items-center justify-center p-3"
+                        className="flex bg-yellow w-full rounded font-titilliumSemiBold text-xl items-center justify-center p-3 my-5"
                         onClick={handleSubmit(onApply)}
                       >
                         {t('filterModal:apply')}

@@ -15,7 +15,7 @@ module.exports = {
       transparent: 'transparent',
       black: '#000000',
       white: '#FFFFFF',
-      blue: "#0000FA",
+      blue: '#0000FA',
       yellow: {
         DEFAULT: '#FFF649',
         50: '#FFFDE7',
@@ -39,7 +39,7 @@ module.exports = {
         500: '#6B7280',
         700: '#374159',
         900: '#151926',
-        1000: '#7F88A7'
+        1000: '#7F88A7',
       },
       purple: {
         DEFAULT: '#6543C8',
@@ -66,6 +66,7 @@ module.exports = {
       },
       boxShadow: {
         card: '0px 4px 10px rgba(0, 0, 0, 0.1)',
+        input: 'inset 0 0 0 1px #6543c8',
       },
       fontSize: {
         xs: [

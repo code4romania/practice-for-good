@@ -102,7 +102,20 @@
     color: #c0c0c0 !important;
     height: 20px !important;
     width: 20px !important;
+    min-height: 20px !important;
+    min-width: 20px !important;
     font-size: 20px !important;
+  }
+
+  .datepicker-clear-button {
+    padding: 0px !important;
+  }
+
+  .datepicker-clear-button::after {
+    background-color: transparent !important;
+    color: #c0c0c0 !important;
+    font-size: 24px !important;
+    padding: 0 16px 0 0 !important;
   }
 
   a {
@@ -113,12 +126,4 @@
 .content {
   /* Give the content enought white space so the footer is at the bottom */
   min-height: calc(100vh - 6rem - 18rem);
-}
-
-.range-clear-button::after {
-  background-color: transparent !important;
-  color: #c0c0c0 !important;
-  height: 20px !important;
-  width: 20px !important;
-  font-size: 20px !important;
 }

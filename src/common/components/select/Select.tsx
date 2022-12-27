@@ -34,12 +34,11 @@ const Control = ({ children, ...props }: any) => {
 };
 
 const MultiValue = ({ getValue, index, ...rest }: any) => {
-  console.log(rest.isFocused, rest);
   if (rest.selectProps.menuIsOpen && index == 0) {
     return <p>({getValue().length})&nbsp;</p>;
   } else {
     return index == 0 ? (
-      <p className="text-lg truncate">
+      <p className="sm:text-lg truncate">
         {getValue().length} {t('practice_programs_search:selected')}
       </p>
     ) : (
@@ -72,6 +71,7 @@ const MultiSelect = ({
         closeMenuOnSelect={false}
         closeMenuOnScroll={true}
         id={id}
+        menuPlacement={'auto'}
         isSearchable={true}
         icon={icon}
         components={{
