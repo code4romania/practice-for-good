@@ -141,8 +141,6 @@ const PracticeProgramsSearch = (props: PracticeProgramsSearchProps) => {
         .map(mapItemToSelect);
     }
 
-    setFiltersCount(page ? countFilters(query) - 1 : countFilters(query));
-
     return {
       locationId: selectedLocationId,
       domains: selectedDomains,
