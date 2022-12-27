@@ -88,8 +88,9 @@
       }
     }
   },
-  "filterModal": {
-    "apply": "Aplica filtre"
+  "filter_modal": {
+    "apply": "Aplica filtre",
+    "reset": "Reseteaza filtre"
   },
   "landing": {
     "about": {
