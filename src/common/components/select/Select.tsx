@@ -34,7 +34,6 @@ const Control = ({ children, ...props }: any) => {
 };
 
 const MultiValue = ({ getValue, index, ...rest }: any) => {
-  console.log(rest.isFocused, rest);
   if (rest.selectProps.menuIsOpen && index == 0) {
     return <p>({getValue().length})&nbsp;</p>;
   } else {

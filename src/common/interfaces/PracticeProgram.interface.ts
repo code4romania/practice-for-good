@@ -25,4 +25,6 @@ export interface IPracticeProgram {
     };
   };
   organizationName?: string;
+  organizationId?: number;
+  logo?: string;
 }

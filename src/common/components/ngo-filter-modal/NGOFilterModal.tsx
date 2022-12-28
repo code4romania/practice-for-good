@@ -22,7 +22,7 @@ const NGOFilterModal = ({ onClose, form, onSubmit }: PracticeProgramFilterModalP
   const { t } = useTranslation();
   const { domains } = useNomenclature();
 
-  const { handleSubmit, control } = form;
+  const { handleSubmit, control, reset } = form;
 
   const loadOptionsLocationSearch = async (searchWord: string) => {
     return getCities({ search: searchWord }).then((cities) => cities.map(mapCitiesToSelect));
@@ -31,6 +31,11 @@ const NGOFilterModal = ({ onClose, form, onSubmit }: PracticeProgramFilterModalP
   const onApply = (data: any) => {
     onSubmit(data);
     onClose();
+  };
+
+  const onReset = () => {
+    reset({});
+    handleSubmit(onApply)();
   };
 
   return (
@@ -117,7 +122,14 @@ const NGOFilterModal = ({ onClose, form, onSubmit }: PracticeProgramFilterModalP
                         className="flex bg-yellow w-full rounded font-titilliumSemiBold text-xl items-center justify-center p-3"
                         onClick={handleSubmit(onApply)}
                       >
-                        {t('filterModal:apply')}
+                        {t('filter_modal:apply')}
+                      </button>
+                      <button
+                        type="button"
+                        className="flex bg-gray-100 w-full rounded font-titilliumSemiBold text-xl items-center justify-center p-3"
+                        onClick={onReset}
+                      >
+                        {t('filter_modal:reset')}
                       </button>
                     </div>
                   </div>
