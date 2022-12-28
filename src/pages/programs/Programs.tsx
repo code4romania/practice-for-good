@@ -12,6 +12,7 @@ import { PROGRAMS_QUERY_PARAMS } from '../../common/constants/Programs.constants
 import { PracticeProgramsQuery } from '../../common/interfaces/PracticeProgramQuery.interface';
 import ListError from '../../common/components/list-error/ListError';
 import { mapPagesToItems } from '../../common/helpers/Format.helper';
+import VirtuosoHeader from '../../common/components/virtuoso-header/VirtuosoHeader';
 
 const Programs = () => {
   const { t } = useTranslation('practice_programs');
@@ -49,14 +50,15 @@ const Programs = () => {
                   />
                 ),
                 Header: () => {
-                  return data?.pages?.length !== 0 && !isFetching ? (
-                    <p className="title text-center pb-5 pt-10">{`${
-                      data?.pages[0]?.meta?.totalItems
-                    } ${
-                      data?.pages[0]?.meta?.totalItems && data?.pages[0]?.meta?.totalItems > 1
-                        ? t('many_programs_title')
-                        : t('one_program_title')
-                    }`}</p>
+                  return data?.pages[0].meta && !isFetching ? (
+                    <VirtuosoHeader
+                      totalItems={data.pages[0].meta.totalItems}
+                      entities={
+                        data.pages[0].meta.totalItems > 1
+                          ? t('many_programs_title')
+                          : t('one_program_title')
+                      }
+                    />
                   ) : (
                     <></>
                   );

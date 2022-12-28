@@ -11,6 +11,7 @@ import { useOrganizationsInfiniteQuery } from '../../services/organization/Organ
 import { OrganizationFlat } from '../../common/interfaces/OrganizationFlat.interface';
 import { mapPagesToItems } from '../../common/helpers/Format.helper';
 import { OrganizationQuery } from '../../common/interfaces/OrganizationQuery.interface';
+import VirtuosoHeader from '../../common/components/virtuoso-header/VirtuosoHeader';
 
 const Organizations = () => {
   const { t } = useTranslation('organizations');
@@ -48,14 +49,15 @@ const Organizations = () => {
                 />
               ),
               Header: () => {
-                return data?.pages.length !== 0 && !isFetching ? (
-                  <p className="title text-center py-5 sm:py-10">{`${
-                    data?.pages[0]?.meta?.totalItems
-                  } ${
-                    data?.pages[0]?.meta?.totalItems && data?.pages[0]?.meta?.totalItems > 1
-                      ? t('many_organizations_title')
-                      : t('one_organization_title')
-                  }`}</p>
+                return data?.pages[0]?.meta && !isFetching ? (
+                  <VirtuosoHeader
+                    totalItems={data.pages[0].meta.totalItems}
+                    entities={
+                      data.pages[0].meta.totalItems > 1
+                        ? t('many_organizations_title')
+                        : t('one_organization_title')
+                    }
+                  />
                 ) : (
                   <></>
                 );
