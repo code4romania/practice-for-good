@@ -8,14 +8,14 @@ import InfiniteScrollFooter from '../../common/components/infinite-scroll-footer
 import ShapeWrapper from '../../common/components/shape-wrapper/ShapeWrapper';
 import { IPracticeProgram } from '../../common/interfaces/PracticeProgram.interface';
 import { useQueryParams } from 'use-query-params';
-import { POGRAMS_QUERY_PARAMS } from '../../common/constants/Programs.constants';
+import { PROGRAMS_QUERY_PARAMS } from '../../common/constants/Programs.constants';
 import { PracticeProgramsQuery } from '../../common/interfaces/PracticeProgramQuery.interface';
 import ListError from '../../common/components/list-error/ListError';
 import { mapPagesToItems } from '../../common/helpers/Format.helper';
 
 const Programs = () => {
   const { t } = useTranslation('practice_programs');
-  const [query] = useQueryParams(POGRAMS_QUERY_PARAMS);
+  const [query] = useQueryParams(PROGRAMS_QUERY_PARAMS);
 
   const { data, isFetching, fetchNextPage, hasNextPage, error, refetch } =
     userPracticeProgramsInfiniteQuery(query as PracticeProgramsQuery);

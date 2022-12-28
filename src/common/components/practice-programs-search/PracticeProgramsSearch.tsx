@@ -23,7 +23,7 @@ import {
   getFaculties,
 } from '../../../services/nomenclature/Nomenclature.service';
 import { WorkingHours } from '../../enums/WorkingHours.enum';
-import { POGRAMS_QUERY_PARAMS } from '../../constants/Programs.constants';
+import { PROGRAMS_QUERY_PARAMS } from '../../constants/Programs.constants';
 import { countFilters } from '../../helpers/Filters.helpers';
 import { MENU_ROUTES_HREF } from '../../constants/Menu.constants';
 import { mapCitiesToSelect } from '../../helpers/Format.helper';
@@ -42,7 +42,7 @@ const PracticeProgramsSearch = (props: PracticeProgramsSearchProps) => {
   const { domains, faculties } = useNomenclature();
 
   // query params state
-  const [query, setQuery] = useQueryParams(POGRAMS_QUERY_PARAMS);
+  const [query, setQuery] = useQueryParams(PROGRAMS_QUERY_PARAMS);
 
   // form state
   const form = useForm({
@@ -90,7 +90,9 @@ const PracticeProgramsSearch = (props: PracticeProgramsSearchProps) => {
 
     // 2. redirect with correct query set
     props.onSearchCallback &&
-      props.onSearchCallback(`?${stringify(encodeQueryParams(POGRAMS_QUERY_PARAMS, queryValues))}`);
+      props.onSearchCallback(
+        `?${stringify(encodeQueryParams(PROGRAMS_QUERY_PARAMS, queryValues))}`,
+      );
   };
 
   const loadOptionsLocationSearch = async (searchWord: string) => {
