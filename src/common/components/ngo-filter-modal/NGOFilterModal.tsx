@@ -117,7 +117,7 @@ const NGOFilterModal = ({ onClose, form, onSubmit }: PracticeProgramFilterModalP
                         className="flex bg-yellow w-full rounded font-titilliumSemiBold text-xl items-center justify-center p-3"
                         onClick={handleSubmit(onApply)}
                       >
-                        {t('filterModal:apply')}
+                        {t('filter_modal:apply')}
                       </button>
                     </div>
                   </div>

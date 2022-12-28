@@ -12,7 +12,7 @@ import { MAIL_APP_TYPE } from '../../common/constants/MailAppType.constants';
 const Contact = () => {
   const [showSuccess, setShowSuccess] = useState(false);
   const sendContactMailMutation = useSendContactMailMutation();
-  const { t } = useTranslation('contact');
+  const { t } = useTranslation(['contact', 'common']);
 
   const {
     handleSubmit,
@@ -110,7 +110,7 @@ const Contact = () => {
               />
             </form>
             <button type="button" className="yellow-button" onClick={handleSubmit(onSendMail)}>
-              {t('action')}
+              {t('send', { ns: 'common' })}
             </button>
           </div>
         )}
