@@ -88,8 +88,9 @@
       }
     }
   },
-  "filterModal": {
-    "apply": "Aplica filtre"
+  "filter_modal": {
+    "apply": "Aplica filtre",
+    "reset": "Reseteaza filtre"
   },
   "landing": {
     "about": {
@@ -154,22 +155,20 @@
     "form": {
       "name": {
         "required": "Numele este obligatoriu",
-        "max": "Numele poate să abiă maxim 100 de caractere",
+        "max": "Numele poate să abiă maxim 200 de caractere",
         "min": "Numele trebuie să aibă minim 3 caractere",
         "invalid": "Numele are un format invalid",
         "label": "Nume și prenume"
       },
       "email": {
         "required": "Email-ul este obligatoriu",
-        "max": "Email-ul poate să aibă maxim 100 de caractere",
         "min": "Email-ul trebuie să aibă minim 3 caractere",
         "invalid": "Email-ul are un format invalid",
         "label": "E-mail"
       },
       "message": {
         "required": "Mesajul tău este obligatoriu",
-        "max": "Mesajul tău poate să aibă maxim 250 de caractere",
-        "min": "Mesajul tău trebuie să aibă minim 50 de caractere",
+        "max": "Mesajul tău poate să aibă maxim 1500 de caractere",
         "label": "Mesajul tău"
       }
     },
