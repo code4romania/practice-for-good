@@ -6,7 +6,7 @@ import Domain from './Domain';
 
 const Domains = () => {
   const { domains } = useNomenclature();
-  const title = i18n.t('landing:domains:title');
+  const title = i18n.t('common:domains');
   return (
     <div className="sm:px-30 sm:py-20 lg:px-40 lg:py-24 xl:px-60 xl:py-32 xs:px-10 xs:py-10 px-5 py-5">
       <p className="title">{title}</p>

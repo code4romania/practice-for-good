@@ -17,7 +17,7 @@ export const PracticeProgramsSearchConfig: Record<string, any> = {
       type: 'text',
       label: '',
       helperText: '',
-      placeholder: i18n.t('practice_programs_search:config.search.placeholder'),
+      placeholder: i18n.t('common:search.config.search.placeholder'),
       addOn: () => IconAddon({ icon: SearchIcon }),
     },
   },
@@ -25,7 +25,7 @@ export const PracticeProgramsSearchConfig: Record<string, any> = {
     key: 'locationId',
     label: '',
     rules: {},
-    placeholder: i18n.t('practice_programs_search:config.location.placeholder'),
+    placeholder: i18n.t('common:search.config.location.placeholder'),
     addOn: () => IconAddon({ icon: LocationMarkerIcon }),
   },
   faculties: {
@@ -49,7 +49,7 @@ export const PracticeProgramsSearchConfig: Record<string, any> = {
     rules: {},
     config: {
       collection: [...WorkingHours],
-      placeholder: i18n.t('practice_programs_search:config.workingHours.placeholder'),
+      placeholder: i18n.t('practice_programs_search:config.working_hours.placeholder'),
     },
     icon: ClockIcon,
   },
@@ -57,7 +57,7 @@ export const PracticeProgramsSearchConfig: Record<string, any> = {
     key: 'domains',
     rules: {},
     config: {
-      placeholder: i18n.t('practice_programs_search:config.domains.placeholder'),
+      placeholder: i18n.t('practice_programs_search:config.domain.placeholder'),
     },
     icon: ViewBoardsIcon,
   },
