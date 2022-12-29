@@ -12,7 +12,7 @@ import OrganizationDetails from './components/OrganizationDetails';
 const Organization = () => {
   const { id } = useParams();
 
-  const { t } = useTranslation('organization_details');
+  const { t } = useTranslation('organizations');
 
   const { data, isLoading, error, refetch } = useOrganization(id as string);
 
@@ -23,7 +23,7 @@ const Organization = () => {
           {data && !isLoading && (
             <div className="content">
               <OrganizationDetails organization={data}></OrganizationDetails>
-              <h2 className="subtitle mt-10">{t('programs_title')}</h2>
+              <h2 className="subtitle mt-10">{t('details.errors.get')}</h2>
               <Virtuoso
                 useWindowScroll
                 overscan={200}
@@ -46,7 +46,7 @@ const Organization = () => {
               />
             </div>
           )}
-          {error && !isLoading && <ListError retry={refetch}>{t('errors.get')}</ListError>}
+          {error && !isLoading && <ListError retry={refetch}>{t('details.errors.get')}</ListError>}
         </>
       </div>
     </ShapeWrapper>

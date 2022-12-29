@@ -162,7 +162,10 @@ const Program = () => {
                 />
               </div>
               <div className="flex-1 flex flex-col gap-4">
-                <PracticeProgramContentItem label={t('details.domains')} value={formatDomains()} />
+                <PracticeProgramContentItem
+                  label={t('domains', { ns: 'common' })}
+                  value={formatDomains()}
+                />
                 <PracticeProgramContentItem label={t('details.skills')} value={formatSkills()} />
               </div>
             </div>

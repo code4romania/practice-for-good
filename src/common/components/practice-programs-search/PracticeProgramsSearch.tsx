@@ -226,7 +226,7 @@ const PracticeProgramsSearch = (props: PracticeProgramsSearchProps) => {
             id="create-organization-activity__button-back"
             className="text-sm sm:text-base  h-full flex items-center"
           >
-            {t('filters')}
+            {t('common:search.filters')}
           </p>
           <AdjustmentsIcon className="w-5 h-5" />
           {filtersCount > 0 && (
@@ -336,7 +336,7 @@ const PracticeProgramsSearch = (props: PracticeProgramsSearchProps) => {
             className="text-sm sm:text-base text-yellow bg-black w-full h-full"
             onClick={handleSubmit(search)}
           >
-            {t('searchWord')}
+            {t('common:search.search')}
           </button>
         </div>
       </div>
