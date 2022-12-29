@@ -1,6 +1,6 @@
 import { DateParam, DelimitedNumericArrayParam, NumberParam, StringParam } from 'use-query-params';
 
-export const POGRAMS_QUERY_PARAMS = {
+export const PROGRAMS_QUERY_PARAMS = {
   search: StringParam,
   workingHours: StringParam,
   locationId: NumberParam,
@@ -8,5 +8,4 @@ export const POGRAMS_QUERY_PARAMS = {
   end: DateParam,
   faculties: DelimitedNumericArrayParam,
   domains: DelimitedNumericArrayParam,
-  page: NumberParam,
 };

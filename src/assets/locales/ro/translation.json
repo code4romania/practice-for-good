@@ -117,7 +117,8 @@
     "title": "Caută organizații"
   },
   "filter_modal": {
-    "apply": "Aplica filtre"
+    "apply": "Aplica filtre",
+    "reset": "Reseteaza filtre"
   },
   "organizations": {
     "one_organization_title": "ONG",
