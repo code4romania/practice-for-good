@@ -136,7 +136,7 @@ const NGOSearch = ({ showFilters }: NGOSearchProps) => {
           {showFilters && (
             <button
               type="button"
-              className="text-sm sm:text-base sm:hidden text-yellow bg-black px-4 flex items-center justify-center h-full shadow-md"
+              className="text-sm sm:text-base sm:hidden text-yellow bg-black px-4 flex items-center justify-center h-full shadow-md hover:bg-black-800"
               onClick={handleSubmit(search)}
             >
               <SearchIcon className="w-5 h-5" />
@@ -215,10 +215,10 @@ const NGOSearch = ({ showFilters }: NGOSearchProps) => {
           <button
             id="organizations-search__button__submit"
             type="button"
-            className="text-sm sm:text-xl text-yellow bg-black px-6 h-full sm:w-1/6 w-24"
+            className="text-sm sm:text-base text-yellow bg-black px-6 h-full sm:w-1/6 w-24 hover:bg-black-800"
             onClick={handleSubmit(search)}
           >
-            {t('practice_programs_search:searchWord')}
+            {t('common:search.search')}
           </button>
         </div>
       </div>
