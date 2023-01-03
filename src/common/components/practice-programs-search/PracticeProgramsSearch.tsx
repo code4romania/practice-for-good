@@ -333,7 +333,7 @@ const PracticeProgramsSearch = (props: PracticeProgramsSearchProps) => {
           <button
             id="programs-search__button__submit"
             type="button"
-            className="text-sm sm:text-base text-yellow bg-black w-full h-full"
+            className="text-sm sm:text-base text-yellow bg-black w-full h-full hover:bg-black-800"
             onClick={handleSubmit(search)}
           >
             {t('common:search.search')}
