@@ -43,6 +43,8 @@ module.exports = {
       },
       purple: {
         DEFAULT: '#6543C8',
+        100: '#efebf9',
+        500: '#6e4dcb',
       },
       red: {
         50: '#FEF2F2',
@@ -66,7 +68,7 @@ module.exports = {
       },
       boxShadow: {
         card: '0px 4px 10px rgba(0, 0, 0, 0.1)',
-        input: 'inset 0 0 0 1px #6543c8',
+        input: 'inset 0 0 0 2px #6543c8',
       },
       fontSize: {
         xs: [

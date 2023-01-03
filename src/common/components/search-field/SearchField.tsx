@@ -4,7 +4,7 @@ import { classNames } from '../../helpers/Tailwind.helper';
 
 const SearchField = (props: { config: Partial<any>; readonly?: boolean; disabled?: boolean }) => {
   return (
-    <div className="relative focus:border-purple w-full">
+    <div className="relative w-full">
       <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
         <SearchIcon
           className={classNames(
@@ -23,7 +23,7 @@ const SearchField = (props: { config: Partial<any>; readonly?: boolean; disabled
             ? 'border-red-300 text-red-900 placeholder-red-300 focus:ring-red-500 focus:border-red-500'
             : '',
           props.config.addOn ? 'pl-10' : 'pl-4',
-          'block h-14 w-full border border-gray-500 shadow-md sm:text-lg text-gray-500 text-base disabled:bg-gray-100 p-4 font-titillium outline-none focus:shadow-input',
+          'block h-14 w-full border border-gray-500 shadow-md sm:text-lg text-black text-base disabled:bg-gray-100 p-4 font-titillium outline-none focus:shadow-input',
         )}
         placeholder={props.config.placeholder}
         defaultValue={props.config.defaultValue}
