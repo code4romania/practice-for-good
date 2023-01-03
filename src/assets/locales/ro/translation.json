@@ -1,12 +1,30 @@
 {
   "common": {
-    "greeting": "buna",
     "loading": "Se incarca...",
     "no_results": "Nu exista rezultate pentru criteriile de cautare selectate",
     "end_of_list": "Nu mai sunt date de afisat",
     "share": "Distribuie",
     "shared": "Link-ul a fost copiat",
-    "hours": "ore"
+    "hours": "ore",
+    "send": "Trimite",
+    "selected": "selectate",
+    "show_more": "Arata mai mult",
+    "show_less": "Ascunde",
+    "domains": "Domenii",
+    "search": {
+      "filters": "Filtre",
+      "search": "Cauta",
+      "config": {
+        "search": {
+          "max": "Cautarea nu poate avea mai mult de 50 de caractere",
+          "min": "Cautarea nu poate avea mai putin de 3 caractere",
+          "placeholder": "Cauta un ONG sau un program..."
+        },
+        "location": {
+          "placeholder": "Toata Romania"
+        }
+      }
+    }
   },
   "menu": {
     "home": "Acasa",
@@ -36,22 +54,22 @@
     "how": "Cum adaugi serviciile organizației tale?",
     "learn_more": "Află mai multe"
   },
+  "landing": {
+    "about": {
+      "title": "Despre Practice4Good",
+      "paragraph_1": "Deși organizațiile neguvernamentale sunt poate cel mai dinamic loc de muncă în care un student sau un proaspăt absolvent ar putea activa pentru a câștiga experientă, mediul ONG nu este o destinație obișnuită pentru acesta. Vreem să schimbăm acest lucru! Practice4Good este o platformă cu  anunțuri de practică și internship în ONG-urile care ne fac viața de zi cu zi mai bună.",
+      "support": "Susține proiectul"
+    },
+    "counter": {
+      "programs": "Programe și activități adăugate pe platformă",
+      "ngos": "ONG-uri din România active pe platformă"
+    }
+  },
   "practice_programs_search": {
     "title": "Programe de practica la ONG-uri din România",
     "subtitle": "Caută programele de practică pe profilul tău, sau ",
     "subtitle_link": "Descoperă toate programele.",
-    "filters": "Filtre",
-    "selected": "selectate",
-    "searchWord": "Cauta",
     "config": {
-      "search": {
-        "max": "Cautarea nu poate avea mai mult de 50 de caractere",
-        "min": "Cautarea nu poate avea mai putin de 3 caractere",
-        "placeholder": "Cauta ong sau program..."
-      },
-      "location": {
-        "placeholder": "Toata Romania"
-      },
       "faculties": {
         "placeholder": "Facultate"
       },
@@ -61,71 +79,17 @@
       "end": {
         "placeholder": "Data Sfarsit"
       },
-      "workingHours": {
+      "working_hours": {
         "placeholder": "Nr. Ore"
       },
-      "domains": {
+      "domain": {
         "placeholder": "Domeniu"
       }
-    }
-  },
-  "ngo-search": {
-    "title": "Caută organizații",
-    "filters": "Filtre",
-    "selected": "selectate",
-    "searchWord": "Cauta",
-    "config": {
-      "search": {
-        "max": "Cautarea nu poate avea mai mult de 50 de caractere",
-        "min": "Cautarea nu poate avea mai putin de 3 caractere",
-        "placeholder": "Cauta ong sau program..."
-      },
-      "location": {
-        "placeholder": "Toata Romania"
-      },
-      "domains": {
-        "placeholder": "Domeniu"
-      }
-    }
-  },
-  "filterModal": {
-    "apply": "Aplica filtre"
-  },
-  "landing": {
-    "about": {
-      "title": "Despre Practice4Good",
-      "paragraph_1": "Deși organizațiile neguvernamentale sunt poate cel mai dinamic loc de muncă în care un student sau un proaspăt absolvent ar putea activa pentru a câștiga experientă, mediul ONG nu este o destinație obișnuită pentru acesta. Vreem să schimbăm acest lucru! Practice4Good este o platformă cu  anunțuri de practică și internship în ONG-urile care ne fac viața de zi cu zi mai bună.",
-      "action": "Susține proiectul"
-    },
-    "counter": {
-      "programs": "Programe și activități adăugate pe platformă",
-      "ngos": "ONG-uri din România active pe platformă"
-    },
-    "domains": {
-      "title": "Domenii"
-    }
-  },
-  "organizations": {
-    "one_organization_title": "ONG",
-    "many_organizations_title": "ONG-uri",
-    "no_organizations": "Nu au fost găsite ONG-uri",
-    "action": "Vezi mai mult",
-    "errors": {
-      "search": "Eroare la incarcarea ONG-urilor"
-    }
-  },
-  "organization_details": {
-    "activity_domains": "Domenii activitate",
-    "contact": "Contact",
-    "social_media": "Social media",
-    "programs_title": "Programe de practica si activitati",
-    "errors": {
-      "get": "Eroare la incarcarea organizatiei"
     }
   },
   "practice_programs": {
-    "one_program_title": "program de practică",
-    "many_programs_title": "programe de practică",
+    "one_program_title": "Program de practică",
+    "many_programs_title": "Programe de practică",
     "no_programs": "Nu au fost găsite programe de practică",
     "action": "Detalii",
     "deadline": "Aplică până la",
@@ -139,7 +103,6 @@
       "period_starting_with": "Incepand cu",
       "working_hours": "Numar de ore",
       "faculties": "Dedicat studentilor la",
-      "domains": "Domenii",
       "skills": "Vei invata",
       "actions": {
         "apply": "Aplica"
@@ -148,6 +111,31 @@
         "get": "Eroare la incarcarea programului de practica"
       },
       "published_on": "Publicat la"
+    }
+  },
+  "ngo_search": {
+    "title": "Caută organizații"
+  },
+  "filter_modal": {
+    "apply": "Aplica filtre",
+    "reset": "Reseteaza filtre"
+  },
+  "organizations": {
+    "one_organization_title": "ONG",
+    "many_organizations_title": "ONG-uri",
+    "no_organizations": "Nu au fost găsite ONG-uri",
+    "action": "Vezi mai mult",
+    "errors": {
+      "search": "Eroare la incarcarea ONG-urilor"
+    },
+    "details": {
+      "activity_domains": "Domenii activitate",
+      "contact": "Contact",
+      "social_media": "Social media",
+      "programs_title": "Programe de practica si activitati",
+      "errors": {
+        "get": "Eroare la incarcarea organizatiei"
+      }
     }
   },
   "contact": {
@@ -171,7 +159,6 @@
         "label": "Mesajul tău"
       }
     },
-    "action": "Trimite",
     "paragraph_1": "Centru Civic este primul centralizator al serviciilor pe care societatea civilă le pune la dispoziția cetățenilor români. Soluția a pornit ca un agregator al tuturor aplicațiilor civice dezvoltate de ONG-uri, instituții sau cetăţeni din România.",
     "paragraph_2": "În noua versiune, Centru Civic va deveni locul unde, printr-o căutare simplă, fiecare cetățean va avea la dispoziție informațiile necesare despre toate serviciile oferite de sectorul ONG care vizează o anumită problemă, scoțând în evidență importanța și amploarea sectorului non-profit în societatea românească.",
     "title": "Contactează-ne",

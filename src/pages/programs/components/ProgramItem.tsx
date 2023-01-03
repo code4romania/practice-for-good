@@ -4,7 +4,6 @@ import { useTranslation } from 'react-i18next';
 import Card from '../../../common/components/card/Card';
 import { formatDate, formatDateYear } from '../../../common/helpers/Format.helper';
 import { IPracticeProgram } from '../../../common/interfaces/PracticeProgram.interface';
-import p4g_logo from '../../../assets/images/logo.svg';
 import { useNavigate } from 'react-router-dom';
 
 const ProgramItem = ({ program }: { program: IPracticeProgram }) => {
@@ -12,24 +11,21 @@ const ProgramItem = ({ program }: { program: IPracticeProgram }) => {
 
   const { t } = useTranslation(['practice_programs', 'common']);
   return (
-    <div className="mt-10">
+    <div className="py-5">
       <Card>
-        <div className="flex sm:flex-row flex-col w-full lg:min-h-32 min-h-[6rem] items-center gap-x-8 gap-y-5 h-full">
-          <div className="aspect-square lg:w-32 sm:w-24 w-full lg:min-w-[8rem] sm:min-w-[6rem] bg-gray-100 sm:max-h-full max-h-[8rem]">
-            {p4g_logo && (
-              <img
-                alt="practice program image"
-                className="w-full h-full bg-cover"
-                src={p4g_logo}
-              ></img>
-            )}
-          </div>
-          <div className="flex flex-col sm:h-full sm:w-auto w-full gap-y-3 flex-wrap">
+        <div className="w-full h-full lg:min-h-32 min-h-[6rem] flex flex-col sm:flex-row gap-x-8 gap-y-5">
+          <div
+            style={{ backgroundImage: `url(${program?.logo})` }}
+            className={`aspect-square bg-contain bg-no-repeat bg-center lg:w-32 sm:w-24 w-full lg:min-w-[8rem] sm:min-w-[6rem] sm:max-h-full max-h-[6rem] ${
+              program?.logo ? 'bg-transparent' : 'bg-gray-100'
+            }`}
+          ></div>
+          <div className="flex-2 flex flex-col gap-y-3 flex-wrap w-full sm:py-2">
             <a
               className="sm:mb-auto max-w-fit sm:text-sm lg:text-base text-xs font-titilliumSemiBold"
-              href={`/organizations/${program.organization?.id}`}
+              href={`/organizations/${program?.organizationId}`}
             >
-              {program.organization?.organizationGeneral?.name}
+              {program?.organizationName}
             </a>
             <p className="subtitle">{program.title}</p>
             <div className="flex sm:flex-row flex-wrap gap-x-8 gap-y-2 sm:mt-auto">
@@ -51,16 +47,16 @@ const ProgramItem = ({ program }: { program: IPracticeProgram }) => {
               </div>
             </div>
           </div>
-          <div className="ml-auto flex flex-col justify-center sm:h-full h-fit items-end gap-y-4">
+          <div className="flex-1 flex flex-col justify-center items-center sm:items-end gap-y-4 sm:gap-y-2">
             <button
               type="button"
-              className="font-titilliumSemiBold yellow-button text-center h-fit lg:w-48 w-32 lg:text-base text-xs"
+              className="font-titilliumSemiBold yellow-button text-center text-xs h-fit w-full max-w-[24rem] md:w-48 lg:text-base"
               onClick={() => navigate(`/practice-programs/${program.id}`)}
             >
               {`${t('action')}`}
             </button>
             {program.deadline && (
-              <p className="mt-auto text-right sm:text-sm lg:text-base text-xs">
+              <p className="text-right sm:text-sm lg:text-base text-xs">
                 {`${t('deadline')} ${formatDateYear(program.deadline)}`}
               </p>
             )}

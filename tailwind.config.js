@@ -60,6 +60,9 @@ module.exports = {
       },
     },
     extend: {
+      flex: {
+        2: '2 2 0%',
+      },
       fontFamily: {
         roboto: 'Roboto',
         titilliumBold: 'TitilliumWeb-Bold',

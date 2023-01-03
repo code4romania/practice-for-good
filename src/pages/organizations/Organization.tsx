@@ -12,25 +12,29 @@ import OrganizationDetails from './components/OrganizationDetails';
 const Organization = () => {
   const { id } = useParams();
 
-  const { t } = useTranslation('organization_details');
+  const { t } = useTranslation('organizations');
 
   const { data, isLoading, error, refetch } = useOrganization(id as string);
 
   return (
     <ShapeWrapper>
-      <div className="w-full xl:px-60 px-4 lg:py-20 py-10">
+      <div className="w-full lg:py-20 py-10 px-[5%] lg:px-[10%] pb-5">
         <>
           {data && !isLoading && (
             <div className="content">
               <OrganizationDetails organization={data}></OrganizationDetails>
-              <h2 className="subtitle mt-10">{t('programs_title')}</h2>
+              <h2 className="subtitle mt-10">{t('details.errors.get')}</h2>
               <Virtuoso
                 useWindowScroll
-                style={{ height: '100%', marginBottom: '24rem' }}
                 overscan={200}
                 data={data.practicePrograms}
                 topItemCount={data.practicePrograms?.length}
-                itemContent={(index, program) => <ProgramItem key={index} program={program} />}
+                itemContent={(index, program) => (
+                  <ProgramItem
+                    key={index}
+                    program={{ ...program, logo: data.logo, organizationName: data.name }}
+                  />
+                )}
                 components={{
                   Footer: () => (
                     <InfiniteScrollFooter
@@ -42,7 +46,7 @@ const Organization = () => {
               />
             </div>
           )}
-          {error && !isLoading && <ListError retry={refetch}>{t('errors.get')}</ListError>}
+          {error && !isLoading && <ListError retry={refetch}>{t('details.errors.get')}</ListError>}
         </>
       </div>
     </ShapeWrapper>

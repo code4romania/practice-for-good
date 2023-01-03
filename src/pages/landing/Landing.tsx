@@ -29,7 +29,7 @@ const Landing = () => {
         <Description
           title={t('about.title')}
           content={t('about.paragraph_1')}
-          cta={{ label: t('about.action'), link: DONATE_URL }}
+          cta={{ label: t('about.support'), link: DONATE_URL }}
           image={p4g}
           isTextRight={true}
         ></Description>

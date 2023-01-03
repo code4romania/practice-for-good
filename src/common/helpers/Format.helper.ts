@@ -1,4 +1,5 @@
 import { format } from 'date-fns';
+import { PaginatedEntity } from '../interfaces/PaginatedEntity.interface';
 import { ISelectData } from './Nomenclature.helper';
 
 export const formatDateYear = (value: Date | string | null): string =>
@@ -22,6 +23,12 @@ export const openInNewTab = (url: string): void => {
   }
   const newWindow = window.open(url, '_blank', 'noopener,noreferrer');
   if (newWindow) newWindow.opener = null;
+};
+
+export const mapPagesToItems = <T>(pages?: PaginatedEntity<T>[]): T[] => {
+  const items: T[] = [];
+  pages?.forEach((page) => items.push(...page.items));
+  return items;
 };
 
 export const EMAIL_REGEX =
