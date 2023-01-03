@@ -3,6 +3,7 @@ import { CalendarIcon } from '@heroicons/react/solid';
 import { default as ReactDatePicker } from 'react-datepicker';
 
 import 'react-datepicker/dist/react-datepicker.css';
+import './DatePicker.css';
 import { classNames } from '../../helpers/Tailwind.helper';
 
 interface DateRangePickerProps {
