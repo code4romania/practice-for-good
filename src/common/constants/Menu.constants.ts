@@ -5,8 +5,9 @@ export const MENU_ROUTES_HREF = {
   organizations: 'organizations',
   practice_programs: 'practice-programs',
   about: 'about',
-  contact: 'contact'
-}
+  contact: 'contact',
+  practice_program: 'practice-program',
+};
 
 export const MENU_ROUTES: IMenuURL[] = [
   { id: 0, name: i18n.t('menu:home'), href: '/' },
@@ -15,5 +16,3 @@ export const MENU_ROUTES: IMenuURL[] = [
   { id: 4, name: i18n.t('menu:organizations'), href: `/${MENU_ROUTES_HREF.organizations}` },
   { id: 5, name: i18n.t('menu:contact'), href: `/${MENU_ROUTES_HREF.contact}` },
 ];
-
-

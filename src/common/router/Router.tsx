@@ -34,15 +34,24 @@ const Router = () => {
             <Route path={MENU_ROUTES_HREF.practice_programs} element={<Programs />}></Route>
 
             {/* Practice program details */}
-            <Route path={`${MENU_ROUTES_HREF.practice_programs}/:id`} element={<Program />}></Route>
+            <Route
+              path={`${MENU_ROUTES_HREF.practice_programs}/:programId`}
+              element={<Program />}
+            ></Route>
 
             {/* NGO list page */}
             <Route path={MENU_ROUTES_HREF.organizations} element={<Organizations />}></Route>
 
             {/* NGO details page */}
             <Route
-              path={`${MENU_ROUTES_HREF.organizations}/:id`}
+              path={`${MENU_ROUTES_HREF.organizations}/:organizationId`}
               element={<Organization />}
+            ></Route>
+
+            {/* Practice Program Page from NGO Details - For Breadcurmbs purpose only */}
+            <Route
+              path={`${MENU_ROUTES_HREF.organizations}/:organizationId/${MENU_ROUTES_HREF.practice_program}/:programId`}
+              element={<Program />}
             ></Route>
 
             {/* Contact page */}

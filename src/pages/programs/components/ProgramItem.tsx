@@ -4,11 +4,13 @@ import { useTranslation } from 'react-i18next';
 import Card from '../../../common/components/card/Card';
 import { formatDate, formatDateYear } from '../../../common/helpers/Format.helper';
 import { IPracticeProgram } from '../../../common/interfaces/PracticeProgram.interface';
-import { useNavigate } from 'react-router-dom';
 
-const ProgramItem = ({ program }: { program: IPracticeProgram }) => {
-  const navigate = useNavigate();
+interface ProgramItemProps {
+  program: IPracticeProgram;
+  onNavigate: () => void;
+}
 
+const ProgramItem = ({ program, onNavigate }: ProgramItemProps) => {
   const { t } = useTranslation(['practice_programs', 'common']);
   return (
     <div className="py-5">
@@ -51,7 +53,7 @@ const ProgramItem = ({ program }: { program: IPracticeProgram }) => {
             <button
               type="button"
               className="font-titilliumSemiBold yellow-button text-center text-xs h-fit w-full max-w-[24rem] md:w-48 lg:text-base"
-              onClick={() => navigate(`/practice-programs/${program.id}`)}
+              onClick={onNavigate}
             >
               {`${t('action')}`}
             </button>
