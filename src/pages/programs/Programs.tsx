@@ -13,9 +13,12 @@ import { PracticeProgramsQuery } from '../../common/interfaces/PracticeProgramQu
 import ListError from '../../common/components/list-error/ListError';
 import { mapPagesToItems } from '../../common/helpers/Format.helper';
 import VirtuosoHeader from '../../common/components/virtuoso-header/VirtuosoHeader';
+import { useNavigate } from 'react-router-dom';
+import { MENU_ROUTES_HREF } from '../../common/constants/Menu.constants';
 
 const Programs = () => {
   const { t } = useTranslation('practice_programs');
+  const navigate = useNavigate();
   const [query] = useQueryParams(PROGRAMS_QUERY_PARAMS);
 
   const { data, isFetching, fetchNextPage, hasNextPage, error, refetch } =
@@ -23,6 +26,10 @@ const Programs = () => {
 
   const loadMore = () => {
     if (!isFetching && hasNextPage) fetchNextPage();
+  };
+
+  const onNavigate = (programId: number) => {
+    navigate(`/${MENU_ROUTES_HREF.practice_programs}/${programId}`);
   };
 
   return (
@@ -41,11 +48,17 @@ const Programs = () => {
               endReached={loadMore}
               overscan={200}
               data={mapPagesToItems<IPracticeProgram>(data?.pages)}
-              itemContent={(index, program) => <ProgramItem key={index} program={program} />}
+              itemContent={(index, program) => (
+                <ProgramItem
+                  key={index}
+                  program={program}
+                  onNavigate={onNavigate.bind(null, program.id)}
+                />
+              )}
               components={{
                 Footer: () => (
                   <InfiniteScrollFooter
-                    hasNoData={data?.pages?.length === 0}
+                    hasNoData={data?.pages[0]?.items?.length === 0}
                     isLoading={isFetching}
                   />
                 ),
