@@ -38,9 +38,9 @@ const Header = ({ openSlidingMenu }: HeaderProps) => {
         <div className="w-full bg-gray-50 sm:h-12 h-10 flex items-center">
           <div className="wrapper flex-row items-center sm:gap-4 gap-2 sm:py-2 py-0 sm:w-[90%] lg:max-w-screen-3xl">
             <img src={commitGlobalLogo} alt="Commit Global" className="sm:h-full h-6" />
-            <span className="sm:text-base text-xs">{t('commit_global_solution')}</span>
+            <span className="sm:text-base text-xxs">{t('commit_global_solution')}</span>
             <a
-              className="text-blue font-bold hover:underline sm:text-base text-xs"
+              className="text-blue font-bold hover:underline sm:text-base text-xxs"
               href={COMMIT_GLOBAL_URL}
               target="_blank"
               rel="noreferrer"
