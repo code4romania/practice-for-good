@@ -196,7 +196,7 @@ const PracticeProgramFilterModal = ({
                     <div className="flex flex-col gap-2 w-full absolute bottom-4">
                       <button
                         type="button"
-                        className="flex bg-yellow w-full rounded font-titilliumSemiBold text-xl items-center justify-center p-3"
+                        className="flex bg-yellow-500 w-full rounded font-titilliumSemiBold text-xl items-center justify-center p-3"
                         onClick={handleSubmit(onApply)}
                       >
                         {t('filter_modal:apply')}

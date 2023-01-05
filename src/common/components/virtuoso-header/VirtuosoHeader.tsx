@@ -6,7 +6,7 @@ interface VirtuosoHeaderProps {
 }
 
 const VirtuosoHeader = ({ entities, totalItems }: VirtuosoHeaderProps) => {
-  return <p className="title text-center py-5 sm:py-10">{`${totalItems} ${entities}`}</p>;
+  return <p className="title text-center pb-5 sm:pb-10">{`${totalItems} ${entities}`}</p>;
 };
 
 export default VirtuosoHeader;

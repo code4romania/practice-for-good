@@ -48,18 +48,18 @@
   }
 
   .article {
-    @apply sm:text-base text-sm text-gray-500 break-words;
+    @apply sm:text-base text-sm text-gray-500 break-word;
   }
 
   .card-text-overflow {
-    @apply text-ellipsis overflow-hidden;
+    @apply text-ellipsis overflow-hidden break-word;
     display: -webkit-box;
     -webkit-line-clamp: 4;
     -webkit-box-orient: vertical;
   }
 
   .card-title-overflow {
-    @apply text-ellipsis overflow-hidden;
+    @apply text-ellipsis overflow-hidden break-word;
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
@@ -70,7 +70,7 @@
   }
 
   .menu-title {
-    @apply font-titilliumBold md:text-lg text-sm text-gray-900 leading-3 cursor-pointer;
+    @apply font-titilliumBold md:text-lg text-sm text-gray-900 leading-3 cursor-pointer whitespace-nowrap;
   }
 
   .side-menu-title {
@@ -78,7 +78,7 @@
   }
 
   .footer-title {
-    @apply font-titilliumBold text-base text-yellow-1000;
+    @apply font-titilliumBold text-base text-yellow;
   }
 
   .footer-text {
@@ -91,6 +91,10 @@
 
   .show-more-text {
     @apply text-blue cursor-pointer underline;
+  }
+
+  .break-word {
+    word-break: break-word;
   }
 
   .range-clear-button::after {
@@ -115,9 +119,13 @@
   a {
     @apply text-purple;
   }
+
+  .wrapper {
+    @apply sm:w-[80%] w-[90%] max-w-screen-xl sm:py-20 py-10 flex flex-col sm:gap-8 gap-5 justify-items-center mx-auto;
+  }
 }
 
 .content {
   /* Give the content enought white space so the footer is at the bottom */
-  min-height: calc(100vh - 6rem - 18rem);
+  min-height: calc(100vh - 11rem - 13rem);
 }

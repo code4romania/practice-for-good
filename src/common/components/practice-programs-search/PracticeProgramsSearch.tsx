@@ -232,7 +232,7 @@ const PracticeProgramsSearch = (props: PracticeProgramsSearchProps) => {
           {filtersCount > 0 && (
             <p
               id="create-organization-activity__button-back"
-              className="text-base rounded-full bg-yellow p-2 flex items-center w-10 justify-center"
+              className="text-base rounded-full bg-yellow-500 p-2 flex items-center w-10 justify-center"
             >
               {filtersCount}
             </p>

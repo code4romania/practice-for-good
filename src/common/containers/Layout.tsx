@@ -13,7 +13,7 @@ const Layout = () => {
     <div className="w-screen max-w-full">
       <Header openSlidingMenu={setSlidingMenuOpen} />
       <SlidingMenu isOpen={isSlidingMenuOpen} setSlidingMenuOpen={setSlidingMenuOpen} />
-      <div className="flex flex-col w-full">
+      <div className="flex flex-col w-full content">
         {/* <Breadcrumbs /> */}
         <Outlet />
       </div>
