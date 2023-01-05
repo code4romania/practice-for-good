@@ -33,7 +33,7 @@ const Description = ({ title, content, image, cta, isTextRight, layoutCSS }: Des
               onClick={() => {
                 if (cta?.link) openInNewTab(cta.link);
               }}
-              className="yellow-button sm:mt-10 mt-5 md:ml-0 mx-auto"
+              className="yellow-button md:ml-0 mx-auto"
             >
               {cta?.label}
             </button>
