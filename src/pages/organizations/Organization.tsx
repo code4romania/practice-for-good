@@ -35,7 +35,7 @@ const Organization = () => {
             {data && !isLoading && (
               <div className="content">
                 <OrganizationDetails organization={data}></OrganizationDetails>
-                <h2 className="subtitle mt-10">{t('details.errors.get')}</h2>
+                <h2 className="subtitle mt-10">{t('details.programs_title')}</h2>
                 <Virtuoso
                   useWindowScroll
                   overscan={200}

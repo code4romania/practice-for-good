@@ -95,7 +95,7 @@ export default function SlidingMenu({ isOpen, setSlidingMenuOpen }: SlidingMenuP
                   <nav
                     className={classNames(
                       'w-full',
-                      'transition-width duration-300 ease-out pt-10 gap-12 font-titilliumBold  select-none flex flex-col',
+                      'transition-width duration-300 ease-out pt-10 gap-12 font-titilliumBold select-none flex flex-col',
                     )}
                     aria-label="Sidebar"
                   >

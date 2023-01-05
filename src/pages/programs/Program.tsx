@@ -97,13 +97,13 @@ const Program = () => {
 
   return (
     <ShapeWrapper>
-      <>
-        <Breadcrumbs />
-        {isLoading && <Loading />}
-        {error && <ListError retry={refetch}>{t('details.errors.get')}</ListError>}
+      <div className="wrapper pt-5">
+        <>
+          <Breadcrumbs />
+          {isLoading && <Loading />}
+          {error && <ListError retry={refetch}>{t('details.errors.get')}</ListError>}
 
-        {!isLoading && !error && (
-          <section className="w-full xl:px-60 px-4 lg:py-20 py-10">
+          {!isLoading && !error && (
             <Card>
               <section className="divide-y divide-gray-100">
                 <div className="flex flex-col sm:flex-row">
@@ -195,9 +195,9 @@ const Program = () => {
                 </div>
               </section>
             </Card>
-          </section>
-        )}
-      </>
+          )}
+        </>
+      </div>
     </ShapeWrapper>
   );
 };
