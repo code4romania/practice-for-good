@@ -20,18 +20,17 @@ module.exports = {
       white: '#FFFFFF',
       blue: '#0000FA',
       yellow: {
-        DEFAULT: '#FFF649',
+        DEFAULT: '#FFEB4F',
         50: '#FFFDE7',
         100: '#FFF9C4',
         200: '#FFF59D',
         300: '#FFF176',
         400: '#FFEE58',
-        500: '#FFEB3B',
+        500: '#FDED5A',
         600: '#FDD835',
         700: '#FBC02D',
         800: '#F9A825',
         900: '#F57F17',
-        1000: '#FFEB4F',
       },
       gray: {
         50: '#F1F1F1',
@@ -77,6 +76,12 @@ module.exports = {
         input: 'inset 0 0 0 2px #6543c8',
       },
       fontSize: {
+        xxs: [
+          '0.7rem',
+          {
+            lineHeight: '1rem',
+          },
+        ],
         xs: [
           '0.75rem',
           {
@@ -103,9 +108,17 @@ module.exports = {
           },
         ],
       },
+      screens: {
+        '3xl': '1700px',
+      },
       backgroundImage: {
         shape: 'url(./assets/images/shape-background.svg)',
         search: 'url(./assets/images/background-search-image.png)',
+      },
+      gridTemplateColumns: {
+        'cards-desktop': 'repeat(auto-fill, minmax(20rem, 1fr))',
+        'cards-tablet': 'repeat(auto-fill, minmax(17rem, 1fr))',
+        'cards-mobile': 'repeat(auto-fill, minmax(15rem, 1fr))',
       },
     },
   },

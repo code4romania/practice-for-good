@@ -22,18 +22,15 @@ const Landing = () => {
 
   return (
     <section className="w-full">
-      <div className="bg-yellow w-full">
-        <PracticeProgramsSearch onSearchCallback={onGoToPrograms} />
-      </div>
-      <div className="max-w-screen-xl mx-auto px-10">
-        <Description
-          title={t('about.title')}
-          content={t('about.paragraph_1')}
-          cta={{ label: t('about.support'), link: DONATE_URL }}
-          image={p4g}
-          isTextRight={true}
-        ></Description>
-      </div>
+      <PracticeProgramsSearch onSearchCallback={onGoToPrograms} />
+      <Description
+        title={t('about.title')}
+        content={t('about.paragraph_1')}
+        cta={{ label: t('about.support'), link: DONATE_URL }}
+        image={p4g}
+        isTextRight={true}
+        className="wrapper"
+      ></Description>
       <Counter />
       <ShapeWrapper>
         <Domains />

@@ -38,46 +38,48 @@ const Programs = () => {
         <PracticeProgramsSearch />
       </div>
       <ShapeWrapper>
-        <div className="min-h-[30rem] px-[5%] lg:px-[10%] pb-5">
+        <div className="min-h-[30rem] w-full">
           {error && !isFetching ? (
             <ListError retry={refetch}>{t('errors.search')}</ListError>
           ) : (
-            <Virtuoso
-              useWindowScroll
-              context={{ loadMore }}
-              endReached={loadMore}
-              overscan={200}
-              data={mapPagesToItems<IPracticeProgram>(data?.pages)}
-              itemContent={(index, program) => (
-                <ProgramItem
-                  key={index}
-                  program={program}
-                  onNavigate={onNavigate.bind(null, program.id)}
-                />
-              )}
-              components={{
-                Footer: () => (
-                  <InfiniteScrollFooter
-                    hasNoData={data?.pages[0]?.items?.length === 0}
-                    isLoading={isFetching}
+            <div className="wrapper sm:w-[90%] lg:max-w-screen-3xl">
+              <Virtuoso
+                useWindowScroll
+                context={{ loadMore }}
+                endReached={loadMore}
+                overscan={200}
+                data={mapPagesToItems<IPracticeProgram>(data?.pages)}
+                itemContent={(index, program) => (
+                  <ProgramItem
+                    key={index}
+                    program={program}
+                    onNavigate={onNavigate.bind(null, program.id)}
                   />
-                ),
-                Header: () => {
-                  return data?.pages[0].meta && !isFetching ? (
-                    <VirtuosoHeader
-                      totalItems={data.pages[0].meta.totalItems}
-                      entities={
-                        data.pages[0].meta.totalItems > 1
-                          ? t('many_programs_title')
-                          : t('one_program_title')
-                      }
+                )}
+                components={{
+                  Footer: () => (
+                    <InfiniteScrollFooter
+                      hasNoData={data?.pages[0]?.items?.length === 0}
+                      isLoading={isFetching}
                     />
-                  ) : (
-                    <></>
-                  );
-                },
-              }}
-            />
+                  ),
+                  Header: () => {
+                    return data?.pages[0].meta && !isFetching ? (
+                      <VirtuosoHeader
+                        totalItems={data.pages[0].meta.totalItems}
+                        entities={
+                          data.pages[0].meta.totalItems === 1
+                            ? t('one_program_title')
+                            : t('many_programs_title')
+                        }
+                      />
+                    ) : (
+                      <></>
+                    );
+                  },
+                }}
+              />
+            </div>
           )}
         </div>
       </ShapeWrapper>
