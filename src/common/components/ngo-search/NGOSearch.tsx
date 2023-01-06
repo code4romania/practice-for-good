@@ -175,7 +175,7 @@ const NGOSearch = ({ showFilters }: NGOSearchProps) => {
               id="create-organization-activity__button-back"
               className="text-sm sm:text-base  h-full flex items-center"
             >
-              {t('practice_programs_search:filters')}
+              {t('common:search.filters')}
             </p>
             <AdjustmentsIcon className="w-5 h-5" />
             {filtersCount > 0 && (
