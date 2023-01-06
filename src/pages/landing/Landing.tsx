@@ -29,7 +29,7 @@ const Landing = () => {
         cta={{ label: t('about.support'), link: DONATE_URL }}
         image={p4g}
         isTextRight={true}
-        layoutCSS="wrapper"
+        className="wrapper"
       ></Description>
       <Counter />
       <ShapeWrapper>
