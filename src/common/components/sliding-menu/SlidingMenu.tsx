@@ -64,7 +64,7 @@ export default function SlidingMenu({ isOpen, setSlidingMenuOpen }: SlidingMenuP
                 leaveFrom="translate-x-0"
                 leaveTo="translate-x-[-100vw]"
               >
-                <Dialog.Panel className="pointer-events-auto h-full  overflow-y-scroll w-full bg-white p-6 pt-0">
+                <Dialog.Panel className="pointer-events-auto h-full overflow-y-scroll w-full bg-white p-6 pt-0 flex flex-col">
                   <Transition.Child
                     as={Fragment}
                     enter="ease-in-out duration-500"
@@ -92,46 +92,42 @@ export default function SlidingMenu({ isOpen, setSlidingMenuOpen }: SlidingMenuP
                       </button>
                     </div>
                   </Transition.Child>
-                  <div className="flex w-full relative">
-                    <div className="gap-6 flex flex-col w-full h-full justify-between">
-                      <nav
+                  <nav
+                    className={classNames(
+                      'w-full',
+                      'transition-width duration-300 ease-out pt-10 gap-12 font-titilliumBold select-none flex flex-col',
+                    )}
+                    aria-label="Sidebar"
+                  >
+                    {MENU_ROUTES.map((item) => (
+                      <a
+                        key={item.name}
                         className={classNames(
-                          'w-full',
-                          'transition-width duration-300 ease-out pt-10 gap-12 font-titilliumBold  select-none flex flex-col',
+                          'side-menu-title active:text-yellow-600',
+                          activeTab === item.href && 'text-yellow-700',
                         )}
-                        aria-label="Sidebar"
+                        onClick={() => handleMenuItemClick(item)}
                       >
-                        {MENU_ROUTES.map((item) => (
-                          <a
-                            key={item.name}
-                            className={classNames(
-                              'side-menu-title active:text-yellow-600',
-                              activeTab === item.href && 'text-yellow-700',
-                            )}
-                            onClick={() => handleMenuItemClick(item)}
-                          >
-                            {item.name}
-                          </a>
-                        ))}
-                      </nav>
-                      <div className="flex flex-col gap-2 items-center w-full pt-64">
-                        <button
-                          className="yellow-button flex w-full justify-center py-2 text-lg"
-                          onClick={() => windowOpener('https://code4.ro/ro/doneaza')}
-                        >
-                          {t('donate')}
-                        </button>
-                        <span>{t('how')}</span>
-                        <a
-                          className="text-blue font-bold hover:underline text-base"
-                          href="https://www.code4.ro"
-                          target="_blank"
-                          rel="noreferrer"
-                        >
-                          {t('learn_more')}
-                        </a>
-                      </div>
-                    </div>
+                        {item.name}
+                      </a>
+                    ))}
+                  </nav>
+                  <div className="flex flex-col gap-2 items-center w-full mt-auto">
+                    <button
+                      className="yellow-button flex w-full justify-center py-2 text-lg"
+                      onClick={() => windowOpener('https://code4.ro/ro/doneaza')}
+                    >
+                      {t('donate')}
+                    </button>
+                    <span>{t('how')}</span>
+                    <a
+                      className="text-blue font-bold hover:underline text-base"
+                      href="https://www.code4.ro"
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      {t('learn_more')}
+                    </a>
                   </div>
                 </Dialog.Panel>
               </Transition.Child>
