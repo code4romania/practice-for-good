@@ -37,7 +37,13 @@ const Header = ({ openSlidingMenu }: HeaderProps) => {
       <nav aria-label="Top">
         <div className="w-full bg-gray-50 sm:h-12 h-10 flex items-center">
           <div className="wrapper flex-row items-center sm:gap-4 gap-2 sm:py-2 py-0 sm:w-[90%] lg:max-w-screen-3xl">
-            <img src={commitGlobalLogo} alt="Commit Global" className="sm:h-full h-6" />
+            <img
+              width={'100px'}
+              height={'24px'}
+              src={commitGlobalLogo}
+              alt="Commit Global"
+              className="sm:h-full h-6"
+            />
             <span className="sm:text-base text-xxs">{t('commit_global_solution')}</span>
             <a
               className="text-blue font-bold hover:underline sm:text-base text-xxs"
@@ -52,7 +58,13 @@ const Header = ({ openSlidingMenu }: HeaderProps) => {
         <div className="w-full flex items-center sm:min-h-[5rem]">
           <div className="wrapper flex-row gap-4 py-2 sm:w-[90%] lg:max-w-screen-3xl">
             <div className="flex items-center cursor-pointer" onClick={() => navigate('/')}>
-              <img src={logo} alt="Code 4 Romania - ONG Hub" className="sm:h-full sm:w-full h-10" />
+              <img
+                width={'108px'}
+                height={'64px'}
+                src={logo}
+                alt="Code 4 Romania - ONG Hub"
+                className="sm:h-full sm:w-full h-10"
+              />
             </div>
             <div className="flex gap-4 items-center ml-auto">
               <div className="gap-6 hidden lg:flex">

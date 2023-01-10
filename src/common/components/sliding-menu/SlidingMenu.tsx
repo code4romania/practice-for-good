@@ -77,6 +77,8 @@ export default function SlidingMenu({ isOpen, setSlidingMenuOpen }: SlidingMenuP
                     <div className=" flex justify-between py-8 border-b-2">
                       <div className="flex items-center">
                         <img
+                          height={'40px'}
+                          width={'67px'}
                           src={logo}
                           alt="Code 4 Romania - ONG Hub"
                           className="sm:h-full sm:w-full h-10"

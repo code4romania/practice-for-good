@@ -41,7 +41,7 @@ module.exports = {
         500: '#6B7280',
         700: '#374159',
         900: '#151926',
-        1000: '#7F88A7',
+        1000: '#656F95',
       },
       purple: {
         DEFAULT: '#6543C8',
@@ -113,7 +113,7 @@ module.exports = {
       },
       backgroundImage: {
         shape: 'url(./assets/images/shape-background.svg)',
-        search: 'url(./assets/images/background-search-image.png)',
+        search: 'url(./assets/images/background-search-image.webp)',
       },
       gridTemplateColumns: {
         'cards-desktop': 'repeat(auto-fill, minmax(20rem, 1fr))',

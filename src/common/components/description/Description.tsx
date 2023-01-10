@@ -41,6 +41,8 @@ const Description = ({ title, content, image, cta, isTextRight, className }: Des
           )}
         </div>
         <img
+          width={'450px'}
+          height={'450px'}
           src={image}
           alt="ONGHub - logo"
           className={`mx-auto md:h-[30rem] h-20 ${isTextRight ? 'order-1' : 'md:order-2 order-1'}`}

@@ -120,7 +120,13 @@ const Contact = () => {
         )}
         {showSuccess && (
           <div className="flex-1 flex flex-col items-center justify-center">
-            <img src={confirmLogo} alt="Green Checkmark" className="sm:w-24 w-12 mb-6" />
+            <img
+              width={'96px'}
+              height={'96px'}
+              src={confirmLogo}
+              alt="Green Checkmark"
+              className="sm:w-24 w-12 mb-6"
+            />
             <p className="subtitle">{t('contact_message_1')}</p>
             <p className="body-text">{t('contact_message_2')}</p>
           </div>

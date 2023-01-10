@@ -71,7 +71,13 @@ const PracticeProgramFilterModal = ({
             >
               <Dialog.Panel className="bg-white p-4 text-left shadow-xl transform transition-all min-h-full h-fit w-full flex flex-col gap-4">
                 <div className="flex justify-between items-center">
-                  <img src={logo} alt="Code 4 Romania - ONG Hub" className="h-16" />
+                  <img
+                    height={'40px'}
+                    width={'67px'}
+                    src={logo}
+                    alt="Code 4 Romania - ONG Hub"
+                    className="h-16"
+                  />
                   <button aria-label={t('common:close')} onClick={onClose}>
                     <XIcon className="w-7 h-7" />
                   </button>
