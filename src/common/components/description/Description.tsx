@@ -30,6 +30,7 @@ const Description = ({ title, content, image, cta, isTextRight, className }: Des
           <p className="body-text w-full">{content}</p>
           {cta && (
             <button
+              aria-label={cta?.label}
               onClick={() => {
                 if (cta?.link) openInNewTab(cta.link);
               }}

@@ -70,6 +70,7 @@ const Header = ({ openSlidingMenu }: HeaderProps) => {
                 ))}
               </div>
               <button
+                aria-label={t('donate')}
                 className="yellow-button lg:flex hidden menu-title w-[9rem] justify-center ml-10"
                 onClick={() => windowOpener(DONATE_URL)}
               >
@@ -77,6 +78,7 @@ const Header = ({ openSlidingMenu }: HeaderProps) => {
               </button>
               <div className="flex lg:hidden items-center">
                 <button
+                  aria-label="Menu"
                   className="flex items-center gap-4 hover:bg-green-tab rounded-xl outline-none"
                   onClick={() => openSlidingMenu(true)}
                 >

@@ -51,6 +51,7 @@ const ProgramItem = ({ program, onNavigate }: ProgramItemProps) => {
           </div>
           <div className="flex-1 flex flex-col justify-center items-center sm:items-end gap-y-4 sm:gap-y-2">
             <button
+              aria-label={t('action')}
               type="button"
               className="font-titilliumSemiBold yellow-button text-center text-xs h-fit w-full max-w-[24rem] md:w-48 lg:text-base"
               onClick={onNavigate}
