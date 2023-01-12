@@ -108,7 +108,8 @@
         "apply": "Aplica"
       },
       "errors": {
-        "get": "Eroare la incarcarea programului de practica"
+        "get": "Eroare la incarcarea programului de practica",
+        "get_404": "Nu exista informatii despre acest program de practica."
       },
       "published_on": "Publicat la"
     }
@@ -134,7 +135,8 @@
       "social_media": "Social media",
       "programs_title": "Programe de practica si activitati",
       "errors": {
-        "get": "Eroare la incarcarea organizatiei"
+        "get": "Eroare la incarcarea organizatiei",
+        "get_404": "Nu exista informatii despre aceasta organizatie."
       }
     }
   },

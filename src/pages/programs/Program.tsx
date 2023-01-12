@@ -11,6 +11,7 @@ import Loading from '../../common/components/loading/Loading';
 import ListError from '../../common/components/list-error/ListError';
 import copy from 'copy-to-clipboard';
 import Breadcrumbs from '../../common/components/breadcrumbs/Breadcrumbs';
+import { AxiosError } from 'axios';
 
 interface PracticeProgramContentItemProps {
   label: string;
@@ -101,7 +102,17 @@ const Program = () => {
         <>
           <Breadcrumbs />
           {isLoading && <Loading />}
-          {error && <ListError retry={refetch}>{t('details.errors.get')}</ListError>}
+          {error && (
+            <ListError
+              retry={(error as AxiosError)?.response?.status === 404 ? undefined : refetch}
+            >
+              {t(
+                `details.errors.get${
+                  (error as AxiosError)?.response?.status === 404 ? '_404' : ''
+                }`,
+              )}
+            </ListError>
+          )}
 
           {!isLoading && !error && (
             <Card>
