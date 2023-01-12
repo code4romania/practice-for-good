@@ -191,6 +191,7 @@ const PracticeProgramsSearch = (props: PracticeProgramsSearchProps) => {
               />
             </div>
             <button
+              aria-label={t('common:search.search')}
               type="button"
               className="text-sm sm:text-base sm:hidden text-yellow bg-black px-4 flex items-center justify-center h-full shadow-md"
               onClick={handleSubmit(search)}
@@ -334,6 +335,7 @@ const PracticeProgramsSearch = (props: PracticeProgramsSearchProps) => {
               }}
             />
             <button
+              aria-label={t('common:search.search')}
               id="programs-search__button__submit"
               type="button"
               className="text-sm sm:text-base text-yellow bg-black w-full h-full shadow-md hover:bg-black-800"

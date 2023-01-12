@@ -5,6 +5,7 @@ import useBreadcrumbs from 'use-react-router-breadcrumbs';
 import i18n from '../../configs/i18n';
 import { MENU_ROUTES_HREF } from '../../constants/Menu.constants';
 import { useBreadcrumbsState } from '../../../store/Selectors';
+import { t } from 'i18next';
 
 const BreadcrumbItem = ({ children }: { children: string }) => (
   <span className="max-w-[5rem] sm:max-w-[15rem] lg:max-w-xs truncate">{children}</span>
@@ -23,7 +24,7 @@ const DynamicOrganization = () => {
 const HomeBreadcrumb = () => {
   return (
     <span>
-      <HomeIcon className="w-5 h-5" />
+      <HomeIcon aria-label={t('menu:home')} className="w-5 h-5" />
     </span>
   );
 };
