@@ -118,8 +118,14 @@ const Program = () => {
                     </p>
                   </div>
                   <div className="ml-auto sm:flex sm:flex-col justify-center sm:h-full h-fit items-end gap-y-4 hidden">
-                    <a target="_blank" href={program?.link} rel="noreferrer">
+                    <a
+                      aria-label={`${t('details.actions.apply')} @ ${program?.title}`}
+                      target="_blank"
+                      href={program?.link}
+                      rel="noreferrer"
+                    >
                       <button
+                        aria-label={t('details.actions.apply')}
                         type="button"
                         className="font-titilliumSemiBold yellow-button text-center h-fit lg:w-48 w-32 lg:text-base text-xs text-black"
                       >
@@ -166,8 +172,15 @@ const Program = () => {
                   <p>{program?.description}</p>
                 </div>
                 <div className="ml-auto flex flex-col justify-center h-fit items-center gap-y-4 sm:hidden py-8 px-8">
-                  <a target="_blank" className="w-full" href={program?.link} rel="noreferrer">
+                  <a
+                    aria-label={`${t('details.actions.apply')} la ${program?.title}`}
+                    target="_blank"
+                    className="w-full"
+                    href={program?.link}
+                    rel="noreferrer"
+                  >
                     <button
+                      aria-label={t('details.actions.apply')}
                       type="button"
                       className="font-titilliumSemiBold yellow-button text-center h-fit w-full lg:text-base text-xs"
                     >
@@ -177,7 +190,7 @@ const Program = () => {
                 </div>
 
                 <div className="py-6 flex flex-row justify-between items-center">
-                  <p className="text-base text-gray-400">
+                  <p className="text-base text-gray-500">
                     <span>{t('details.published_on')}&nbsp;</span>
                     {formatDateYear(program?.createdOn || '')}
                   </p>

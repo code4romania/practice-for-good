@@ -78,12 +78,15 @@ export default function SlidingMenu({ isOpen, setSlidingMenuOpen }: SlidingMenuP
                       <div className="flex flex-row justify-between">
                         <div className="flex items-center">
                           <img
+                            height={'40px'}
+                            width={'67px'}
                             src={logo}
                             alt="Code 4 Romania - ONG Hub"
                             className="sm:h-full sm:w-full h-10"
                           />
                         </div>
                         <button
+                          aria-label={t('common:close')}
                           type="button"
                           className="rounded-md text-gray-900 focus:outline-none focus:ring-2 focus:ring-white"
                           onClick={() => setSlidingMenuOpen(false)}
@@ -117,6 +120,7 @@ export default function SlidingMenu({ isOpen, setSlidingMenuOpen }: SlidingMenuP
                   </nav>
                   <div className="flex flex-col gap-2 items-center w-full mt-auto">
                     <button
+                      aria-label={t('donate')}
                       className="yellow-button flex w-full justify-center py-2 text-lg"
                       onClick={() => windowOpener('https://code4.ro/ro/doneaza')}
                     >

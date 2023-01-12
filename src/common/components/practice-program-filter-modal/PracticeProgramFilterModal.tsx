@@ -71,8 +71,14 @@ const PracticeProgramFilterModal = ({
             >
               <Dialog.Panel className="bg-white p-4 text-left shadow-xl transform transition-all min-h-full h-fit w-full flex flex-col gap-4">
                 <div className="flex justify-between items-center">
-                  <img src={logo} alt="Code 4 Romania - ONG Hub" className="h-16" />
-                  <button onClick={onClose}>
+                  <img
+                    height={'40px'}
+                    width={'67px'}
+                    src={logo}
+                    alt="Code 4 Romania - ONG Hub"
+                    className="h-16"
+                  />
+                  <button aria-label={t('common:close')} onClick={onClose}>
                     <XIcon className="w-7 h-7" />
                   </button>
                 </div>
@@ -195,6 +201,7 @@ const PracticeProgramFilterModal = ({
                 </div>
                 <div className="flex flex-col gap-2 w-full mt-auto">
                   <button
+                    aria-label={t('filter_modal:apply')}
                     type="button"
                     className="flex bg-yellow-500 w-full rounded font-titilliumSemiBold text-xl items-center justify-center p-3"
                     onClick={handleSubmit(onApply)}
@@ -202,6 +209,7 @@ const PracticeProgramFilterModal = ({
                     {t('filter_modal:apply')}
                   </button>
                   <button
+                    aria-label={t('filter_modal:reset')}
                     type="button"
                     className="flex bg-gray-100 w-full rounded font-titilliumSemiBold text-xl items-center justify-center p-3"
                     onClick={onReset}
