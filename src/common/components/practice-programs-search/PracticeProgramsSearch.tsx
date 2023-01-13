@@ -88,11 +88,14 @@ const PracticeProgramsSearch = (props: PracticeProgramsSearchProps) => {
     // 3 update filters cound
     setFiltersCount(countFilters(queryValues));
 
-    // 2. redirect with correct query set
+    // 4. redirect with correct query set
     props.onSearchCallback &&
       props.onSearchCallback(
         `?${stringify(encodeQueryParams(PROGRAMS_QUERY_PARAMS, queryValues))}`,
       );
+
+    // 5. reset form
+    reset(data);
   };
 
   const loadOptionsLocationSearch = async (searchWord: string) => {
