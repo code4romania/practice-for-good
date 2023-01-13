@@ -1,3 +1,4 @@
+import { formatISO9075 } from 'date-fns';
 import { PaginatedEntity } from '../../common/interfaces/PaginatedEntity.interface';
 import { IPracticeProgram } from '../../common/interfaces/PracticeProgram.interface';
 import { PracticeProgramsQuery } from '../../common/interfaces/PracticeProgramQuery.interface';
@@ -14,6 +15,8 @@ export const getPracticePrograms = async ({
       limit: 25,
       page: pageParam,
       ...query,
+      end: query?.end ? formatISO9075(new Date(query?.end)) : undefined,
+      start: query?.start ? formatISO9075(new Date(query?.start)) : undefined,
     },
   }).then((res) => res.data);
 };
