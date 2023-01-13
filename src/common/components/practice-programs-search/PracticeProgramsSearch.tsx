@@ -95,7 +95,11 @@ const PracticeProgramsSearch = (props: PracticeProgramsSearchProps) => {
       );
 
     // 5. reset form
-    reset(data);
+    reset({
+      ...data,
+      start: data?.start || null,
+      end: data?.end || null,
+    });
   };
 
   const loadOptionsLocationSearch = async (searchWord: string) => {
@@ -275,7 +279,7 @@ const PracticeProgramsSearch = (props: PracticeProgramsSearchProps) => {
               render={({ field: { onChange, value } }) => {
                 return (
                   <DatePicker
-                    defaultValue={value ? value : undefined}
+                    defaultValue={value || value === null ? value : undefined}
                     onChange={onChange}
                     placeholder={PracticeProgramsSearchConfig.start.placeholder}
                   />
@@ -290,7 +294,7 @@ const PracticeProgramsSearch = (props: PracticeProgramsSearchProps) => {
               render={({ field: { onChange, value } }) => {
                 return (
                   <DatePicker
-                    defaultValue={value ? value : undefined}
+                    defaultValue={value || value === null ? value : undefined}
                     onChange={onChange}
                     placeholder={PracticeProgramsSearchConfig.end.placeholder}
                   />

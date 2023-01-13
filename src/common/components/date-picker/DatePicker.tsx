@@ -16,7 +16,7 @@ const DatePicker = ({ defaultValue, onChange, placeholder }: DateRangePickerProp
   const [date, setDate] = useState<Date>();
 
   useEffect(() => {
-    setDate(defaultValue);
+    if (defaultValue || defaultValue === null) setDate(defaultValue);
   }, [defaultValue]);
 
   useEffect(() => {
