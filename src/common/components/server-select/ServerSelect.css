@@ -43,6 +43,10 @@
   max-width: 7rem;
 }
 
+.reactserverselect__value-container {
+  padding-right: 0px !important;
+}
+
 .reactserverselect__input-container input[type='text']:focus {
   box-shadow: none !important;
 }
@@ -104,6 +108,10 @@
   vertical-align: middle;
   content: '×';
   color: #c0c0c0 !important;
+}
+
+.reactserverselect__placeholder {
+  @apply truncate;
 }
 
 @media only screen and (min-width: 640px) {

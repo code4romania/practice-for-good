@@ -45,6 +45,10 @@
   }
 }
 
+.reactselect__value-container {
+  padding-right: 0px !important;
+}
+
 .reactselect__value-container--is-multi {
   flex-direction: row !important;
   flex-wrap: nowrap !important;
@@ -112,4 +116,8 @@
 .reactselect__menu > div > div:active {
   background-color: theme('colors.purple.500');
   color: white;
+}
+
+.reactselect__placeholder {
+  @apply truncate;
 }
