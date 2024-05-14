@@ -45,7 +45,6 @@ const Contact = () => {
         <div className="flex-1 flex flex-col sm:gap-8 gap-4">
           <p className="title">{t('title')}</p>
           <p className="body-text">{t('paragraph_1')}</p>
-          <p className="body-text">{t('paragraph_2')}</p>
         </div>
         {!showSuccess && (
           <div className="flex flex-1 flex-col sm:gap-y-6 gap-y-3">
