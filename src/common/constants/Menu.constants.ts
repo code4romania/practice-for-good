@@ -5,6 +5,8 @@ export const MENU_ROUTES_HREF = {
   organizations: 'organizations',
   practice_programs: 'practice-programs',
   about: 'about',
+  terms: 'terms',
+  policy: 'policy',
   contact: 'contact',
   practice_program: 'practice-program',
 };

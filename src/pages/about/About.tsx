@@ -14,8 +14,8 @@ const About = () => {
           <p className="body-text w-full">{t('p4g.paragraph_1')}</p>
         </div>
         <img
-          width={'450px'}
-          height={'450px'}
+          width={'850px'}
+          height={'850px'}
           src={p4gLogo}
           alt="Practice for Good - logo"
           className="mx-auto md:order-2 order-1 md:h-auto h-16"
