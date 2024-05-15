@@ -1,41 +1,41 @@
 {
   "common": {
-    "loading": "Se incarca...",
-    "no_results": "Nu exista rezultate pentru criteriile de cautare selectate",
-    "end_of_list": "Nu mai sunt date de afisat",
+    "loading": "Se încarcă...",
+    "no_results": "Nu există rezultate pentru criteriile de căutare selectate",
+    "end_of_list": "Nu mai sunt date de afișat",
     "share": "Distribuie",
     "shared": "Link-ul a fost copiat",
     "hours": "ore",
     "send": "Trimite",
     "selected": "selectate",
-    "show_more": "Arata mai mult",
+    "show_more": "Arată mai mult",
     "show_less": "Ascunde",
     "domains": "Domenii",
     "close": "Închide",
     "search": {
       "filters": "Filtre",
-      "search": "Cauta",
+      "search": "Caută",
       "config": {
         "search": {
-          "max": "Cautarea nu poate avea mai mult de 50 de caractere",
-          "min": "Cautarea nu poate avea mai putin de 3 caractere",
-          "placeholder": "Cauta un ONG sau un program..."
+          "max": "Căutarea nu poate avea mai mult de 50 de caractere",
+          "min": "Căutarea nu poate avea mai putin de 3 caractere",
+          "placeholder": "Caută un ONG sau un program..."
         },
         "location": {
-          "placeholder": "Toata Romania"
+          "placeholder": "Toată România"
         }
       }
     }
   },
   "menu": {
-    "home": "Acasa",
+    "home": "Acasă",
     "about": "Despre Practice for Good",
-    "practice_programs": "Stagii practica",
+    "practice_programs": "Stagii de practică",
     "organizations": "ONG-uri",
     "contact": "Contact"
   },
   "header": {
-    "commit_global_solution": "O solutie Commit Global.",
+    "commit_global_solution": "O soluție Commit Global.",
     "learn_more": "Află mai multe",
     "donate": "DONEAZĂ"
   },
