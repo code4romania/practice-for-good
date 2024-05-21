@@ -1,6 +1,6 @@
 {
   "common": {
-    "loading": "Se încarcă..",
+    "loading": "Se încarcă...",
     "no_results": "Nu există rezultate pentru criteriile de căutare selectate",
     "end_of_list": "Nu mai sunt date de afișat",
     "share": "Distribuie",
@@ -30,7 +30,7 @@
   "menu": {
     "home": "Acasă",
     "about": "Despre Practice for Good",
-    "practice_programs": "Stagii practică",
+    "practice_programs": "Stagii de practică",
     "organizations": "ONG-uri",
     "contact": "Contact"
   },
