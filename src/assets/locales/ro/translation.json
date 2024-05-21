@@ -1,36 +1,36 @@
 {
   "common": {
-    "loading": "Se incarca...",
-    "no_results": "Nu exista rezultate pentru criteriile de cautare selectate",
-    "end_of_list": "Nu mai sunt date de afisat",
+    "loading": "Se încarcă..",
+    "no_results": "Nu există rezultate pentru criteriile de căutare selectate",
+    "end_of_list": "Nu mai sunt date de afișat",
     "share": "Distribuie",
     "shared": "Link-ul a fost copiat",
     "hours": "ore",
     "send": "Trimite",
     "selected": "selectate",
-    "show_more": "Arata mai mult",
+    "show_more": "Arată mai mult",
     "show_less": "Ascunde",
     "domains": "Domenii",
     "close": "Închide",
     "search": {
       "filters": "Filtre",
-      "search": "Cauta",
+      "search": "Caută",
       "config": {
         "search": {
-          "max": "Cautarea nu poate avea mai mult de 50 de caractere",
-          "min": "Cautarea nu poate avea mai putin de 3 caractere",
-          "placeholder": "Cauta un ONG sau un program..."
+          "max": "Căutarea nu poate avea mai mult de 50 de caractere",
+          "min": "Căutarea nu poate avea mai putin de 3 caractere",
+          "placeholder": "Caută un ONG sau un program..."
         },
         "location": {
-          "placeholder": "Toata Romania"
+          "placeholder": "Toată România"
         }
       }
     }
   },
   "menu": {
-    "home": "Acasa",
+    "home": "Acasă",
     "about": "Despre Practice for Good",
-    "practice_programs": "Stagii practica",
+    "practice_programs": "Stagii practică",
     "organizations": "ONG-uri",
     "contact": "Contact"
   },
@@ -58,7 +58,7 @@
   "landing": {
     "about": {
       "title": "Despre Practice4Good",
-      "paragraph_1": "Deși organizațiile neguvernamentale sunt poate cel mai dinamic loc de muncă în care un student sau un proaspăt absolvent ar putea activa pentru a câștiga experientă, mediul ONG nu este o destinație obișnuită pentru acesta. Vreem să schimbăm acest lucru! Practice4Good este o platformă cu  anunțuri de practică și internship în ONG-urile care ne fac viața de zi cu zi mai bună.",
+      "paragraph_1": "Deși organizațiile neguvernamentale sunt poate cel mai dinamic loc de muncă în care un student sau un proaspăt absolvent ar putea activa pentru a câștiga experientă, mediul ONG nu este o destinație obișnuită pentru acesta. Vrem să schimbăm acest lucru! Practice4Good este o platformă cu anunțuri de practică și internship în ONG-urile care ne fac viața de zi cu zi mai bună.",
       "support": "Susține proiectul"
     },
     "counter": {
@@ -70,7 +70,7 @@
     }
   },
   "practice_programs_search": {
-    "title": "Programe de practica la ONG-uri din România",
+    "title": "Programe de practică la ONG-uri din România",
     "subtitle": "Caută programele de practică pe profilul tău, sau ",
     "subtitle_link": "Descoperă toate programele.",
     "config": {
@@ -78,10 +78,10 @@
         "placeholder": "Facultate"
       },
       "start": {
-        "placeholder": "Data Inceput"
+        "placeholder": "Dată Început"
       },
       "end": {
-        "placeholder": "Data Sfarsit"
+        "placeholder": "Data Sfârșit"
       },
       "working_hours": {
         "placeholder": "Nr. Ore"
@@ -98,22 +98,22 @@
     "action": "Detalii",
     "deadline": "Aplică până la",
     "errors": {
-      "search": "Eroare la incarcarea programelor de practica"
+      "search": "Eroare la încărcarea programelor de practică"
     },
     "details": {
       "deadline": "Deadline aplicare",
       "deadline_unlimited": "nelimitat",
-      "period": "Perioada program",
-      "period_starting_with": "Incepand cu",
-      "working_hours": "Numar de ore",
-      "faculties": "Dedicat studentilor la",
-      "skills": "Vei invata",
+      "period": "Perioadă program",
+      "period_starting_with": "Începând cu",
+      "working_hours": "Număr de ore",
+      "faculties": "Dedicat studenților la",
+      "skills": "Vei învăța",
       "actions": {
-        "apply": "Aplica"
+        "apply": "Aplică"
       },
       "errors": {
-        "get": "Eroare la incarcarea programului de practica",
-        "get_404": "Nu exista informatii despre acest program de practica."
+        "get": "Eroare la încărcarea programului de practică",
+        "get_404": "Nu există informații despre acest program de practică."
       },
       "published_on": "Publicat la"
     }
@@ -122,8 +122,8 @@
     "title": "Caută organizații"
   },
   "filter_modal": {
-    "apply": "Aplica filtre",
-    "reset": "Reseteaza filtre"
+    "apply": "Aplică filtre",
+    "reset": "Resetează filtre"
   },
   "organizations": {
     "one_organization_title": "ONG",
@@ -131,16 +131,16 @@
     "no_organizations": "Nu au fost găsite ONG-uri",
     "action": "Vezi mai mult",
     "errors": {
-      "search": "Eroare la incarcarea ONG-urilor"
+      "search": "Eroare la încărcarea ONG-urilor"
     },
     "details": {
       "activity_domains": "Domenii activitate",
       "contact": "Contact",
       "social_media": "Social media",
-      "programs_title": "Programe de practica si activitati",
+      "programs_title": "Programe de practica și activități",
       "errors": {
-        "get": "Eroare la incarcarea organizatiei",
-        "get_404": "Nu exista informatii despre aceasta organizatie."
+        "get": "Eroare la încărcarea organizației",
+        "get_404": "Nu există informații despre această organizație."
       }
     }
   },
