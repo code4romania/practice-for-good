@@ -64,6 +64,9 @@
     "counter": {
       "programs": "Programe și activități adăugate pe platformă",
       "ngos": "ONG-uri din România active pe platformă"
+    },
+    "domains": {
+      "see_all": "Vezi toate programele"
     }
   },
   "practice_programs_search": {

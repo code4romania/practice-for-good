@@ -1,6 +1,5 @@
 import React from 'react';
 import PracticeProgramsSearch from '../../common/components/practice-programs-search/PracticeProgramsSearch';
-import ShapeWrapper from '../../common/components/shape-wrapper/ShapeWrapper';
 import Domains from './components/domains/Domains';
 import Counter from './components/counter/Counter';
 import Description from '../../common/components/description/Description';
@@ -32,9 +31,7 @@ const Landing = () => {
         className="wrapper"
       ></Description>
       <Counter />
-      <ShapeWrapper>
-        <Domains />
-      </ShapeWrapper>
+      <Domains />
     </section>
   );
 };
