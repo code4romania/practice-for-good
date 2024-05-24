@@ -13,3 +13,7 @@ export const getDomains = (): Promise<any> => {
 export const getFaculties = (): Promise<any> => {
   return API.get(`/nomenclatures/faculties`).then((res) => res.data);
 };
+
+export const getPracticeDomains = (): Promise<any> => {
+  return API.get(`/nomenclatures/practice-domains`).then((res) => res.data);
+};
