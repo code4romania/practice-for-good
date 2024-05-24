@@ -2,6 +2,7 @@ import { DateParam, DelimitedNumericArrayParam, NumberParam, StringParam } from 
 
 export const PROGRAMS_QUERY_PARAMS = {
   search: StringParam,
+  group: StringParam,
   workingHours: StringParam,
   locationId: NumberParam,
   start: DateParam,

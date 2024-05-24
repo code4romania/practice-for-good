@@ -11,8 +11,8 @@ import { useNomenclature } from '../../../store/nomenclatures/Nomenclatures.sele
 import { ISelectData, mapItemToSelect } from '../../helpers/Nomenclature.helper';
 import { useTranslation } from 'react-i18next';
 import {
-  useDomainsQuery,
   useFacultiesQuery,
+  usePracticeDomainsQuery,
 } from '../../../services/nomenclature/Nomeclature.queries';
 import PracticeProgramFilterModal from '../practice-program-filter-modal/PracticeProgramFilterModal';
 import { useQueryParams, encodeQueryParams } from 'use-query-params';
@@ -39,7 +39,9 @@ const PracticeProgramsSearch = (props: PracticeProgramsSearchProps) => {
   const [isFilterModalOpen, setFilterModalOpen] = useState(false);
   const [filtersCount, setFiltersCount] = useState(0);
   // nomenclature values
-  const { domains, faculties } = useNomenclature();
+  const { faculties } = useNomenclature();
+
+  const { data: domains } = usePracticeDomainsQuery();
 
   // query params state
   const [query, setQuery] = useQueryParams(PROGRAMS_QUERY_PARAMS);
@@ -58,8 +60,6 @@ const PracticeProgramsSearch = (props: PracticeProgramsSearchProps) => {
   } = form;
 
   // Queries
-  // TODO: This should be at cell level, each cell should request it's own data
-  useDomainsQuery();
   useFacultiesQuery();
 
   useEffect(() => {
@@ -67,7 +67,7 @@ const PracticeProgramsSearch = (props: PracticeProgramsSearchProps) => {
       const filters = await initFilters();
       reset({ ...filters });
     })();
-  }, []);
+  }, [domains]);
 
   const search = (data: any) => {
     // 1. map query values
@@ -113,6 +113,7 @@ const PracticeProgramsSearch = (props: PracticeProgramsSearchProps) => {
       domains: queryDomains,
       faculties: queryFaculties,
       workingHours,
+      group,
       ...otherQueryParams
     } = query;
 
@@ -144,6 +145,14 @@ const PracticeProgramsSearch = (props: PracticeProgramsSearchProps) => {
       selectedDomains = allDomains
         .filter((domain: { id: number; name: string }) => queryDomains?.includes(domain.id))
         .map(mapItemToSelect);
+    }
+
+    if (group && domains) {
+      const groupedDomains = domains
+        ?.filter((domain: any) => domain.group === query.group)
+        .map(mapItemToSelect);
+
+      selectedDomains = [...(selectedDomains ? selectedDomains : []), ...groupedDomains];
     }
 
     setFiltersCount(countFilters(query));
@@ -335,7 +344,7 @@ const PracticeProgramsSearch = (props: PracticeProgramsSearchProps) => {
                     isMulti={true}
                     onChange={onChange}
                     placeholder={PracticeProgramsSearchConfig.domains.config.placeholder}
-                    options={domains.map(mapItemToSelect)}
+                    options={domains?.map(mapItemToSelect) || []}
                     icon={PracticeProgramsSearchConfig.domains.icon}
                   />
                 );

@@ -3,14 +3,14 @@ import stars from '../../../../assets/icons/stars.svg';
 
 interface DomainProps {
   name: string;
-  id: number;
+  skip?: boolean;
 }
 
-const Domain = ({ name, id }: DomainProps) => {
+const Domain = ({ name, skip }: DomainProps) => {
   return (
     <a
       aria-label={name}
-      href={id === -1 ? '/practice-programs' : `/practice-programs?domains=${id}`}
+      href={skip ? '/practice-programs' : `/practice-programs?group=${encodeURIComponent(name)}`}
       className="text-black"
     >
       <div className="flex gap-1">
