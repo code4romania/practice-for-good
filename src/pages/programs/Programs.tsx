@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import PracticeProgramsSearch from '../../common/components/practice-programs-search/PracticeProgramsSearch';
 import { Virtuoso } from 'react-virtuoso';
@@ -15,14 +15,30 @@ import { mapPagesToItems } from '../../common/helpers/Format.helper';
 import VirtuosoHeader from '../../common/components/virtuoso-header/VirtuosoHeader';
 import { useNavigate } from 'react-router-dom';
 import { MENU_ROUTES_HREF } from '../../common/constants/Menu.constants';
+import { usePracticeDomainsQuery } from '../../services/nomenclature/Nomeclature.queries';
 
 const Programs = () => {
   const { t } = useTranslation('practice_programs');
   const navigate = useNavigate();
   const [query] = useQueryParams(PROGRAMS_QUERY_PARAMS);
 
+  const { data: practiceDomains } = usePracticeDomainsQuery();
+
+  const domainsIds = useMemo(() => {
+    if (!practiceDomains || !query.group) {
+      return [];
+    }
+
+    return practiceDomains
+      .filter((domain: any) => domain.group === query.group)
+      .map((d: any) => d.id);
+  }, [query, practiceDomains]);
+
   const { data, isFetching, fetchNextPage, hasNextPage, error, refetch } =
-    userPracticeProgramsInfiniteQuery(query as PracticeProgramsQuery);
+    userPracticeProgramsInfiniteQuery({
+      ...query,
+      ...(query.group ? { domains: domainsIds } : {}),
+    } as PracticeProgramsQuery);
 
   const loadMore = () => {
     if (!isFetching && hasNextPage) fetchNextPage();

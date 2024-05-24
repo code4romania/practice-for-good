@@ -12,6 +12,7 @@ import MultiSelect from '../select/Select';
 import { useTranslation } from 'react-i18next';
 import { getCities } from '../../../services/nomenclature/Nomenclature.service';
 import { mapCitiesToSelect } from '../../helpers/Format.helper';
+import { usePracticeDomainsQuery } from '../../../services/nomenclature/Nomeclature.queries';
 
 interface PracticeProgramFilterModalProps {
   onClose: () => void;
@@ -25,7 +26,8 @@ const PracticeProgramFilterModal = ({
   onSubmit,
 }: PracticeProgramFilterModalProps) => {
   const { t } = useTranslation();
-  const { domains, faculties } = useNomenclature();
+  const { faculties } = useNomenclature();
+  const { data: domains } = usePracticeDomainsQuery();
 
   const { handleSubmit, control, reset } = form;
 
@@ -191,7 +193,7 @@ const PracticeProgramFilterModal = ({
                             isMulti={true}
                             onChange={onChange}
                             placeholder={PracticeProgramsSearchConfig.domains.config.placeholder}
-                            options={domains.map(mapItemToSelect)}
+                            options={domains?.map(mapItemToSelect) || []}
                             icon={PracticeProgramsSearchConfig.domains.icon}
                           />
                         );
